@@ -9,8 +9,9 @@ func process(delta: float) -> State:
 		return state_machine.climb
 	var direction: float = Input.get_axis("move_left", "move_right")
 	if state_machine.on_floor_buffer > 0:
-		if state_machine.jump_buffer > 0 && player.velocity.y >= 0:
+		if state_machine.jump_buffer > 0:
 			player.velocity.y = player.JUMP_VELOCITY
+			state_machine.play_sfx(state_machine.sfx_jump)
 		if direction: player.velocity.x = direction * player.SPEED
 		else: player.velocity.x = move_toward(player.velocity.x, 0, 6000 * delta)
 	else:

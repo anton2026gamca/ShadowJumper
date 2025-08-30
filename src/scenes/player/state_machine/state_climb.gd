@@ -10,9 +10,11 @@ func process(delta: float) -> State:
 	if not left and not right:
 		return state_machine.fall
 	var dir: int = -1 if left else (1 if right else 0)
-	if Input.is_action_just_pressed("jump"):
+	if state_machine.jump_buffer > 0:
 		player.velocity.x = -dir * player.SPEED
 		player.velocity.y = player.JUMP_VELOCITY
+		state_machine.jump_buffer = 0
+		state_machine.play_sfx(state_machine.sfx_jump)
 		player.move_and_slide()
 		state_machine.disable_climb = true
 		return state_machine.fall

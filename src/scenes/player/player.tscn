@@ -1,15 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://f5m7vw1vj4fd"]
+[gd_scene load_steps=14 format=3 uid="uid://f5m7vw1vj4fd"]
 
 [ext_resource type="Script" uid="uid://hrc23450dtph" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bnpceuwymc5n" path="res://scenes/player/state_machine/state_walk.gd" id="2_dovo2"]
 [ext_resource type="Script" uid="uid://dgd8hkbbbcu5j" path="res://scenes/player/state_machine/state_machine.gd" id="2_gmlin"]
-[ext_resource type="FontFile" uid="uid://bm2yp6jk57bkh" path="res://assets/MinecraftStandard.otf" id="2_h17s1"]
-[ext_resource type="FontFile" uid="uid://b3bht1iqwbyr8" path="res://assets/MinecraftStandardOblique.otf" id="3_je7p5"]
-[ext_resource type="FontFile" uid="uid://dcsunp0yw5j4o" path="res://assets/MinecraftStandardBoldOblique.otf" id="4_fm80t"]
+[ext_resource type="FontFile" uid="uid://bm2yp6jk57bkh" path="res://assets/Fonts/MinecraftStandard.otf" id="2_h17s1"]
+[ext_resource type="FontFile" uid="uid://b3bht1iqwbyr8" path="res://assets/Fonts/MinecraftStandardOblique.otf" id="3_je7p5"]
+[ext_resource type="FontFile" uid="uid://dcsunp0yw5j4o" path="res://assets/Fonts/MinecraftStandardBoldOblique.otf" id="4_fm80t"]
 [ext_resource type="Script" uid="uid://d076o046mjswg" path="res://scenes/player/state_machine/state_dash.gd" id="5_75vfm"]
-[ext_resource type="FontFile" uid="uid://dk5nsb55kr08l" path="res://assets/MinecraftStandardBold.otf" id="5_gx1jg"]
+[ext_resource type="FontFile" uid="uid://dk5nsb55kr08l" path="res://assets/Fonts/MinecraftStandardBold.otf" id="5_gx1jg"]
 [ext_resource type="Script" uid="uid://bfhjgtumgpcpm" path="res://scenes/player/state_machine/state_fall.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://duwb6lw8qv8qa" path="res://scenes/player/state_machine/state_climb.gd" id="6_75vfm"]
+[ext_resource type="AudioStream" uid="uid://dchrahvns7vh0" path="res://assets/SFX/jump_3.wav" id="7_je7p5"]
+[ext_resource type="AudioStream" uid="uid://cqddwufjihsoj" path="res://assets/SFX/jump_2.wav" id="8_fm80t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f60y1"]
 size = Vector2(16, 16)
@@ -25,9 +27,6 @@ offset_top = -8.0
 offset_right = 8.0
 offset_bottom = 8.0
 color = Color(0.937255, 0.490196, 0.152941, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_f60y1")
 
 [node name="StateDisplay" type="RichTextLabel" parent="."]
 anchors_preset = 8
@@ -63,6 +62,8 @@ dash = NodePath("Dash")
 climb = NodePath("Climb")
 raycast_left = NodePath("../RayCastLeft")
 raycast_right = NodePath("../RayCastRight")
+sfx_jump = ExtResource("7_je7p5")
+sfx_dash = ExtResource("8_fm80t")
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("2_dovo2")
@@ -76,8 +77,14 @@ script = ExtResource("5_75vfm")
 [node name="Climb" type="Node" parent="StateMachine"]
 script = ExtResource("6_75vfm")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f60y1")
+
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 target_position = Vector2(-9, 0)
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 target_position = Vector2(9, 0)
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true

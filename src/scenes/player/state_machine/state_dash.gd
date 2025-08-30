@@ -13,5 +13,9 @@ func process(delta: float) -> State:
 	player.move_and_slide()
 	if state_machine.jump_buffer > 0:
 		player.velocity.y = player.JUMP_VELOCITY
+		player.velocity.x = min(max(player.velocity.x, -player.SPEED), player.SPEED)
+		state_machine.jump_buffer = 0
+		state_machine.on_floor_buffer = 0
+		state_machine.play_sfx(state_machine.sfx_jump)
 		return state_machine.fall
 	return null
