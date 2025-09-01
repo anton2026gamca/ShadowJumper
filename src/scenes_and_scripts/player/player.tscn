@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://f5m7vw1vj4fd"]
+
+[ext_resource type="Script" uid="uid://hrc23450dtph" path="res://scenes_and_scripts/player/player.gd" id="1_8afob"]
+[ext_resource type="Script" uid="uid://bnpceuwymc5n" path="res://scenes_and_scripts/player/state_machine_states/player_walk.gd" id="2_dovo2"]
+[ext_resource type="Script" uid="uid://dgd8hkbbbcu5j" path="res://scenes_and_scripts/state_machine/state_machine.gd" id="2_gmlin"]
+[ext_resource type="Script" uid="uid://d076o046mjswg" path="res://scenes_and_scripts/player/state_machine_states/player_dash.gd" id="5_75vfm"]
+[ext_resource type="Script" uid="uid://bfhjgtumgpcpm" path="res://scenes_and_scripts/player/state_machine_states/player_fall.gd" id="5_p47bc"]
+[ext_resource type="Script" uid="uid://duwb6lw8qv8qa" path="res://scenes_and_scripts/player/state_machine_states/player_climb.gd" id="6_75vfm"]
+[ext_resource type="Script" uid="uid://dy5m06qmahh2u" path="res://scenes_and_scripts/player/controllers/user_controller/user_player_controller.gd" id="6_je7p5"]
+[ext_resource type="AudioStream" uid="uid://dchrahvns7vh0" path="res://assets/SFX/jump_3.wav" id="7_je7p5"]
+[ext_resource type="AudioStream" uid="uid://cqddwufjihsoj" path="res://assets/SFX/jump_2.wav" id="8_fm80t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f60y1"]
+size = Vector2(16, 16)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_8afob")
+metadata/_custom_type_script = "uid://hrc23450dtph"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+color = Color(0.937255, 0.490196, 0.152941, 1)
+
+[node name="UserPlayerController" type="Node" parent="." node_paths=PackedStringArray("target", "climb_left_raycast", "climb_right_raycast")]
+script = ExtResource("6_je7p5")
+target = NodePath("..")
+climb_left_raycast = NodePath("../RayCastLeft")
+climb_right_raycast = NodePath("../RayCastRight")
+sfx_jump = ExtResource("7_je7p5")
+sfx_dash = ExtResource("8_fm80t")
+metadata/_custom_type_script = "uid://dy5m06qmahh2u"
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
+script = ExtResource("2_gmlin")
+current_state = NodePath("PlayerFall")
+metadata/_custom_type_script = "uid://dgd8hkbbbcu5j"
+
+[node name="PlayerWalk" type="Node" parent="StateMachine" node_paths=PackedStringArray("controller")]
+script = ExtResource("2_dovo2")
+controller = NodePath("../../UserPlayerController")
+metadata/_custom_type_script = "uid://bnpceuwymc5n"
+
+[node name="PlayerFall" type="Node" parent="StateMachine" node_paths=PackedStringArray("controller")]
+script = ExtResource("5_p47bc")
+controller = NodePath("../../UserPlayerController")
+metadata/_custom_type_script = "uid://bfhjgtumgpcpm"
+
+[node name="PlayerDash" type="Node" parent="StateMachine" node_paths=PackedStringArray("controller")]
+script = ExtResource("5_75vfm")
+controller = NodePath("../../UserPlayerController")
+metadata/_custom_type_script = "uid://d076o046mjswg"
+
+[node name="PlayerClimb" type="Node" parent="StateMachine" node_paths=PackedStringArray("controller")]
+script = ExtResource("6_75vfm")
+controller = NodePath("../../UserPlayerController")
+metadata/_custom_type_script = "uid://duwb6lw8qv8qa"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f60y1")
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-9, 0)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(9, 0)
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]

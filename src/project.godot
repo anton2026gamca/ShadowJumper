@@ -24,6 +24,8 @@ config/icon="uid://d3tvi8n1gvnj"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/initial_position_type=5
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
 
 [dotnet]
 
@@ -32,6 +34,15 @@ project/assembly_name="Shadow Jumper"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "red",
+"res://assets/": "orange",
+"res://export/": "yellow",
+"res://scenes_and_scripts/": "green"
+}
 
 [input]
 

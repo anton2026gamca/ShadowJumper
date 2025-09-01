@@ -1,5 +1,5 @@
 extends Node2D
-class_name Camera
+class_name Follower
 
 
 @export var folow: Node2D
