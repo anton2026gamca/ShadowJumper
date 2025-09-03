@@ -18,12 +18,10 @@ func update_label():
 	if not label: return
 	label.text = label_text.replace("${number}", str(number))
 
-@export_group("Relationships")
-@export var level_up: LevelSelectionLevel
-@export var level_down: LevelSelectionLevel
-@export var level_left: LevelSelectionLevel
-@export var level_right: LevelSelectionLevel
+@export var scene: PackedScene
 
+@export var relationships: Dictionary[Vector2i, LevelSelectionLevel]
+@export var player_replays: Dictionary[Vector2i, PlayerReplayData]
 
 func _ready() -> void:
 	update_label()

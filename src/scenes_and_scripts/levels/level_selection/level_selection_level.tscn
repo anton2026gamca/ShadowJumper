@@ -1,23 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://by7kis83n7kvx"]
+[gd_scene load_steps=4 format=3 uid="uid://by7kis83n7kvx"]
 
-[ext_resource type="Script" uid="uid://f8v6r34aek62" path="res://scenes_and_scripts/level_selection/level_selection_level.gd" id="1_anrjt"]
+[ext_resource type="Script" uid="uid://f8v6r34aek62" path="res://scenes_and_scripts/levels/level_selection/level_selection_level.gd" id="1_anrjt"]
 [ext_resource type="FontFile" uid="uid://bm2yp6jk57bkh" path="res://assets/Fonts/MinecraftStandard.otf" id="2_ttgxn"]
+[ext_resource type="Texture2D" uid="uid://dgevdmm07ar85" path="res://assets/Sprites/flag.png" id="3_bjhwf"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_anrjt")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 7
@@ -26,9 +14,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -20.0
-offset_top = -26.0
+offset_top = -38.0
 offset_right = 20.0
-offset_bottom = -14.0
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_ttgxn")
@@ -36,3 +24,7 @@ theme_override_font_sizes/font_size = 6
 text = "Level 0"
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="Flag" type="Sprite2D" parent="."]
+texture = ExtResource("3_bjhwf")
+offset = Vector2(2.5, -16)

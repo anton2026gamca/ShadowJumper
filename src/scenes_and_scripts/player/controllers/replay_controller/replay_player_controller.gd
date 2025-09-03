@@ -7,17 +7,22 @@ class_name ReplayPlayerController
 
 @export_tool_button("Start/Stop Recording") var record_btn: Callable = start_stop_recording
 var is_recording: bool = false
+@export var adjust_x_position_on_end: bool = false
+@export var target_x_position_on_end: float = 0
 
 @export var replay_data: PlayerReplayData
 
+var start_target_pos: Vector2 = Vector2.ZERO
+
 @export_tool_button("Replay") var replay_btn: Callable = start_replay
-var replay_start_target_pos: Vector2 = Vector2.ZERO
 var is_replaying: bool = false
 var current_frame_data_index: int = 0
 var current_frame_data: PlayerReplayFrameData
 var current_frame_index_in_data: int = 0
 
-@export var reset_position_after_replay: bool = false
+@export_tool_button("Reset Position") var reset_pos_btn: Callable = reset_target_position
+
+signal replay_end
 
 
 func _ready() -> void:
@@ -54,12 +59,16 @@ func replay_next_frame() -> void:
 			is_replaying = false
 			target.enable_in_editor = false
 			state_machine.enable_in_editor = false
-			if reset_position_after_replay:
-				target.position = replay_start_target_pos
+			replay_end.emit()
+			if replay_data.adjust_x_position_on_end:
+				var tween: Tween = create_tween()
+				tween.tween_property(target, "position", Vector2(replay_data.target_x_position_on_end, target.position.y), abs(replay_data.target_x_position_on_end - target.position.x) / speed)
 			print("Finished replaying")
 			return
-		print("Replaying frame data ", current_frame_data_index)
 		current_frame_data = replay_data.data[current_frame_data_index]
+
+func reset_target_position() -> void:
+	target.position = start_target_pos
 
 
 func start_stop_recording() -> void:
@@ -73,6 +82,7 @@ func start_stop_recording() -> void:
 		replay_data.start_pos = target.position
 		replay_data.data = []
 		
+		start_target_pos = target.position
 		target.enable_in_editor = true
 		state_machine.enable_in_editor = true
 	else:
@@ -84,6 +94,8 @@ func start_stop_recording() -> void:
 		var len: int = len(replay_data.data)
 		replay_data.data[len - 1].frames_count = 1
 		replay_data.data[0].frames_count = 1
+		replay_data.adjust_x_position_on_end = adjust_x_position_on_end
+		replay_data.target_x_position_on_end = target_x_position_on_end
 
 func start_replay() -> void:
 	if is_recording or not replay_data or not replay_data.data:
@@ -93,7 +105,7 @@ func start_replay() -> void:
 	current_frame_data_index = 0
 	current_frame_index_in_data = 0
 	current_frame_data = replay_data.data[current_frame_data_index]
-	replay_start_target_pos = target.position
+	start_target_pos = target.position
 	target.position = replay_data.start_pos
 	target.enable_in_editor = true
 	state_machine.enable_in_editor = true

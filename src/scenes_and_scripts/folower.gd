@@ -9,4 +9,4 @@ class_name Follower
 func _process(delta: float) -> void:
 	if folow:
 		global_position.x = move_toward(global_position.x, folow.global_position.x, folow_speed.x * delta)
-		global_position.y = move_toward(global_position.y, folow.global_position.y, folow_speed.x * delta)
+		global_position.y = move_toward(global_position.y, folow.global_position.y, folow_speed.y * delta)

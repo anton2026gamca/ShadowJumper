@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://f5m7vw1vj4fd"]
+[gd_scene load_steps=12 format=3 uid="uid://f5m7vw1vj4fd"]
 
 [ext_resource type="Script" uid="uid://hrc23450dtph" path="res://scenes_and_scripts/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bnpceuwymc5n" path="res://scenes_and_scripts/player/state_machine_states/player_walk.gd" id="2_dovo2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dy5m06qmahh2u" path="res://scenes_and_scripts/player/controllers/user_controller/user_player_controller.gd" id="6_je7p5"]
 [ext_resource type="AudioStream" uid="uid://dchrahvns7vh0" path="res://assets/SFX/jump_3.wav" id="7_je7p5"]
 [ext_resource type="AudioStream" uid="uid://cqddwufjihsoj" path="res://assets/SFX/jump_2.wav" id="8_fm80t"]
+[ext_resource type="Texture2D" uid="uid://dfehsgpqmial3" path="res://assets/Sprites/player.png" id="10_of6dy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f60y1"]
 size = Vector2(16, 16)
@@ -19,12 +20,8 @@ collision_mask = 3
 script = ExtResource("1_8afob")
 metadata/_custom_type_script = "uid://hrc23450dtph"
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
-color = Color(0.937255, 0.490196, 0.152941, 1)
+[node name="Player" type="Sprite2D" parent="."]
+texture = ExtResource("10_of6dy")
 
 [node name="UserPlayerController" type="Node" parent="." node_paths=PackedStringArray("target", "climb_left_raycast", "climb_right_raycast")]
 script = ExtResource("6_je7p5")
@@ -61,6 +58,7 @@ controller = NodePath("../../UserPlayerController")
 metadata/_custom_type_script = "uid://duwb6lw8qv8qa"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_f60y1")
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
