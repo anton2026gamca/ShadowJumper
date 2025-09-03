@@ -1,12 +1,14 @@
-[gd_scene load_steps=16 format=4 uid="uid://clkhpeqrfyoax"]
+[gd_scene load_steps=34 format=4 uid="uid://clkhpeqrfyoax"]
 
 [ext_resource type="Texture2D" uid="uid://bv83repei4m1" path="res://assets/tileset.png" id="1_1aftu"]
 [ext_resource type="Script" uid="uid://dd3otqv1n5e7k" path="res://scenes_and_scripts/level_selection/level_selection.gd" id="1_7qmai"]
 [ext_resource type="PackedScene" uid="uid://by7kis83n7kvx" path="res://scenes_and_scripts/level_selection/level_selection_level.tscn" id="2_5iw0q"]
 [ext_resource type="Script" uid="uid://hrc23450dtph" path="res://scenes_and_scripts/player/player.gd" id="4_270wt"]
 [ext_resource type="Script" uid="uid://bmswg047sanf" path="res://scenes_and_scripts/player/controllers/replay_controller/replay_player_controller.gd" id="5_qgt8i"]
+[ext_resource type="Script" uid="uid://btbdnpwfasls6" path="res://scenes_and_scripts/player/controllers/replay_controller/player_replay_frame_data.gd" id="6_8gh2l"]
 [ext_resource type="AudioStream" uid="uid://dchrahvns7vh0" path="res://assets/SFX/jump_3.wav" id="6_espgd"]
 [ext_resource type="Script" uid="uid://dgd8hkbbbcu5j" path="res://scenes_and_scripts/state_machine/state_machine.gd" id="6_ft1e4"]
+[ext_resource type="Script" uid="uid://dka34qujie42c" path="res://scenes_and_scripts/player/controllers/replay_controller/player_replay_data.gd" id="6_ym7cv"]
 [ext_resource type="Script" uid="uid://bnpceuwymc5n" path="res://scenes_and_scripts/player/state_machine_states/player_walk.gd" id="7_espgd"]
 [ext_resource type="AudioStream" uid="uid://cqddwufjihsoj" path="res://assets/SFX/jump_2.wav" id="7_ym7cv"]
 [ext_resource type="Script" uid="uid://bfhjgtumgpcpm" path="res://scenes_and_scripts/player/state_machine_states/player_fall.gd" id="8_ym7cv"]
@@ -1831,10 +1833,15 @@ texture = ExtResource("1_1aftu")
 10:27/0 = 0
 11:27/0 = 0
 0:29/0 = 0
+0:29/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:29/0 = 0
+1:29/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:29/0 = 0
+2:29/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:29/0 = 0
+3:29/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:29/0 = 0
+4:29/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:29/0 = 0
 12:29/0 = 0
 13:29/0 = 0
@@ -1904,10 +1911,15 @@ texture = ExtResource("1_1aftu")
 88:29/0 = 0
 89:29/0 = 0
 0:30/0 = 0
+0:30/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:30/0 = 0
+1:30/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:30/0 = 0
+2:30/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:30/0 = 0
+3:30/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:30/0 = 0
+4:30/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:30/0 = 0
 6:30/0 = 0
 7:30/0 = 0
@@ -1983,10 +1995,15 @@ texture = ExtResource("1_1aftu")
 88:30/0 = 0
 89:30/0 = 0
 0:31/0 = 0
+0:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:31/0 = 0
+1:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:31/0 = 0
+2:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:31/0 = 0
+3:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:31/0 = 0
+4:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:31/0 = 0
 6:31/0 = 0
 7:31/0 = 0
@@ -2062,10 +2079,15 @@ texture = ExtResource("1_1aftu")
 88:31/0 = 0
 89:31/0 = 0
 0:32/0 = 0
+0:32/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:32/0 = 0
+1:32/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:32/0 = 0
+2:32/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:32/0 = 0
+3:32/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:32/0 = 0
+4:32/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:32/0 = 0
 6:32/0 = 0
 7:32/0 = 0
@@ -5588,6 +5610,236 @@ physics_layer_1/collision_layer = 2
 physics_layer_1/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_gswpo")
 
+[sub_resource type="Resource" id="Resource_8gh2l"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_vnfxq"]
+script = ExtResource("6_8gh2l")
+frames_count = 13
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_hcr5e"]
+script = ExtResource("6_8gh2l")
+frames_count = 6
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_rrdxl"]
+script = ExtResource("6_8gh2l")
+frames_count = 13
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_g6ldl"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_w5t7u"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_2vu7k"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": true,
+"get_jump_buffered": true,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_py0tf"]
+script = ExtResource("6_8gh2l")
+frames_count = 6
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_jtrap"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_mc8r5"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": true,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_qc7qp"]
+script = ExtResource("6_8gh2l")
+frames_count = 3
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_6e1k6"]
+script = ExtResource("6_8gh2l")
+frames_count = 4
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_tqbn4"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_4sm6e"]
+script = ExtResource("6_8gh2l")
+frames_count = 4
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_wyk4q"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_xp8yh"]
+script = ExtResource("6_ym7cv")
+start_pos = Vector2(0, 7.999)
+data = Array[ExtResource("6_8gh2l")]([SubResource("Resource_8gh2l"), SubResource("Resource_vnfxq"), SubResource("Resource_hcr5e"), SubResource("Resource_rrdxl"), SubResource("Resource_g6ldl"), SubResource("Resource_w5t7u"), SubResource("Resource_2vu7k"), SubResource("Resource_py0tf"), SubResource("Resource_jtrap"), SubResource("Resource_mc8r5"), SubResource("Resource_qc7qp"), SubResource("Resource_6e1k6"), SubResource("Resource_tqbn4"), SubResource("Resource_4sm6e"), SubResource("Resource_wyk4q")])
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hcr5e"]
 size = Vector2(16, 16)
 
@@ -5596,7 +5848,7 @@ script = ExtResource("1_7qmai")
 current_level = NodePath("Level/Level1")
 
 [node name="Level" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAIAAAAlADAAAAABAAIAAAAmADAAAAAAAAMAAAAlADAAAAABAAMAAAAmADAAAAAAAAQAAAAlADAAAAABAAQAAAAmADAAAAAAAAUAAAAlADAAAAABAAUAAAAmADAAAAAAAAYAAAAlADAAAAABAAYAAAAmADAAAAD+/wIAAAAkADAAAAD//wIAAAAlADAAAAD+/wMAAAAkADAAAAD//wMAAAAlADAAAAD+/wQAAAAkADAAAAD//wQAAAAlADAAAAD+/wUAAAAkADAAAAD//wUAAAAlADAAAAD+/wYAAAAkADAAAAD//wYAAAAlADAAAAD+/wcAAAAkADEAAAD//wcAAAAlADEAAAAAAAcAAAAlADEAAAABAAcAAAAmADEAAAD+/wEAAAABAB4AAAD//wEAAAACAB4AAAAAAAEAAAADAB4AAAABAAEAAAAEAB4AAAA=")
+tile_map_data = PackedByteArray("AAAAAAIAAAAxADAAAAABAAIAAAAyADAAAAAAAAMAAAAxADAAAAABAAMAAAAyADAAAAAAAAQAAAAxADAAAAABAAQAAAAyADAAAAAAAAUAAAAxADAAAAABAAUAAAAyADAAAAAAAAYAAAAxADAAAAABAAYAAAAxADAAAAD+/wIAAAAwADAAAAD//wIAAAAxADAAAAD+/wMAAAAwADAAAAD//wMAAAAxADAAAAD+/wQAAAAwADAAAAD//wQAAAAxADAAAAD+/wUAAAAwADAAAAD//wUAAAAxADAAAAD+/wYAAAAwADAAAAD//wYAAAAxADAAAAD+/wcAAAAwADAAAAD//wcAAAAxADAAAAAAAAcAAAAxADAAAAABAAcAAAAxADAAAAD+/wEAAAABAB4AAAD//wEAAAACAB4AAAAAAAEAAAADAB4AAAABAAEAAAAEAB4AAAD+/wgAAAAwADAAAAD//wgAAAAxADAAAAAAAAgAAAAxADAAAAABAAgAAAAxADAAAAD+/wkAAAAwADAAAAD//wkAAAAxADAAAAAAAAkAAAAxADAAAAABAAkAAAAxADAAAAACAAYAAAAxAC8AAAADAAYAAAAxAC8AAAAEAAYAAAAxAC8AAAAFAAYAAAAxAC8AAAAGAAYAAAAxAC8AAAAHAAYAAAAxAC8AAAAIAAYAAAAxAC8AAAAJAAYAAAAxAC8AAAACAAkAAAAxADAAAAADAAkAAAAxADAAAAAEAAkAAAAxADAAAAAFAAkAAAAxADAAAAAGAAkAAAAxADAAAAAHAAkAAAAxADAAAAAIAAkAAAAxADAAAAAJAAkAAAAxADAAAAAJAAgAAAAxADAAAAAJAAcAAAAxADAAAAAIAAcAAAAxADAAAAAIAAgAAAAxADAAAAAHAAgAAAAxADAAAAAHAAcAAAAxADAAAAAGAAcAAAAxADAAAAAGAAgAAAAxADAAAAAFAAgAAAAxADAAAAAFAAcAAAAxADAAAAAEAAcAAAAxADAAAAADAAcAAAAxADAAAAACAAcAAAAxADAAAAACAAgAAAAxADAAAAADAAgAAAAxADAAAAAEAAgAAAAxADAAAAAKAAMAAAAwAC8AAAALAAMAAAAxAC8AAAAMAAMAAAAyAC8AAAAKAAQAAAAwADAAAAALAAQAAAAxADAAAAAMAAQAAAAyADAAAAAKAAUAAAAwADAAAAALAAUAAAAxADAAAAAMAAUAAAAyADAAAAAKAAYAAAAxADAAAAALAAYAAAAxADAAAAAMAAYAAAAxADAAAAAMAAcAAAAxADAAAAAMAAgAAAAxADAAAAALAAgAAAAxADAAAAALAAkAAAAxADAAAAAKAAkAAAAxADAAAAAKAAgAAAAxADAAAAAKAAcAAAAxADAAAAALAAcAAAAxADAAAAAMAAkAAAAxADAAAAANAAYAAAAxAC8AAAAOAAYAAAAxAC8AAAAPAAYAAAAxAC8AAAAQAAYAAAAyAC8AAAAQAAcAAAAyADAAAAAQAAgAAAAyADAAAAAQAAkAAAAyADAAAAAPAAkAAAAxADAAAAAOAAkAAAAxADAAAAANAAkAAAAxADAAAAANAAgAAAAxADAAAAAOAAgAAAAxADAAAAAPAAgAAAAxADAAAAAPAAcAAAAxADAAAAAOAAcAAAAxADAAAAANAAcAAAAxADAAAAA=")
 tile_set = SubResource("TileSet_3rh63")
 
 [node name="Level1" parent="Level" instance=ExtResource("2_5iw0q")]
@@ -5615,6 +5867,8 @@ position = Vector2(534, -1)
 number = 4
 
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(183.833, 39.9252)
+velocity = Vector2(100, 0)
 script = ExtResource("4_270wt")
 metadata/_custom_type_script = "uid://hrc23450dtph"
 
@@ -5625,8 +5879,10 @@ offset_right = 8.0
 offset_bottom = 8.0
 color = Color(0.937255, 0.490196, 0.152941, 1)
 
-[node name="ReplayPlayerController" type="Node" parent="Player" node_paths=PackedStringArray("target", "climb_left_raycast", "climb_right_raycast")]
+[node name="ReplayPlayerController" type="Node" parent="Player" node_paths=PackedStringArray("state_machine", "target", "climb_left_raycast", "climb_right_raycast")]
 script = ExtResource("5_qgt8i")
+state_machine = NodePath("../StateMachine")
+replay_data = SubResource("Resource_xp8yh")
 target = NodePath("..")
 climb_left_raycast = NodePath("../RayCastLeft")
 climb_right_raycast = NodePath("../RayCastRight")
@@ -5637,7 +5893,7 @@ metadata/_custom_type_script = "uid://bmswg047sanf"
 
 [node name="StateMachine" type="Node" parent="Player" node_paths=PackedStringArray("current_state")]
 script = ExtResource("6_ft1e4")
-current_state = NodePath("PlayerFall")
+current_state = NodePath("PlayerWalk")
 metadata/_custom_type_script = "uid://dgd8hkbbbcu5j"
 
 [node name="PlayerWalk" type="Node" parent="Player/StateMachine" node_paths=PackedStringArray("controller")]

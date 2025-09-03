@@ -14,8 +14,8 @@ class_name PlayerController
 ## In milliseconds
 @export var coyote_time: float = 100.0
 
-var last_on_floor_time: float = 0
-var last_jump_time: float = 0
+var last_on_floor_time: float = -1000
+var last_jump_time: float = -1000
 
 var disable_jump: bool = false
 var disable_climb: bool = false
@@ -68,7 +68,10 @@ func is_on_floor_buffered() -> bool:
 
 @warning_ignore("shadowed_variable_base_class")
 func apply_gravity(delta: float, scale: float = 1.0) -> void:
-	target.velocity += target.get_gravity() * delta * scale
+	var g = target.get_gravity()
+	if Engine.is_editor_hint():
+		g = ProjectSettings.get_setting("physics/2d/default_gravity") as float * ProjectSettings.get_setting("physics/2d/default_gravity_vector") as Vector2
+	target.velocity += g * delta * scale
 	target.velocity.y = min(target.velocity.y, max_fall_velocity)
 
 func play_sfx(sfx: AudioStream) -> void:
