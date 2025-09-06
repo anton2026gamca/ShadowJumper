@@ -63,7 +63,6 @@ func replay_next_frame() -> void:
 			if replay_data.adjust_x_position_on_end:
 				var tween: Tween = create_tween()
 				tween.tween_property(target, "position", Vector2(replay_data.target_x_position_on_end, target.position.y), abs(replay_data.target_x_position_on_end - target.position.x) / speed)
-			print("Finished replaying")
 			return
 		current_frame_data = replay_data.data[current_frame_data_index]
 
@@ -100,7 +99,6 @@ func start_stop_recording() -> void:
 func start_replay() -> void:
 	if is_recording or not replay_data or not replay_data.data:
 		return
-	print("Started replay")
 	is_replaying = true
 	current_frame_data_index = 0
 	current_frame_index_in_data = 0
