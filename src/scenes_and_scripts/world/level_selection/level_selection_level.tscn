@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://by7kis83n7kvx"]
+
+[ext_resource type="Script" uid="uid://f8v6r34aek62" path="res://scenes_and_scripts/world/level_selection/level_selection_level.gd" id="1_anrjt"]
+[ext_resource type="FontFile" uid="uid://bm2yp6jk57bkh" path="res://assets/Fonts/MinecraftStandard.otf" id="2_ttgxn"]
+[ext_resource type="Texture2D" uid="uid://dgevdmm07ar85" path="res://assets/Sprites/flag.png" id="3_bjhwf"]
+[ext_resource type="Texture2D" uid="uid://bvtumb361loil" path="res://assets/Sprites/light_textures/64x64/64x64 textures (5).png" id="8_km40e"]
+[ext_resource type="Texture2D" uid="uid://bg8xhqimttp10" path="res://assets/Sprites/light_textures/64x64/64x64 textures (6).png" id="9_lbmof"]
+
+[sub_resource type="Animation" id="Animation_hhpal"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_lbmof")]
+}
+
+[sub_resource type="Animation" id="Animation_8miwd"]
+resource_name = "light"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [ExtResource("9_lbmof"), ExtResource("8_km40e")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u55yc"]
+_data = {
+&"RESET": SubResource("Animation_hhpal"),
+&"light": SubResource("Animation_8miwd")
+}
+
+[node name="Level" type="Node2D"]
+use_parent_material = true
+script = ExtResource("1_anrjt")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -38.0
+offset_right = 20.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_ttgxn")
+theme_override_font_sizes/font_size = 6
+text = "Level 0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Flag" type="Sprite2D" parent="."]
+use_parent_material = true
+texture = ExtResource("3_bjhwf")
+offset = Vector2(2.5, -16)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -14)
+texture = ExtResource("9_lbmof")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PointLight2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_u55yc")
+}
+autoplay = "light"

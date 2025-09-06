@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1x4os4uhm1rb"]
+
+[ext_resource type="Script" uid="uid://d2bctieko4apc" path="res://scenes_and_scripts/world/objects/point_light.gd" id="1_oybeq"]
+[ext_resource type="Texture2D" uid="uid://2x4fickw1bnd" path="res://assets/Sprites/light_textures/256x256/256x256 textures (54).png" id="3_62fb7"]
+[ext_resource type="Texture2D" uid="uid://bnpjwdvo4gyjr" path="res://assets/Sprites/light_textures/256x256/256x256 textures (53).png" id="4_37s3r"]
+
+[sub_resource type="Animation" id="Animation_p2ywh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_62fb7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vjom1"]
+resource_name = "light"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_62fb7"), ExtResource("4_37s3r")]
+}
+
+[sub_resource type="Animation" id="Animation_ptq1o"]
+resource_name = "on-off"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.266667, 0.956421, 0.981432, 1.00837, 1.0519, 1.07499, 1.1, 1.12694, 1.39163, 1.41472, 1.43973, 1.46667, 1.53333, 1.67859),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3wb6g"]
+_data = {
+&"RESET": SubResource("Animation_p2ywh"),
+&"light": SubResource("Animation_vjom1"),
+&"on-off": SubResource("Animation_ptq1o")
+}
+
+[node name="PointLight" type="Sprite2D"]
+script = ExtResource("1_oybeq")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("3_62fb7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PointLight2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_3wb6g")
+}
+autoplay = "light"

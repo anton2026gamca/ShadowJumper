@@ -21,6 +21,7 @@ script = ExtResource("1_8afob")
 metadata/_custom_type_script = "uid://hrc23450dtph"
 
 [node name="Player" type="Sprite2D" parent="."]
+use_parent_material = true
 texture = ExtResource("10_of6dy")
 
 [node name="UserPlayerController" type="Node" parent="." node_paths=PackedStringArray("target", "climb_left_raycast", "climb_right_raycast")]
