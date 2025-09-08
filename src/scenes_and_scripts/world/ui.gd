@@ -26,4 +26,4 @@ func resume() -> void:
 
 func exit_level() -> void:
 	resume()
-	get_tree().change_scene_to_file("res://scenes_and_scripts/world/level_selection/level_selection.tscn")
+	get_tree().change_scene_to_file("res://scenes_and_scripts/world/level_selection/level_selection_root.tscn")

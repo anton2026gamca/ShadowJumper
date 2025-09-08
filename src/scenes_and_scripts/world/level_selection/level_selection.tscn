@@ -17,8 +17,8 @@
 [ext_resource type="TileSet" uid="uid://8h4fm7v55cnx" path="res://assets/tileset.tres" id="14_it5vw"]
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world/level_selection/world.gdshader" id="15_jj62b"]
 [ext_resource type="Script" uid="uid://dhd8v7a51hwsm" path="res://scenes_and_scripts/folower.gd" id="15_vnfxq"]
-[ext_resource type="PackedScene" uid="uid://cph6tm6lwbqev" path="res://scenes_and_scripts/world/levels/level_1.tscn" id="16_it5vw"]
-[ext_resource type="PackedScene" uid="uid://byjdc6tbp6ovg" path="res://scenes_and_scripts/world/levels/level_2.tscn" id="18_gxsst"]
+[ext_resource type="PackedScene" uid="uid://cph6tm6lwbqev" path="res://scenes_and_scripts/world/levels/level_1/level_1.tscn" id="16_it5vw"]
+[ext_resource type="PackedScene" uid="uid://byjdc6tbp6ovg" path="res://scenes_and_scripts/world/levels/level_2/level_2.tscn" id="18_gxsst"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0vl0e"]
 shader = ExtResource("15_jj62b")
@@ -570,6 +570,7 @@ state_machine = NodePath("../StateMachine")
 adjust_x_position_on_end = true
 replay_data = SubResource("Resource_dfvwf")
 target = NodePath("..")
+coyote_time = 150.0
 climb_left_raycast = NodePath("../RayCastLeft")
 climb_right_raycast = NodePath("../RayCastRight")
 sfx_jump = ExtResource("6_espgd")
@@ -647,7 +648,6 @@ Vector2i(-1, 0): SubResource("Resource_uysjl")
 })
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("folow")]
-zoom = Vector2(3, 3)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_left_margin = 0.1

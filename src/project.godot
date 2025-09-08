@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Shadow Jumper"
-run/main_scene="uid://clkhpeqrfyoax"
+run/main_scene="uid://cgnkbfbtrhkl8"
 config/features=PackedStringArray("4.4", "Mobile")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/fullsize=false
@@ -47,6 +47,10 @@ folder_colors={
 "res://scenes_and_scripts/": "green"
 }
 
+[global_group]
+
+Mushrooms=""
+
 [input]
 
 move_left={
@@ -68,6 +72,10 @@ jump={
 ]
 }
 dash={
+"deadzone": 0.2,
+"events": []
+}
+throw_a_rock={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
 ]
@@ -112,9 +120,12 @@ level_enter={
 
 2d_physics/layer_1="World"
 2d_physics/layer_2="One Way Platforms"
+2d_physics/layer_4="Light"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/decals/filter=0
 textures/light_projectors/filter=0

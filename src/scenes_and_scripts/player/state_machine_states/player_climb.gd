@@ -7,6 +7,8 @@ class_name PlayerClimb
 
 
 func process(_delta: float) -> String:
+	if controller.get_throw_a_rock():
+		controller.throw_a_rock()
 	if controller.is_on_floor():
 		return "PlayerWalk"
 	var left: bool = controller.climb_left_raycast.get_collider() is TileMapLayer

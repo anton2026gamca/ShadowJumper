@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbh2h5bldnuj1"]
+
+[ext_resource type="PackedScene" uid="uid://e61r4s4jbhvf" path="res://scenes_and_scripts/world/objects/point_light.tscn" id="1_2hos7"]
+[ext_resource type="Texture2D" uid="uid://br8n3umvrdgvd" path="res://assets/Sprites/mushrooms.png" id="2_m6ssx"]
+[ext_resource type="Script" uid="uid://b63ehe3at03rm" path="res://scenes_and_scripts/world/objects/mushroom.gd" id="3_f0mk6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kcc1"]
+atlas = ExtResource("2_m6ssx")
+region = Rect2(80, 0, 16, 16)
+
+[node name="Mushroom0" type="Sprite2D" groups=["Mushrooms"]]
+use_parent_material = true
+texture = SubResource("AtlasTexture_8kcc1")
+script = ExtResource("3_f0mk6")
+
+[node name="PointLight" parent="." instance=ExtResource("1_2hos7")]

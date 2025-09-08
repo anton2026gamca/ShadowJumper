@@ -15,3 +15,7 @@ func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint() and not enable_in_editor:
 		return
 	move_and_slide()
+
+
+func _on_light_area_body_entered(body: Node2D) -> void:
+	pass

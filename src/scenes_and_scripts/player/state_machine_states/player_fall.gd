@@ -7,6 +7,8 @@ class_name PlayerFall
 
 
 func process(delta: float) -> String:
+	if controller.get_throw_a_rock():
+		controller.throw_a_rock()
 	if controller.is_on_floor():
 		controller.disable_jump = false
 		return "PlayerWalk"

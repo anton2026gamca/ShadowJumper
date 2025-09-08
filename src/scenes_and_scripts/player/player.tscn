@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://f5m7vw1vj4fd"]
+[gd_scene load_steps=14 format=3 uid="uid://f5m7vw1vj4fd"]
 
 [ext_resource type="Script" uid="uid://hrc23450dtph" path="res://scenes_and_scripts/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bnpceuwymc5n" path="res://scenes_and_scripts/player/state_machine_states/player_walk.gd" id="2_dovo2"]
 [ext_resource type="Script" uid="uid://dgd8hkbbbcu5j" path="res://scenes_and_scripts/state_machine/state_machine.gd" id="2_gmlin"]
+[ext_resource type="PackedScene" uid="uid://cf863bnjdj0rx" path="res://scenes_and_scripts/player/rock.tscn" id="4_hpak0"]
 [ext_resource type="Script" uid="uid://d076o046mjswg" path="res://scenes_and_scripts/player/state_machine_states/player_dash.gd" id="5_75vfm"]
 [ext_resource type="Script" uid="uid://bfhjgtumgpcpm" path="res://scenes_and_scripts/player/state_machine_states/player_fall.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://duwb6lw8qv8qa" path="res://scenes_and_scripts/player/state_machine_states/player_climb.gd" id="6_75vfm"]
@@ -12,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://dfehsgpqmial3" path="res://assets/Sprites/player.png" id="10_of6dy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f60y1"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_of6dy"]
 size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D"]
@@ -27,6 +31,7 @@ texture = ExtResource("10_of6dy")
 [node name="UserPlayerController" type="Node" parent="." node_paths=PackedStringArray("target", "climb_left_raycast", "climb_right_raycast")]
 script = ExtResource("6_je7p5")
 target = NodePath("..")
+rock_scene = ExtResource("4_hpak0")
 climb_left_raycast = NodePath("../RayCastLeft")
 climb_right_raycast = NodePath("../RayCastRight")
 sfx_jump = ExtResource("7_je7p5")
@@ -59,7 +64,6 @@ controller = NodePath("../../UserPlayerController")
 metadata/_custom_type_script = "uid://duwb6lw8qv8qa"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_f60y1")
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
@@ -69,3 +73,12 @@ target_position = Vector2(-9, 0)
 target_position = Vector2(9, 0)
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[node name="LightArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LightArea"]
+shape = SubResource("RectangleShape2D_of6dy")
+
+[connection signal="body_entered" from="LightArea" to="." method="_on_light_area_body_entered"]

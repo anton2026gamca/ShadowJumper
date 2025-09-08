@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("level_enter") and current_level and current_level.scene:
 		Settings.last_visited_level = current_level.number
-		get_tree().change_scene_to_packed(current_level.scene)
+		get_tree().change_scene_to_packed.call_deferred(current_level.scene)
 
 
 func move_to_level(dir: Vector2i) -> void:

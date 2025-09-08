@@ -7,6 +7,8 @@ class_name PlayerWalk
 
 
 func process(_delta: float) -> String:
+	if controller.get_throw_a_rock():
+		controller.throw_a_rock()
 	if controller.get_jump_buffered():
 		controller.target.velocity.y = controller.jump_velocity
 		controller.disable_jump = true

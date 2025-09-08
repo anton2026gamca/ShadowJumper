@@ -20,3 +20,6 @@ func get_jump_released() -> bool:
 
 func get_dash() -> bool:
 	return Input.is_action_pressed("dash")
+
+func get_throw_a_rock() -> bool:
+	return Input.is_action_just_pressed("throw_a_rock")

@@ -1,0 +1,113 @@
+[gd_scene load_steps=4 format=3 uid="uid://cph6tm6lwbqev"]
+
+[ext_resource type="PackedScene" uid="uid://d1knch75lpy1t" path="res://scenes_and_scripts/world/levels/level_1/level_1_world.tscn" id="1_j6ksq"]
+[ext_resource type="Script" uid="uid://fqtggun3y2qm" path="res://scenes_and_scripts/world/ui.gd" id="4_1m2nw"]
+[ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="4_akdxc"]
+
+[node name="Main" type="Node2D"]
+
+[node name="WorldCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="WorldCanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 3
+
+[node name="SubViewport" type="SubViewport" parent="WorldCanvasLayer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+audio_listener_enable_2d = true
+size = Vector2i(426, 240)
+render_target_update_mode = 4
+
+[node name="World" parent="WorldCanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("1_j6ksq")]
+
+[node name="UICanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="UICanvasLayer" node_paths=PackedStringArray("pause_menu")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_1m2nw")
+pause_menu = NodePath("PauseMenu")
+
+[node name="PauseMenu" type="Panel" parent="UICanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -100.0
+offset_right = 150.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UICanvasLayer/UI/PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="UICanvasLayer/UI/PauseMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UICanvasLayer/UI/PauseMenu/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -12.0
+offset_right = 107.0
+offset_bottom = 12.0
+grow_vertical = 2
+theme = ExtResource("4_akdxc")
+theme_override_font_sizes/font_size = 12
+text = "Paused"
+
+[node name="Resume" type="Button" parent="UICanvasLayer/UI/PauseMenu/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("4_akdxc")
+theme_override_font_sizes/font_size = 12
+text = "Resume"
+
+[node name="BoxContainer" type="VBoxContainer" parent="UICanvasLayer/UI/PauseMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Exit Level" type="Button" parent="UICanvasLayer/UI/PauseMenu/VBoxContainer/BoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_akdxc")
+theme_override_font_sizes/font_size = 12
+text = "Exit Level"
+
+[connection signal="pressed" from="UICanvasLayer/UI/PauseMenu/VBoxContainer/Control/Resume" to="UICanvasLayer/UI" method="resume"]
+[connection signal="pressed" from="UICanvasLayer/UI/PauseMenu/VBoxContainer/BoxContainer/Exit Level" to="UICanvasLayer/UI" method="exit_level"]

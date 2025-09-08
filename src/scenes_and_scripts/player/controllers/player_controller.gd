@@ -4,6 +4,7 @@ class_name PlayerController
 
 @export var target: Player
 
+@export_group("Movement")
 @export var speed: float = 200.0
 @export var jump_velocity: float = -400.0
 @export var max_fall_velocity: float = 750.0
@@ -13,6 +14,11 @@ class_name PlayerController
 @export var jump_buffer_time: float = 80.0
 ## In milliseconds
 @export var coyote_time: float = 100.0
+
+@export_group("Rock throwing")
+@export var rock_scene: PackedScene
+@export var rock_travel_speed: float = 500.0
+@export var max_throw_dist: float = 512.0
 
 var last_on_floor_time: float = -1000
 var last_jump_time: float = -1000
@@ -59,12 +65,42 @@ func get_jump_buffered() -> bool:
 func get_dash() -> bool:
 	return false
 
+func get_throw_a_rock() -> bool:
+	return false
+
 func is_on_floor() -> bool:
 	return target.is_on_floor()
 
 func is_on_floor_buffered() -> bool:
 	return last_on_floor_time > -coyote_time
 
+
+func get_nearest_mushroom() -> Mushroom:
+	var all: Array[Node] = get_tree().get_nodes_in_group("Mushrooms")
+	var nearest_dist: float = INF
+	var nearest: Mushroom = null
+	for mushroom: Node in all:
+		if not mushroom is Mushroom:
+			continue
+		var dist: float = target.global_position.distance_squared_to(mushroom.global_position)
+		if dist < nearest_dist and dist <= (max_throw_dist * max_throw_dist):
+			nearest_dist = dist
+			nearest = mushroom
+	return nearest
+
+func throw_a_rock() -> void:
+	var nearest_mushroom: Mushroom = get_nearest_mushroom()
+	if nearest_mushroom:
+		var rock: Node2D = rock_scene.instantiate()
+		target.get_parent().add_child(rock)
+		rock.global_position = target.global_position
+		var tween: Tween = get_tree().create_tween()
+		tween.tween_property(rock, "global_position", nearest_mushroom.global_position, target.global_position.distance_to(nearest_mushroom.global_position) / rock_travel_speed)
+		
+		await tween.finished
+		
+		rock.get_parent().remove_child(rock)
+		nearest_mushroom.hit()
 
 @warning_ignore("shadowed_variable_base_class")
 func apply_gravity(delta: float, scale: float = 1.0) -> void:
