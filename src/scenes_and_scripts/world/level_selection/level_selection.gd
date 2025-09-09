@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 
 @export var current_level: LevelSelectionLevel
@@ -27,7 +27,12 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("level_enter") and current_level and current_level.scene:
 		Settings.last_visited_level = current_level.number
-		get_tree().change_scene_to_packed.call_deferred(current_level.scene)
+		if LevelLoader is LevelLoaderClass:
+			var parent: Node = get_parent()
+			parent.remove_child(self)
+			LevelLoader.load_level(current_level.scene)
+			await LevelLoader.exit_level_signal
+			parent.add_child(self)
 
 
 func move_to_level(dir: Vector2i) -> void:

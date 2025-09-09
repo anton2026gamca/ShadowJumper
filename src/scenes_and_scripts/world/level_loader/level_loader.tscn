@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://cph6tm6lwbqev"]
+
+[ext_resource type="Script" uid="uid://cjkiwfp4mi1bl" path="res://scenes_and_scripts/world/level_loader/level_loader.gd" id="1_dnh7v"]
+[ext_resource type="PackedScene" uid="uid://xyllxx8sqe4m" path="res://scenes_and_scripts/world/level_loader/levels_ui.tscn" id="2_0aejv"]
+
+[node name="LevelLoader" type="Node2D" node_paths=PackedStringArray("level_parent")]
+process_mode = 3
+script = ExtResource("1_dnh7v")
+level_parent = NodePath("WorldCanvasLayer/SubViewportContainer/SubViewport/Level")
+
+[node name="WorldCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="WorldCanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 3
+
+[node name="SubViewport" type="SubViewport" parent="WorldCanvasLayer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+canvas_item_default_texture_filter = 0
+audio_listener_enable_2d = true
+size = Vector2i(426, 240)
+render_target_update_mode = 4
+
+[node name="Level" type="Node" parent="WorldCanvasLayer/SubViewportContainer/SubViewport"]
+process_mode = 1
+
+[node name="UICanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="UICanvasLayer" instance=ExtResource("2_0aejv")]

@@ -4,6 +4,8 @@ class_name UI
 
 @export var pause_menu: Control
 
+signal exit_level
+
 
 func _ready() -> void:
 	resume()
@@ -24,6 +26,6 @@ func resume() -> void:
 	pause_menu.visible = false
 	get_tree().paused = false
 
-func exit_level() -> void:
+func exit_level_pressed() -> void:
 	resume()
-	get_tree().change_scene_to_file("res://scenes_and_scripts/world/level_selection/level_selection_root.tscn")
+	exit_level.emit()

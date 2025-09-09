@@ -14,6 +14,7 @@ stretch_shrink = 3
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
 handle_input_locally = false
+snap_2d_transforms_to_pixel = true
 canvas_item_default_texture_filter = 0
 audio_listener_enable_2d = true
 size = Vector2i(426, 240)
