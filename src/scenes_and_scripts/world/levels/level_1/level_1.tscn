@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=4 uid="uid://d1knch75lpy1t"]
+[gd_scene load_steps=10 format=4 uid="uid://d1knch75lpy1t"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world/level_selection/world.gdshader" id="1_055t4"]
+[ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_4x64p"]
 [ext_resource type="Script" uid="uid://dhd8v7a51hwsm" path="res://scenes_and_scripts/folower.gd" id="2_y2its"]
 [ext_resource type="TileSet" uid="uid://8h4fm7v55cnx" path="res://assets/tileset.tres" id="3_4x64p"]
 [ext_resource type="PackedScene" uid="uid://f5m7vw1vj4fd" path="res://scenes_and_scripts/player/player.tscn" id="4_4l14a"]
@@ -21,9 +22,14 @@ distance = -214.0
 normal = Vector2(-1, 0)
 distance = -214.0
 
-[node name="World" type="Node2D"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_055t4"]
+
+[node name="World" type="Node2D" node_paths=PackedStringArray("player", "camera")]
 process_mode = 1
 material = SubResource("ShaderMaterial_1m2nw")
+script = ExtResource("2_4x64p")
+player = NodePath("Level/Player")
+camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("folow")]
 position = Vector2(0, 1)
@@ -61,3 +67,12 @@ tile_set = ExtResource("3_4x64p")
 
 [node name="Player" parent="Level" instance=ExtResource("4_4l14a")]
 use_parent_material = true
+
+[node name="WorldBottomLimit" type="Area2D" parent="Level"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/WorldBottomLimit"]
+position = Vector2(0, 200)
+shape = SubResource("WorldBoundaryShape2D_055t4")
+
+[connection signal="died" from="Level/Player" to="." method="_on_player_died"]
+[connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]

@@ -82,3 +82,4 @@ collision_mask = 8
 shape = SubResource("RectangleShape2D_of6dy")
 
 [connection signal="body_entered" from="LightArea" to="." method="_on_light_area_body_entered"]
+[connection signal="body_exited" from="LightArea" to="." method="_on_light_area_body_exited"]

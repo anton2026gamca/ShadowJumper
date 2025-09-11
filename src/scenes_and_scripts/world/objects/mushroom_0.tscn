@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbh2h5bldnuj1"]
+[gd_scene load_steps=6 format=3 uid="uid://cbh2h5bldnuj1"]
 
 [ext_resource type="PackedScene" uid="uid://e61r4s4jbhvf" path="res://scenes_and_scripts/world/objects/point_light.tscn" id="1_2hos7"]
 [ext_resource type="Texture2D" uid="uid://br8n3umvrdgvd" path="res://assets/Sprites/mushrooms.png" id="2_m6ssx"]
@@ -8,9 +8,19 @@
 atlas = ExtResource("2_m6ssx")
 region = Rect2(80, 0, 16, 16)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2hos7"]
+radius = 110.0
+
 [node name="Mushroom0" type="Sprite2D" groups=["Mushrooms"]]
 use_parent_material = true
 texture = SubResource("AtlasTexture_8kcc1")
 script = ExtResource("3_f0mk6")
 
 [node name="PointLight" parent="." instance=ExtResource("1_2hos7")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_2hos7")

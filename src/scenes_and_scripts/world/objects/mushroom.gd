@@ -7,6 +7,10 @@ class_name Mushroom
 @export var down_time: float = 5.0
 var hit_val: int = 0
 
+var is_on:
+	set(value): return
+	get: return point_light.is_on
+
 
 func _ready() -> void:
 	pass

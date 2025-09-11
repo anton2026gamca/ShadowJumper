@@ -34,3 +34,6 @@ process_mode = 1
 [node name="UICanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="UICanvasLayer" instance=ExtResource("2_0aejv")]
+metadata/_edit_use_anchors_ = true
+
+[connection signal="exit_level" from="UICanvasLayer/UI" to="." method="exit_level"]
