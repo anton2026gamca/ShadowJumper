@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://r3q7wdh33v34"]
+[gd_scene load_steps=5 format=3 uid="uid://r3q7wdh33v34"]
 
 [ext_resource type="PackedScene" uid="uid://cbh2h5bldnuj1" path="res://scenes_and_scripts/world/objects/mushroom_0.tscn" id="1_x2ih3"]
 [ext_resource type="Texture2D" uid="uid://br8n3umvrdgvd" path="res://assets/sprites/mushrooms.png" id="2_ny3xq"]
+[ext_resource type="AudioStream" uid="uid://diafbw7nrws2l" path="res://assets/SFX/folder/select_4.wav" id="3_vhws5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ny3xq"]
 atlas = ExtResource("2_ny3xq")
@@ -9,3 +10,6 @@ region = Rect2(0, 0, 16, 16)
 
 [node name="Mushroom1" instance=ExtResource("1_x2ih3")]
 texture = SubResource("AtlasTexture_ny3xq")
+
+[node name="BoomAudio" parent="." index="4"]
+stream = ExtResource("3_vhws5")

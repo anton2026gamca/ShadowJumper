@@ -12,6 +12,10 @@ var hit_val: int = 0
 var boom_state: int = 0
 signal boom_finished
 
+@onready var boom_start_audio: AudioStreamPlayer2D = $BoomStartAudio
+@onready var boom_audio: AudioStreamPlayer2D = $BoomAudio
+
+
 var is_on:
 	set(value): return
 	get: return point_light.is_on
@@ -42,12 +46,14 @@ func start_making_boom() -> void:
 	boom.frame = 1
 	boom.rotation = 0
 	boom_state = 1
+	boom_start_audio.play()
 
 func update_boom(time: float) -> bool:
 	if time > boom_tolerance_time and boom_state == 1:
 		boom.rotation = 0
 		boom.play("boom")
 		boom_state = 2
+		boom_audio.play()
 		await boom.animation_finished
 		stop_making_boom()
 		return true
@@ -56,3 +62,5 @@ func update_boom(time: float) -> bool:
 func stop_making_boom() -> void:
 	boom_state = 0
 	boom.frame = 0
+	boom_start_audio.stop()
+	boom_audio.stop()

@@ -10,6 +10,8 @@ class_name AnimalSearching
 @onready var wall: RayCast2D = $"../../Raycasts/Wall"
 @onready var enemy_area: Area2D = $"../../Raycasts/EnemyArea"
 
+@onready var attacking_audio: AudioStreamPlayer2D = $"../../AttackingAudio"
+
 
 func process(delta: float) -> String:
 	if not ground.is_colliding() or wall.is_colliding():
@@ -24,6 +26,8 @@ func process(delta: float) -> String:
 	sprite.play("move", 0.5)
 	
 	if enemy_area.get_overlapping_bodies().find_custom(func(body: Node2D) -> bool: return body is Player) >= 0:
+		attacking_audio.play()
+		attacking_audio.pitch_scale = randf() / 5.0 + 0.75
 		return "Attacking"
 	
 	return ""

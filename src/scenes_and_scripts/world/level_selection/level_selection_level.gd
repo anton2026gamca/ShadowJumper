@@ -25,3 +25,6 @@ func update_label():
 
 func _ready() -> void:
 	update_label()
+
+func mark_completed() -> void:
+	$PointLight2D.enabled = false

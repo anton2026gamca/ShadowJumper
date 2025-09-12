@@ -31,8 +31,10 @@ func _process(delta: float) -> void:
 			var parent: Node = get_parent()
 			parent.remove_child(self)
 			LevelLoader.load_level(current_level.scene)
-			await LevelLoader.exit_level_signal
+			var defeated: bool = await LevelLoader.exit_level_signal
 			parent.add_child(self)
+			if defeated:
+				current_level.mark_completed()
 
 
 func move_to_level(dir: Vector2i) -> void:

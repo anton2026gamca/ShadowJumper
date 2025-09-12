@@ -9,6 +9,9 @@ class_name AnimalAttacking
 @onready var ground: RayCast2D = $"../../Raycasts/Ground"
 @onready var wall: RayCast2D = $"../../Raycasts/Wall"
 @onready var hit_area: Area2D = $"../../Raycasts/HitArea"
+@onready var raycasts: Node2D = $"../../Raycasts"
+
+@onready var attacking_audio: AudioStreamPlayer2D = $"../../AttackingAudio"
 
 
 func process(delta: float) -> String:
@@ -26,6 +29,7 @@ func process(delta: float) -> String:
 		sprite.play("move")
 		var dir: int = Vector2(player.position.x - target.position.x, 0.0).normalized().x
 		sprite.flip_h = dir < 0
+		raycasts.scale.x = dir
 		target.velocity.x = target.get_run_speed() * dir * delta
 		target.velocity.y += target.get_gravity().y * 2 * delta
 	
@@ -33,3 +37,14 @@ func process(delta: float) -> String:
 		player.die(target.get_player_die_reason())
 	
 	return ""
+
+func on_enter() -> void:
+	attacking_audio.finished.connect(play_attacking_audio)
+
+func on_exit() -> void:
+	attacking_audio.finished.disconnect(play_attacking_audio)
+
+
+func play_attacking_audio() -> void:
+	attacking_audio.play()
+	attacking_audio.pitch_scale = randf() / 5.0 + 0.75

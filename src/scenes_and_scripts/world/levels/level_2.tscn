@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://f8cwujw0lgie"]
+[gd_scene load_steps=10 format=4 uid="uid://f8cwujw0lgie"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world/level_selection/world.gdshader" id="1_njod4"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_au23b"]
@@ -15,15 +15,11 @@ shader_parameter/night_darkness = 1.0
 shader_parameter/night_contrast = 2.0
 shader_parameter/blue_shift = 1.0
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ai2m8"]
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8fu2q"]
 normal = Vector2(1, 0)
 distance = -214.0
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_cw21g"]
-normal = Vector2(-1, 0)
-distance = -214.0
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ai2m8"]
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("player", "camera")]
 process_mode = 1
@@ -44,16 +40,6 @@ Vector2i(-1, 0): 0.0,
 Vector2i(0, 1): 30.0
 })
 
-[node name="LeftLimit" type="StaticBody2D" parent="Camera2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/LeftLimit"]
-shape = SubResource("WorldBoundaryShape2D_8fu2q")
-
-[node name="RightLimit" type="StaticBody2D" parent="Camera2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/RightLimit"]
-shape = SubResource("WorldBoundaryShape2D_cw21g")
-
 [node name="Background" type="TileMapLayer" parent="."]
 z_index = -100
 use_parent_material = true
@@ -72,9 +58,16 @@ use_parent_material = true
 [node name="PointLight" parent="Level/Player" instance=ExtResource("6_3gn51")]
 
 [node name="WorldBottomLimit" type="Area2D" parent="Level"]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/WorldBottomLimit"]
-position = Vector2(0, 200)
+position = Vector2(0, 160)
 shape = SubResource("WorldBoundaryShape2D_ai2m8")
+
+[node name="LeftLimit" type="StaticBody2D" parent="Level"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/LeftLimit"]
+shape = SubResource("WorldBoundaryShape2D_8fu2q")
 
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]

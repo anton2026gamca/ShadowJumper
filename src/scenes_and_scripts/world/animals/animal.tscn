@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dha80pofmwp6e"]
+[gd_scene load_steps=10 format=3 uid="uid://dha80pofmwp6e"]
 
 [ext_resource type="Script" uid="uid://cb1rqy15canxb" path="res://scenes_and_scripts/world/animals/animal.gd" id="1_xj3or"]
 [ext_resource type="Script" uid="uid://dgd8hkbbbcu5j" path="res://scenes_and_scripts/state_machine/state_machine.gd" id="2_tp6s8"]
 [ext_resource type="Script" uid="uid://dly1y5lca6fuj" path="res://scenes_and_scripts/world/animals/states/animal_searching.gd" id="3_xt85k"]
 [ext_resource type="Script" uid="uid://rat5qcmwg87d" path="res://scenes_and_scripts/world/animals/states/animal_attacking.gd" id="4_xcbxv"]
+[ext_resource type="AudioStream" uid="uid://ipx0cloc2jbb" path="res://assets/SFX/folder/tidal_wave.wav" id="5_xj3or"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tp6s8"]
 radius = 5.0
@@ -80,3 +81,7 @@ shape = SubResource("RectangleShape2D_xj3or")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Raycasts/HitArea"]
 position = Vector2(4.5, -6)
 shape = SubResource("RectangleShape2D_gfcov")
+
+[node name="AttackingAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xj3or")
+volume_db = -30.646

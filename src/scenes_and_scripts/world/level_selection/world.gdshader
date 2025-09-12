@@ -41,7 +41,12 @@ void fragment() {
 	// Ensure we don't go completely black
 	final_color = max(final_color, vec3(0.05, 0.05, 0.1) * night_intensity);
 
-	COLOR = vec4(final_color, original_color.a);
+	if (COLOR.a == 0.4980392157) {
+		COLOR.a = 1.0;
+		COLOR = vec4(1, 1, 1, 1);
+	} else {
+		COLOR = vec4(final_color, original_color.a);
+	}
 }
 
 void light() {

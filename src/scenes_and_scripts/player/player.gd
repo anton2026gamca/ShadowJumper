@@ -36,6 +36,8 @@ func _physics_process(_delta: float) -> void:
 
 
 func die(reason: String) -> void:
+	$DeathAudio.pitch_scale = randf() * 0.2 + 0.9
+	$DeathAudio.play()
 	died.emit(reason)
 
 func _on_light_area_body_entered(body: Node2D) -> void:
