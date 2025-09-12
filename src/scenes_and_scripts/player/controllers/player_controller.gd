@@ -35,6 +35,8 @@ var disable_climb: bool = false
 @export var sfx_jump: AudioStream
 @export var sfx_dash: AudioStream
 
+var in_light_time: float = 0
+
 
 func _process(delta: float) -> void:
 	last_on_floor_time -= delta * 1000
@@ -100,7 +102,8 @@ func throw_a_rock() -> void:
 		await tween.finished
 		
 		rock.get_parent().remove_child(rock)
-		nearest_mushroom.hit()
+		if nearest_mushroom:
+			nearest_mushroom.hit()
 
 @warning_ignore("shadowed_variable_base_class")
 func apply_gravity(delta: float, scale: float = 1.0) -> void:

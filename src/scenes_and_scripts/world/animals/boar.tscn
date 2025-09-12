@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://dufpmtr0u2cjm"]
+
+[ext_resource type="PackedScene" uid="uid://dha80pofmwp6e" path="res://scenes_and_scripts/world/animals/animal.tscn" id="1_kqisn"]
+[ext_resource type="Script" uid="uid://cqbdo0tkmvk6h" path="res://scenes_and_scripts/world/animals/boar.gd" id="2_348gh"]
+[ext_resource type="Texture2D" uid="uid://cmnrdlbkrcgec" path="res://assets/sprites/animals/MiniBoar.png" id="2_vvgje"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_348gh"]
+atlas = ExtResource("2_vvgje")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yuts"]
+atlas = ExtResource("2_vvgje")
+region = Rect2(96, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6n4j"]
+atlas = ExtResource("2_vvgje")
+region = Rect2(0, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37w0v"]
+atlas = ExtResource("2_vvgje")
+region = Rect2(32, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnot5"]
+atlas = ExtResource("2_vvgje")
+region = Rect2(64, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5rl7"]
+atlas = ExtResource("2_vvgje")
+region = Rect2(96, 48, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dlm6i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_348gh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yuts")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6n4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37w0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnot5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5rl7")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[node name="Boar" instance=ExtResource("1_kqisn")]
+script = ExtResource("2_348gh")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_dlm6i")
+
+[node name="Ground" parent="Raycasts" index="0"]
+position = Vector2(12, 0)
+
+[node name="EnemyArea" parent="Raycasts" index="2"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="HitArea" parent="Raycasts" index="3"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="Raycasts/HitArea" index="0"]
+position = Vector2(6.5, -6)

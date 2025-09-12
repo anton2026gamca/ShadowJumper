@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://br8n3umvrdgvd"
-path="res://.godot/imported/mushrooms.png-65912f489cf0c22fff72c810e258d924.ctex"
+path="res://.godot/imported/mushrooms.png-3cfd721910e7d4cec468241da62ba805.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/mushrooms.png"
-dest_files=["res://.godot/imported/mushrooms.png-65912f489cf0c22fff72c810e258d924.ctex"]
+source_file="res://assets/sprites/mushrooms.png"
+dest_files=["res://.godot/imported/mushrooms.png-3cfd721910e7d4cec468241da62ba805.ctex"]
 
 [params]
 

@@ -6,6 +6,11 @@ class_name Mushroom
 
 @export var down_time: float = 5.0
 var hit_val: int = 0
+@export var boom_tolerance_time: float = 0.5
+
+@onready var boom: AnimatedSprite2D = $Boom
+var boom_state: int = 0
+signal boom_finished
 
 var is_on:
 	set(value): return
@@ -15,8 +20,9 @@ var is_on:
 func _ready() -> void:
 	pass
 
-func _process(delta: float) -> void:
-	pass
+func _physics_process(delta: float) -> void:
+	if boom_state == 1:
+		boom.rotate(deg_to_rad(22.5))
 
 
 func hit() -> void:
@@ -28,3 +34,25 @@ func hit() -> void:
 	if hit_val == my_hit_val:
 		point_light.turn_on()
 		hit_val = 0
+
+func start_making_boom() -> void:
+	if boom_state != 0:
+		return
+	boom.animation = "boom"
+	boom.frame = 1
+	boom.rotation = 0
+	boom_state = 1
+
+func update_boom(time: float) -> bool:
+	if time > boom_tolerance_time and boom_state == 1:
+		boom.rotation = 0
+		boom.play("boom")
+		boom_state = 2
+		await boom.animation_finished
+		stop_making_boom()
+		return true
+	return false
+
+func stop_making_boom() -> void:
+	boom_state = 0
+	boom.frame = 0

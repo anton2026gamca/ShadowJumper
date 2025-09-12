@@ -1,11 +1,11 @@
 [gd_resource type="TileSet" load_steps=6 format=3 uid="uid://8h4fm7v55cnx"]
 
-[ext_resource type="Texture2D" uid="uid://bv83repei4m1" path="res://assets/Sprites/tileset.png" id="1_ylah7"]
+[ext_resource type="Texture2D" uid="uid://bv83repei4m1" path="res://assets/sprites/tileset.png" id="1_fcvr3"]
 [ext_resource type="PackedScene" uid="uid://cbh2h5bldnuj1" path="res://scenes_and_scripts/world/objects/mushroom_0.tscn" id="2_fcvr3"]
 [ext_resource type="PackedScene" uid="uid://r3q7wdh33v34" path="res://scenes_and_scripts/world/objects/mushroom_1.tscn" id="3_7lii3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qfnet"]
-texture = ExtResource("1_ylah7")
+texture = ExtResource("1_fcvr3")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://e61r4s4jbhvf"]
 
 [ext_resource type="Script" uid="uid://d2bctieko4apc" path="res://scenes_and_scripts/world/objects/point_light.gd" id="1_oybeq"]
-[ext_resource type="Texture2D" uid="uid://2x4fickw1bnd" path="res://assets/Sprites/light_textures/256x256/256x256 textures (54).png" id="3_62fb7"]
+[ext_resource type="Texture2D" uid="uid://2x4fickw1bnd" path="res://assets/sprites/light_textures/256x256/256x256 textures (54).png" id="3_62fb7"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f3bbn"]
 blend_mode = 1

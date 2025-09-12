@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dcsunp0yw5j4o"
-path="res://.godot/imported/MinecraftStandardBoldOblique.otf-cb29f1828bb9995e3fd0637eda093860.fontdata"
+path="res://.godot/imported/MinecraftStandardBoldOblique.otf-7bfbd7a20ff006b15b832cf146128c70.fontdata"
 
 [deps]
 
-source_file="res://assets/Fonts/MinecraftStandardBoldOblique.otf"
-dest_files=["res://.godot/imported/MinecraftStandardBoldOblique.otf-cb29f1828bb9995e3fd0637eda093860.fontdata"]
+source_file="res://assets/fonts/MinecraftStandardBoldOblique.otf"
+dest_files=["res://.godot/imported/MinecraftStandardBoldOblique.otf-7bfbd7a20ff006b15b832cf146128c70.fontdata"]
 
 [params]
 

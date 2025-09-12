@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://dy5m06qmahh2u" path="res://scenes_and_scripts/player/controllers/user_controller/user_player_controller.gd" id="6_je7p5"]
 [ext_resource type="AudioStream" uid="uid://dchrahvns7vh0" path="res://assets/SFX/jump_3.wav" id="7_je7p5"]
 [ext_resource type="AudioStream" uid="uid://cqddwufjihsoj" path="res://assets/SFX/jump_2.wav" id="8_fm80t"]
-[ext_resource type="Texture2D" uid="uid://dfehsgpqmial3" path="res://assets/Sprites/player.png" id="10_of6dy"]
+[ext_resource type="Texture2D" uid="uid://dfehsgpqmial3" path="res://assets/sprites/player.png" id="10_of6dy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f60y1"]
 size = Vector2(16, 16)
@@ -19,7 +19,7 @@ size = Vector2(16, 16)
 size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 3
+collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_8afob")
 metadata/_custom_type_script = "uid://hrc23450dtph"

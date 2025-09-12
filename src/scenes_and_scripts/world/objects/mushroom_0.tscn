@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbh2h5bldnuj1"]
+[gd_scene load_steps=13 format=3 uid="uid://cbh2h5bldnuj1"]
 
 [ext_resource type="PackedScene" uid="uid://e61r4s4jbhvf" path="res://scenes_and_scripts/world/objects/point_light.tscn" id="1_2hos7"]
-[ext_resource type="Texture2D" uid="uid://br8n3umvrdgvd" path="res://assets/Sprites/mushrooms.png" id="2_m6ssx"]
+[ext_resource type="Texture2D" uid="uid://br8n3umvrdgvd" path="res://assets/sprites/mushrooms.png" id="2_m6ssx"]
 [ext_resource type="Script" uid="uid://b63ehe3at03rm" path="res://scenes_and_scripts/world/objects/mushroom.gd" id="3_f0mk6"]
+[ext_resource type="Texture2D" uid="uid://hfvkjmsvlwwj" path="res://assets/sprites/boom.png" id="4_m6ssx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8kcc1"]
 atlas = ExtResource("2_m6ssx")
@@ -11,10 +12,54 @@ region = Rect2(80, 0, 16, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_2hos7"]
 radius = 110.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0mk6"]
+atlas = ExtResource("4_m6ssx")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6bic"]
+atlas = ExtResource("4_m6ssx")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eiiw0"]
+atlas = ExtResource("4_m6ssx")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3b0l0"]
+atlas = ExtResource("4_m6ssx")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6332"]
+atlas = ExtResource("4_m6ssx")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7hvpb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0mk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6bic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eiiw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3b0l0")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_r6332")
+}],
+"loop": false,
+"name": &"boom",
+"speed": 60.0
+}]
+
 [node name="Mushroom0" type="Sprite2D" groups=["Mushrooms"]]
 use_parent_material = true
 texture = SubResource("AtlasTexture_8kcc1")
 script = ExtResource("3_f0mk6")
+boom_tolerance_time = 0.1
 
 [node name="PointLight" parent="." instance=ExtResource("1_2hos7")]
 
@@ -24,3 +69,7 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("CircleShape2D_2hos7")
+
+[node name="Boom" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7hvpb")
+animation = &"boom"

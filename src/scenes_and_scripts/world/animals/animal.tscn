@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://dha80pofmwp6e"]
+
+[ext_resource type="Script" uid="uid://cb1rqy15canxb" path="res://scenes_and_scripts/world/animals/animal.gd" id="1_xj3or"]
+[ext_resource type="Script" uid="uid://dgd8hkbbbcu5j" path="res://scenes_and_scripts/state_machine/state_machine.gd" id="2_tp6s8"]
+[ext_resource type="Script" uid="uid://dly1y5lca6fuj" path="res://scenes_and_scripts/world/animals/states/animal_searching.gd" id="3_xt85k"]
+[ext_resource type="Script" uid="uid://rat5qcmwg87d" path="res://scenes_and_scripts/world/animals/states/animal_attacking.gd" id="4_xcbxv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tp6s8"]
+radius = 5.0
+height = 16.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xj3or"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xj3or"]
+size = Vector2(320, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfcov"]
+size = Vector2(13, 12)
+
+[node name="Animal" type="CharacterBody2D"]
+use_parent_material = true
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_xj3or")
+metadata/_custom_type_script = "uid://cb1rqy15canxb"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_tp6s8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_xj3or")
+animation = &"move"
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
+script = ExtResource("2_tp6s8")
+current_state = NodePath("Searching")
+metadata/_custom_type_script = "uid://dgd8hkbbbcu5j"
+
+[node name="Searching" type="Node" parent="StateMachine"]
+script = ExtResource("3_xt85k")
+metadata/_custom_type_script = "uid://dly1y5lca6fuj"
+
+[node name="Attacking" type="Node" parent="StateMachine"]
+script = ExtResource("4_xcbxv")
+metadata/_custom_type_script = "uid://rat5qcmwg87d"
+
+[node name="Raycasts" type="Node2D" parent="."]
+
+[node name="Ground" type="RayCast2D" parent="Raycasts"]
+position = Vector2(7, 0)
+target_position = Vector2(0, 7)
+
+[node name="Wall" type="RayCast2D" parent="Raycasts"]
+position = Vector2(0, -5)
+target_position = Vector2(10, 0)
+
+[node name="EnemyArea" type="Area2D" parent="Raycasts"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Raycasts/EnemyArea"]
+position = Vector2(80, 0)
+shape = SubResource("RectangleShape2D_xj3or")
+
+[node name="HitArea" type="Area2D" parent="Raycasts"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Raycasts/HitArea"]
+position = Vector2(4.5, -6)
+shape = SubResource("RectangleShape2D_gfcov")
