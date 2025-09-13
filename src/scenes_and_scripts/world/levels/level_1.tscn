@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://d1knch75lpy1t"]
+[gd_scene load_steps=12 format=4 uid="uid://d1knch75lpy1t"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world/level_selection/world.gdshader" id="1_nbytn"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_go7g5"]
@@ -7,9 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://f5m7vw1vj4fd" path="res://scenes_and_scripts/player/player.tscn" id="5_myw5i"]
 [ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/fox.tscn" id="6_go7g5"]
 [ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/boar.tscn" id="7_vp6c5"]
-[ext_resource type="Texture2D" uid="uid://dgevdmm07ar85" path="res://assets/sprites/flag.png" id="8_sqshv"]
-[ext_resource type="PackedScene" uid="uid://e61r4s4jbhvf" path="res://scenes_and_scripts/world/objects/point_light.tscn" id="9_ty57j"]
-[ext_resource type="Texture2D" uid="uid://bj53kl08fox4o" path="res://assets/sprites/light_textures/512x512/512x512 textures (2).png" id="10_q3776"]
+[ext_resource type="PackedScene" uid="uid://6twg4nqjueyw" path="res://scenes_and_scripts/world/levels/finish.tscn" id="8_wcekq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1m2nw"]
 shader = ExtResource("1_nbytn")
@@ -20,9 +18,6 @@ shader_parameter/night_contrast = 2.0
 shader_parameter/blue_shift = 1.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_055t4"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sqshv"]
-normal = Vector2(-1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8fu2q"]
 normal = Vector2(1, 0)
@@ -76,20 +71,8 @@ position = Vector2(930, 16)
 [node name="Boar" parent="Level" instance=ExtResource("7_vp6c5")]
 position = Vector2(1259, -147)
 
-[node name="Finish" type="Sprite2D" parent="Level"]
+[node name="Finish" parent="Level" instance=ExtResource("8_wcekq")]
 position = Vector2(1771, -160)
-texture = ExtResource("8_sqshv")
-
-[node name="PointLight" parent="Level/Finish" instance=ExtResource("9_ty57j")]
-texture = ExtResource("10_q3776")
-
-[node name="StaticBody2D" type="Area2D" parent="Level/Finish"]
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Finish/StaticBody2D"]
-position = Vector2(-2.5, 0)
-shape = SubResource("WorldBoundaryShape2D_sqshv")
 
 [node name="LeftLimit" type="StaticBody2D" parent="Level"]
 position = Vector2(0, 1)
@@ -99,4 +82,4 @@ shape = SubResource("WorldBoundaryShape2D_8fu2q")
 
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]
-[connection signal="body_entered" from="Level/Finish/StaticBody2D" to="." method="_on_finish_body_entered"]
+[connection signal="level_defeated" from="Level/Finish" to="." method="_on_finish_level_defeated"]

@@ -23,9 +23,5 @@ func _on_world_bottom_limit_body_entered(body: Node2D) -> void:
 func _on_player_died(reason: String) -> void:
 	player_died.emit(reason)
 
-
-func _on_finish_body_entered(body: Node2D) -> void:
-	if not body is Player:
-		return
-	print(body)
+func _on_finish_level_defeated() -> void:
 	level_defeated.emit()

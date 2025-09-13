@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://6twg4nqjueyw"]
+
+[ext_resource type="Texture2D" uid="uid://dgevdmm07ar85" path="res://assets/sprites/flag.png" id="1_0l42j"]
+[ext_resource type="Script" uid="uid://cuw3gukclwpcl" path="res://scenes_and_scripts/world/levels/finish.gd" id="2_fwcx2"]
+[ext_resource type="PackedScene" uid="uid://e61r4s4jbhvf" path="res://scenes_and_scripts/world/objects/point_light.tscn" id="3_o6sq6"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sqshv"]
+normal = Vector2(-1, 0)
+
+[node name="Finish" type="Sprite2D"]
+texture = ExtResource("1_0l42j")
+script = ExtResource("2_fwcx2")
+
+[node name="PointLight" parent="." instance=ExtResource("3_o6sq6")]
+
+[node name="StaticBody2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-2.5, 0)
+shape = SubResource("WorldBoundaryShape2D_sqshv")
+
+[connection signal="body_entered" from="StaticBody2D" to="." method="_on_body_entered"]

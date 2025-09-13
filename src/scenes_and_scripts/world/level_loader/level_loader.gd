@@ -49,6 +49,7 @@ func level_defeated() -> void:
 	ui.full_screen_text.text = "LEVEL\nDEFEATED !!!"
 	ui.full_screen_text.visible_characters = 0
 	ui.full_screen_text.process_mode = Node.PROCESS_MODE_ALWAYS
+	get_tree().create_tween().tween_property(ui.full_screen_text, "visible_characters", len("LEVEL\nDEFEATED !!!"), 0.5)
 	$LevelDefeatedSFX.play()
 	await get_tree().create_timer(3).timeout
 	ui.full_screen_text.visible = false
