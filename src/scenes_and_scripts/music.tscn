@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh4ry02nfqak4"]
+
+[ext_resource type="AudioStream" uid="uid://c15uydt2w247h" path="res://assets/SFX/music.mp3" id="1_dp8yf"]
+
+[node name="Music" type="AudioStreamPlayer2D"]
+process_mode = 3
+stream = ExtResource("1_dp8yf")
+volume_db = -22.486
+autoplay = true

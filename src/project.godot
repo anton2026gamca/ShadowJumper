@@ -23,6 +23,7 @@ config/icon="uid://d3tvi8n1gvnj"
 
 Settings="*res://scenes_and_scripts/settings.gd"
 LevelLoader="*res://scenes_and_scripts/world/level_loader/level_loader.tscn"
+Music="*res://scenes_and_scripts/music.tscn"
 
 [display]
 
