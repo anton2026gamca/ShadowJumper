@@ -26,7 +26,7 @@ func process(delta: float) -> String:
 		target.velocity.x = 0
 		target.velocity.y += target.get_gravity().y * 2 * delta
 	else:
-		sprite.play("move")
+		sprite.play("move", 1.5)
 		var dir: int = Vector2(player.position.x - target.position.x, 0.0).normalized().x
 		sprite.flip_h = dir < 0
 		raycasts.scale.x = dir

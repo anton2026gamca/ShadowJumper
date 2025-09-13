@@ -4,6 +4,7 @@ class_name LevelLoaderClass
 
 @export var level_parent: Node
 @export var current_level: PackedScene
+@export var current_level_node: Level
 var is_in_level: bool = false
 @onready var ui: UI = $UICanvasLayer/UI
 
@@ -22,6 +23,7 @@ func _process(delta: float) -> void:
 func load_level(level: PackedScene) -> void:
 	current_level = level
 	var node: Level = level.instantiate()
+	current_level_node = node
 	node.player_died.connect(player_died)
 	node.level_defeated.connect(level_defeated)
 	level_parent.add_child.call_deferred(node)
@@ -29,9 +31,9 @@ func load_level(level: PackedScene) -> void:
 
 func exit_level(defeated: bool = false) -> void:
 	is_in_level = false
-	var level: Level = level_parent.get_child(0)
-	level_parent.remove_child(level)
-	level.queue_free()
+	level_parent.remove_child(current_level_node)
+	current_level_node.queue_free()
+	current_level_node = null
 	exit_level_signal.emit(defeated)
 
 func player_died(reason: String) -> void:
@@ -47,8 +49,6 @@ func level_defeated() -> void:
 	ui.full_screen_text.text = "LEVEL\nDEFEATED !!!"
 	ui.full_screen_text.visible_characters = 0
 	ui.full_screen_text.process_mode = Node.PROCESS_MODE_ALWAYS
-	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(ui.full_screen_text, "visible_characters", len("LEVEL\nDEFEATED !!!"), 0.5)
 	$LevelDefeatedSFX.play()
 	await get_tree().create_timer(3).timeout
 	ui.full_screen_text.visible = false

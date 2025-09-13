@@ -12,4 +12,4 @@ func get_walk_speed() -> float:
 	return 600.0
 
 func get_run_speed() -> float:
-	return 2400.0
+	return 3000.0
