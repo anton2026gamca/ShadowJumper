@@ -1,8 +1,21 @@
-[gd_scene load_steps=11 format=3 uid="uid://bon1r10wk031e"]
+[gd_scene load_steps=17 format=3 uid="uid://bon1r10wk031e"]
 
 [ext_resource type="PackedScene" uid="uid://dha80pofmwp6e" path="res://scenes_and_scripts/world/animals/animal.tscn" id="1_kct0a"]
 [ext_resource type="Script" uid="uid://foaplefnisbj" path="res://scenes_and_scripts/world/animals/fox.gd" id="2_rasjo"]
 [ext_resource type="Texture2D" uid="uid://crpsdrftqxy8" path="res://assets/sprites/animals/MiniFox.png" id="2_x4i7n"]
+[ext_resource type="AudioStream" uid="uid://ns2s4d0pe8ve" path="res://assets/SFX/folder/fire_1.wav" id="4_lrxyp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rasjo"]
+atlas = ExtResource("2_x4i7n")
+region = Rect2(32, 112, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrxyp"]
+atlas = ExtResource("2_x4i7n")
+region = Rect2(64, 112, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r65xi"]
+atlas = ExtResource("2_x4i7n")
+region = Rect2(96, 112, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xt85k"]
 atlas = ExtResource("2_x4i7n")
@@ -32,6 +45,20 @@ region = Rect2(96, 48, 32, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_rasjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrxyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r65xi")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xt85k")
 }, {
 "duration": 1.0,
@@ -59,6 +86,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rasjo"]
+size = Vector2(17, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lrxyp"]
+size = Vector2(25, 21)
+
 [node name="Fox" instance=ExtResource("1_kct0a")]
 script = ExtResource("2_rasjo")
 
@@ -70,9 +103,12 @@ animation = &"idle"
 collision_layer = 0
 collision_mask = 4
 
-[node name="HitArea" parent="Raycasts" index="3"]
-collision_layer = 0
-collision_mask = 4
+[node name="CollisionShape2D" parent="Raycasts/HitStartArea" index="0"]
+position = Vector2(8.5, -6.5)
+shape = SubResource("RectangleShape2D_rasjo")
 
-[node name="CollisionShape2D" parent="Raycasts/HitArea" index="0"]
-position = Vector2(5, -6)
+[node name="CollisionShape2D" parent="Raycasts/HitRangeArea" index="0"]
+shape = SubResource("RectangleShape2D_lrxyp")
+
+[node name="AttackAudio" parent="." index="5"]
+stream = ExtResource("4_lrxyp")

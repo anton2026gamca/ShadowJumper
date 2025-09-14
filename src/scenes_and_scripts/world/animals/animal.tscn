@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dha80pofmwp6e"]
+[gd_scene load_steps=11 format=3 uid="uid://dha80pofmwp6e"]
 
 [ext_resource type="Script" uid="uid://cb1rqy15canxb" path="res://scenes_and_scripts/world/animals/animal.gd" id="1_xj3or"]
 [ext_resource type="Script" uid="uid://dgd8hkbbbcu5j" path="res://scenes_and_scripts/state_machine/state_machine.gd" id="2_tp6s8"]
@@ -14,6 +14,11 @@ height = 16.0
 animations = [{
 "frames": [],
 "loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
 "name": &"idle",
 "speed": 1.0
 }, {
@@ -27,7 +32,10 @@ animations = [{
 size = Vector2(320, 59)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfcov"]
-size = Vector2(13, 12)
+size = Vector2(17, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6w31"]
+size = Vector2(25, 21)
 
 [node name="Animal" type="CharacterBody2D"]
 use_parent_material = true
@@ -45,7 +53,7 @@ shape = SubResource("CapsuleShape2D_tp6s8")
 use_parent_material = true
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_xj3or")
-animation = &"move"
+animation = &"attack"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
 script = ExtResource("2_tp6s8")
@@ -76,12 +84,24 @@ target_position = Vector2(10, 0)
 position = Vector2(80, 0)
 shape = SubResource("RectangleShape2D_xj3or")
 
-[node name="HitArea" type="Area2D" parent="Raycasts"]
+[node name="HitStartArea" type="Area2D" parent="Raycasts"]
+collision_layer = 0
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Raycasts/HitArea"]
-position = Vector2(4.5, -6)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Raycasts/HitStartArea"]
+position = Vector2(8, -6.5)
 shape = SubResource("RectangleShape2D_gfcov")
+
+[node name="HitRangeArea" type="Area2D" parent="Raycasts"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Raycasts/HitRangeArea"]
+position = Vector2(9.5, -7.5)
+shape = SubResource("RectangleShape2D_d6w31")
 
 [node name="AttackingAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_xj3or")
 volume_db = -30.646
+
+[node name="AttackAudio" type="AudioStreamPlayer2D" parent="."]
