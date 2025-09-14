@@ -6,7 +6,7 @@ class_name LevelLoaderClass
 @export var current_level: PackedScene
 @export var current_level_node: Level
 var is_in_level: bool = false
-@onready var ui: UI = $UICanvasLayer/UI
+@onready var ui: LevelsUI = $UICanvasLayer/UI
 
 signal exit_level_signal(defeated: bool)
 

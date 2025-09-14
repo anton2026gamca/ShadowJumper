@@ -1,0 +1,141 @@
+[gd_scene load_steps=3 format=3 uid="uid://chew1j35685js"]
+
+[ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="1_fvt81"]
+[ext_resource type="Script" uid="uid://buu0iruxf672p" path="res://scenes_and_scripts/ui/tutorial.gd" id="1_qbkjl"]
+
+[node name="Tutorial" type="Control" node_paths=PackedStringArray("steps")]
+process_mode = 3
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qbkjl")
+steps = [NodePath("Step1"), NodePath("Step2"), NodePath("Step3"), NodePath("Step4"), NodePath("Step5")]
+
+[node name="NextButton" type="Button" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -51.0
+offset_right = 125.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_fvt81")
+theme_override_font_sizes/font_size = 12
+text = "Got it [space]"
+
+[node name="Step1" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Step1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_bottom = 400.0
+grow_horizontal = 2
+theme = ExtResource("1_fvt81")
+theme_override_font_sizes/normal_font_size = 18
+text = "Move with A & D or Arrows"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Step2" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Step2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_bottom = 400.0
+grow_horizontal = 2
+theme = ExtResource("1_fvt81")
+theme_override_font_sizes/normal_font_size = 18
+text = "Jump with W or Up Arrow"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Step3" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Step3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_bottom = 400.0
+grow_horizontal = 2
+theme = ExtResource("1_fvt81")
+theme_override_font_sizes/normal_font_size = 18
+text = "In a level, shoot rocks at mushrooms with space to stun them for a few seconds"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Step4" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Step4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_bottom = 400.0
+grow_horizontal = 2
+theme = ExtResource("1_fvt81")
+theme_override_font_sizes/normal_font_size = 18
+text = "Select a level with space in the level selection menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Step5" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Step5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_bottom = 400.0
+grow_horizontal = 2
+theme = ExtResource("1_fvt81")
+theme_override_font_sizes/normal_font_size = 18
+text = "Don't get killed and get to the end of the level!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="NextButton" to="." method="next_step"]

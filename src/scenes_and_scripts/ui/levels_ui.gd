@@ -1,5 +1,5 @@
 extends Control
-class_name UI
+class_name LevelsUI
 
 
 @onready var pause_menu: Panel = $PauseMenu

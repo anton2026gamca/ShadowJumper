@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cph6tm6lwbqev"]
 
 [ext_resource type="Script" uid="uid://cjkiwfp4mi1bl" path="res://scenes_and_scripts/world/level_loader/level_loader.gd" id="1_dnh7v"]
-[ext_resource type="PackedScene" uid="uid://xyllxx8sqe4m" path="res://scenes_and_scripts/world/level_loader/levels_ui.tscn" id="2_0aejv"]
+[ext_resource type="PackedScene" uid="uid://xyllxx8sqe4m" path="res://scenes_and_scripts/ui/levels_ui.tscn" id="2_0aejv"]
 [ext_resource type="AudioStream" uid="uid://b3gjh1iw38xoe" path="res://assets/SFX/folder/powerup_3.wav" id="3_mb2jk"]
 
 [node name="LevelLoader" type="Node2D" node_paths=PackedStringArray("level_parent")]
