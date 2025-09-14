@@ -18,7 +18,7 @@ class_name PlayerController
 @export_group("Rock throwing")
 @export var rock_scene: PackedScene
 @export var rock_travel_speed: float = 500.0
-@export var max_throw_dist: float = 512.0
+@export var max_throw_dist: float = 192.0
 
 var last_on_floor_time: float = -1000
 var last_jump_time: float = -1000
@@ -85,7 +85,7 @@ func get_nearest_mushroom() -> Mushroom:
 		if not mushroom is Mushroom:
 			continue
 		var dist: float = target.global_position.distance_squared_to(mushroom.global_position)
-		if dist < nearest_dist and dist <= (max_throw_dist * max_throw_dist):
+		if dist < nearest_dist and dist <= (max_throw_dist * max_throw_dist) and mushroom.is_on:
 			nearest_dist = dist
 			nearest = mushroom
 	return nearest

@@ -6,17 +6,19 @@ class_name Mushroom
 
 @export var down_time: float = 5.0
 var hit_val: int = 0
-@export var boom_tolerance_time: float = 0.5
 
-@onready var boom: AnimatedSprite2D = $Boom
+@onready var boom_sprite: AnimatedSprite2D = $Boom
+@onready var boom_area: Area2D = $Area2D
+@export var boom_tolerance_time: float = 0.5
 var boom_state: int = 0
+var boom_target: Player
+var boom_angry_value: float = 0.0
 signal boom_finished
 
 @onready var boom_start_audio: AudioStreamPlayer2D = $BoomStartAudio
 @onready var boom_audio: AudioStreamPlayer2D = $BoomAudio
 
-
-var is_on:
+var is_on: bool:
 	set(value): return
 	get: return point_light.is_on
 
@@ -25,42 +27,58 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	if not is_on:
+		return
+	var players: Array[Node2D] = boom_area.get_overlapping_bodies().filter(func(body: Node2D) -> bool: return body is Player)
+	var progress: float = 0
+	for player: Player in players:
+		if player.controller.get_move_dir():
+			start_making_boom()
+			boom_angry_value += delta
+			progress += delta
 	if boom_state == 1:
-		boom.rotate(deg_to_rad(22.5))
+		boom_sprite.rotate(deg_to_rad(22.5))
+		if await update_boom():
+			for player: Player in players:
+				player.die("You were electrified by a mushroom :o")
+	if boom_state != 0 and (len(players) == 0 or progress == 0):
+		stop_making_boom()
 
 
 func hit() -> void:
-	if point_light.is_on:
+	if is_on:
 		point_light.turn_off()
+	boom_angry_value = 0
+	stop_making_boom()
 	hit_val += 1
-	var my_hit_val: float = hit_val
+	var my_hit_val: float = hit_val # Store hit val before pausing to handle multiple hit() calls
 	await get_tree().create_timer(down_time).timeout
-	if hit_val == my_hit_val:
+	if hit_val == my_hit_val: # If hit_val is still the same, turn on. If not, that means hit() was called when waiting (later that this call) and let it handle the turn on.
 		point_light.turn_on()
 		hit_val = 0
 
 func start_making_boom() -> void:
 	if boom_state != 0:
 		return
-	boom.animation = "boom"
-	boom.frame = 1
-	boom.rotation = 0
+	boom_sprite.animation = "boom"
+	boom_sprite.frame = 1
+	boom_sprite.rotation = 0
 	boom_state = 1
 	boom_start_audio.play()
 
-func update_boom(time: float) -> bool:
-	if time > boom_tolerance_time and boom_state == 1:
-		boom.rotation = 0
-		boom.play("boom")
+func update_boom() -> bool:
+	if boom_angry_value > boom_tolerance_time and boom_state == 1:
+		boom_sprite.rotation = 0
+		boom_sprite.play("boom")
 		boom_state = 2
 		boom_audio.play()
-		await boom.animation_finished
+		await boom_sprite.animation_finished
 		stop_making_boom()
 		return true
 	return false
 
 func stop_making_boom() -> void:
 	boom_state = 0
-	boom.frame = 0
+	boom_sprite.frame = 0
 	boom_start_audio.stop()
 	boom_audio.stop()

@@ -7,8 +7,6 @@ class_name PlayerFall
 
 
 func process(delta: float) -> String:
-	var is_in_light: bool = not controller.target.colliding_mushroom == null
-	
 	if controller.get_throw_a_rock():
 		controller.throw_a_rock()
 	if controller.is_on_floor():
@@ -30,8 +28,6 @@ func process(delta: float) -> String:
 	else:
 		if direction: controller.target.velocity.x = move_toward(controller.target.velocity.x, direction * controller.speed, 900 * delta)
 		else: controller.target.velocity.x = move_toward(controller.target.velocity.x, 0, 300 * delta)
-	if direction and is_in_light:
-		controller.target.in_mushroom_radius_time += delta
 	
 	if controller.get_jump_released() and controller.target.velocity.y < 0:
 		controller.target.velocity.y *= 0.25
