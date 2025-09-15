@@ -55,7 +55,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -97,7 +97,8 @@ script = ExtResource("2_rasjo")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_rasjo")
-animation = &"idle"
+frame = 2
+frame_progress = 1.0
 
 [node name="EnemyArea" parent="Raycasts" index="2"]
 collision_layer = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://d1knch75lpy1t"]
+[gd_scene load_steps=16 format=4 uid="uid://d1knch75lpy1t"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world/level_selection/world.gdshader" id="1_nbytn"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_go7g5"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/fox.tscn" id="6_go7g5"]
 [ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/boar.tscn" id="7_vp6c5"]
 [ext_resource type="PackedScene" uid="uid://6twg4nqjueyw" path="res://scenes_and_scripts/world/levels/finish.tscn" id="8_wcekq"]
+[ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="9_sqshv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1m2nw"]
 shader = ExtResource("1_nbytn")
@@ -22,6 +23,68 @@ shader_parameter/blue_shift = 1.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8fu2q"]
 normal = Vector2(1, 0)
 distance = -214.0
+
+[sub_resource type="Animation" id="Animation_qbkjl"]
+resource_name = "change"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WASD:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Arrows:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_o2hu2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WASD:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Arrows:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tuqso"]
+_data = {
+&"RESET": SubResource("Animation_o2hu2"),
+&"change": SubResource("Animation_qbkjl")
+}
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("player", "camera")]
 process_mode = 1
@@ -79,6 +142,258 @@ position = Vector2(0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/LeftLimit"]
 shape = SubResource("WorldBoundaryShape2D_8fu2q")
+
+[node name="Move" type="Panel" parent="Level"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.25
+offset_left = -17.0
+offset_top = -75.0
+offset_right = 84.0
+offset_bottom = -21.0
+scale = Vector2(0.333, 0.333)
+
+[node name="WASD" type="Control" parent="Level/Move"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 97.0
+offset_bottom = 50.0
+
+[node name="Left" type="Panel" parent="Level/Move/WASD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -20.0
+offset_right = -3.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/Move/WASD/Left"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("9_sqshv")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[color=lightblue]A[/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="Panel" parent="Level/Move/WASD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -20.0
+offset_right = 43.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/Move/WASD/Right"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("9_sqshv")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[color=lightblue]D[/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Arrows" type="Control" parent="Level/Move"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -97.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Left" type="Panel" parent="Level/Move/Arrows"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -20.0
+offset_right = -3.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/Move/Arrows/Left"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("9_sqshv")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[color=lightblue]←[/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="Panel" parent="Level/Move/Arrows"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -20.0
+offset_right = 43.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/Move/Arrows/Right"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("9_sqshv")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[color=lightblue]→[/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Level/Move"]
+libraries = {
+&"": SubResource("AnimationLibrary_tuqso")
+}
+autoplay = "change"
+
+[node name="Jump" type="Panel" parent="Level"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.25
+offset_left = 202.0
+offset_top = 25.0
+offset_right = 303.0
+offset_bottom = 79.0
+scale = Vector2(0.333, 0.333)
+
+[node name="W" type="Panel" parent="Level/Jump"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.5
+offset_top = -22.0
+offset_right = -4.5
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/Jump/W"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("9_sqshv")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[color=lightblue]W[/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpArrow" type="Panel" parent="Level/Jump"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 5.5
+offset_top = -18.0
+offset_right = 45.5
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/Jump/UpArrow"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("9_sqshv")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[color=lightblue]↑[/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Space" type="Panel" parent="Level"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.25
+offset_left = 115.0
+offset_top = -14.0
+offset_right = 244.0
+offset_bottom = 40.0
+scale = Vector2(0.333, 0.333)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/Space"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_sqshv")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[color=lightblue][space][/color]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Esc" type="Panel" parent="Level"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.25
+offset_left = 485.0
+offset_top = -27.0
+offset_right = 586.0
+offset_bottom = 27.0
+scale = Vector2(0.333, 0.333)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/Esc"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_sqshv")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[color=lightblue][Esc][/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://clkhpeqrfyoax"]
+[gd_scene load_steps=62 format=4 uid="uid://clkhpeqrfyoax"]
 
 [ext_resource type="Script" uid="uid://dd3otqv1n5e7k" path="res://scenes_and_scripts/world/level_selection/level_selection.gd" id="1_7qmai"]
 [ext_resource type="PackedScene" uid="uid://by7kis83n7kvx" path="res://scenes_and_scripts/world/level_selection/level_selection_level.tscn" id="2_5iw0q"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://dhd8v7a51hwsm" path="res://scenes_and_scripts/folower.gd" id="15_vnfxq"]
 [ext_resource type="PackedScene" uid="uid://d1knch75lpy1t" path="res://scenes_and_scripts/world/levels/level_1.tscn" id="16_it5vw"]
 [ext_resource type="PackedScene" uid="uid://f8cwujw0lgie" path="res://scenes_and_scripts/world/levels/level_2.tscn" id="18_gxsst"]
+[ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="19_noog6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0vl0e"]
 shader = ExtResource("15_jj62b")
@@ -547,6 +548,68 @@ adjust_x_position_on_end = true
 target_x_position_on_end = 0.0
 data = Array[ExtResource("6_8gh2l")]([SubResource("Resource_5feg2"), SubResource("Resource_72nk8"), SubResource("Resource_jfw3i"), SubResource("Resource_53uy3"), SubResource("Resource_r4jj3"), SubResource("Resource_ses4l"), SubResource("Resource_m4hsd"), SubResource("Resource_x77eb"), SubResource("Resource_nhi7f"), SubResource("Resource_kc6db"), SubResource("Resource_cpu7p"), SubResource("Resource_aa4mn"), SubResource("Resource_vncsr"), SubResource("Resource_kr6ob"), SubResource("Resource_myleo"), SubResource("Resource_nctdv"), SubResource("Resource_5eumj")])
 
+[sub_resource type="Animation" id="Animation_qbkjl"]
+resource_name = "change"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WASD:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Arrows:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_o2hu2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WASD:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Arrows:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tuqso"]
+_data = {
+&"RESET": SubResource("Animation_o2hu2"),
+&"change": SubResource("Animation_qbkjl")
+}
+
 [node name="LevelSelection" type="Node2D" node_paths=PackedStringArray("current_level", "replay_controller")]
 material = SubResource("ShaderMaterial_0vl0e")
 script = ExtResource("1_7qmai")
@@ -647,6 +710,169 @@ Vector2i(-1, 0): NodePath("../Level1")
 player_replays = Dictionary[Vector2i, ExtResource("6_ym7cv")]({
 Vector2i(-1, 0): SubResource("Resource_uysjl")
 })
+
+[node name="Move" type="Panel" parent="Level"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.25
+offset_left = -17.0
+offset_top = -78.0
+offset_right = 84.0
+offset_bottom = -24.0
+scale = Vector2(0.333, 0.333)
+
+[node name="WASD" type="Control" parent="Level/Move"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 97.0
+offset_bottom = 50.0
+
+[node name="Left" type="Panel" parent="Level/Move/WASD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -20.0
+offset_right = -3.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/Move/WASD/Left"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("19_noog6")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[color=lightblue]A[/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="Panel" parent="Level/Move/WASD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -20.0
+offset_right = 43.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/Move/WASD/Right"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("19_noog6")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[color=lightblue]D[/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Arrows" type="Control" parent="Level/Move"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -97.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Left" type="Panel" parent="Level/Move/Arrows"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -20.0
+offset_right = -3.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/Move/Arrows/Left"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("19_noog6")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[color=lightblue]←[/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="Panel" parent="Level/Move/Arrows"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -20.0
+offset_right = 43.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/Move/Arrows/Right"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("19_noog6")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[color=lightblue]→[/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Level/Move"]
+libraries = {
+&"": SubResource("AnimationLibrary_tuqso")
+}
+autoplay = "change"
+
+[node name="Space" type="Panel" parent="Level"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.25
+offset_left = -23.0
+offset_top = -58.0
+offset_right = 112.0
+offset_bottom = -4.0
+scale = Vector2(0.333, 0.333)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/Space"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("19_noog6")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[color=lightblue][space][/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("folow")]
 drag_horizontal_enabled = true

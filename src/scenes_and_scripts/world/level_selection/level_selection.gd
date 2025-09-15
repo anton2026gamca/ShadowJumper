@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("level_right") and current_level:
 		move_to_level(Vector2i.RIGHT)
 	
-	if Input.is_action_just_pressed("level_enter") and current_level and current_level.scene:
+	if Input.is_action_just_released("level_enter") and current_level and current_level.scene:
 		Settings.last_visited_level = current_level.number
 		if LevelLoader is LevelLoaderClass:
 			var parent: Node = get_parent()

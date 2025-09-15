@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgnkbfbtrhkl8"]
+[gd_scene load_steps=2 format=3 uid="uid://cgnkbfbtrhkl8"]
 
 [ext_resource type="PackedScene" uid="uid://clkhpeqrfyoax" path="res://scenes_and_scripts/world/level_selection/level_selection.tscn" id="1_yhkdd"]
-[ext_resource type="PackedScene" uid="uid://chew1j35685js" path="res://scenes_and_scripts/ui/tutorial.tscn" id="2_wj2gu"]
 
 [node name="LevelSelectionRoot" type="SubViewportContainer"]
 anchors_preset = 15
@@ -22,6 +21,3 @@ size = Vector2i(426, 240)
 render_target_update_mode = 4
 
 [node name="LevelSelection" parent="SubViewport" instance=ExtResource("1_yhkdd")]
-
-[node name="Tutorial" parent="." instance=ExtResource("2_wj2gu")]
-layout_mode = 2
