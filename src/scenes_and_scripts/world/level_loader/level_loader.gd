@@ -56,14 +56,8 @@ func level_defeated() -> void:
 	ui.full_screen_text.process_mode = Node.PROCESS_MODE_PAUSABLE
 	exit_level(true)
 
-func find_child_by_type(parent, type):
-	for child in parent.get_children():
-		if is_instance_of(child, type):
-			return child
-	return null
-
 func reload_level() -> void:
-	var old_level: Level = find_child_by_type(level_parent, Level)
+	var old_level: Level = Helpers.find_child_by_type(level_parent, Level)
 	old_level.player_died.disconnect(player_died)
 	old_level.level_defeated.disconnect(level_defeated)
 	level_parent.remove_child.call_deferred(old_level)

@@ -13,7 +13,7 @@ class_name AnimalSearching
 @onready var attacking_audio: AudioStreamPlayer2D = $"../../AttackingAudio"
 
 
-func process(delta: float) -> String:
+func process(delta: float) -> Variant:
 	if not ground.is_colliding() or wall.is_colliding():
 		sprite.flip_h = not sprite.flip_h
 	
@@ -29,6 +29,6 @@ func process(delta: float) -> String:
 	if enemy_area.monitoring and enemy_area.get_overlapping_bodies().find_custom(func(body: Node2D) -> bool: return body is Player) >= 0:
 		attacking_audio.play()
 		attacking_audio.pitch_scale = randf() / 5.0 + 0.75
-		return "Attacking"
+		return AnimalAttacking
 	
-	return ""
+	return null

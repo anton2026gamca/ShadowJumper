@@ -19,9 +19,13 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint() and not enable_in_editor:
 		return
-	var new_state_name: String = current_state.process(delta)
-	var new_state: State = get_node_or_null(new_state_name)
-	if new_state:
-		current_state.on_exit()
-		new_state.on_enter()
-		current_state = new_state
+	var new_type: Variant = current_state.process(delta)
+	var children: Array[Node] = get_children()
+	if not new_type:
+		return
+	var new_state: Variant = Helpers.find_child_by_type(self, new_type)
+	if not new_state is State:
+		return
+	current_state.on_exit()
+	new_state.on_enter()
+	current_state = new_state

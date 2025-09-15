@@ -8,5 +8,5 @@ func on_enter() -> void:
 func on_exit() -> void:
 	pass
 
-func process(_delta: float) -> String:
-	return ""
+func process(_delta: float) -> Variant:
+	return null

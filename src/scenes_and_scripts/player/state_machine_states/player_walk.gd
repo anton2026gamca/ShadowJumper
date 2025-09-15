@@ -6,7 +6,7 @@ class_name PlayerWalk
 @export var controller: PlayerController
 
 
-func process(delta: float) -> String:
+func process(delta: float) -> Variant:
 	if controller.get_throw_a_rock():
 		controller.throw_a_rock()
 	if controller.get_jump_buffered():
@@ -23,7 +23,7 @@ func process(delta: float) -> String:
 	if controller.is_on_floor_buffered() and controller.get_dash() and direction:
 		controller.target.velocity = Vector2(direction * controller.dash_velocity, 0)
 		controller.play_sfx(controller.sfx_dash)
-		return "PlayerDash"
+		return PlayerDash
 	if not controller.target.is_on_floor():
-		return "PlayerFall"
-	return ""
+		return PlayerFall
+	return null

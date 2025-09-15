@@ -88,3 +88,7 @@ volume_db = 24.0
 
 [node name="HitAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_eiiw0")
+
+[node name="RespawnAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_eiiw0")
+max_distance = 256.0

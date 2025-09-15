@@ -20,13 +20,13 @@ var paused: bool = false
 var idle_time: float = 0
 
 
-func process(delta: float) -> String:
+func process(delta: float) -> Variant:
 	if paused:
-		return ""
+		return null
 	var bodies: Array[Node2D] = enemy_area.get_overlapping_bodies()
 	var player_index: int = bodies.find_custom(func(body: Node2D) -> bool: return body is Player)
 	if player_index < 0:
-		return "Searching"
+		return AnimalSearching
 	var player: Player = bodies[player_index]
 	
 	if not ground.is_colliding() or wall.is_colliding():
@@ -37,7 +37,7 @@ func process(delta: float) -> String:
 		if idle_time > 2:
 			enemy_area.monitoring = false
 			get_tree().create_timer(3.0).timeout.connect(resume_monitoring)
-			return "Searching"
+			return AnimalSearching
 	else:
 		sprite.play("move", 1.5)
 		var dir: int = Vector2(player.position.x - target.position.x, 0.0).normalized().x
@@ -50,7 +50,7 @@ func process(delta: float) -> String:
 	if hit_start_area.get_overlapping_bodies().has(player):
 		attack(player)
 	
-	return ""
+	return null
 
 func on_enter() -> void:
 	attacking_audio.finished.connect(play_attacking_audio)

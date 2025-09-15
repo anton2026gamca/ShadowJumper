@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://f5m7vw1vj4fd"]
+[gd_scene load_steps=15 format=3 uid="uid://f5m7vw1vj4fd"]
 
 [ext_resource type="Script" uid="uid://hrc23450dtph" path="res://scenes_and_scripts/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bnpceuwymc5n" path="res://scenes_and_scripts/player/state_machine_states/player_walk.gd" id="2_dovo2"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://cqddwufjihsoj" path="res://assets/SFX/folder/jump_2.wav" id="8_fm80t"]
 [ext_resource type="Texture2D" uid="uid://dfehsgpqmial3" path="res://assets/sprites/player.png" id="10_of6dy"]
 [ext_resource type="AudioStream" uid="uid://rvdsv75uvl1g" path="res://assets/SFX/folder/lose_1.wav" id="12_ob7be"]
+[ext_resource type="AudioStream" uid="uid://dkcguk8m56rgx" path="res://assets/SFX/folder/fall.wav" id="13_m74vl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f60y1"]
 size = Vector2(16, 16)
@@ -76,3 +77,6 @@ target_position = Vector2(9, 0)
 [node name="DeathAudio" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("12_ob7be")
+
+[node name="FallAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_m74vl")

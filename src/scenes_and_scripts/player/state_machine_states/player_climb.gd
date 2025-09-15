@@ -6,15 +6,15 @@ class_name PlayerClimb
 @export var controller: PlayerController
 
 
-func process(_delta: float) -> String:
+func process(_delta: float) -> Variant:
 	if controller.get_throw_a_rock():
 		controller.throw_a_rock()
 	if controller.is_on_floor():
-		return "PlayerWalk"
+		return PlayerWalk
 	var left: bool = controller.climb_left_raycast.get_collider() is TileMapLayer
 	var right: bool = controller.climb_right_raycast.get_collider() is TileMapLayer
 	if not left and not right:
-		return "PlayerFall"
+		return PlayerFall
 	var dir: int = -1 if left else (1 if right else 0)
 	if controller.get_jump_buffered():
 		controller.target.velocity.x = -dir * controller.speed
@@ -22,10 +22,10 @@ func process(_delta: float) -> String:
 		controller.play_sfx(controller.sfx_jump)
 		controller.disable_jump = true
 		controller.disable_climb = true
-		return "PlayerFall"
+		return PlayerFall
 	if (controller.get_move_left() if right else controller.get_move_right()):
 		controller.last_on_floor_time = 0
 		controller.disable_climb = true
-		return "PlayerFall"
+		return PlayerFall
 	controller.target.velocity.y = controller.climb_down_velocity
-	return ""
+	return null

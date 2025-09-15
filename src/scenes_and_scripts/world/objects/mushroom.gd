@@ -18,6 +18,7 @@ signal boom_finished
 @onready var boom_start_audio: AudioStreamPlayer2D = $BoomStartAudio
 @onready var boom_audio: AudioStreamPlayer2D = $BoomAudio
 @onready var hit_audio: AudioStreamPlayer2D = $HitAudio
+@onready var respawn_audio: AudioStreamPlayer2D = $RespawnAudio
 
 var is_on: bool:
 	set(value): return
@@ -57,6 +58,8 @@ func hit() -> void:
 	var my_hit_val: float = hit_val # Store hit val before pausing to handle multiple hit() calls
 	await get_tree().create_timer(down_time).timeout
 	if hit_val == my_hit_val: # If hit_val is still the same, turn on. If not, that means hit() was called when waiting (later that this call) and let it handle the turn on.
+		respawn_audio.pitch_scale = hit_audio.pitch_scale
+		respawn_audio.play()
 		point_light.turn_on()
 		hit_val = 0
 

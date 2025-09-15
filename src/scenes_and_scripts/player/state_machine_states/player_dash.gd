@@ -6,9 +6,9 @@ class_name PlayerDash
 @export var controller: PlayerController
 
 
-func process(delta: float) -> String:
+func process(delta: float) -> Variant:
 	if abs(controller.target.velocity.x) == 0:
-		return "PlayerFall"
+		return PlayerFall
 	if abs(controller.target.velocity.x) < 100:
 		controller.target.velocity.x = move_toward(controller.target.velocity.x, 0, 300 * delta)
 		controller.apply_gravity(delta)
@@ -19,5 +19,5 @@ func process(delta: float) -> String:
 		controller.target.velocity.y = controller.jump_velocity
 		controller.disable_jump = true
 		controller.play_sfx(controller.sfx_jump)
-		return "PlayerFall"
-	return ""
+		return PlayerFall
+	return null
