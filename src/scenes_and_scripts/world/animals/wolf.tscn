@@ -1,0 +1,124 @@
+[gd_scene load_steps=16 format=3 uid="uid://c2xrsqj6px78r"]
+
+[ext_resource type="PackedScene" uid="uid://dha80pofmwp6e" path="res://scenes_and_scripts/world/animals/animal.tscn" id="1_ob360"]
+[ext_resource type="Texture2D" uid="uid://dst17rdwer7by" path="res://assets/sprites/animals/MiniWolf.png" id="2_4al75"]
+[ext_resource type="AudioStream" uid="uid://b54hlq1sif50r" path="res://assets/SFX/folder/fire_3.wav" id="3_4al75"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob360"]
+atlas = ExtResource("2_4al75")
+region = Rect2(0, 144, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4al75"]
+atlas = ExtResource("2_4al75")
+region = Rect2(32, 144, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw531"]
+atlas = ExtResource("2_4al75")
+region = Rect2(64, 144, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuv7m"]
+atlas = ExtResource("2_4al75")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3spu7"]
+atlas = ExtResource("2_4al75")
+region = Rect2(96, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwn57"]
+atlas = ExtResource("2_4al75")
+region = Rect2(0, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tf6k"]
+atlas = ExtResource("2_4al75")
+region = Rect2(32, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_siap8"]
+atlas = ExtResource("2_4al75")
+region = Rect2(64, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_680g5"]
+atlas = ExtResource("2_4al75")
+region = Rect2(96, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu0gu"]
+atlas = ExtResource("2_4al75")
+region = Rect2(128, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogdij"]
+atlas = ExtResource("2_4al75")
+region = Rect2(160, 48, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xw531"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob360")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4al75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xw531")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iuv7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3spu7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwn57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tf6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_siap8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_680g5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu0gu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogdij")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[node name="Wolf" instance=ExtResource("1_ob360")]
+player_die_reason = "A wolf knocked you to the ground really hard!"
+walk_speed = 1200.0
+run_speed = 6300.0
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_xw531")
+
+[node name="CollisionShape2D" parent="Raycasts/EnemyArea" index="0"]
+position = Vector2(45, -9.75)
+
+[node name="CollisionShape2D" parent="Raycasts/HitStartArea" index="0"]
+position = Vector2(13.75, -14)
+
+[node name="CollisionShape2D" parent="Raycasts/HitRangeArea" index="0"]
+position = Vector2(21, -19)
+
+[node name="AttackAudio" parent="." index="5"]
+stream = ExtResource("3_4al75")
+
+[node name="VisibleOnScreenEnabler2D" parent="." index="6"]
+position = Vector2(45, -9.5)
+scale = Vector2(19.8, 4.25)

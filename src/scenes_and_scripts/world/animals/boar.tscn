@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://dufpmtr0u2cjm"]
+[gd_scene load_steps=15 format=3 uid="uid://dufpmtr0u2cjm"]
 
 [ext_resource type="PackedScene" uid="uid://dha80pofmwp6e" path="res://scenes_and_scripts/world/animals/animal.tscn" id="1_kqisn"]
-[ext_resource type="Script" uid="uid://cqbdo0tkmvk6h" path="res://scenes_and_scripts/world/animals/boar.gd" id="2_348gh"]
 [ext_resource type="Texture2D" uid="uid://cmnrdlbkrcgec" path="res://assets/sprites/animals/MiniBoar.png" id="2_vvgje"]
 [ext_resource type="AudioStream" uid="uid://bcidwrcvmuq3a" path="res://assets/SFX/explosion.wav" id="4_348gh"]
 
@@ -76,13 +75,15 @@ animations = [{
 size = Vector2(384, 79.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvgje"]
-size = Vector2(20.5, 21)
+size = Vector2(20.5, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_348gh"]
-size = Vector2(39, 33)
+size = Vector2(39, 39)
 
 [node name="Boar" instance=ExtResource("1_kqisn")]
-script = ExtResource("2_348gh")
+player_die_reason = "A boar killed you!"
+walk_speed = 870.0
+run_speed = 3000.0
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_dlm6i")
@@ -100,11 +101,11 @@ position = Vector2(48, -10.25)
 shape = SubResource("RectangleShape2D_8yuts")
 
 [node name="CollisionShape2D" parent="Raycasts/HitStartArea" index="0"]
-position = Vector2(9.75, -10.5)
+position = Vector2(9.75, -13)
 shape = SubResource("RectangleShape2D_vvgje")
 
 [node name="CollisionShape2D" parent="Raycasts/HitRangeArea" index="0"]
-position = Vector2(14.5, -13.5)
+position = Vector2(14.5, -16.5)
 shape = SubResource("RectangleShape2D_348gh")
 
 [node name="AttackingAudio" parent="." index="4"]
@@ -112,3 +113,7 @@ volume_db = -23.151
 
 [node name="AttackAudio" parent="." index="5"]
 stream = ExtResource("4_348gh")
+
+[node name="VisibleOnScreenEnabler2D" parent="." index="6"]
+position = Vector2(48, -10)
+scale = Vector2(19.5, 4.3)

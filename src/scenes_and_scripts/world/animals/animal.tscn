@@ -29,13 +29,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xj3or"]
-size = Vector2(320, 59)
+size = Vector2(390, 78.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfcov"]
-size = Vector2(17, 13)
+size = Vector2(28.5, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6w31"]
-size = Vector2(25, 21)
+size = Vector2(48, 44)
 
 [node name="Animal" type="CharacterBody2D"]
 use_parent_material = true
@@ -79,6 +79,8 @@ position = Vector2(0, -5)
 target_position = Vector2(10, 0)
 
 [node name="EnemyArea" type="Area2D" parent="Raycasts"]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Raycasts/EnemyArea"]
 position = Vector2(80, 0)
@@ -105,3 +107,7 @@ stream = ExtResource("5_xj3or")
 volume_db = -30.646
 
 [node name="AttackAudio" type="AudioStreamPlayer2D" parent="."]
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(80, 0)
+scale = Vector2(16.3, 3.3)

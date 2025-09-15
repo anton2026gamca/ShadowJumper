@@ -24,6 +24,33 @@ shader_parameter/blue_shift = 1.0
 normal = Vector2(1, 0)
 distance = -214.0
 
+[sub_resource type="Animation" id="Animation_o2hu2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WASD:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Arrows:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_qbkjl"]
 resource_name = "change"
 length = 2.0
@@ -51,33 +78,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_o2hu2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("WASD:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Arrows:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tuqso"]
@@ -132,7 +132,10 @@ shape = SubResource("WorldBoundaryShape2D_055t4")
 position = Vector2(930, 16)
 
 [node name="Boar" parent="Level" instance=ExtResource("7_vp6c5")]
-position = Vector2(1259, -147)
+position = Vector2(1623, -144)
+
+[node name="Fox2" parent="Level" instance=ExtResource("6_go7g5")]
+position = Vector2(1438, -144)
 
 [node name="Finish" parent="Level" instance=ExtResource("8_wcekq")]
 position = Vector2(1771, -160)

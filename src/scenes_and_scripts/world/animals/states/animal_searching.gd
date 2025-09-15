@@ -21,11 +21,12 @@ func process(delta: float) -> String:
 	raycasts.scale.x = dir
 	
 	target.velocity.x = target.get_walk_speed() * dir * delta
-	target.velocity.y = target.get_gravity().y * 2 * delta
+	if target.is_on_floor(): target.velocity.y = 0
+	target.velocity.y += target.get_gravity().y * 2 * delta
 	
 	sprite.play("move", 0.5)
 	
-	if enemy_area.get_overlapping_bodies().find_custom(func(body: Node2D) -> bool: return body is Player) >= 0:
+	if enemy_area.monitoring and enemy_area.get_overlapping_bodies().find_custom(func(body: Node2D) -> bool: return body is Player) >= 0:
 		attacking_audio.play()
 		attacking_audio.pitch_scale = randf() / 5.0 + 0.75
 		return "Attacking"

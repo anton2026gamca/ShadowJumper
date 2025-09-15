@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://f8cwujw0lgie"]
+[gd_scene load_steps=13 format=4 uid="uid://f8cwujw0lgie"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world/level_selection/world.gdshader" id="1_njod4"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_au23b"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/fox.tscn" id="7_au23b"]
 [ext_resource type="PackedScene" uid="uid://6twg4nqjueyw" path="res://scenes_and_scripts/world/levels/finish.tscn" id="8_0husi"]
 [ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/boar.tscn" id="8_4mss6"]
+[ext_resource type="PackedScene" uid="uid://c2xrsqj6px78r" path="res://scenes_and_scripts/world/animals/wolf.tscn" id="8_cywes"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_au23b"]
 shader = ExtResource("1_njod4")
@@ -63,14 +64,14 @@ position = Vector2(1220, -320)
 [node name="Boar" parent="Level" instance=ExtResource("8_4mss6")]
 position = Vector2(1300, -336)
 
-[node name="Boar2" parent="Level" instance=ExtResource("8_4mss6")]
-position = Vector2(1797, -512)
-
 [node name="Fox2" parent="Level" instance=ExtResource("7_au23b")]
 position = Vector2(1038, -224)
 
 [node name="Fox3" parent="Level" instance=ExtResource("7_au23b")]
 position = Vector2(1564, -528)
+
+[node name="Wolf" parent="Level" instance=ExtResource("8_cywes")]
+position = Vector2(1829, -512)
 
 [node name="WorldBottomLimit" type="Area2D" parent="Level"]
 collision_layer = 0

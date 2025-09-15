@@ -1,7 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://bon1r10wk031e"]
+[gd_scene load_steps=16 format=3 uid="uid://bon1r10wk031e"]
 
 [ext_resource type="PackedScene" uid="uid://dha80pofmwp6e" path="res://scenes_and_scripts/world/animals/animal.tscn" id="1_kct0a"]
-[ext_resource type="Script" uid="uid://foaplefnisbj" path="res://scenes_and_scripts/world/animals/fox.gd" id="2_rasjo"]
 [ext_resource type="Texture2D" uid="uid://crpsdrftqxy8" path="res://assets/sprites/animals/MiniFox.png" id="2_x4i7n"]
 [ext_resource type="AudioStream" uid="uid://ns2s4d0pe8ve" path="res://assets/SFX/folder/fire_1.wav" id="4_lrxyp"]
 
@@ -93,16 +92,14 @@ size = Vector2(17, 13)
 size = Vector2(25, 21)
 
 [node name="Fox" instance=ExtResource("1_kct0a")]
-script = ExtResource("2_rasjo")
+player_die_reason = "A fox bit you!"
+walk_speed = 600.0
+run_speed = 3000.0
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_rasjo")
 frame = 2
 frame_progress = 1.0
-
-[node name="EnemyArea" parent="Raycasts" index="2"]
-collision_layer = 0
-collision_mask = 4
 
 [node name="CollisionShape2D" parent="Raycasts/HitStartArea" index="0"]
 position = Vector2(8.5, -6.5)
@@ -113,3 +110,7 @@ shape = SubResource("RectangleShape2D_lrxyp")
 
 [node name="AttackAudio" parent="." index="5"]
 stream = ExtResource("4_lrxyp")
+
+[node name="VisibleOnScreenEnabler2D" parent="." index="6"]
+position = Vector2(80, -2.86102e-06)
+scale = Vector2(19.8, 4.2)

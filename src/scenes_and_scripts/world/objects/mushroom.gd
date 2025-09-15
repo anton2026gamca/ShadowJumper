@@ -17,6 +17,7 @@ signal boom_finished
 
 @onready var boom_start_audio: AudioStreamPlayer2D = $BoomStartAudio
 @onready var boom_audio: AudioStreamPlayer2D = $BoomAudio
+@onready var hit_audio: AudioStreamPlayer2D = $HitAudio
 
 var is_on: bool:
 	set(value): return
@@ -48,6 +49,8 @@ func _physics_process(delta: float) -> void:
 func hit() -> void:
 	if is_on:
 		point_light.turn_off()
+		hit_audio.pitch_scale = randf_range(0.5, 1.5)
+		hit_audio.play()
 	boom_angry_value = 0
 	stop_making_boom()
 	hit_val += 1

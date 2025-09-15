@@ -17,6 +17,8 @@ class_name AnimalAttacking
 
 var paused: bool = false
 
+var idle_time: float = 0
+
 
 func process(delta: float) -> String:
 	if paused:
@@ -31,6 +33,11 @@ func process(delta: float) -> String:
 		sprite.play("idle")
 		target.velocity.x = 0
 		target.velocity.y += target.get_gravity().y * 2 * delta
+		idle_time += delta
+		if idle_time > 2:
+			enemy_area.monitoring = false
+			get_tree().create_timer(3.0).timeout.connect(resume_monitoring)
+			return "Searching"
 	else:
 		sprite.play("move", 1.5)
 		var dir: int = Vector2(player.position.x - target.position.x, 0.0).normalized().x
@@ -38,6 +45,7 @@ func process(delta: float) -> String:
 		raycasts.scale.x = dir
 		target.velocity.x = target.get_run_speed() * dir * delta
 		target.velocity.y += target.get_gravity().y * 2 * delta
+		idle_time = 0
 	
 	if hit_start_area.get_overlapping_bodies().has(player):
 		attack(player)
@@ -53,6 +61,7 @@ func on_exit() -> void:
 
 func attack(player: Player) -> void:
 	sprite.play("attack")
+	attack_audio.pitch_scale = randf_range(0.8, 1.2)
 	attack_audio.play()
 	paused = true
 	await sprite.animation_finished
@@ -63,3 +72,6 @@ func attack(player: Player) -> void:
 func play_attacking_audio() -> void:
 	attacking_audio.play()
 	attacking_audio.pitch_scale = randf() / 5.0 + 0.75
+
+func resume_monitoring() -> void:
+	enemy_area.monitoring = true
