@@ -23,8 +23,16 @@ func update_label():
 @export var relationships: Dictionary[Vector2i, LevelSelectionLevel]
 @export var player_replays: Dictionary[Vector2i, PlayerReplayData]
 
+var is_completed: bool = false
+
+
 func _ready() -> void:
 	update_label()
 
 func mark_completed() -> void:
 	$PointLight2D.enabled = false
+	is_completed = true
+
+func mark_uncompleted() -> void:
+	$PointLight2D.enabled = true
+	is_completed = false

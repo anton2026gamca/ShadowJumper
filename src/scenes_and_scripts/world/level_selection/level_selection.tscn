@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=4 uid="uid://clkhpeqrfyoax"]
+[gd_scene load_steps=149 format=4 uid="uid://clkhpeqrfyoax"]
 
 [ext_resource type="Script" uid="uid://dd3otqv1n5e7k" path="res://scenes_and_scripts/world/level_selection/level_selection.gd" id="1_7qmai"]
 [ext_resource type="PackedScene" uid="uid://by7kis83n7kvx" path="res://scenes_and_scripts/world/level_selection/level_selection_level.tscn" id="2_5iw0q"]
@@ -29,6 +29,713 @@ shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
 shader_parameter/night_darkness = 1.0
 shader_parameter/night_contrast = 2.0
 shader_parameter/blue_shift = 1.0
+
+[sub_resource type="Resource" id="Resource_q63el"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_4onnr"]
+script = ExtResource("6_8gh2l")
+frames_count = 12
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_ubysi"]
+script = ExtResource("6_8gh2l")
+frames_count = 9
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_3vcdk"]
+script = ExtResource("6_8gh2l")
+frames_count = 3
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_petm0"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_g35gs"]
+script = ExtResource("6_8gh2l")
+frames_count = 12
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_5j1sa"]
+script = ExtResource("6_8gh2l")
+frames_count = 9
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_v1177"]
+script = ExtResource("6_8gh2l")
+frames_count = 3
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_tg5n0"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_iqq6n"]
+script = ExtResource("6_8gh2l")
+frames_count = 11
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_daoiw"]
+script = ExtResource("6_8gh2l")
+frames_count = 9
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_gypu3"]
+script = ExtResource("6_8gh2l")
+frames_count = 3
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_c8w1j"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_v3hem"]
+script = ExtResource("6_8gh2l")
+frames_count = 6
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_svae7"]
+script = ExtResource("6_8gh2l")
+frames_count = 9
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_vl0hn"]
+script = ExtResource("6_8gh2l")
+frames_count = 3
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_6gbxx"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_at1bw"]
+script = ExtResource("6_8gh2l")
+frames_count = 4
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_jpkm2"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": true,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_xro6t"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": true,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_u2i75"]
+script = ExtResource("6_8gh2l")
+frames_count = 3
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_eqawv"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": true,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_2xka1"]
+script = ExtResource("6_8gh2l")
+frames_count = 5
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_40ci1"]
+script = ExtResource("6_8gh2l")
+frames_count = 13
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_ngr2y"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_o5hg2"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_trdhr"]
+script = ExtResource("6_8gh2l")
+frames_count = 9
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_vvdcj"]
+script = ExtResource("6_8gh2l")
+frames_count = 3
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_qpg3f"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_n58ns"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_oonr3"]
+script = ExtResource("6_ym7cv")
+start_pos = Vector2(640, -152.076)
+adjust_x_position_on_end = true
+target_x_position_on_end = 184.0
+data = Array[ExtResource("6_8gh2l")]([SubResource("Resource_q63el"), SubResource("Resource_4onnr"), SubResource("Resource_ubysi"), SubResource("Resource_3vcdk"), SubResource("Resource_petm0"), SubResource("Resource_g35gs"), SubResource("Resource_5j1sa"), SubResource("Resource_v1177"), SubResource("Resource_tg5n0"), SubResource("Resource_iqq6n"), SubResource("Resource_daoiw"), SubResource("Resource_gypu3"), SubResource("Resource_c8w1j"), SubResource("Resource_v3hem"), SubResource("Resource_svae7"), SubResource("Resource_vl0hn"), SubResource("Resource_6gbxx"), SubResource("Resource_at1bw"), SubResource("Resource_jpkm2"), SubResource("Resource_xro6t"), SubResource("Resource_u2i75"), SubResource("Resource_eqawv"), SubResource("Resource_2xka1"), SubResource("Resource_40ci1"), SubResource("Resource_ngr2y"), SubResource("Resource_o5hg2"), SubResource("Resource_trdhr"), SubResource("Resource_vvdcj"), SubResource("Resource_qpg3f"), SubResource("Resource_n58ns")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hcr5e"]
+size = Vector2(16, 16)
+
+[sub_resource type="Resource" id="Resource_hcr5e"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_rrdxl"]
+script = ExtResource("6_8gh2l")
+frames_count = 13
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_g6ldl"]
+script = ExtResource("6_8gh2l")
+frames_count = 7
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_w5t7u"]
+script = ExtResource("6_8gh2l")
+frames_count = 8
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_2vu7k"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_py0tf"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": true,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_jtrap"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": true,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_mc8r5"]
+script = ExtResource("6_8gh2l")
+frames_count = 7
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_qc7qp"]
+script = ExtResource("6_8gh2l")
+frames_count = 9
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_6e1k6"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": true,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_tqbn4"]
+script = ExtResource("6_8gh2l")
+frames_count = 6
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_4sm6e"]
+script = ExtResource("6_8gh2l")
+frames_count = 7
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_wyk4q"]
+script = ExtResource("6_8gh2l")
+frames_count = 2
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_xp8yh"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_htdle"]
+script = ExtResource("6_8gh2l")
+frames_count = 4
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_up2ip"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_8mgp5"]
+script = ExtResource("6_ym7cv")
+start_pos = Vector2(0, 7.92402)
+adjust_x_position_on_end = true
+target_x_position_on_end = 184.0
+data = Array[ExtResource("6_8gh2l")]([SubResource("Resource_hcr5e"), SubResource("Resource_rrdxl"), SubResource("Resource_g6ldl"), SubResource("Resource_w5t7u"), SubResource("Resource_2vu7k"), SubResource("Resource_py0tf"), SubResource("Resource_jtrap"), SubResource("Resource_mc8r5"), SubResource("Resource_qc7qp"), SubResource("Resource_6e1k6"), SubResource("Resource_tqbn4"), SubResource("Resource_4sm6e"), SubResource("Resource_wyk4q"), SubResource("Resource_xp8yh"), SubResource("Resource_htdle"), SubResource("Resource_up2ip")])
 
 [sub_resource type="Resource" id="Resource_5feg2"]
 script = ExtResource("6_8gh2l")
@@ -285,19 +992,31 @@ data = Dictionary[String, Variant]({
 "is_on_floor_buffered": true
 })
 
-[sub_resource type="Resource" id="Resource_dfvwf"]
+[sub_resource type="Resource" id="Resource_uysjl"]
 script = ExtResource("6_ym7cv")
 start_pos = Vector2(184, 23.9253)
 adjust_x_position_on_end = true
 target_x_position_on_end = 0.0
 data = Array[ExtResource("6_8gh2l")]([SubResource("Resource_5feg2"), SubResource("Resource_72nk8"), SubResource("Resource_jfw3i"), SubResource("Resource_53uy3"), SubResource("Resource_r4jj3"), SubResource("Resource_ses4l"), SubResource("Resource_m4hsd"), SubResource("Resource_x77eb"), SubResource("Resource_nhi7f"), SubResource("Resource_kc6db"), SubResource("Resource_cpu7p"), SubResource("Resource_aa4mn"), SubResource("Resource_vncsr"), SubResource("Resource_kr6ob"), SubResource("Resource_myleo"), SubResource("Resource_nctdv"), SubResource("Resource_5eumj")])
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hcr5e"]
-size = Vector2(16, 16)
-
-[sub_resource type="Resource" id="Resource_hcr5e"]
+[sub_resource type="Resource" id="Resource_6jgkc"]
 script = ExtResource("6_8gh2l")
 frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_2psuq"]
+script = ExtResource("6_8gh2l")
+frames_count = 14
 data = Dictionary[String, Variant]({
 "get_dash": false,
 "get_jump": false,
@@ -310,9 +1029,9 @@ data = Dictionary[String, Variant]({
 "is_on_floor_buffered": true
 })
 
-[sub_resource type="Resource" id="Resource_rrdxl"]
+[sub_resource type="Resource" id="Resource_e2q0a"]
 script = ExtResource("6_8gh2l")
-frames_count = 13
+frames_count = 2
 data = Dictionary[String, Variant]({
 "get_dash": false,
 "get_jump": false,
@@ -325,52 +1044,7 @@ data = Dictionary[String, Variant]({
 "is_on_floor_buffered": true
 })
 
-[sub_resource type="Resource" id="Resource_g6ldl"]
-script = ExtResource("6_8gh2l")
-frames_count = 7
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": 1.0,
-"get_move_left": false,
-"get_move_right": true,
-"is_on_floor": false,
-"is_on_floor_buffered": true
-})
-
-[sub_resource type="Resource" id="Resource_w5t7u"]
-script = ExtResource("6_8gh2l")
-frames_count = 8
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": 1.0,
-"get_move_left": false,
-"get_move_right": true,
-"is_on_floor": false,
-"is_on_floor_buffered": false
-})
-
-[sub_resource type="Resource" id="Resource_2vu7k"]
-script = ExtResource("6_8gh2l")
-frames_count = 1
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": 1.0,
-"get_move_left": false,
-"get_move_right": true,
-"is_on_floor": true,
-"is_on_floor_buffered": false
-})
-
-[sub_resource type="Resource" id="Resource_py0tf"]
+[sub_resource type="Resource" id="Resource_48tp8"]
 script = ExtResource("6_8gh2l")
 frames_count = 1
 data = Dictionary[String, Variant]({
@@ -385,7 +1059,7 @@ data = Dictionary[String, Variant]({
 "is_on_floor_buffered": true
 })
 
-[sub_resource type="Resource" id="Resource_jtrap"]
+[sub_resource type="Resource" id="Resource_555o0"]
 script = ExtResource("6_8gh2l")
 frames_count = 1
 data = Dictionary[String, Variant]({
@@ -400,7 +1074,262 @@ data = Dictionary[String, Variant]({
 "is_on_floor_buffered": true
 })
 
-[sub_resource type="Resource" id="Resource_mc8r5"]
+[sub_resource type="Resource" id="Resource_46nph"]
+script = ExtResource("6_8gh2l")
+frames_count = 8
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_f3run"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": true,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_wtcsc"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_rfh3d"]
+script = ExtResource("6_8gh2l")
+frames_count = 12
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_gsw3v"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_y84s4"]
+script = ExtResource("6_8gh2l")
+frames_count = 4
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_3466o"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": true,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_0og8a"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": true,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_u4q2b"]
+script = ExtResource("6_8gh2l")
+frames_count = 5
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_31saa"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": true,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_paqvj"]
+script = ExtResource("6_8gh2l")
+frames_count = 3
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_5f3km"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_lg7wr"]
+script = ExtResource("6_8gh2l")
+frames_count = 10
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_yejko"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_kmm0f"]
+script = ExtResource("6_8gh2l")
+frames_count = 4
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_co4kb"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": true,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_8vmm3"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": true,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_hccra"]
 script = ExtResource("6_8gh2l")
 frames_count = 7
 data = Dictionary[String, Variant]({
@@ -415,9 +1344,39 @@ data = Dictionary[String, Variant]({
 "is_on_floor_buffered": true
 })
 
-[sub_resource type="Resource" id="Resource_qc7qp"]
+[sub_resource type="Resource" id="Resource_2woaa"]
 script = ExtResource("6_8gh2l")
-frames_count = 9
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": true,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_w5r8a"]
+script = ExtResource("6_8gh2l")
+frames_count = 2
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_ow1qn"]
+script = ExtResource("6_8gh2l")
+frames_count = 2
 data = Dictionary[String, Variant]({
 "get_dash": false,
 "get_jump": false,
@@ -430,7 +1389,232 @@ data = Dictionary[String, Variant]({
 "is_on_floor_buffered": false
 })
 
-[sub_resource type="Resource" id="Resource_6e1k6"]
+[sub_resource type="Resource" id="Resource_u3tb4"]
+script = ExtResource("6_8gh2l")
+frames_count = 8
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_1qc1d"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_we8hw"]
+script = ExtResource("6_8gh2l")
+frames_count = 2
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_jt0kp"]
+script = ExtResource("6_8gh2l")
+frames_count = 2
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_h4h1g"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": true,
+"get_jump_buffered": true,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_iqxhn"]
+script = ExtResource("6_8gh2l")
+frames_count = 7
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_utjc4"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": true,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_18unq"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_gawbc"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_emmgl"]
+script = ExtResource("6_8gh2l")
+frames_count = 10
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_1n1tq"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_5cdcv"]
+script = ExtResource("6_8gh2l")
+frames_count = 3
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_2kfbl"]
+script = ExtResource("6_8gh2l")
+frames_count = 2
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_wovdk"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": true,
+"get_jump_buffered": true,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_jpi71"]
+script = ExtResource("6_8gh2l")
+frames_count = 10
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_0us3a"]
 script = ExtResource("6_8gh2l")
 frames_count = 1
 data = Dictionary[String, Variant]({
@@ -445,9 +1629,9 @@ data = Dictionary[String, Variant]({
 "is_on_floor_buffered": false
 })
 
-[sub_resource type="Resource" id="Resource_tqbn4"]
+[sub_resource type="Resource" id="Resource_s0j7y"]
 script = ExtResource("6_8gh2l")
-frames_count = 6
+frames_count = 2
 data = Dictionary[String, Variant]({
 "get_dash": false,
 "get_jump": false,
@@ -460,9 +1644,9 @@ data = Dictionary[String, Variant]({
 "is_on_floor_buffered": false
 })
 
-[sub_resource type="Resource" id="Resource_4sm6e"]
+[sub_resource type="Resource" id="Resource_rpg27"]
 script = ExtResource("6_8gh2l")
-frames_count = 7
+frames_count = 12
 data = Dictionary[String, Variant]({
 "get_dash": false,
 "get_jump": false,
@@ -475,7 +1659,22 @@ data = Dictionary[String, Variant]({
 "is_on_floor_buffered": false
 })
 
-[sub_resource type="Resource" id="Resource_wyk4q"]
+[sub_resource type="Resource" id="Resource_s4reu"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_qhet1"]
 script = ExtResource("6_8gh2l")
 frames_count = 2
 data = Dictionary[String, Variant]({
@@ -483,14 +1682,74 @@ data = Dictionary[String, Variant]({
 "get_jump": false,
 "get_jump_buffered": false,
 "get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_io4un"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": true,
+"get_jump_buffered": true,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_a4psx"]
+script = ExtResource("6_8gh2l")
+frames_count = 9
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_8m5tg"]
+script = ExtResource("6_8gh2l")
+frames_count = 2
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
 "is_on_floor": false,
 "is_on_floor_buffered": false
 })
 
-[sub_resource type="Resource" id="Resource_xp8yh"]
+[sub_resource type="Resource" id="Resource_1gxym"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": true,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_y2xh5"]
 script = ExtResource("6_8gh2l")
 frames_count = 1
 data = Dictionary[String, Variant]({
@@ -498,29 +1757,44 @@ data = Dictionary[String, Variant]({
 "get_jump": false,
 "get_jump_buffered": false,
 "get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": true,
+"get_move_dir": 1.0,
+"get_move_left": false,
+"get_move_right": true,
+"is_on_floor": false,
 "is_on_floor_buffered": false
 })
 
-[sub_resource type="Resource" id="Resource_htdle"]
+[sub_resource type="Resource" id="Resource_7img3"]
 script = ExtResource("6_8gh2l")
-frames_count = 4
+frames_count = 13
 data = Dictionary[String, Variant]({
 "get_dash": false,
 "get_jump": false,
 "get_jump_buffered": false,
 "get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
+"get_move_dir": 0.0,
+"get_move_left": false,
 "get_move_right": false,
-"is_on_floor": true,
-"is_on_floor_buffered": true
+"is_on_floor": false,
+"is_on_floor_buffered": false
 })
 
-[sub_resource type="Resource" id="Resource_up2ip"]
+[sub_resource type="Resource" id="Resource_un0mc"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_rouje"]
 script = ExtResource("6_8gh2l")
 frames_count = 1
 data = Dictionary[String, Variant]({
@@ -535,19 +1809,19 @@ data = Dictionary[String, Variant]({
 "is_on_floor_buffered": true
 })
 
-[sub_resource type="Resource" id="Resource_8mgp5"]
+[sub_resource type="Resource" id="Resource_ximlv"]
 script = ExtResource("6_ym7cv")
-start_pos = Vector2(0, 7.92402)
+start_pos = Vector2(184, 23.924)
+adjust_x_position_on_end = true
+target_x_position_on_end = 640.0
+data = Array[ExtResource("6_8gh2l")]([SubResource("Resource_6jgkc"), SubResource("Resource_2psuq"), SubResource("Resource_e2q0a"), SubResource("Resource_48tp8"), SubResource("Resource_555o0"), SubResource("Resource_46nph"), SubResource("Resource_f3run"), SubResource("Resource_wtcsc"), SubResource("Resource_rfh3d"), SubResource("Resource_gsw3v"), SubResource("Resource_y84s4"), SubResource("Resource_3466o"), SubResource("Resource_0og8a"), SubResource("Resource_u4q2b"), SubResource("Resource_31saa"), SubResource("Resource_paqvj"), SubResource("Resource_5f3km"), SubResource("Resource_lg7wr"), SubResource("Resource_yejko"), SubResource("Resource_kmm0f"), SubResource("Resource_co4kb"), SubResource("Resource_8vmm3"), SubResource("Resource_hccra"), SubResource("Resource_2woaa"), SubResource("Resource_w5r8a"), SubResource("Resource_ow1qn"), SubResource("Resource_u3tb4"), SubResource("Resource_1qc1d"), SubResource("Resource_we8hw"), SubResource("Resource_jt0kp"), SubResource("Resource_h4h1g"), SubResource("Resource_iqxhn"), SubResource("Resource_utjc4"), SubResource("Resource_18unq"), SubResource("Resource_gawbc"), SubResource("Resource_emmgl"), SubResource("Resource_1n1tq"), SubResource("Resource_5cdcv"), SubResource("Resource_2kfbl"), SubResource("Resource_wovdk"), SubResource("Resource_jpi71"), SubResource("Resource_0us3a"), SubResource("Resource_s0j7y"), SubResource("Resource_rpg27"), SubResource("Resource_s4reu"), SubResource("Resource_qhet1"), SubResource("Resource_io4un"), SubResource("Resource_a4psx"), SubResource("Resource_8m5tg"), SubResource("Resource_1gxym"), SubResource("Resource_y2xh5"), SubResource("Resource_7img3"), SubResource("Resource_un0mc"), SubResource("Resource_rouje")])
+
+[sub_resource type="Resource" id="Resource_3cul4"]
+script = ExtResource("6_ym7cv")
+start_pos = Vector2(640, -152.076)
 adjust_x_position_on_end = true
 target_x_position_on_end = 184.0
-data = Array[ExtResource("6_8gh2l")]([SubResource("Resource_hcr5e"), SubResource("Resource_rrdxl"), SubResource("Resource_g6ldl"), SubResource("Resource_w5t7u"), SubResource("Resource_2vu7k"), SubResource("Resource_py0tf"), SubResource("Resource_jtrap"), SubResource("Resource_mc8r5"), SubResource("Resource_qc7qp"), SubResource("Resource_6e1k6"), SubResource("Resource_tqbn4"), SubResource("Resource_4sm6e"), SubResource("Resource_wyk4q"), SubResource("Resource_xp8yh"), SubResource("Resource_htdle"), SubResource("Resource_up2ip")])
-
-[sub_resource type="Resource" id="Resource_uysjl"]
-script = ExtResource("6_ym7cv")
-start_pos = Vector2(184, 23.9253)
-adjust_x_position_on_end = true
-target_x_position_on_end = 0.0
-data = Array[ExtResource("6_8gh2l")]([SubResource("Resource_5feg2"), SubResource("Resource_72nk8"), SubResource("Resource_jfw3i"), SubResource("Resource_53uy3"), SubResource("Resource_r4jj3"), SubResource("Resource_ses4l"), SubResource("Resource_m4hsd"), SubResource("Resource_x77eb"), SubResource("Resource_nhi7f"), SubResource("Resource_kc6db"), SubResource("Resource_cpu7p"), SubResource("Resource_aa4mn"), SubResource("Resource_vncsr"), SubResource("Resource_kr6ob"), SubResource("Resource_myleo"), SubResource("Resource_nctdv"), SubResource("Resource_5eumj")])
+data = Array[ExtResource("6_8gh2l")]([SubResource("Resource_q63el"), SubResource("Resource_4onnr"), SubResource("Resource_ubysi"), SubResource("Resource_3vcdk"), SubResource("Resource_petm0"), SubResource("Resource_g35gs"), SubResource("Resource_5j1sa"), SubResource("Resource_v1177"), SubResource("Resource_tg5n0"), SubResource("Resource_iqq6n"), SubResource("Resource_daoiw"), SubResource("Resource_gypu3"), SubResource("Resource_c8w1j"), SubResource("Resource_v3hem"), SubResource("Resource_svae7"), SubResource("Resource_vl0hn"), SubResource("Resource_6gbxx"), SubResource("Resource_at1bw"), SubResource("Resource_jpkm2"), SubResource("Resource_xro6t"), SubResource("Resource_u2i75"), SubResource("Resource_eqawv"), SubResource("Resource_2xka1"), SubResource("Resource_40ci1"), SubResource("Resource_ngr2y"), SubResource("Resource_o5hg2"), SubResource("Resource_trdhr"), SubResource("Resource_vvdcj"), SubResource("Resource_qpg3f"), SubResource("Resource_n58ns")])
 
 [sub_resource type="Animation" id="Animation_o2hu2"]
 length = 0.001
@@ -611,17 +1885,20 @@ _data = {
 &"change": SubResource("Animation_qbkjl")
 }
 
-[node name="LevelSelection" type="Node2D" node_paths=PackedStringArray("current_level", "replay_controller")]
+[node name="LevelSelection" type="Node2D" node_paths=PackedStringArray("start_level", "replay_controller")]
 material = SubResource("ShaderMaterial_0vl0e")
 script = ExtResource("1_7qmai")
-current_level = NodePath("Level/Level1")
+start_level = NodePath("Level/Level1")
 replay_controller = NodePath("Player/ReplayPlayerController")
+debug_mode = true
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("controller")]
 use_parent_material = true
-position = Vector2(0, 7.92402)
-velocity = Vector2(100, 0)
+collision_layer = 4
+collision_mask = 3
+velocity = Vector2(-85, 0)
 script = ExtResource("4_270wt")
+controller = NodePath("ReplayPlayerController")
 metadata/_custom_type_script = "uid://hrc23450dtph"
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
@@ -632,7 +1909,8 @@ texture = ExtResource("8_hcr5e")
 script = ExtResource("5_qgt8i")
 state_machine = NodePath("../StateMachine")
 adjust_x_position_on_end = true
-replay_data = SubResource("Resource_dfvwf")
+target_x_position_on_end = 184.0
+replay_data = SubResource("Resource_oonr3")
 target = NodePath("..")
 coyote_time = 150.0
 max_throw_dist = 512.0
@@ -690,7 +1968,7 @@ tile_set = ExtResource("14_it5vw")
 
 [node name="Level" type="TileMapLayer" parent="."]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAAAAIAAAAxADAAAAABAAIAAAAyADAAAAAAAAMAAAAxADAAAAABAAMAAAAyADAAAAAAAAQAAAAxADAAAAABAAQAAAAyADAAAAAAAAUAAAAxADAAAAABAAUAAAAyADAAAAAAAAYAAAAxADAAAAABAAYAAAAyADAAAAD+/wIAAAAwADAAAAD//wIAAAAxADAAAAD+/wMAAAAwADAAAAD//wMAAAAxADAAAAD+/wQAAAAwADAAAAD//wQAAAAxADAAAAD+/wUAAAAwADAAAAD//wUAAAAxADAAAAD+/wYAAAAwADAAAAD//wYAAAAxADAAAAD+/wcAAAAwADAAAAD//wcAAAAxADAAAAAAAAcAAAAxADAAAAABAAcAAAAyADAAAAD+/wEAAAABAB4AAAD//wEAAAACAB8AAAAAAAEAAAADAB8AAAABAAEAAAAEAB8AAAD+/wgAAAAwADAAAAD//wgAAAAxADAAAAAAAAgAAAAxADAAAAABAAgAAAAyADAAAAD+/wkAAAAwADAAAAD//wkAAAAxADAAAAAAAAkAAAAxADAAAAABAAkAAAAyADAAAAAFAAYAAAAwADAAAAAFAAkAAAAwADAAAAAFAAgAAAAwADAAAAAFAAcAAAAwADAAAAAKAAQAAAAwADAAAAALAAQAAAAxADAAAAAMAAQAAAAyADAAAAAKAAUAAAAwADAAAAALAAUAAAAxADAAAAAMAAUAAAAyADAAAAAKAAYAAAAwADAAAAALAAYAAAAxADAAAAAMAAYAAAAyADAAAAAMAAcAAAAyADAAAAAMAAgAAAAyADAAAAALAAgAAAAxADAAAAALAAkAAAAxADAAAAAKAAkAAAAwADAAAAAKAAgAAAAwADAAAAAKAAcAAAAwADAAAAALAAcAAAAxADAAAAAMAAkAAAAyADAAAAAMAAMAAAAyAC8AAAALAAMAAAAxAC8AAAAKAAMAAAAwAC8AAAAKAAIAAAABAB8AAAALAAIAAAACAB8AAAAMAAIAAAAEAB4AAAAKAP7/AAAJACEAAAAKAP//AAAJACIAAAAKAAAAAAAJACMAAAAKAAEAAAAJACQAAAALAP7/AAAKACEAAAALAP//AAAKACIAAAALAAAAAAAKACMAAAALAAEAAAAKACQAAAD+////AAAJACMAAAD+/wAAAAAJACQAAAD/////AAAKACMAAAD//wAAAAAKACQAAAD+//7/AAAJACEAAAD///7/AAAKACEAAAAFAAUAAAAwADAAAAAFAAQAAAABAB8AAAAGAAkAAAAyADAAAAAGAAgAAAAyADAAAAAGAAcAAAAyADAAAAAGAAYAAAAyADAAAAAGAAUAAAAyADAAAAAGAAQAAAAEAB4AAAAQAAQAAAANACEAAAARAAQAAAAOACEAAAAQAAUAAAANACIAAAAQAAYAAAANACMAAAAQAAcAAAANACQAAAARAAUAAAAOACIAAAARAAYAAAAOACMAAAARAAcAAAAOACQAAAAQAAgAAAANACQAAAARAAgAAAAOACQAAAARAAkAAAAEAB8AAAAQAAkAAAACAB8AAAAPAAkAAAACAB8AAAAOAAkAAAACAB8AAAANAAkAAAACAB8AAAAJAAsAAAAlADcAAAAIAAsAAAAlADcAAAAHAAsAAAAlADcAAAAEAAsAAAAlADcAAAADAAsAAAAlADcAAAACAAsAAAAlADcAAAD9/wsAAAAlADcAAAD8/wsAAAAlADcAAAD7/wsAAAAlADcAAAD6/wsAAAAlADcAAAD5/wsAAAAlADcAAAD4/wsAAAAlADcAAAD3/wsAAAAlADcAAAD2/wsAAAAlADcAAAD1/wsAAAAlADcAAAD0/wsAAAAlADcAAADz/wsAAAAlADcAAADy/wsAAAAlADcAAAASAAsAAAAlADcAAAATAAsAAAAlADcAAAAUAAsAAAAlADcAAAAVAAsAAAAlADcAAAAWAAsAAAAlADcAAAAXAAsAAAAlADcAAAAYAAsAAAAlADcAAAAZAAsAAAAlADcAAAAaAAsAAAAlADcAAAAbAAsAAAAlADcAAAAcAAsAAAAlADcAAAAdAAsAAAAlADcAAADy/wwAAAAmADgAAADy/w0AAAAmADgAAADy/w4AAAAmADgAAADz/wwAAAAmADgAAADz/w0AAAAmADgAAADz/w4AAAAmADgAAAD0/wwAAAAmADgAAAD0/w0AAAAmADgAAAD0/w4AAAAmADgAAAD1/wwAAAAmADgAAAD1/w0AAAAmADgAAAD1/w4AAAAmADgAAAD2/wwAAAAmADgAAAD2/w0AAAAmADgAAAD2/w4AAAAmADgAAAD3/wwAAAAmADgAAAD3/w0AAAAmADgAAAD3/w4AAAAmADgAAAD4/wwAAAAmADgAAAD4/w0AAAAmADgAAAD4/w4AAAAmADgAAAD5/wwAAAAmADgAAAD5/w0AAAAmADgAAAD5/w4AAAAmADgAAAD6/wwAAAAmADgAAAD6/w0AAAAmADgAAAD6/w4AAAAmADgAAAD7/wwAAAAmADgAAAD7/w0AAAAmADgAAAD7/w4AAAAmADgAAAD8/wwAAAAmADgAAAD8/w0AAAAmADgAAAD8/w4AAAAmADgAAAD9/w4AAAAmADgAAAD9/wwAAAAmADgAAAD9/w0AAAAmADgAAAACAAwAAAAmADgAAAACAA0AAAAmADgAAAACAA4AAAAmADgAAAADAAwAAAAmADgAAAADAA0AAAAmADgAAAADAA4AAAAmADgAAAAEAAwAAAAmADgAAAAEAA0AAAAmADgAAAAEAA4AAAAmADgAAAAHAAwAAAAmADgAAAAHAA0AAAAmADgAAAAHAA4AAAAmADgAAAAIAAwAAAAmADgAAAAIAA0AAAAmADgAAAAIAA4AAAAmADgAAAAJAAwAAAAmADgAAAAJAA0AAAAmADgAAAAJAA4AAAAmADgAAAASAAwAAAAmADgAAAASAA0AAAAmADgAAAASAA4AAAAmADgAAAATAAwAAAAmADgAAAATAA0AAAAmADgAAAATAA4AAAAmADgAAAAUAAwAAAAmADgAAAAUAA0AAAAmADgAAAAUAA4AAAAmADgAAAAVAAwAAAAmADgAAAAVAA0AAAAmADgAAAAVAA4AAAAmADgAAAAWAAwAAAAmADgAAAAWAA0AAAAmADgAAAAWAA4AAAAmADgAAAAXAAwAAAAmADgAAAAXAA0AAAAmADgAAAAXAA4AAAAmADgAAAAYAAwAAAAmADgAAAAYAA0AAAAmADgAAAAYAA4AAAAmADgAAAAZAAwAAAAmADgAAAAZAA0AAAAmADgAAAAZAA4AAAAmADgAAAAaAAwAAAAmADgAAAAaAA0AAAAmADgAAAAaAA4AAAAmADgAAAAbAAwAAAAmADgAAAAbAA0AAAAmADgAAAAbAA4AAAAmADgAAAAcAAwAAAAmADgAAAAcAA0AAAAmADgAAAAcAA4AAAAmADgAAAAdAAwAAAAmADgAAAAdAA0AAAAmADgAAAAdAA4AAAAmADgAAAD+/woAAAAwADAAAAD//woAAAAxADAAAAAAAAoAAAAxADAAAAABAAoAAAAyADAAAAD+/wsAAAAwADAAAAD//wsAAAAxADAAAAAAAAsAAAAxADAAAAABAAsAAAAyADAAAAD+/wwAAAAwADAAAAD//wwAAAAxADAAAAAAAAwAAAAxADAAAAABAAwAAAAyADAAAAD+/w0AAAAwADAAAAD//w0AAAAxADAAAAAAAA0AAAAxADAAAAABAA0AAAAyADAAAAD+/w4AAAAwADAAAAD//w4AAAAxADAAAAAAAA4AAAAxADAAAAABAA4AAAAyADAAAAAKAAoAAAAwADAAAAALAAoAAAAxADAAAAAMAAoAAAAxADAAAAAKAAsAAAAwADAAAAALAAsAAAAxADAAAAAMAAsAAAAxADAAAAAKAAwAAAAwADAAAAALAAwAAAAxADAAAAAMAAwAAAAxADAAAAAKAA0AAAAwADAAAAALAA0AAAAxADAAAAAMAA0AAAAxADAAAAAKAA4AAAAwADAAAAALAA4AAAAxADAAAAAMAA4AAAAxADAAAAAFAAoAAAAwADAAAAAGAAoAAAAyADAAAAAFAAsAAAAwADAAAAAGAAsAAAAyADAAAAAFAAwAAAAwADAAAAAGAAwAAAAyADAAAAAFAA0AAAAwADAAAAAGAA0AAAAyADAAAAAFAA4AAAAwADAAAAAGAA4AAAAyADAAAAANAA4AAAAxADAAAAAOAA4AAAAxADAAAAAPAA4AAAAxADAAAAAQAA4AAAAxADAAAAAQAA0AAAAxADAAAAAQAAwAAAAxADAAAAAQAAsAAAAxADAAAAAQAAoAAAAxADAAAAAPAAoAAAAxADAAAAAOAAoAAAAxADAAAAANAAoAAAAxADAAAAANAAsAAAAxADAAAAANAAwAAAAxADAAAAANAA0AAAAxADAAAAAOAA0AAAAxADAAAAAPAA0AAAAxADAAAAAPAAwAAAAxADAAAAAPAAsAAAAxADAAAAAOAAsAAAAxADAAAAAOAAwAAAAxADAAAAARAAoAAAAyADAAAAARAAsAAAAyADAAAAARAAwAAAAyADAAAAARAA0AAAAyADAAAAARAA4AAAAyADAAAAAPAAAAAAAFAFwAAAAQAAAAAAAHAFwAAAAUAP//AAAEAFwAAAA=")
+tile_map_data = PackedByteArray("AAAAAAIAAAAxADAAAAABAAIAAAAyADAAAAAAAAMAAAAxADAAAAABAAMAAAAyADAAAAAAAAQAAAAxADAAAAABAAQAAAAyADAAAAAAAAUAAAAxADAAAAABAAUAAAAyADAAAAAAAAYAAAAxADAAAAABAAYAAAAyADAAAAD+/wIAAAAwADAAAAD//wIAAAAxADAAAAD+/wMAAAAwADAAAAD//wMAAAAxADAAAAD+/wQAAAAwADAAAAD//wQAAAAxADAAAAD+/wUAAAAwADAAAAD//wUAAAAxADAAAAD+/wYAAAAwADAAAAD//wYAAAAxADAAAAD+/wcAAAAwADAAAAD//wcAAAAxADAAAAAAAAcAAAAxADAAAAABAAcAAAAyADAAAAD+/wEAAAABAB4AAAD//wEAAAACAB8AAAAAAAEAAAADAB8AAAABAAEAAAAEAB8AAAD+/wgAAAAwADAAAAD//wgAAAAxADAAAAAAAAgAAAAxADAAAAABAAgAAAAyADAAAAD+/wkAAAAwADAAAAD//wkAAAAxADAAAAAAAAkAAAAxADAAAAABAAkAAAAyADAAAAAFAAYAAAAwADAAAAAFAAkAAAAwADAAAAAFAAgAAAAwADAAAAAFAAcAAAAwADAAAAAKAAQAAAAwADAAAAALAAQAAAAxADAAAAAMAAQAAAAyADAAAAAKAAUAAAAwADAAAAALAAUAAAAxADAAAAAMAAUAAAAyADAAAAAKAAYAAAAwADAAAAALAAYAAAAxADAAAAAMAAYAAAAyADAAAAAMAAcAAAAyADAAAAAMAAgAAAAyADAAAAALAAgAAAAxADAAAAALAAkAAAAxADAAAAAKAAkAAAAwADAAAAAKAAgAAAAwADAAAAAKAAcAAAAwADAAAAALAAcAAAAxADAAAAAMAAkAAAAyADAAAAAMAAMAAAAyAC8AAAALAAMAAAAxAC8AAAAKAAMAAAAwAC8AAAAKAAIAAAABAB8AAAALAAIAAAACAB8AAAAMAAIAAAAEAB4AAAAKAP7/AAAJACEAAAAKAP//AAAJACIAAAAKAAAAAAAJACMAAAAKAAEAAAAJACQAAAALAP7/AAAKACEAAAALAP//AAAKACIAAAALAAAAAAAKACMAAAALAAEAAAAKACQAAAD+////AAAJACMAAAD+/wAAAAAJACQAAAD/////AAAKACMAAAD//wAAAAAKACQAAAD+//7/AAAJACEAAAD///7/AAAKACEAAAAFAAUAAAAwADAAAAAFAAQAAAABAB8AAAAGAAkAAAAyADAAAAAGAAgAAAAyADAAAAAGAAcAAAAyADAAAAAGAAYAAAAyADAAAAAGAAUAAAAyADAAAAAGAAQAAAAEAB4AAAAQAAQAAAANACEAAAARAAQAAAAOACEAAAAQAAUAAAANACIAAAAQAAYAAAANACMAAAAQAAcAAAANACQAAAARAAUAAAAOACIAAAARAAYAAAAOACMAAAARAAcAAAAOACQAAAAQAAgAAAANACQAAAARAAgAAAAOACQAAAARAAkAAAAEAB8AAAAQAAkAAAACAB8AAAAPAAkAAAACAB8AAAAOAAkAAAACAB8AAAANAAkAAAACAB8AAAAJAAsAAAAlADcAAAAIAAsAAAAlADcAAAAHAAsAAAAlADcAAAAEAAsAAAAlADcAAAADAAsAAAAlADcAAAACAAsAAAAlADcAAAD9/wsAAAAlADcAAAD8/wsAAAAlADcAAAD7/wsAAAAlADcAAAD6/wsAAAAlADcAAAD5/wsAAAAlADcAAAD4/wsAAAAlADcAAAD3/wsAAAAlADcAAAD2/wsAAAAlADcAAAD1/wsAAAAlADcAAAD0/wsAAAAlADcAAADz/wsAAAAlADcAAADy/wsAAAAlADcAAAASAAsAAAAlADcAAAATAAsAAAAlADcAAAAUAAsAAAAlADcAAAAVAAsAAAAlADcAAAAWAAsAAAAlADcAAAAXAAsAAAAlADcAAAAYAAsAAAAlADcAAAAZAAsAAAAlADcAAAAaAAsAAAAlADcAAAAbAAsAAAAlADcAAAAcAAsAAAAlADcAAAAdAAsAAAAlADcAAADy/wwAAAAmADgAAADy/w0AAAAmADgAAADy/w4AAAAmADgAAADz/wwAAAAmADgAAADz/w0AAAAmADgAAADz/w4AAAAmADgAAAD0/wwAAAAmADgAAAD0/w0AAAAmADgAAAD0/w4AAAAmADgAAAD1/wwAAAAmADgAAAD1/w0AAAAmADgAAAD1/w4AAAAmADgAAAD2/wwAAAAmADgAAAD2/w0AAAAmADgAAAD2/w4AAAAmADgAAAD3/wwAAAAmADgAAAD3/w0AAAAmADgAAAD3/w4AAAAmADgAAAD4/wwAAAAmADgAAAD4/w0AAAAmADgAAAD4/w4AAAAmADgAAAD5/wwAAAAmADgAAAD5/w0AAAAmADgAAAD5/w4AAAAmADgAAAD6/wwAAAAmADgAAAD6/w0AAAAmADgAAAD6/w4AAAAmADgAAAD7/wwAAAAmADgAAAD7/w0AAAAmADgAAAD7/w4AAAAmADgAAAD8/wwAAAAmADgAAAD8/w0AAAAmADgAAAD8/w4AAAAmADgAAAD9/w4AAAAmADgAAAD9/wwAAAAmADgAAAD9/w0AAAAmADgAAAACAAwAAAAmADgAAAACAA0AAAAmADgAAAACAA4AAAAmADgAAAADAAwAAAAmADgAAAADAA0AAAAmADgAAAADAA4AAAAmADgAAAAEAAwAAAAmADgAAAAEAA0AAAAmADgAAAAEAA4AAAAmADgAAAAHAAwAAAAmADgAAAAHAA0AAAAmADgAAAAHAA4AAAAmADgAAAAIAAwAAAAmADgAAAAIAA0AAAAmADgAAAAIAA4AAAAmADgAAAAJAAwAAAAmADgAAAAJAA0AAAAmADgAAAAJAA4AAAAmADgAAAASAAwAAAAmADgAAAASAA0AAAAmADgAAAASAA4AAAAmADgAAAATAAwAAAAmADgAAAATAA0AAAAmADgAAAATAA4AAAAmADgAAAAUAAwAAAAmADgAAAAUAA0AAAAmADgAAAAUAA4AAAAmADgAAAAVAAwAAAAmADgAAAAVAA0AAAAmADgAAAAVAA4AAAAmADgAAAAWAAwAAAAmADgAAAAWAA0AAAAmADgAAAAWAA4AAAAmADgAAAAXAAwAAAAmADgAAAAXAA0AAAAmADgAAAAXAA4AAAAmADgAAAAYAAwAAAAmADgAAAAYAA0AAAAmADgAAAAYAA4AAAAmADgAAAAZAAwAAAAmADgAAAAZAA0AAAAmADgAAAAZAA4AAAAmADgAAAAaAAwAAAAmADgAAAAaAA0AAAAmADgAAAAaAA4AAAAmADgAAAAbAAwAAAAmADgAAAAbAA0AAAAmADgAAAAbAA4AAAAmADgAAAAcAAwAAAAmADgAAAAcAA0AAAAmADgAAAAcAA4AAAAmADgAAAAdAAwAAAAmADgAAAAdAA0AAAAmADgAAAAdAA4AAAAmADgAAAD+/woAAAAwADAAAAD//woAAAAxADAAAAAAAAoAAAAxADAAAAABAAoAAAAyADAAAAD+/wsAAAAwADAAAAD//wsAAAAxADAAAAAAAAsAAAAxADAAAAABAAsAAAAyADAAAAD+/wwAAAAwADAAAAD//wwAAAAxADAAAAAAAAwAAAAxADAAAAABAAwAAAAyADAAAAD+/w0AAAAwADAAAAD//w0AAAAxADAAAAAAAA0AAAAxADAAAAABAA0AAAAyADAAAAD+/w4AAAAwADAAAAD//w4AAAAxADAAAAAAAA4AAAAxADAAAAABAA4AAAAyADAAAAAKAAoAAAAwADAAAAALAAoAAAAxADAAAAAMAAoAAAAxADAAAAAKAAsAAAAwADAAAAALAAsAAAAxADAAAAAMAAsAAAAxADAAAAAKAAwAAAAwADAAAAALAAwAAAAxADAAAAAMAAwAAAAxADAAAAAKAA0AAAAwADAAAAALAA0AAAAxADAAAAAMAA0AAAAxADAAAAAKAA4AAAAwADAAAAALAA4AAAAxADAAAAAMAA4AAAAxADAAAAAFAAoAAAAwADAAAAAGAAoAAAAyADAAAAAFAAsAAAAwADAAAAAGAAsAAAAyADAAAAAFAAwAAAAwADAAAAAGAAwAAAAyADAAAAAFAA0AAAAwADAAAAAGAA0AAAAyADAAAAAFAA4AAAAwADAAAAAGAA4AAAAyADAAAAANAA4AAAAxADAAAAAOAA4AAAAxADAAAAAPAA4AAAAxADAAAAAQAA4AAAAxADAAAAAQAA0AAAAxADAAAAAQAAwAAAAxADAAAAAQAAsAAAAxADAAAAAQAAoAAAAxADAAAAAPAAoAAAAxADAAAAAOAAoAAAAxADAAAAANAAoAAAAxADAAAAANAAsAAAAxADAAAAANAAwAAAAxADAAAAANAA0AAAAxADAAAAAOAA0AAAAxADAAAAAPAA0AAAAxADAAAAAPAAwAAAAxADAAAAAPAAsAAAAxADAAAAAOAAsAAAAxADAAAAAOAAwAAAAxADAAAAARAAoAAAAyADAAAAARAAsAAAAyADAAAAARAAwAAAAyADAAAAARAA0AAAAyADAAAAARAA4AAAAyADAAAAAPAAAAAAAFAFwAAAAQAAAAAAAHAFwAAAAUAP//AAAEAFwAAAAYAP3/AAAFAFwAAAAZAP3/AAAHAFwAAAAcAPv/AAAFAFwAAAAdAPz/AAAFAF8AAAAdAPv/AAAGAF0AAAAeAPv/AAAHAF0AAAAeAPz/AAAHAF8AAAAhAPn/AAAFAFwAAAAiAPn/AAAHAFwAAAAmAPf/AAAEAF0AAAAnAPj/AAAGAF0AAAAoAPj/AAAGAF0AAAApAPf/AAAEAF0AAAAnAPf/AAABAB8AAAAoAPf/AAAEAB8AAAAnAPb/AAALAB0AAAAmAPj/AAAFAF8AAAApAPj/AAAHAF8AAAAnAPn/AAAFAF8AAAAoAPn/AAAHAF8AAAA=")
 tile_set = ExtResource("14_it5vw")
 
 [node name="Level1" parent="Level" node_paths=PackedStringArray("relationships") instance=ExtResource("2_5iw0q")]
@@ -709,10 +1987,22 @@ position = Vector2(184, 32)
 number = 2
 scene = ExtResource("18_gxsst")
 relationships = {
-Vector2i(-1, 0): NodePath("../Level1")
+Vector2i(-1, 0): NodePath("../Level1"),
+Vector2i(1, 0): NodePath("../Level3")
 }
 player_replays = Dictionary[Vector2i, ExtResource("6_ym7cv")]({
-Vector2i(-1, 0): SubResource("Resource_uysjl")
+Vector2i(-1, 0): SubResource("Resource_uysjl"),
+Vector2i(1, 0): SubResource("Resource_ximlv")
+})
+
+[node name="Level3" parent="Level" node_paths=PackedStringArray("relationships") instance=ExtResource("2_5iw0q")]
+position = Vector2(640, -144)
+number = 3
+relationships = {
+Vector2i(-1, 0): NodePath("../Level2")
+}
+player_replays = Dictionary[Vector2i, ExtResource("6_ym7cv")]({
+Vector2i(-1, 0): SubResource("Resource_3cul4")
 })
 
 [node name="Move" type="Panel" parent="Level"]
@@ -886,4 +2176,7 @@ drag_right_margin = 0.1
 editor_draw_drag_margin = true
 script = ExtResource("15_vnfxq")
 folow = NodePath("../Player")
-folow_speed = Vector2(500, 0)
+folow_speed = Vector2(250, 250)
+limits = Dictionary[Vector2i, float]({
+Vector2i(0, 1): 0.0
+})

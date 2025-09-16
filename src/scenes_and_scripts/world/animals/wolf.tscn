@@ -1,12 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://c2xrsqj6px78r"]
+[gd_scene load_steps=15 format=3 uid="uid://c2xrsqj6px78r"]
 
 [ext_resource type="PackedScene" uid="uid://dha80pofmwp6e" path="res://scenes_and_scripts/world/animals/animal.tscn" id="1_ob360"]
 [ext_resource type="Texture2D" uid="uid://dst17rdwer7by" path="res://assets/sprites/animals/MiniWolf.png" id="2_4al75"]
 [ext_resource type="AudioStream" uid="uid://b54hlq1sif50r" path="res://assets/SFX/folder/fire_3.wav" id="3_4al75"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ob360"]
-atlas = ExtResource("2_4al75")
-region = Rect2(0, 144, 32, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4al75"]
 atlas = ExtResource("2_4al75")
@@ -51,9 +47,6 @@ region = Rect2(160, 48, 32, 16)
 [sub_resource type="SpriteFrames" id="SpriteFrames_xw531"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ob360")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4al75")
 }, {
@@ -106,6 +99,7 @@ run_speed = 6300.0
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_xw531")
+animation = &"idle"
 
 [node name="CollisionShape2D" parent="Raycasts/EnemyArea" index="0"]
 position = Vector2(45, -9.75)
