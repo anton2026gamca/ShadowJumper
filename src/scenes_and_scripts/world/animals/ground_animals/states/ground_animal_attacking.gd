@@ -1,19 +1,21 @@
 extends State
-class_name AnimalAttacking
+class_name GroundAnimalAttacking
 
 
-@onready var target: Animal = $"../.."
-@onready var sprite: AnimatedSprite2D = $"../../AnimatedSprite2D"
+@export var target: GroundAnimal
+@export var sprite: AnimatedSprite2D
 
-@onready var enemy_area: Area2D = $"../../Raycasts/EnemyArea"
-@onready var ground: RayCast2D = $"../../Raycasts/Ground"
-@onready var wall: RayCast2D = $"../../Raycasts/Wall"
-@onready var hit_start_area: Area2D = $"../../Raycasts/HitStartArea"
-@onready var hit_range_area: Area2D = $"../../Raycasts/HitRangeArea"
-@onready var raycasts: Node2D = $"../../Raycasts"
+@export_group("Physics")
+@export var physics_parent: Node2D
+@export var enemy_area: Area2D
+@export var ground: RayCast2D
+@export var wall: RayCast2D
+@export var hit_start_area: Area2D
+@export var hit_range_area: Area2D
 
-@onready var attacking_audio: AudioStreamPlayer2D = $"../../AttackingAudio"
-@onready var attack_audio: AudioStreamPlayer2D = $"../../AttackAudio"
+@export_group("SFX")
+@export var attacking_audio: AudioStreamPlayer2D
+@export var attack_audio: AudioStreamPlayer2D
 
 var paused: bool = false
 
@@ -26,7 +28,7 @@ func process(delta: float) -> Variant:
 	var bodies: Array[Node2D] = enemy_area.get_overlapping_bodies()
 	var player_index: int = bodies.find_custom(func(body: Node2D) -> bool: return body is Player)
 	if player_index < 0:
-		return AnimalSearching
+		return GroundAnimalSearching
 	var player: Player = bodies[player_index]
 	
 	if not ground.is_colliding() or wall.is_colliding():
@@ -37,12 +39,12 @@ func process(delta: float) -> Variant:
 		if idle_time > 2:
 			enemy_area.monitoring = false
 			get_tree().create_timer(3.0).timeout.connect(resume_monitoring)
-			return AnimalSearching
+			return GroundAnimalSearching
 	else:
 		sprite.play("move", 1.5)
 		var dir: int = Vector2(player.position.x - target.position.x, 0.0).normalized().x
 		sprite.flip_h = dir < 0
-		raycasts.scale.x = dir
+		physics_parent.scale.x = dir
 		target.velocity.x = target.get_run_speed() * dir * delta
 		target.velocity.y += target.get_gravity().y * 2 * delta
 		idle_time = 0

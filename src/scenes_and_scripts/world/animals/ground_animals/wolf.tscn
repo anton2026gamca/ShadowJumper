@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://c2xrsqj6px78r"]
+[gd_scene load_steps=18 format=3 uid="uid://c2xrsqj6px78r"]
 
-[ext_resource type="PackedScene" uid="uid://dha80pofmwp6e" path="res://scenes_and_scripts/world/animals/animal.tscn" id="1_ob360"]
+[ext_resource type="PackedScene" uid="uid://blqn31o20wf5k" path="res://scenes_and_scripts/world/animals/ground_animals/ground_animal.tscn" id="1_ob360"]
 [ext_resource type="Texture2D" uid="uid://dst17rdwer7by" path="res://assets/sprites/animals/MiniWolf.png" id="2_4al75"]
 [ext_resource type="AudioStream" uid="uid://b54hlq1sif50r" path="res://assets/SFX/folder/fire_3.wav" id="3_4al75"]
 
@@ -92,6 +92,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vp7k5"]
+size = Vector2(390, 78.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5878v"]
+size = Vector2(28.5, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vmc2"]
+size = Vector2(48, 44)
+
 [node name="Wolf" instance=ExtResource("1_ob360")]
 player_die_reason = "A wolf knocked you to the ground really hard!"
 walk_speed = 1200.0
@@ -101,18 +110,14 @@ run_speed = 6300.0
 sprite_frames = SubResource("SpriteFrames_xw531")
 animation = &"idle"
 
-[node name="CollisionShape2D" parent="Raycasts/EnemyArea" index="0"]
-position = Vector2(45, -9.75)
+[node name="CollisionShape2D" parent="Physics/EnemyArea" index="0"]
+shape = SubResource("RectangleShape2D_vp7k5")
 
-[node name="CollisionShape2D" parent="Raycasts/HitStartArea" index="0"]
-position = Vector2(13.75, -14)
+[node name="CollisionShape2D" parent="Physics/HitStartArea" index="0"]
+shape = SubResource("RectangleShape2D_5878v")
 
-[node name="CollisionShape2D" parent="Raycasts/HitRangeArea" index="0"]
-position = Vector2(21, -19)
+[node name="CollisionShape2D" parent="Physics/HitRangeArea" index="0"]
+shape = SubResource("RectangleShape2D_5vmc2")
 
 [node name="AttackAudio" parent="." index="5"]
 stream = ExtResource("3_4al75")
-
-[node name="VisibleOnScreenEnabler2D" parent="." index="6"]
-position = Vector2(45, -9.5)
-scale = Vector2(19.8, 4.25)

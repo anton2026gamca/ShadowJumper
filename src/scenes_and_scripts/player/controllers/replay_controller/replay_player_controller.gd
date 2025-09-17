@@ -31,7 +31,20 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_recording:
-		const functions: Array[String] = ["get_move_left", "get_move_right", "get_move_dir", "get_jump", "get_jump_released", "get_jump_buffered", "get_dash", "is_on_floor", "is_on_floor_buffered"]
+		const functions: Array[String] = [
+			"get_move_left",
+			"get_move_right",
+			"get_move_dir",
+			"get_jump",
+			"get_jump_released",
+			"get_jump_buffered",
+			"get_dash",
+			"is_on_floor",
+			"is_on_floor_buffered",
+			"climb_lader_up",
+			"climb_lader_down",
+			"climb_lader_dir"
+		]
 		var function_returns: Dictionary[String, Variant] = {}
 		for fun: String in functions:
 			function_returns[fun] = Callable(self, fun).call()
@@ -165,3 +178,24 @@ func is_on_floor_buffered() -> bool:
 	if is_replaying:
 		return current_frame_data.data["is_on_floor_buffered"]
 	return super.is_on_floor_buffered()
+
+func get_climb_lader_up() -> bool:
+	if is_recording:
+		return Input.is_action_pressed("lader_climb_up")
+	if is_replaying:
+		return current_frame_data.data["lader_climb_up"] | false
+	return false
+
+func get_climb_lader_down() -> bool:
+	if is_recording:
+		return Input.is_action_pressed("lader_climb_down")
+	if is_replaying:
+		return current_frame_data.data["lader_climb_down"] | false
+	return false
+
+func get_climb_lader_dir() -> int:
+	if is_recording:
+		return Input.get_axis("lader_climb_up", "lader_climb_down")
+	if is_replaying:
+		return current_frame_data.data["lader_climb_dir"] | 0
+	return false

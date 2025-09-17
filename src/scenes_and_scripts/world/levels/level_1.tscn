@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://dhd8v7a51hwsm" path="res://scenes_and_scripts/folower.gd" id="3_vp6c5"]
 [ext_resource type="TileSet" uid="uid://8h4fm7v55cnx" path="res://assets/tileset.tres" id="4_wcekq"]
 [ext_resource type="PackedScene" uid="uid://f5m7vw1vj4fd" path="res://scenes_and_scripts/player/player.tscn" id="5_myw5i"]
-[ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/fox.tscn" id="6_go7g5"]
-[ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/boar.tscn" id="7_vp6c5"]
+[ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/ground_animals/fox.tscn" id="6_go7g5"]
+[ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/ground_animals/boar.tscn" id="7_vp6c5"]
 [ext_resource type="PackedScene" uid="uid://6twg4nqjueyw" path="res://scenes_and_scripts/world/levels/finish.tscn" id="8_wcekq"]
 [ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="9_sqshv"]
 

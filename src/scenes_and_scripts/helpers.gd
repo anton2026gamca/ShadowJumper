@@ -1,9 +1,20 @@
 extends Node
-class_name Helpers
 
 
-static func find_child_by_type(parent: Node, type: Variant) -> Node:
+func find_child_by_type(parent: Node, type: Variant) -> Node:
 	for child in parent.get_children():
 		if is_instance_of(child, type):
 			return child
 	return null
+
+func get_nearest_node_in_group(from_pos: Vector2, group: String) -> Node2D:
+	var nearest: Node2D = null
+	var nearest_distance: float = INF
+	for node: Node in get_tree().get_nodes_in_group(group):
+		if not node is Node2D:
+			return
+		var dist: float = from_pos.distance_squared_to(node.global_position)
+		if dist < nearest_distance:
+			nearest_distance = dist
+			nearest = node
+	return nearest

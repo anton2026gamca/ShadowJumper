@@ -5,10 +5,10 @@
 [ext_resource type="Script" uid="uid://dhd8v7a51hwsm" path="res://scenes_and_scripts/folower.gd" id="3_4mss6"]
 [ext_resource type="TileSet" uid="uid://8h4fm7v55cnx" path="res://assets/tileset.tres" id="4_0husi"]
 [ext_resource type="PackedScene" uid="uid://f5m7vw1vj4fd" path="res://scenes_and_scripts/player/player.tscn" id="5_cywes"]
-[ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/fox.tscn" id="7_au23b"]
+[ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/ground_animals/fox.tscn" id="7_au23b"]
 [ext_resource type="PackedScene" uid="uid://6twg4nqjueyw" path="res://scenes_and_scripts/world/levels/finish.tscn" id="8_0husi"]
-[ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/boar.tscn" id="8_4mss6"]
-[ext_resource type="PackedScene" uid="uid://c2xrsqj6px78r" path="res://scenes_and_scripts/world/animals/wolf.tscn" id="8_cywes"]
+[ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/ground_animals/boar.tscn" id="8_4mss6"]
+[ext_resource type="PackedScene" uid="uid://c2xrsqj6px78r" path="res://scenes_and_scripts/world/animals/ground_animals/wolf.tscn" id="8_cywes"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_au23b"]
 shader = ExtResource("1_njod4")

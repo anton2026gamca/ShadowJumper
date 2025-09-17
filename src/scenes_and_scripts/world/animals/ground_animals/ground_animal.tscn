@@ -1,0 +1,116 @@
+[gd_scene load_steps=9 format=3 uid="uid://blqn31o20wf5k"]
+
+[ext_resource type="Script" uid="uid://cb1rqy15canxb" path="res://scenes_and_scripts/world/animals/ground_animals/ground_animal.gd" id="1_ajlb7"]
+[ext_resource type="PackedScene" uid="uid://cjdb2ap3qdyt5" path="res://scenes_and_scripts/world/animals/animal.tscn" id="1_tqwpi"]
+[ext_resource type="Script" uid="uid://dly1y5lca6fuj" path="res://scenes_and_scripts/world/animals/ground_animals/states/ground_animal_searching.gd" id="3_vjuit"]
+[ext_resource type="Script" uid="uid://rat5qcmwg87d" path="res://scenes_and_scripts/world/animals/ground_animals/states/ground_animal_attacking.gd" id="4_kja6p"]
+[ext_resource type="AudioStream" uid="uid://ipx0cloc2jbb" path="res://assets/SFX/folder/tidal_wave.wav" id="5_etv1c"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4aqc"]
+radius = 5.0
+height = 16.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c4aqc"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8c020"]
+size = Vector2(390, 78.5)
+
+[node name="GroundAnimal" instance=ExtResource("1_tqwpi")]
+script = ExtResource("1_ajlb7")
+player_die_reason = ""
+walk_speed = 0.0
+run_speed = 0.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_c4aqc")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_c4aqc")
+animation = &"attack"
+
+[node name="StateMachine" parent="." index="2" node_paths=PackedStringArray("current_state")]
+current_state = NodePath("GroundAnimalSearching")
+
+[node name="GroundAnimalSearching" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("target", "sprite", "physics_parent", "ground", "wall", "enemy_area", "attacking_audio")]
+script = ExtResource("3_vjuit")
+target = NodePath("../..")
+sprite = NodePath("../../AnimatedSprite2D")
+physics_parent = NodePath("../../Physics")
+ground = NodePath("../../Physics/Ground")
+wall = NodePath("../../Physics/Wall")
+enemy_area = NodePath("../../Physics/EnemyArea")
+attacking_audio = NodePath("../../AttackingAudio")
+metadata/_custom_type_script = "uid://dly1y5lca6fuj"
+
+[node name="GroundAnimalAttacking" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("target", "sprite", "physics_parent", "enemy_area", "ground", "wall", "hit_start_area", "hit_range_area", "attacking_audio", "attack_audio")]
+script = ExtResource("4_kja6p")
+target = NodePath("../..")
+sprite = NodePath("../../AnimatedSprite2D")
+physics_parent = NodePath("../../Physics")
+enemy_area = NodePath("../../Physics/EnemyArea")
+ground = NodePath("../../Physics/Ground")
+wall = NodePath("../../Physics/Wall")
+hit_start_area = NodePath("../../Physics/HitStartArea")
+hit_range_area = NodePath("../../Physics/HitRangeArea")
+attacking_audio = NodePath("../../AttackingAudio")
+attack_audio = NodePath("../../AttackAudio")
+metadata/_custom_type_script = "uid://rat5qcmwg87d"
+
+[node name="Physics" type="Node2D" parent="." index="3"]
+
+[node name="Ground" type="RayCast2D" parent="Physics" index="0"]
+position = Vector2(7, 0)
+target_position = Vector2(0, 7)
+
+[node name="Wall" type="RayCast2D" parent="Physics" index="1"]
+position = Vector2(0, -5)
+target_position = Vector2(10, 0)
+
+[node name="EnemyArea" type="Area2D" parent="Physics" index="2"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Physics/EnemyArea" index="0"]
+position = Vector2(80, 0)
+shape = SubResource("RectangleShape2D_8c020")
+
+[node name="HitStartArea" type="Area2D" parent="Physics" index="3"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Physics/HitStartArea" index="0"]
+position = Vector2(8, -6.5)
+
+[node name="HitRangeArea" type="Area2D" parent="Physics" index="4"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Physics/HitRangeArea" index="0"]
+position = Vector2(9.5, -7.5)
+
+[node name="AttackingAudio" type="AudioStreamPlayer2D" parent="." index="4"]
+stream = ExtResource("5_etv1c")
+volume_db = -30.646
+
+[node name="AttackAudio" type="AudioStreamPlayer2D" parent="." index="5"]
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." index="6"]
+position = Vector2(80, 1.90735e-06)
+scale = Vector2(19.7, 4.1)

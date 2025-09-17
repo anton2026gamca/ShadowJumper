@@ -24,6 +24,7 @@ config/icon="uid://d3tvi8n1gvnj"
 Settings="*res://scenes_and_scripts/settings/settings.gd"
 LevelLoader="*res://scenes_and_scripts/world/level_loader/level_loader.tscn"
 Music="*res://scenes_and_scripts/music.tscn"
+Helpers="*res://scenes_and_scripts/helpers.gd"
 
 [display]
 
@@ -56,6 +57,7 @@ folder_colors={
 [global_group]
 
 Mushrooms=""
+Player=""
 
 [input]
 

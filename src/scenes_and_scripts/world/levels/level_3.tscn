@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cr6bahr2qcew0"]
+[gd_scene load_steps=11 format=4 uid="uid://cr6bahr2qcew0"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world/level_selection/world.gdshader" id="1_cffxb"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="1_q3src"]
@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://8h4fm7v55cnx" path="res://assets/tileset.tres" id="3_g5d4h"]
 [ext_resource type="PackedScene" uid="uid://f5m7vw1vj4fd" path="res://scenes_and_scripts/player/player.tscn" id="4_xd2tb"]
 [ext_resource type="PackedScene" uid="uid://6twg4nqjueyw" path="res://scenes_and_scripts/world/levels/finish.tscn" id="5_4x3kg"]
+[ext_resource type="PackedScene" uid="uid://cd7yubqxtcw2v" path="res://scenes_and_scripts/world/animals/bee/bee.tscn" id="7_g5d4h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cffxb"]
 shader = ExtResource("1_cffxb")
@@ -66,7 +67,11 @@ shape = SubResource("WorldBoundaryShape2D_443ir")
 shape = SubResource("WorldBoundaryShape2D_u6qt4")
 
 [node name="Finish" parent="Level" instance=ExtResource("5_4x3kg")]
-position = Vector2(2500, 0)
+position = Vector2(1405, -128)
+
+[node name="Bee" parent="Level" instance=ExtResource("7_g5d4h")]
+position = Vector2(240, -58)
+fly_speed = 250.0
 
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]

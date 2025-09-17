@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dufpmtr0u2cjm"]
 
-[ext_resource type="PackedScene" uid="uid://dha80pofmwp6e" path="res://scenes_and_scripts/world/animals/animal.tscn" id="1_kqisn"]
+[ext_resource type="PackedScene" uid="uid://blqn31o20wf5k" path="res://scenes_and_scripts/world/animals/ground_animals/ground_animal.tscn" id="1_kqisn"]
 [ext_resource type="Texture2D" uid="uid://cmnrdlbkrcgec" path="res://assets/sprites/animals/MiniBoar.png" id="2_vvgje"]
 [ext_resource type="AudioStream" uid="uid://bcidwrcvmuq3a" path="res://assets/SFX/explosion.wav" id="4_348gh"]
 
@@ -71,14 +71,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8yuts"]
-size = Vector2(384, 79.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxfw8"]
+size = Vector2(390, 78.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvgje"]
-size = Vector2(20.5, 26)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlr3l"]
+size = Vector2(22.25, 20.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_348gh"]
-size = Vector2(39, 39)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5g0xv"]
+size = Vector2(39.5, 34.5)
 
 [node name="Boar" instance=ExtResource("1_kqisn")]
 player_die_reason = "A boar killed you!"
@@ -89,27 +89,19 @@ run_speed = 3000.0
 sprite_frames = SubResource("SpriteFrames_dlm6i")
 frame_progress = 1.0
 
-[node name="Ground" parent="Raycasts" index="0"]
-position = Vector2(12, 0)
+[node name="CollisionShape2D" parent="Physics/EnemyArea" index="0"]
+shape = SubResource("RectangleShape2D_rxfw8")
 
-[node name="CollisionShape2D" parent="Raycasts/EnemyArea" index="0"]
-position = Vector2(48, -10.25)
-shape = SubResource("RectangleShape2D_8yuts")
+[node name="CollisionShape2D" parent="Physics/HitStartArea" index="0"]
+position = Vector2(11.125, -10.25)
+shape = SubResource("RectangleShape2D_mlr3l")
 
-[node name="CollisionShape2D" parent="Raycasts/HitStartArea" index="0"]
-position = Vector2(9.75, -13)
-shape = SubResource("RectangleShape2D_vvgje")
-
-[node name="CollisionShape2D" parent="Raycasts/HitRangeArea" index="0"]
-position = Vector2(14.5, -16.5)
-shape = SubResource("RectangleShape2D_348gh")
+[node name="CollisionShape2D" parent="Physics/HitRangeArea" index="0"]
+position = Vector2(13.75, -12.25)
+shape = SubResource("RectangleShape2D_5g0xv")
 
 [node name="AttackingAudio" parent="." index="4"]
 volume_db = -23.151
 
 [node name="AttackAudio" parent="." index="5"]
 stream = ExtResource("4_348gh")
-
-[node name="VisibleOnScreenEnabler2D" parent="." index="6"]
-position = Vector2(48, -10)
-scale = Vector2(19.5, 4.3)
