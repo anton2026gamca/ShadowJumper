@@ -23,3 +23,12 @@ func get_dash() -> bool:
 
 func get_throw_a_rock() -> bool:
 	return Input.is_action_just_pressed("throw_a_rock")
+
+func get_climb_lader_up() -> bool:
+	return Input.is_action_pressed("lader_climb_up")
+
+func get_climb_lader_down() -> bool:
+	return Input.is_action_pressed("lader_climb_down")
+
+func get_climb_lader_dir() -> int:
+	return Input.get_axis("lader_climb_up", "lader_climb_down")

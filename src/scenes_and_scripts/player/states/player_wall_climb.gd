@@ -1,6 +1,6 @@
 @tool
 extends State
-class_name PlayerClimb
+class_name PlayerWallClimb
 
 
 @export var controller: PlayerController
@@ -28,4 +28,5 @@ func process(_delta: float) -> Variant:
 		controller.disable_climb = true
 		return PlayerFall
 	controller.target.velocity.y = controller.climb_down_velocity
+
 	return null

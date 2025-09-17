@@ -14,6 +14,7 @@ class_name PlayerController
 @export var jump_buffer_time: float = 80.0
 ## In milliseconds
 @export var coyote_time: float = 100.0
+@export var ladder_climb_speed: float = 100.0
 
 @export_group("Rock throwing")
 @export var rock_scene: PackedScene
@@ -29,6 +30,7 @@ var disable_climb: bool = false
 @export_group("Physics")
 @export var climb_left_raycast: RayCast2D
 @export var climb_right_raycast: RayCast2D
+@export var climb_ladder_area: Area2D
 
 @export_group("SFX")
 @export var enable_sfx: bool = true
@@ -75,6 +77,15 @@ func is_on_floor() -> bool:
 
 func is_on_floor_buffered() -> bool:
 	return last_on_floor_time > -coyote_time
+
+func get_climb_lader_up() -> bool:
+	return false
+
+func get_climb_lader_down() -> bool:
+	return false
+
+func get_climb_lader_dir() -> int:
+	return 0
 
 
 func get_nearest_mushroom() -> Mushroom:
