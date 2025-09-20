@@ -11,9 +11,12 @@ var target: Node2D
 
 
 func _physics_process(delta: float) -> void:
+	if not target:
+		move_and_slide()
+		return
 	velocity.y -= turn_back_rate.sample(velocity.y) * delta
 	if abs(target.position.x - position.x) > 4.0:
-		var dir: int = Vector2(target.position.x - position.x, 0).normalized().x
+		var dir: float = Vector2(target.position.x - position.x, 0).normalized().x
 		velocity.x = move_toward(velocity.x, dir * homing_rate, 15)
 		if initial_homing_dir == 0:
 			initial_homing_dir = dir

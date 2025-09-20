@@ -41,9 +41,9 @@ func _physics_process(delta: float) -> void:
 			"get_dash",
 			"is_on_floor",
 			"is_on_floor_buffered",
-			"climb_lader_up",
-			"climb_lader_down",
-			"climb_lader_dir"
+			"get_climb_lader_up",
+			"get_climb_lader_down",
+			"get_climb_lader_dir"
 		]
 		var function_returns: Dictionary[String, Variant] = {}
 		for fun: String in functions:

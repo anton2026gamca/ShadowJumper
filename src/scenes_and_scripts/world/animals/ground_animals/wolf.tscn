@@ -119,5 +119,9 @@ shape = SubResource("RectangleShape2D_5878v")
 [node name="CollisionShape2D" parent="Physics/HitRangeArea" index="0"]
 shape = SubResource("RectangleShape2D_5vmc2")
 
-[node name="AttackAudio" parent="." index="5"]
+[node name="AttackAudio" parent="." index="6"]
 stream = ExtResource("3_4al75")
+
+[node name="VisibleOnScreenEnabler2D" parent="." index="7"]
+position = Vector2(75.5, -1.5)
+scale = Vector2(36.35, 5.55)

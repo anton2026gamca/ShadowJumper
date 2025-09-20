@@ -4,7 +4,8 @@ class_name Bullet
 
 @export var die_reason: String = "You were hit by a bullet"
 
-@export var initial_speed: float = 400.0
+@export var initial_speed_min: float = 400.0
+@export var initial_speed_max: float = 400.0
 @export var lifetime: float = -1
 
 var indicator: NodeIndicator
@@ -19,7 +20,7 @@ func _ready() -> void:
 		return
 	if lifetime > 0:
 		get_tree().create_timer(lifetime).timeout.connect(_destroy)
-	velocity = Vector2.UP.rotated(rotation) * initial_speed
+	velocity = Vector2.UP.rotated(rotation) * randf_range(initial_speed_min, initial_speed_max)
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()

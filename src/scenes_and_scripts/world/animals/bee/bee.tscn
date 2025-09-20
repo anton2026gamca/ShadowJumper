@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cd7yubqxtcw2v"]
+[gd_scene load_steps=35 format=3 uid="uid://cd7yubqxtcw2v"]
 
 [ext_resource type="PackedScene" uid="uid://cjdb2ap3qdyt5" path="res://scenes_and_scripts/world/animals/animal.tscn" id="1_psrfv"]
 [ext_resource type="Script" uid="uid://c8teo0ong35gb" path="res://scenes_and_scripts/world/animals/bee/bee.gd" id="2_h0684"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://b2vgdb2qi32nm" path="res://scenes_and_scripts/world/animals/bee/states/bee_not_in_range.gd" id="3_wyt1c"]
 [ext_resource type="Script" uid="uid://bl26dx8gd55fr" path="res://scenes_and_scripts/world/animals/bee/states/bee_attacking.gd" id="5_yntd2"]
 [ext_resource type="PackedScene" uid="uid://r80goc7odoja" path="res://scenes_and_scripts/world/animals/bee/bee_bullet.tscn" id="6_j8j3w"]
-[ext_resource type="PackedScene" uid="uid://x6l0n4j6mk63" path="res://scenes_and_scripts/components/death_component.tscn" id="7_cal8c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cal8c"]
 radius = 7.0
@@ -199,12 +198,12 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yntd2"]
-radius = 97.0
-height = 248.0
+radius = 79.0
+height = 220.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j8j3w"]
-radius = 190.0
-height = 720.0
+radius = 115.0
+height = 290.0
 
 [node name="Bee" instance=ExtResource("1_psrfv")]
 use_parent_material = true
@@ -212,19 +211,38 @@ script = ExtResource("2_h0684")
 fly_speed = 250.0
 attack_min_height_diff = 100.0
 
-[node name="DeathComponent" parent="." index="0" instance=ExtResource("7_cal8c")]
-
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, -3)
 shape = SubResource("CapsuleShape2D_cal8c")
 
-[node name="AnimatedSprite2D" parent="." index="2"]
+[node name="AnimatedSprite2D" parent="." index="1"]
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_8nw61")
 animation = &"die"
 autoplay = "fly"
 
-[node name="StateMachine" parent="." index="3" node_paths=PackedStringArray("current_state")]
+[node name="AttackStartArea" type="Area2D" parent="." index="3"]
+position = Vector2(0, 104)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackStartArea" index="0"]
+position = Vector2(-29, 1)
+shape = SubResource("CapsuleShape2D_yntd2")
+
+[node name="TargetLostArea" type="Area2D" parent="." index="4"]
+position = Vector2(0, 227)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetLostArea" index="0"]
+position = Vector2(-18, -104)
+shape = SubResource("CapsuleShape2D_j8j3w")
+
+[node name="BulletSpawner" type="Node2D" parent="." index="5"]
+position = Vector2(0, 25)
+
+[node name="StateMachine" parent="." index="6" node_paths=PackedStringArray("current_state")]
 current_state = NodePath("NotInRange")
 
 [node name="NotInRange" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("target", "attack_start_area", "sprite")]
@@ -241,24 +259,3 @@ target_lost_area = NodePath("../../TargetLostArea")
 bullet_scene = ExtResource("6_j8j3w")
 bullet_spawner = NodePath("../../BulletSpawner")
 metadata/_custom_type_script = "uid://bl26dx8gd55fr"
-
-[node name="AttackStartArea" type="Area2D" parent="." index="4"]
-position = Vector2(0, 104)
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackStartArea" index="0"]
-shape = SubResource("CapsuleShape2D_yntd2")
-
-[node name="TargetLostArea" type="Area2D" parent="." index="5"]
-position = Vector2(0, 227)
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetLostArea" index="0"]
-shape = SubResource("CapsuleShape2D_j8j3w")
-
-[node name="BulletSpawner" type="Node2D" parent="." index="6"]
-position = Vector2(0, 16)
-
-[connection signal="die_signal" from="DeathComponent" to="." method="_on_death_component_die"]

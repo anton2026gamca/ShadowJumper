@@ -65,5 +65,4 @@ func create_node_indicator(target: Node2D) -> NodeIndicator:
 
 func destroy_all_indicators() -> void:
 	for indicator: NodeIndicator in get_children().filter(func (child: Node) -> bool: return child is NodeIndicator):
-		print(indicator)
 		if indicator: indicator.destroy.call_deferred()

@@ -86,7 +86,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8t4eu"]
-size = Vector2(390, 78.5)
+size = Vector2(312, 78.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhof2"]
 size = Vector2(22.25, 20.5)
@@ -105,6 +105,7 @@ frame = 2
 frame_progress = 1.0
 
 [node name="CollisionShape2D" parent="Physics/EnemyArea" index="0"]
+position = Vector2(41, 0)
 shape = SubResource("RectangleShape2D_8t4eu")
 
 [node name="CollisionShape2D" parent="Physics/HitStartArea" index="0"]
@@ -115,5 +116,9 @@ shape = SubResource("RectangleShape2D_bhof2")
 position = Vector2(15.25, -13.25)
 shape = SubResource("RectangleShape2D_i6ybc")
 
-[node name="AttackAudio" parent="." index="5"]
+[node name="AttackAudio" parent="." index="6"]
 stream = ExtResource("4_lrxyp")
+
+[node name="VisibleOnScreenEnabler2D" parent="." index="7"]
+position = Vector2(54.5, -0.500001)
+scale = Vector2(24.95, 4.25)

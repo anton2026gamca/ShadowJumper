@@ -35,8 +35,6 @@ func exit_level(defeated: bool = false) -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	is_in_level = false
-	current_level_node.player_died.disconnect(player_died)
-	current_level_node.level_defeated.disconnect(player_died)
 	level_parent.remove_child(current_level_node)
 	current_level_node.queue_free()
 	current_level_node = null
@@ -63,8 +61,6 @@ func level_defeated() -> void:
 	exit_level(true)
 
 func reload_level() -> void:
-	current_level_node.player_died.disconnect(player_died)
-	current_level_node.level_defeated.disconnect(player_died)
 	level_parent.remove_child(current_level_node)
 	current_level_node.queue_free()
 	current_level_node = null

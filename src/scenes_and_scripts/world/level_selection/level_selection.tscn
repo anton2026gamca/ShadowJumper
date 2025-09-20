@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=4 uid="uid://clkhpeqrfyoax"]
+[gd_scene load_steps=151 format=4 uid="uid://clkhpeqrfyoax"]
 
 [ext_resource type="Script" uid="uid://dd3otqv1n5e7k" path="res://scenes_and_scripts/world/level_selection/level_selection.gd" id="1_7qmai"]
 [ext_resource type="PackedScene" uid="uid://by7kis83n7kvx" path="res://scenes_and_scripts/world/level_selection/level_selection_level.tscn" id="2_5iw0q"]
@@ -31,463 +31,6 @@ shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
 shader_parameter/night_darkness = 1.0
 shader_parameter/night_contrast = 2.0
 shader_parameter/blue_shift = 1.0
-
-[sub_resource type="Resource" id="Resource_q63el"]
-script = ExtResource("6_8gh2l")
-frames_count = 1
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": 0.0,
-"get_move_left": false,
-"get_move_right": false,
-"is_on_floor": true,
-"is_on_floor_buffered": true
-})
-
-[sub_resource type="Resource" id="Resource_4onnr"]
-script = ExtResource("6_8gh2l")
-frames_count = 12
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": true,
-"is_on_floor_buffered": true
-})
-
-[sub_resource type="Resource" id="Resource_ubysi"]
-script = ExtResource("6_8gh2l")
-frames_count = 9
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": false,
-"is_on_floor_buffered": true
-})
-
-[sub_resource type="Resource" id="Resource_3vcdk"]
-script = ExtResource("6_8gh2l")
-frames_count = 3
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": false,
-"is_on_floor_buffered": false
-})
-
-[sub_resource type="Resource" id="Resource_petm0"]
-script = ExtResource("6_8gh2l")
-frames_count = 1
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": true,
-"is_on_floor_buffered": false
-})
-
-[sub_resource type="Resource" id="Resource_g35gs"]
-script = ExtResource("6_8gh2l")
-frames_count = 12
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": true,
-"is_on_floor_buffered": true
-})
-
-[sub_resource type="Resource" id="Resource_5j1sa"]
-script = ExtResource("6_8gh2l")
-frames_count = 9
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": false,
-"is_on_floor_buffered": true
-})
-
-[sub_resource type="Resource" id="Resource_v1177"]
-script = ExtResource("6_8gh2l")
-frames_count = 3
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": false,
-"is_on_floor_buffered": false
-})
-
-[sub_resource type="Resource" id="Resource_tg5n0"]
-script = ExtResource("6_8gh2l")
-frames_count = 1
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": true,
-"is_on_floor_buffered": false
-})
-
-[sub_resource type="Resource" id="Resource_iqq6n"]
-script = ExtResource("6_8gh2l")
-frames_count = 11
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": true,
-"is_on_floor_buffered": true
-})
-
-[sub_resource type="Resource" id="Resource_daoiw"]
-script = ExtResource("6_8gh2l")
-frames_count = 9
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": false,
-"is_on_floor_buffered": true
-})
-
-[sub_resource type="Resource" id="Resource_gypu3"]
-script = ExtResource("6_8gh2l")
-frames_count = 3
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": false,
-"is_on_floor_buffered": false
-})
-
-[sub_resource type="Resource" id="Resource_c8w1j"]
-script = ExtResource("6_8gh2l")
-frames_count = 1
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": true,
-"is_on_floor_buffered": false
-})
-
-[sub_resource type="Resource" id="Resource_v3hem"]
-script = ExtResource("6_8gh2l")
-frames_count = 6
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": true,
-"is_on_floor_buffered": true
-})
-
-[sub_resource type="Resource" id="Resource_svae7"]
-script = ExtResource("6_8gh2l")
-frames_count = 9
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": false,
-"is_on_floor_buffered": true
-})
-
-[sub_resource type="Resource" id="Resource_vl0hn"]
-script = ExtResource("6_8gh2l")
-frames_count = 3
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": false,
-"is_on_floor_buffered": false
-})
-
-[sub_resource type="Resource" id="Resource_6gbxx"]
-script = ExtResource("6_8gh2l")
-frames_count = 1
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": true,
-"is_on_floor_buffered": false
-})
-
-[sub_resource type="Resource" id="Resource_at1bw"]
-script = ExtResource("6_8gh2l")
-frames_count = 4
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": true,
-"is_on_floor_buffered": true
-})
-
-[sub_resource type="Resource" id="Resource_jpkm2"]
-script = ExtResource("6_8gh2l")
-frames_count = 1
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": true,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": true,
-"is_on_floor_buffered": true
-})
-
-[sub_resource type="Resource" id="Resource_xro6t"]
-script = ExtResource("6_8gh2l")
-frames_count = 1
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": true,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": true,
-"is_on_floor_buffered": true
-})
-
-[sub_resource type="Resource" id="Resource_u2i75"]
-script = ExtResource("6_8gh2l")
-frames_count = 3
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": false,
-"is_on_floor_buffered": true
-})
-
-[sub_resource type="Resource" id="Resource_eqawv"]
-script = ExtResource("6_8gh2l")
-frames_count = 1
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": true,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": false,
-"is_on_floor_buffered": true
-})
-
-[sub_resource type="Resource" id="Resource_2xka1"]
-script = ExtResource("6_8gh2l")
-frames_count = 5
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": false,
-"is_on_floor_buffered": true
-})
-
-[sub_resource type="Resource" id="Resource_40ci1"]
-script = ExtResource("6_8gh2l")
-frames_count = 13
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": false,
-"is_on_floor_buffered": false
-})
-
-[sub_resource type="Resource" id="Resource_ngr2y"]
-script = ExtResource("6_8gh2l")
-frames_count = 1
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": true,
-"is_on_floor_buffered": false
-})
-
-[sub_resource type="Resource" id="Resource_o5hg2"]
-script = ExtResource("6_8gh2l")
-frames_count = 1
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": true,
-"is_on_floor_buffered": true
-})
-
-[sub_resource type="Resource" id="Resource_trdhr"]
-script = ExtResource("6_8gh2l")
-frames_count = 9
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": -1.0,
-"get_move_left": true,
-"get_move_right": false,
-"is_on_floor": false,
-"is_on_floor_buffered": true
-})
-
-[sub_resource type="Resource" id="Resource_vvdcj"]
-script = ExtResource("6_8gh2l")
-frames_count = 3
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": 0.0,
-"get_move_left": false,
-"get_move_right": false,
-"is_on_floor": false,
-"is_on_floor_buffered": false
-})
-
-[sub_resource type="Resource" id="Resource_qpg3f"]
-script = ExtResource("6_8gh2l")
-frames_count = 1
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": 0.0,
-"get_move_left": false,
-"get_move_right": false,
-"is_on_floor": true,
-"is_on_floor_buffered": false
-})
-
-[sub_resource type="Resource" id="Resource_n58ns"]
-script = ExtResource("6_8gh2l")
-frames_count = 1
-data = Dictionary[String, Variant]({
-"get_dash": false,
-"get_jump": false,
-"get_jump_buffered": false,
-"get_jump_released": false,
-"get_move_dir": 0.0,
-"get_move_left": false,
-"get_move_right": false,
-"is_on_floor": true,
-"is_on_floor_buffered": true
-})
-
-[sub_resource type="Resource" id="Resource_oonr3"]
-script = ExtResource("6_ym7cv")
-start_pos = Vector2(640, -152.076)
-adjust_x_position_on_end = true
-target_x_position_on_end = 184.0
-data = Array[ExtResource("6_8gh2l")]([SubResource("Resource_q63el"), SubResource("Resource_4onnr"), SubResource("Resource_ubysi"), SubResource("Resource_3vcdk"), SubResource("Resource_petm0"), SubResource("Resource_g35gs"), SubResource("Resource_5j1sa"), SubResource("Resource_v1177"), SubResource("Resource_tg5n0"), SubResource("Resource_iqq6n"), SubResource("Resource_daoiw"), SubResource("Resource_gypu3"), SubResource("Resource_c8w1j"), SubResource("Resource_v3hem"), SubResource("Resource_svae7"), SubResource("Resource_vl0hn"), SubResource("Resource_6gbxx"), SubResource("Resource_at1bw"), SubResource("Resource_jpkm2"), SubResource("Resource_xro6t"), SubResource("Resource_u2i75"), SubResource("Resource_eqawv"), SubResource("Resource_2xka1"), SubResource("Resource_40ci1"), SubResource("Resource_ngr2y"), SubResource("Resource_o5hg2"), SubResource("Resource_trdhr"), SubResource("Resource_vvdcj"), SubResource("Resource_qpg3f"), SubResource("Resource_n58ns")])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hcr5e"]
 size = Vector2(16, 16)
@@ -1821,6 +1364,456 @@ adjust_x_position_on_end = true
 target_x_position_on_end = 640.0
 data = Array[ExtResource("6_8gh2l")]([SubResource("Resource_6jgkc"), SubResource("Resource_2psuq"), SubResource("Resource_e2q0a"), SubResource("Resource_48tp8"), SubResource("Resource_555o0"), SubResource("Resource_46nph"), SubResource("Resource_f3run"), SubResource("Resource_wtcsc"), SubResource("Resource_rfh3d"), SubResource("Resource_gsw3v"), SubResource("Resource_y84s4"), SubResource("Resource_3466o"), SubResource("Resource_0og8a"), SubResource("Resource_u4q2b"), SubResource("Resource_31saa"), SubResource("Resource_paqvj"), SubResource("Resource_5f3km"), SubResource("Resource_lg7wr"), SubResource("Resource_yejko"), SubResource("Resource_kmm0f"), SubResource("Resource_co4kb"), SubResource("Resource_8vmm3"), SubResource("Resource_hccra"), SubResource("Resource_2woaa"), SubResource("Resource_w5r8a"), SubResource("Resource_ow1qn"), SubResource("Resource_u3tb4"), SubResource("Resource_1qc1d"), SubResource("Resource_we8hw"), SubResource("Resource_jt0kp"), SubResource("Resource_h4h1g"), SubResource("Resource_iqxhn"), SubResource("Resource_utjc4"), SubResource("Resource_18unq"), SubResource("Resource_gawbc"), SubResource("Resource_emmgl"), SubResource("Resource_1n1tq"), SubResource("Resource_5cdcv"), SubResource("Resource_2kfbl"), SubResource("Resource_wovdk"), SubResource("Resource_jpi71"), SubResource("Resource_0us3a"), SubResource("Resource_s0j7y"), SubResource("Resource_rpg27"), SubResource("Resource_s4reu"), SubResource("Resource_qhet1"), SubResource("Resource_io4un"), SubResource("Resource_a4psx"), SubResource("Resource_8m5tg"), SubResource("Resource_1gxym"), SubResource("Resource_y2xh5"), SubResource("Resource_7img3"), SubResource("Resource_un0mc"), SubResource("Resource_rouje")])
 
+[sub_resource type="Resource" id="Resource_q63el"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_4onnr"]
+script = ExtResource("6_8gh2l")
+frames_count = 12
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_ubysi"]
+script = ExtResource("6_8gh2l")
+frames_count = 9
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_3vcdk"]
+script = ExtResource("6_8gh2l")
+frames_count = 3
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_petm0"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_g35gs"]
+script = ExtResource("6_8gh2l")
+frames_count = 12
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_5j1sa"]
+script = ExtResource("6_8gh2l")
+frames_count = 9
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_v1177"]
+script = ExtResource("6_8gh2l")
+frames_count = 3
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_tg5n0"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_iqq6n"]
+script = ExtResource("6_8gh2l")
+frames_count = 11
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_daoiw"]
+script = ExtResource("6_8gh2l")
+frames_count = 9
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_gypu3"]
+script = ExtResource("6_8gh2l")
+frames_count = 3
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_c8w1j"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_v3hem"]
+script = ExtResource("6_8gh2l")
+frames_count = 6
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_svae7"]
+script = ExtResource("6_8gh2l")
+frames_count = 9
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_vl0hn"]
+script = ExtResource("6_8gh2l")
+frames_count = 3
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_6gbxx"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_at1bw"]
+script = ExtResource("6_8gh2l")
+frames_count = 4
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_jpkm2"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": true,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_xro6t"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": true,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_u2i75"]
+script = ExtResource("6_8gh2l")
+frames_count = 3
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_eqawv"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": true,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_2xka1"]
+script = ExtResource("6_8gh2l")
+frames_count = 5
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_40ci1"]
+script = ExtResource("6_8gh2l")
+frames_count = 13
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_ngr2y"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_o5hg2"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_trdhr"]
+script = ExtResource("6_8gh2l")
+frames_count = 9
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": -1.0,
+"get_move_left": true,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": true
+})
+
+[sub_resource type="Resource" id="Resource_vvdcj"]
+script = ExtResource("6_8gh2l")
+frames_count = 3
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": false,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_qpg3f"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": false
+})
+
+[sub_resource type="Resource" id="Resource_n58ns"]
+script = ExtResource("6_8gh2l")
+frames_count = 1
+data = Dictionary[String, Variant]({
+"get_dash": false,
+"get_jump": false,
+"get_jump_buffered": false,
+"get_jump_released": false,
+"get_move_dir": 0.0,
+"get_move_left": false,
+"get_move_right": false,
+"is_on_floor": true,
+"is_on_floor_buffered": true
+})
+
 [sub_resource type="Resource" id="Resource_3cul4"]
 script = ExtResource("6_ym7cv")
 start_pos = Vector2(640, -152.076)
@@ -1913,9 +1906,9 @@ Vector2i(0, 1): 0.0
 
 [node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("controller")]
 use_parent_material = true
+position = Vector2(184.75, 23.924)
 collision_layer = 0
 collision_mask = 3
-velocity = Vector2(-85, 0)
 script = ExtResource("4_270wt")
 controller = NodePath("ReplayPlayerController")
 metadata/_custom_type_script = "uid://hrc23450dtph"
@@ -1929,7 +1922,6 @@ script = ExtResource("5_qgt8i")
 state_machine = NodePath("../StateMachine")
 adjust_x_position_on_end = true
 target_x_position_on_end = 184.0
-replay_data = SubResource("Resource_oonr3")
 target = NodePath("..")
 coyote_time = 150.0
 max_throw_dist = 512.0
