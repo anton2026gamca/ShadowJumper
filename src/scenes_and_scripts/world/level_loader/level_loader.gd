@@ -28,9 +28,15 @@ func load_level(level: PackedScene) -> void:
 	node.level_defeated.connect(level_defeated)
 	level_parent.add_child.call_deferred(node)
 	is_in_level = true
+	ui.camera = node.camera
+	ui.reset()
 
 func exit_level(defeated: bool = false) -> void:
+	await get_tree().process_frame
+	await get_tree().process_frame
 	is_in_level = false
+	current_level_node.player_died.disconnect(player_died)
+	current_level_node.level_defeated.disconnect(player_died)
 	level_parent.remove_child(current_level_node)
 	current_level_node.queue_free()
 	current_level_node = null
@@ -57,9 +63,9 @@ func level_defeated() -> void:
 	exit_level(true)
 
 func reload_level() -> void:
-	var old_level: Level = Helpers.find_child_by_type(level_parent, Level)
-	old_level.player_died.disconnect(player_died)
-	old_level.level_defeated.disconnect(level_defeated)
-	level_parent.remove_child.call_deferred(old_level)
-	old_level.queue_free()
+	current_level_node.player_died.disconnect(player_died)
+	current_level_node.level_defeated.disconnect(player_died)
+	level_parent.remove_child(current_level_node)
+	current_level_node.queue_free()
+	current_level_node = null
 	load_level(current_level)

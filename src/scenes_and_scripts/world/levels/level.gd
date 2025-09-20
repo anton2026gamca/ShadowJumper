@@ -2,7 +2,8 @@ extends Node2D
 class_name Level
 
 
-@export var player: Player
+@export var die_reason: String = "You fell out of the world!"
+
 @export var camera: Camera2D
 
 signal player_died(reason: String)
@@ -10,15 +11,16 @@ signal level_defeated
 
 
 func _ready() -> void:
-	pass
+	camera.make_current()
 
 func _process(delta: float) -> void:
 	pass
 
 
 func _on_world_bottom_limit_body_entered(body: Node2D) -> void:
-	if body is Player:
-		body.die("You fell out of the world!")
+	var death_component: DeathComponent = Helpers.find_child_by_type(body, DeathComponent)
+	if death_component:
+		death_component.die(die_reason)
 
 func _on_player_died(reason: String) -> void:
 	player_died.emit(reason)

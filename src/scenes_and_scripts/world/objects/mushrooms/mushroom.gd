@@ -2,6 +2,8 @@ extends Sprite2D
 class_name Mushroom
 
 
+@export var die_reason: String = "You were electrified by a mushroom :o"
+
 @onready var point_light: PointLight = $PointLight
 
 @export var down_time: float = 5.0
@@ -42,7 +44,9 @@ func _physics_process(delta: float) -> void:
 		boom_sprite.rotate(deg_to_rad(22.5))
 		if await update_boom():
 			for player: Player in players:
-				player.die("You were electrified by a mushroom :o")
+				var death_component: DeathComponent = Helpers.find_child_by_type(player, DeathComponent)
+				if death_component:
+					death_component.die(die_reason)
 	if boom_state != 0 and (len(players) == 0 or progress == 0):
 		stop_making_boom()
 

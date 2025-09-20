@@ -18,8 +18,7 @@ func _physics_process(_delta: float) -> void:
 		return
 	move_and_slide()
 
-
-func die(reason: String) -> void:
+func _on_death_component_die(reason: String) -> void:
 	$DeathAudio.pitch_scale = randf() * 0.2 + 0.9
 	$DeathAudio.play()
 	died.emit(reason)

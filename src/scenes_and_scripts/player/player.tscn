@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://f5m7vw1vj4fd"]
+[gd_scene load_steps=18 format=3 uid="uid://f5m7vw1vj4fd"]
 
 [ext_resource type="Script" uid="uid://hrc23450dtph" path="res://scenes_and_scripts/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bnpceuwymc5n" path="res://scenes_and_scripts/player/states/player_walk.gd" id="2_dovo2"]
 [ext_resource type="Script" uid="uid://dgd8hkbbbcu5j" path="res://scenes_and_scripts/state_machine/state_machine.gd" id="2_gmlin"]
+[ext_resource type="PackedScene" uid="uid://x6l0n4j6mk63" path="res://scenes_and_scripts/components/death_component.tscn" id="3_3xm7x"]
 [ext_resource type="PackedScene" uid="uid://cf863bnjdj0rx" path="res://scenes_and_scripts/player/rock.tscn" id="4_hpak0"]
 [ext_resource type="Script" uid="uid://d076o046mjswg" path="res://scenes_and_scripts/player/states/player_dash.gd" id="5_75vfm"]
 [ext_resource type="Script" uid="uid://bfhjgtumgpcpm" path="res://scenes_and_scripts/player/states/player_fall.gd" id="5_p47bc"]
@@ -28,9 +29,11 @@ script = ExtResource("1_8afob")
 controller = NodePath("UserPlayerController")
 metadata/_custom_type_script = "uid://hrc23450dtph"
 
-[node name="Player" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 use_parent_material = true
 texture = ExtResource("10_of6dy")
+
+[node name="DeathComponent" parent="." instance=ExtResource("3_3xm7x")]
 
 [node name="UserPlayerController" type="Node" parent="." node_paths=PackedStringArray("target", "climb_left_raycast", "climb_right_raycast", "climb_ladder_area")]
 script = ExtResource("6_je7p5")
@@ -97,3 +100,5 @@ stream = ExtResource("12_ob7be")
 
 [node name="FallAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_m74vl")
+
+[connection signal="die_signal" from="DeathComponent" to="." method="_on_death_component_die"]

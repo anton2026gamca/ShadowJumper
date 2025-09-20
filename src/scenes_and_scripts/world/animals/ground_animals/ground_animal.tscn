@@ -32,16 +32,20 @@ animations = [{
 size = Vector2(390, 78.5)
 
 [node name="GroundAnimal" instance=ExtResource("1_tqwpi")]
+use_parent_material = true
 script = ExtResource("1_ajlb7")
 player_die_reason = ""
 walk_speed = 0.0
 run_speed = 0.0
 
 [node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_c4aqc")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
+use_parent_material = true
+position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_c4aqc")
 animation = &"attack"
 
@@ -112,5 +116,5 @@ volume_db = -30.646
 [node name="AttackAudio" type="AudioStreamPlayer2D" parent="." index="5"]
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." index="6"]
-position = Vector2(80, 1.90735e-06)
+position = Vector2(80, -2)
 scale = Vector2(19.7, 4.1)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://xyllxx8sqe4m"]
+[gd_scene load_steps=4 format=3 uid="uid://xyllxx8sqe4m"]
 
 [ext_resource type="Script" uid="uid://fqtggun3y2qm" path="res://scenes_and_scripts/ui/levels_ui.gd" id="1_ullwu"]
+[ext_resource type="PackedScene" uid="uid://cn3b3uia58ox2" path="res://scenes_and_scripts/ui/node_indicator.tscn" id="2_1q5nf"]
 [ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="2_nhhd0"]
 
 [node name="UI" type="Control"]
@@ -11,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ullwu")
+node_indicator_scene = ExtResource("2_1q5nf")
 
 [node name="PauseMenu" type="Panel" parent="."]
 visible = false

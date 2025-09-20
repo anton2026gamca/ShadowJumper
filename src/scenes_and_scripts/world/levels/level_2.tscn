@@ -24,11 +24,10 @@ shader_parameter/blue_shift = 1.0
 normal = Vector2(1, 0)
 distance = -214.0
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("player", "camera")]
+[node name="World" type="Node2D" node_paths=PackedStringArray("camera")]
 process_mode = 1
 material = SubResource("ShaderMaterial_au23b")
 script = ExtResource("2_au23b")
-player = NodePath("Level/Player")
 camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("folow")]
@@ -60,18 +59,28 @@ use_parent_material = true
 
 [node name="Fox" parent="Level" instance=ExtResource("7_au23b")]
 position = Vector2(1220, -320)
+collision_layer = 0
+collision_mask = 0
 
 [node name="Boar" parent="Level" instance=ExtResource("8_4mss6")]
 position = Vector2(1300, -336)
+collision_layer = 0
+collision_mask = 0
 
 [node name="Fox2" parent="Level" instance=ExtResource("7_au23b")]
 position = Vector2(1038, -224)
+collision_layer = 0
+collision_mask = 0
 
 [node name="Fox3" parent="Level" instance=ExtResource("7_au23b")]
 position = Vector2(1564, -528)
+collision_layer = 0
+collision_mask = 0
 
 [node name="Wolf" parent="Level" instance=ExtResource("8_cywes")]
 position = Vector2(1829, -512)
+collision_layer = 0
+collision_mask = 0
 
 [node name="WorldBottomLimit" type="Area2D" parent="Level"]
 collision_layer = 0

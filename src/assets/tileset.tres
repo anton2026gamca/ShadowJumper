@@ -1,10 +1,10 @@
 [gd_resource type="TileSet" load_steps=8 format=3 uid="uid://8h4fm7v55cnx"]
 
 [ext_resource type="Texture2D" uid="uid://bv83repei4m1" path="res://assets/sprites/tileset.png" id="1_fcvr3"]
-[ext_resource type="PackedScene" uid="uid://dv4h5nvuumsjq" path="res://scenes_and_scripts/world/objects/mushroom_2.tscn" id="2_7lii3"]
-[ext_resource type="PackedScene" uid="uid://cbh2h5bldnuj1" path="res://scenes_and_scripts/world/objects/mushroom_0.tscn" id="2_fcvr3"]
-[ext_resource type="PackedScene" uid="uid://r3q7wdh33v34" path="res://scenes_and_scripts/world/objects/mushroom_1.tscn" id="3_7lii3"]
-[ext_resource type="PackedScene" uid="uid://dqdt5a5wq4x4t" path="res://scenes_and_scripts/world/objects/mushroom_3.tscn" id="3_uyjym"]
+[ext_resource type="PackedScene" uid="uid://dv4h5nvuumsjq" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom_2.tscn" id="2_7lii3"]
+[ext_resource type="PackedScene" uid="uid://cbh2h5bldnuj1" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom_0.tscn" id="2_fcvr3"]
+[ext_resource type="PackedScene" uid="uid://r3q7wdh33v34" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom_1.tscn" id="3_7lii3"]
+[ext_resource type="PackedScene" uid="uid://dqdt5a5wq4x4t" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom_3.tscn" id="3_uyjym"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qfnet"]
 texture = ExtResource("1_fcvr3")

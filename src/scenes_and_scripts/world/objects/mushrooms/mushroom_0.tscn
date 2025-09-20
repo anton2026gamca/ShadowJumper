@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://e61r4s4jbhvf" path="res://scenes_and_scripts/world/objects/point_light.tscn" id="1_2hos7"]
 [ext_resource type="Texture2D" uid="uid://br8n3umvrdgvd" path="res://assets/sprites/mushrooms.png" id="2_m6ssx"]
-[ext_resource type="Script" uid="uid://b63ehe3at03rm" path="res://scenes_and_scripts/world/objects/mushroom.gd" id="3_f0mk6"]
+[ext_resource type="Script" uid="uid://b63ehe3at03rm" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom.gd" id="3_f0mk6"]
 [ext_resource type="Texture2D" uid="uid://hfvkjmsvlwwj" path="res://assets/sprites/boom.png" id="4_m6ssx"]
 [ext_resource type="AudioStream" uid="uid://caskawg1l0aga" path="res://assets/SFX/folder/lightning.wav" id="5_o6bic"]
 [ext_resource type="AudioStream" uid="uid://c2su2kupk2r3q" path="res://assets/SFX/folder/select_5.wav" id="6_o6bic"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dqdt5a5wq4x4t"]
 
-[ext_resource type="PackedScene" uid="uid://cbh2h5bldnuj1" path="res://scenes_and_scripts/world/objects/mushroom_0.tscn" id="1_0vjau"]
+[ext_resource type="PackedScene" uid="uid://cbh2h5bldnuj1" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom_0.tscn" id="1_0vjau"]
 [ext_resource type="Texture2D" uid="uid://br8n3umvrdgvd" path="res://assets/sprites/mushrooms.png" id="2_a8e78"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8x7c"]

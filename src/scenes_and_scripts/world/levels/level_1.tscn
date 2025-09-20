@@ -86,11 +86,10 @@ _data = {
 &"change": SubResource("Animation_qbkjl")
 }
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("player", "camera")]
+[node name="World" type="Node2D" node_paths=PackedStringArray("camera")]
 process_mode = 1
 material = SubResource("ShaderMaterial_1m2nw")
 script = ExtResource("2_go7g5")
-player = NodePath("Level/Player")
 camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("folow")]
@@ -135,7 +134,7 @@ position = Vector2(930, 16)
 position = Vector2(1623, -144)
 
 [node name="Fox2" parent="Level" instance=ExtResource("6_go7g5")]
-position = Vector2(1438, -144)
+position = Vector2(1438, -147)
 
 [node name="Finish" parent="Level" instance=ExtResource("8_wcekq")]
 position = Vector2(1771, -160)

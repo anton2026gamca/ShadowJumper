@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgnkbfbtrhkl8"]
+[gd_scene load_steps=3 format=3 uid="uid://cgnkbfbtrhkl8"]
 
+[ext_resource type="Script" uid="uid://dqgu60xixvo2u" path="res://scenes_and_scripts/world/level_selection/level_selection_root.gd" id="1_wj2gu"]
 [ext_resource type="PackedScene" uid="uid://clkhpeqrfyoax" path="res://scenes_and_scripts/world/level_selection/level_selection.tscn" id="1_yhkdd"]
 
 [node name="LevelSelectionRoot" type="SubViewportContainer"]
@@ -10,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 stretch_shrink = 3
+script = ExtResource("1_wj2gu")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true

@@ -1,9 +1,18 @@
 extends Node
 
 
+var level_selection_root: LevelSelectionRoot
+var levels_ui: LevelsUI
+var camera: Camera2D
+
+
 func find_child_by_type(parent: Node, type: Variant) -> Node:
+	#print("Searching for ", type, " in ", parent)
+	if not parent:
+		return null
 	for child in parent.get_children():
 		if is_instance_of(child, type):
+			#print("Found: ", child)
 			return child
 	return null
 

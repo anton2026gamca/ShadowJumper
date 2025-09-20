@@ -5,8 +5,7 @@ extends Node2D
 var current_level: LevelSelectionLevel
 @export var replay_controller: ReplayPlayerController
 
-@onready var tilemap: TileMapLayer = $Level
-@onready var camera: Follower = $Camera2D
+@export var camera: Camera2D
 
 @export var debug_mode: bool = false
 
@@ -49,10 +48,13 @@ func enter_level() -> void:
 	if not LevelLoader is LevelLoaderClass:
 		return
 	var parent: Node = get_parent()
-	parent.remove_child(self)
 	LevelLoader.load_level(current_level.scene)
+	get_tree().current_scene = LevelLoader
+	parent.remove_child(self)
 	var defeated: bool = await LevelLoader.exit_level_signal
 	parent.add_child(self)
+	get_tree().current_scene = Helpers.level_selection_root
+	camera.make_current()
 	if defeated:
 		current_level.mark_completed()
 		Settings.beated_levels.append(get_path_to(current_level))

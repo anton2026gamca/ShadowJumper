@@ -1890,12 +1890,26 @@ _data = {
 &"change": SubResource("Animation_qbkjl")
 }
 
-[node name="LevelSelection" type="Node2D" node_paths=PackedStringArray("start_level", "replay_controller")]
+[node name="LevelSelection" type="Node2D" node_paths=PackedStringArray("start_level", "replay_controller", "camera")]
 material = SubResource("ShaderMaterial_0vl0e")
 script = ExtResource("1_7qmai")
 start_level = NodePath("Level/Level1")
 replay_controller = NodePath("Player/ReplayPlayerController")
+camera = NodePath("Camera2D")
 debug_mode = true
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("folow")]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_right_margin = 0.1
+editor_draw_drag_margin = true
+script = ExtResource("15_vnfxq")
+folow = NodePath("../Player")
+folow_speed = Vector2(250, 250)
+limits = Dictionary[Vector2i, float]({
+Vector2i(0, 1): 0.0
+})
 
 [node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("controller")]
 use_parent_material = true
@@ -2187,16 +2201,3 @@ bbcode_enabled = true
 text = "[color=lightblue][space][/color]"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("folow")]
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_left_margin = 0.1
-drag_right_margin = 0.1
-editor_draw_drag_margin = true
-script = ExtResource("15_vnfxq")
-folow = NodePath("../Player")
-folow_speed = Vector2(250, 250)
-limits = Dictionary[Vector2i, float]({
-Vector2i(0, 1): 0.0
-})

@@ -17,7 +17,7 @@ func process(delta: float) -> Variant:
 	if attack_start_area.get_overlapping_bodies().has(enemy):
 		target.velocity = Vector2.ZERO
 		return BeeAttacking
-	target.velocity = (enemy.global_position - target.global_position).normalized() * target.fly_speed
+	target.velocity = (enemy.global_position - attack_start_area.global_position).normalized() * target.fly_speed
 	sprite.flip_h = target.velocity.x > 0
 	return null
 

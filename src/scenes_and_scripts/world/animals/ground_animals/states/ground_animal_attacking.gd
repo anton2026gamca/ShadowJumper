@@ -69,7 +69,9 @@ func attack(player: Player) -> void:
 	await sprite.animation_finished
 	paused = false
 	if hit_range_area.get_overlapping_bodies().has(player):
-		player.die(target.get_player_die_reason())
+		var death_component: DeathComponent = Helpers.find_child_by_type(player, DeathComponent)
+		if death_component:
+			death_component.die(target.get_player_die_reason())
 
 func play_attacking_audio() -> void:
 	attacking_audio.play()
