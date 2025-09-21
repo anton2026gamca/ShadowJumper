@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	var players: Array[Node2D] = boom_area.get_overlapping_bodies().filter(func(body: Node2D) -> bool: return body is Player)
 	var progress: float = 0
 	for player: Player in players:
-		if player.controller.get_move_dir() or player.controller.get_climb_lader_dir():
+		if player.controller.get_move_dir() or player.controller.get_climb_ladder_dir():
 			start_making_boom()
 			boom_angry_value += delta
 			progress += delta

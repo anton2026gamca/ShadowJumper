@@ -24,7 +24,7 @@ func process(delta: float) -> Variant:
 		return PlayerWallClimb
 	if not controller.disable_climb and climb_ladder:
 		controller.disable_jump = false
-		return PlayerLaderClimb
+		return PlayerLadderClimb
 	var direction: float = controller.get_move_dir()
 	if controller.is_on_floor_buffered():
 		if controller.get_jump_buffered():

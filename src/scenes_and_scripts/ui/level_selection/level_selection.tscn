@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://duwb6lw8qv8qa" path="res://scenes_and_scripts/player/states/player_wall_climb.gd" id="10_vnfxq"]
 [ext_resource type="TileSet" uid="uid://8h4fm7v55cnx" path="res://assets/tileset.tres" id="14_it5vw"]
 [ext_resource type="AudioStream" uid="uid://dkcguk8m56rgx" path="res://assets/SFX/folder/fall.wav" id="15_6jgkc"]
-[ext_resource type="Script" uid="uid://cw5xylamhg1ob" path="res://scenes_and_scripts/player/states/player_lader_climb.gd" id="15_e2q0a"]
+[ext_resource type="Script" uid="uid://cw5xylamhg1ob" path="res://scenes_and_scripts/player/states/player_ladder_climb.gd" id="15_e2q0a"]
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="15_jj62b"]
 [ext_resource type="Script" uid="uid://dhd8v7a51hwsm" path="res://scenes_and_scripts/folower.gd" id="15_vnfxq"]
 [ext_resource type="PackedScene" uid="uid://d1knch75lpy1t" path="res://scenes_and_scripts/world/levels/level_1.tscn" id="16_it5vw"]

@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dchrahvns7vh0" path="res://assets/SFX/folder/jump_3.wav" id="7_je7p5"]
 [ext_resource type="AudioStream" uid="uid://cqddwufjihsoj" path="res://assets/SFX/folder/jump_2.wav" id="8_fm80t"]
 [ext_resource type="Texture2D" uid="uid://dfehsgpqmial3" path="res://assets/sprites/player.png" id="10_of6dy"]
-[ext_resource type="Script" uid="uid://cw5xylamhg1ob" path="res://scenes_and_scripts/player/states/player_lader_climb.gd" id="12_co2wg"]
+[ext_resource type="Script" uid="uid://cw5xylamhg1ob" path="res://scenes_and_scripts/player/states/player_ladder_climb.gd" id="12_co2wg"]
 [ext_resource type="AudioStream" uid="uid://rvdsv75uvl1g" path="res://assets/SFX/folder/lose_1.wav" id="12_ob7be"]
 [ext_resource type="AudioStream" uid="uid://dkcguk8m56rgx" path="res://assets/SFX/folder/fall.wav" id="13_m74vl"]
 
@@ -71,7 +71,7 @@ script = ExtResource("6_75vfm")
 controller = NodePath("../../UserPlayerController")
 metadata/_custom_type_script = "uid://duwb6lw8qv8qa"
 
-[node name="PlayerLaderClimb" type="Node" parent="StateMachine" node_paths=PackedStringArray("controller")]
+[node name="PlayerLadderClimb" type="Node" parent="StateMachine" node_paths=PackedStringArray("controller")]
 script = ExtResource("12_co2wg")
 controller = NodePath("../../UserPlayerController")
 metadata/_custom_type_script = "uid://cw5xylamhg1ob"

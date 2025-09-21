@@ -78,13 +78,13 @@ func is_on_floor() -> bool:
 func is_on_floor_buffered() -> bool:
 	return last_on_floor_time > -coyote_time
 
-func get_climb_lader_up() -> bool:
+func get_climb_ladder_up() -> bool:
 	return false
 
-func get_climb_lader_down() -> bool:
+func get_climb_ladder_down() -> bool:
 	return false
 
-func get_climb_lader_dir() -> int:
+func get_climb_ladder_dir() -> int:
 	return 0
 
 

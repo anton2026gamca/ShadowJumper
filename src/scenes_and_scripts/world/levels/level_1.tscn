@@ -129,21 +129,12 @@ shape = SubResource("WorldBoundaryShape2D_055t4")
 
 [node name="Fox" parent="Level" instance=ExtResource("6_go7g5")]
 position = Vector2(930, 16)
-chance_to_rotate = 0.005
-rotate_down_time = 2.0
-chance_to_give_up = 0.005
 
 [node name="Boar" parent="Level" instance=ExtResource("7_vp6c5")]
 position = Vector2(1623, -144)
-chance_to_rotate = 0.005
-rotate_down_time = 2.0
-chance_to_give_up = 0.005
 
 [node name="Fox2" parent="Level" instance=ExtResource("6_go7g5")]
 position = Vector2(1438, -147)
-chance_to_rotate = 0.005
-rotate_down_time = 2.0
-chance_to_give_up = 0.005
 
 [node name="Finish" parent="Level" instance=ExtResource("8_wcekq")]
 position = Vector2(1771, -160)
