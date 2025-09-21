@@ -41,6 +41,9 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_released("level_enter") and current_level and current_level.scene:
 		enter_level()
+	
+	if Input.is_action_just_pressed("pause"):
+		Helpers.main_menu.pause()
 
 
 func enter_level() -> void:
@@ -53,7 +56,7 @@ func enter_level() -> void:
 	parent.remove_child(self)
 	var defeated: bool = await LevelLoader.exit_level_signal
 	parent.add_child(self)
-	get_tree().current_scene = Helpers.level_selection_root
+	get_tree().current_scene = Helpers.main_menu
 	camera.make_current()
 	if defeated:
 		current_level.mark_completed()

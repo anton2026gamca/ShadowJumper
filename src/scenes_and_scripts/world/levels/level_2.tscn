@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=4 uid="uid://f8cwujw0lgie"]
 
-[ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world/level_selection/world.gdshader" id="1_njod4"]
+[ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_njod4"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_au23b"]
 [ext_resource type="Script" uid="uid://dhd8v7a51hwsm" path="res://scenes_and_scripts/folower.gd" id="3_4mss6"]
 [ext_resource type="TileSet" uid="uid://8h4fm7v55cnx" path="res://assets/tileset.tres" id="4_0husi"]

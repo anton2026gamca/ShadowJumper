@@ -1,7 +1,7 @@
 [gd_scene load_steps=151 format=4 uid="uid://clkhpeqrfyoax"]
 
-[ext_resource type="Script" uid="uid://dd3otqv1n5e7k" path="res://scenes_and_scripts/world/level_selection/level_selection.gd" id="1_7qmai"]
-[ext_resource type="PackedScene" uid="uid://by7kis83n7kvx" path="res://scenes_and_scripts/world/level_selection/level_selection_level.tscn" id="2_5iw0q"]
+[ext_resource type="Script" uid="uid://dd3otqv1n5e7k" path="res://scenes_and_scripts/ui/level_selection/level_selection.gd" id="1_7qmai"]
+[ext_resource type="PackedScene" uid="uid://by7kis83n7kvx" path="res://scenes_and_scripts/ui/level_selection/level_selection_level.tscn" id="2_5iw0q"]
 [ext_resource type="Script" uid="uid://hrc23450dtph" path="res://scenes_and_scripts/player/player.gd" id="4_270wt"]
 [ext_resource type="Script" uid="uid://bmswg047sanf" path="res://scenes_and_scripts/player/controllers/replay_controller/replay_player_controller.gd" id="5_qgt8i"]
 [ext_resource type="Script" uid="uid://btbdnpwfasls6" path="res://scenes_and_scripts/player/controllers/replay_controller/player_replay_frame_data.gd" id="6_8gh2l"]
@@ -17,7 +17,7 @@
 [ext_resource type="TileSet" uid="uid://8h4fm7v55cnx" path="res://assets/tileset.tres" id="14_it5vw"]
 [ext_resource type="AudioStream" uid="uid://dkcguk8m56rgx" path="res://assets/SFX/folder/fall.wav" id="15_6jgkc"]
 [ext_resource type="Script" uid="uid://cw5xylamhg1ob" path="res://scenes_and_scripts/player/states/player_lader_climb.gd" id="15_e2q0a"]
-[ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world/level_selection/world.gdshader" id="15_jj62b"]
+[ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="15_jj62b"]
 [ext_resource type="Script" uid="uid://dhd8v7a51hwsm" path="res://scenes_and_scripts/folower.gd" id="15_vnfxq"]
 [ext_resource type="PackedScene" uid="uid://d1knch75lpy1t" path="res://scenes_and_scripts/world/levels/level_1.tscn" id="16_it5vw"]
 [ext_resource type="PackedScene" uid="uid://f8cwujw0lgie" path="res://scenes_and_scripts/world/levels/level_2.tscn" id="18_gxsst"]
