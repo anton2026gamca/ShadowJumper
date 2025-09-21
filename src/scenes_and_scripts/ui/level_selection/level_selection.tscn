@@ -26,7 +26,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0vl0e"]
 shader = ExtResource("15_jj62b")
-shader_parameter/night_intensity = 0.9
+shader_parameter/night_intensity = 1.0
 shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
 shader_parameter/night_darkness = 1.0
 shader_parameter/night_contrast = 2.0
@@ -1906,7 +1906,6 @@ Vector2i(0, 1): 0.0
 
 [node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("controller")]
 use_parent_material = true
-position = Vector2(184.75, 23.924)
 collision_layer = 0
 collision_mask = 3
 script = ExtResource("4_270wt")
@@ -2191,5 +2190,31 @@ theme = ExtResource("19_noog6")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "[color=lightblue][space][/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Esc" type="Panel" parent="Level"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.25
+offset_left = 82.0
+offset_top = -62.0
+offset_right = 183.0
+offset_bottom = -8.0
+scale = Vector2(0.333, 0.333)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/Esc"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("19_noog6")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[color=lightblue][Esc][/color]"
 horizontal_alignment = 1
 vertical_alignment = 1

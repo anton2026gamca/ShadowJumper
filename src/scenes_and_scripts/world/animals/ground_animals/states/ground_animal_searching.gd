@@ -14,11 +14,16 @@ class_name GroundAnimalSearching
 @export_group("SFX")
 @export var attacking_audio: AudioStreamPlayer2D
 
+var last_rotate_time: float = INF
+
 
 func process(delta: float) -> Variant:
 	if not ground.is_colliding() or wall.is_colliding():
 		sprite.flip_h = not sprite.flip_h
-	
+	last_rotate_time += delta
+	if randf() <= target.chance_to_rotate and last_rotate_time > target.rotate_down_time:
+		sprite.flip_h = not sprite.flip_h
+		last_rotate_time = 0.0
 	var dir: int = -1 if sprite.flip_h else 1
 	physics_parent.scale.x = dir
 	

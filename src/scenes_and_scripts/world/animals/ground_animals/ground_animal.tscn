@@ -37,6 +37,10 @@ script = ExtResource("1_ajlb7")
 player_die_reason = ""
 walk_speed = 0.0
 run_speed = 0.0
+chance_to_rotate = 0.005
+rotate_down_time = 2.0
+chance_to_give_up = 0.005
+give_up_time = 3.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, -5)

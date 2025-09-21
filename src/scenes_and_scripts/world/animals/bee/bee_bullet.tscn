@@ -24,7 +24,8 @@ height = 10.0
 [node name="BeeBullet" instance=ExtResource("1_jgsbl")]
 script = ExtResource("2_k3haf")
 turn_back_rate = SubResource("Curve_k3haf")
-homing_rate = 100.0
+homing_rate_min = 80.0
+homing_rate_max = 120.0
 die_reason = "A bee shot you!"
 initial_speed_min = 350.0
 initial_speed_max = 450.0

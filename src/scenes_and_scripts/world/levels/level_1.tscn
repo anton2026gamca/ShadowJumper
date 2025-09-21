@@ -12,7 +12,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1m2nw"]
 shader = ExtResource("1_nbytn")
-shader_parameter/night_intensity = 0.9
+shader_parameter/night_intensity = 1.0
 shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
 shader_parameter/night_darkness = 1.0
 shader_parameter/night_contrast = 2.0
@@ -129,12 +129,21 @@ shape = SubResource("WorldBoundaryShape2D_055t4")
 
 [node name="Fox" parent="Level" instance=ExtResource("6_go7g5")]
 position = Vector2(930, 16)
+chance_to_rotate = 0.005
+rotate_down_time = 2.0
+chance_to_give_up = 0.005
 
 [node name="Boar" parent="Level" instance=ExtResource("7_vp6c5")]
 position = Vector2(1623, -144)
+chance_to_rotate = 0.005
+rotate_down_time = 2.0
+chance_to_give_up = 0.005
 
 [node name="Fox2" parent="Level" instance=ExtResource("6_go7g5")]
 position = Vector2(1438, -147)
+chance_to_rotate = 0.005
+rotate_down_time = 2.0
+chance_to_give_up = 0.005
 
 [node name="Finish" parent="Level" instance=ExtResource("8_wcekq")]
 position = Vector2(1771, -160)

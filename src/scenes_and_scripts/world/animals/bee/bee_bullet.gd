@@ -4,11 +4,17 @@ class_name BeeBulet
 
 @onready var sprite: Sprite2D = $Sprite2D
 @export var turn_back_rate: Curve
-@export var homing_rate: float = 100.0
+@export var homing_rate_min: float = 80.0
+@export var homing_rate_max: float = 120.0
 var initial_homing_dir: float = 0.0
+var homing_rate: float
 
 var target: Node2D
 
+
+func _ready() -> void:
+	super._ready()
+	homing_rate = 100#randf_range(homing_rate_min, homing_rate_max)
 
 func _physics_process(delta: float) -> void:
 	if not target:

@@ -98,6 +98,10 @@ size = Vector2(36.5, 32.5)
 player_die_reason = "A fox bit you!"
 walk_speed = 600.0
 run_speed = 3000.0
+chance_to_rotate = 0.005
+rotate_down_time = 2.0
+chance_to_give_up = 0.005
+give_up_time = 3.0
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_rasjo")

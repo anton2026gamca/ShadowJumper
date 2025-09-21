@@ -19,8 +19,6 @@ class_name GroundAnimalAttacking
 
 var paused: bool = false
 
-var idle_time: float = 0
-
 
 func process(delta: float) -> Variant:
 	if paused:
@@ -31,15 +29,14 @@ func process(delta: float) -> Variant:
 		return GroundAnimalSearching
 	var player: Player = bodies[player_index]
 	
+	
+	
 	if not ground.is_colliding() or wall.is_colliding():
 		sprite.play("idle")
 		target.velocity.x = 0
 		target.velocity.y += target.get_gravity().y * 2 * delta
-		idle_time += delta
-		if idle_time > 2:
-			enemy_area.monitoring = false
-			get_tree().create_timer(3.0).timeout.connect(resume_monitoring)
-			return GroundAnimalSearching
+		if randf() / 2.0 <= target.chance_to_give_up:
+			return give_up()
 	else:
 		sprite.play("move", 1.5)
 		var dir: int = Vector2(player.position.x - target.position.x, 0.0).normalized().x
@@ -47,7 +44,8 @@ func process(delta: float) -> Variant:
 		physics_parent.scale.x = dir
 		target.velocity.x = target.get_run_speed() * dir * delta
 		target.velocity.y += target.get_gravity().y * 2 * delta
-		idle_time = 0
+		if randf() <= target.chance_to_give_up:
+			return give_up()
 	
 	if hit_start_area.get_overlapping_bodies().has(player):
 		attack(player)
@@ -72,6 +70,12 @@ func attack(player: Player) -> void:
 		var death_component: DeathComponent = Helpers.find_child_by_type(player, DeathComponent)
 		if death_component:
 			death_component.die(target.get_player_die_reason())
+
+func give_up() -> Variant:
+	enemy_area.monitoring = false
+	sprite.flip_h = sprite.flip_h
+	get_tree().create_timer(target.give_up_time).timeout.connect(resume_monitoring)
+	return GroundAnimalSearching
 
 func play_attacking_audio() -> void:
 	attacking_audio.play()
