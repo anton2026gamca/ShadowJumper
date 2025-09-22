@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cd7yubqxtcw2v"]
+[gd_scene load_steps=36 format=3 uid="uid://cd7yubqxtcw2v"]
 
 [ext_resource type="PackedScene" uid="uid://cjdb2ap3qdyt5" path="res://scenes_and_scripts/world/animals/animal.tscn" id="1_psrfv"]
 [ext_resource type="Script" uid="uid://c8teo0ong35gb" path="res://scenes_and_scripts/world/animals/bee/bee.gd" id="2_h0684"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b2vgdb2qi32nm" path="res://scenes_and_scripts/world/animals/bee/states/bee_not_in_range.gd" id="3_wyt1c"]
 [ext_resource type="Script" uid="uid://bl26dx8gd55fr" path="res://scenes_and_scripts/world/animals/bee/states/bee_attacking.gd" id="5_yntd2"]
 [ext_resource type="PackedScene" uid="uid://r80goc7odoja" path="res://scenes_and_scripts/world/animals/bee/bee_bullet.tscn" id="6_j8j3w"]
+[ext_resource type="AudioStream" uid="uid://2shoi471ka7g" path="res://assets/SFX/folder/hurt_1.wav" id="7_cal8c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cal8c"]
 radius = 7.0
@@ -252,10 +253,15 @@ attack_start_area = NodePath("../../AttackStartArea")
 sprite = NodePath("../../AnimatedSprite2D")
 metadata/_custom_type_script = "uid://b2vgdb2qi32nm"
 
-[node name="Attacking" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("target", "target_lost_area", "bullet_spawner")]
+[node name="Attacking" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("target", "target_lost_area", "bullet_spawner", "shoot_audio_player")]
 script = ExtResource("5_yntd2")
 target = NodePath("../..")
 target_lost_area = NodePath("../../TargetLostArea")
 bullet_scene = ExtResource("6_j8j3w")
 bullet_spawner = NodePath("../../BulletSpawner")
+shoot_audio_player = NodePath("../../Shoot")
 metadata/_custom_type_script = "uid://bl26dx8gd55fr"
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="." index="7"]
+stream = ExtResource("7_cal8c")
+bus = &"SFX"

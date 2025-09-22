@@ -116,8 +116,10 @@ position = Vector2(9.5, -7.5)
 [node name="AttackingAudio" type="AudioStreamPlayer2D" parent="." index="5"]
 stream = ExtResource("5_etv1c")
 volume_db = -30.646
+bus = &"SFX"
 
 [node name="AttackAudio" type="AudioStreamPlayer2D" parent="." index="6"]
+bus = &"SFX"
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." index="7"]
 position = Vector2(80, -2)

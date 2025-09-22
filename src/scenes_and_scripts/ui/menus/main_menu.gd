@@ -11,3 +11,6 @@ func _on_settings_pressed() -> void:
 	settings_menu.open()
 	await settings_menu.closed
 	open()
+
+func _on_quit_pressed() -> void:
+	pass

@@ -117,8 +117,12 @@ shape = SubResource("RectangleShape2D_bhof2")
 position = Vector2(15.25, -13.25)
 shape = SubResource("RectangleShape2D_i6ybc")
 
+[node name="AttackingAudio" parent="." index="5"]
+bus = &"SFX"
+
 [node name="AttackAudio" parent="." index="6"]
 stream = ExtResource("4_lrxyp")
+bus = &"SFX"
 
 [node name="VisibleOnScreenEnabler2D" parent="." index="7"]
 position = Vector2(54.5, -0.500001)

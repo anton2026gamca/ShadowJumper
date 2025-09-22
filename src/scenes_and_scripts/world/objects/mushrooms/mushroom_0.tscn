@@ -81,14 +81,18 @@ animation = &"boom"
 [node name="BoomStartAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_o6bic")
 volume_db = -18.883
+bus = &"SFX"
 
 [node name="BoomAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_o6bic")
 volume_db = 24.0
+bus = &"SFX"
 
 [node name="HitAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_eiiw0")
+bus = &"SFX"
 
 [node name="RespawnAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_eiiw0")
 max_distance = 256.0
+bus = &"SFX"

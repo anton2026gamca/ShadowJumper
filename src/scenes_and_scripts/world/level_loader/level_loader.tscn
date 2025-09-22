@@ -40,6 +40,7 @@ metadata/_edit_use_anchors_ = true
 [node name="LevelDefeatedSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_mb2jk")
 volume_db = 5.059
+bus = &"SFX"
 
 [connection signal="exit_level" from="UICanvasLayer/UI" to="." method="exit_level"]
 [connection signal="respawn" from="UICanvasLayer/UI" to="." method="reload_level"]

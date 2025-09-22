@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dqgu60xixvo2u" path="res://scenes_and_scripts/ui/main.gd" id="1_1wink"]
 [ext_resource type="PackedScene" uid="uid://clkhpeqrfyoax" path="res://scenes_and_scripts/ui/level_selection/level_selection.tscn" id="2_7efjl"]
 [ext_resource type="PackedScene" uid="uid://b1y61w7c7cgn5" path="res://scenes_and_scripts/ui/menus/main_menu.tscn" id="3_blyvd"]
-[ext_resource type="PackedScene" uid="uid://cccamfqr4lmoy" path="res://scenes_and_scripts/ui/menus/settings_menu.tscn" id="4_7efjl"]
+[ext_resource type="PackedScene" uid="uid://cccamfqr4lmoy" path="res://scenes_and_scripts/ui/menus/settings_menu/settings_menu.tscn" id="4_7efjl"]
 
 [node name="Main" type="Control" node_paths=PackedStringArray("level_selection_layer", "ui_layer", "main_menu")]
 layout_mode = 3
@@ -46,5 +46,6 @@ render_target_update_mode = 4
 settings_menu = NodePath("../SettingsMenu")
 
 [node name="SettingsMenu" parent="UI" instance=ExtResource("4_7efjl")]
+visible = false
 
 [connection signal="closed" from="UI/MainMenu" to="." method="_on_main_menu_closed"]

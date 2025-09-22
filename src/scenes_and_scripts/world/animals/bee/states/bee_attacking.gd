@@ -8,6 +8,7 @@ var enemy: Node2D
 @export var target_lost_area: Area2D
 @export var bullet_scene: PackedScene
 @export var bullet_spawner: Node2D
+@export var shoot_audio_player: AudioStreamPlayer2D
 
 var current_bullet: BeeBulet
 
@@ -45,6 +46,7 @@ func shoot() -> void:
 	current_bullet.global_position = bullet_spawner.global_position
 	current_bullet.target = enemy
 	current_bullet.finished.connect(_on_bullet_finished)
+	shoot_audio_player.play()
 	target.get_parent().add_child(current_bullet)
 
 func _on_bullet_finished() -> void:

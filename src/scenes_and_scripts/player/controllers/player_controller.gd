@@ -131,6 +131,7 @@ func play_sfx(sfx: AudioStream) -> void:
 	pl.stream = sfx
 	pl.autoplay = true
 	pl.pitch_scale = (randf() / 8.0) + (1.0 - (1.0 / 8.0) / 2.0)
+	pl.bus = &"SFX"
 	target.add_child(pl)
 	await pl.finished
 	target.remove_child(pl)

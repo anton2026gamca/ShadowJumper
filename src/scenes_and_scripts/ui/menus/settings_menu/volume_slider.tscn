@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://drmr04apsgv8e"]
+
+[ext_resource type="Script" uid="uid://cvtkl7xb0pxtc" path="res://scenes_and_scripts/ui/menus/settings_menu/volume_slider.gd" id="1_ua6cj"]
+[ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="2_jtl0w"]
+
+[node name="VolumeSlider" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+script = ExtResource("1_ua6cj")
+audio_bus = ""
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("2_jtl0w")
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("2_jtl0w")
+value = 100.0
+
+[node name="Value" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "100%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="value_changed" from="HSlider" to="." method="_on_slider_value_changed"]

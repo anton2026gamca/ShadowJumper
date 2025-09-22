@@ -265,3 +265,4 @@ libraries = {
 
 [connection signal="pressed" from="ControlPlay/Play" to="." method="close"]
 [connection signal="pressed" from="ControlSettings/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="ControlQuit/Quit" to="." method="_on_quit_pressed"]
