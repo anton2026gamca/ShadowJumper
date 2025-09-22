@@ -98,11 +98,11 @@ position = Vector2(240, -58)
 
 [node name="Wolf" parent="Level" instance=ExtResource("8_xd2tb")]
 position = Vector2(3215, -65)
-chance_to_rotate = 0.007
 
 [node name="Wolf2" parent="Level" instance=ExtResource("8_xd2tb")]
 position = Vector2(2757, -65)
-chance_to_give_up = 0.007
+chance_to_rotate = 0.003
+chance_to_give_up = 0.005
 chance_to_spawn = 0.5
 
 [node name="Wolf3" parent="Level" instance=ExtResource("8_xd2tb")]

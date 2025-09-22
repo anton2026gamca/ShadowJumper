@@ -73,7 +73,7 @@ func attack(player: Player) -> void:
 
 func give_up() -> Variant:
 	enemy_area.monitoring = false
-	sprite.flip_h = sprite.flip_h
+	sprite.flip_h = not sprite.flip_h
 	get_tree().create_timer(target.give_up_time).timeout.connect(resume_monitoring)
 	return GroundAnimalSearching
 

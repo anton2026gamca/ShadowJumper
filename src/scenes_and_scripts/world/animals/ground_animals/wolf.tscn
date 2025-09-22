@@ -105,6 +105,7 @@ size = Vector2(48, 44)
 player_die_reason = "A wolf knocked you to the ground really hard!"
 walk_speed = 1200.0
 run_speed = 6300.0
+chance_to_give_up = 0.003
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_xw531")

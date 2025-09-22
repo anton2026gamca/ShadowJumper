@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b1y61w7c7cgn5"]
 
-[ext_resource type="Script" uid="uid://dbhtadyxlo0kr" path="res://scenes_and_scripts/ui/menus/menu.gd" id="1_8w5ij"]
+[ext_resource type="Script" uid="uid://be756p2mt0l2l" path="res://scenes_and_scripts/ui/menus/main_menu.gd" id="1_8w5ij"]
 [ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="2_4n5uu"]
 [ext_resource type="Texture2D" uid="uid://5uggglelyu6l" path="res://splash.png" id="3_bx3jg"]
 
@@ -150,6 +150,7 @@ grow_vertical = 2
 script = ExtResource("1_8w5ij")
 default_focus = NodePath("ControlPlay/Play")
 animation_player = NodePath("AnimationPlayer")
+metadata/_custom_type_script = "uid://dbhtadyxlo0kr"
 
 [node name="Panel" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -263,3 +264,4 @@ libraries = {
 }
 
 [connection signal="pressed" from="ControlPlay/Play" to="." method="close"]
+[connection signal="pressed" from="ControlSettings/Settings" to="." method="_on_settings_pressed"]

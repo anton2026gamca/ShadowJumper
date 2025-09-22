@@ -14,13 +14,16 @@ func _ready() -> void:
 
 
 func open() -> void:
+	visible = true
 	animation_player.play("menu_open")
 	default_focus.grab_focus()
 
-func close() -> void:
+func close(internal: bool = false) -> void:
 	animation_player.play_backwards("menu_open")
 	await animation_finished
-	closed.emit()
+	if not internal:
+		closed.emit()
+	visible = false
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	animation_finished.emit()

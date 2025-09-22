@@ -1,5 +1,5 @@
 extends Control
-class_name MainMenu
+class_name Main
 
 
 @export var level_selection_layer: CanvasLayer

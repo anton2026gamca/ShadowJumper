@@ -1,7 +1,7 @@
 extends Node
 
 
-var main_menu: MainMenu
+var main_menu: Main
 var levels_ui: LevelsUI
 var camera: Camera2D
 

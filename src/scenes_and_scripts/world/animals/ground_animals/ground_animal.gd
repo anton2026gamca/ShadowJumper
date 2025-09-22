@@ -11,7 +11,7 @@ class_name GroundAnimal
 @export var chance_to_rotate: float = 0.005
 @export var rotate_down_time: float = 2.0
 @export_group("Behaviour/Attacking")
-@export var chance_to_give_up: float = 0.005
+@export var chance_to_give_up: float = 0.003
 @export var give_up_time: float = 3.0
 
 
