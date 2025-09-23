@@ -12,8 +12,13 @@ class_name VolumeSlider
 
 @onready var label_node: RichTextLabel = $RichTextLabel
 @onready var value_text: RichTextLabel = $Value
+@onready var slider: HSlider = $HSlider
 
 signal value_changed(value: float)
+
+var value: float:
+	set(val): slider.value = val
+	get: return slider.value
 
 
 func _ready() -> void:

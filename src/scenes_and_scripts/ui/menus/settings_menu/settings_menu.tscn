@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cccamfqr4lmoy"]
 
-[ext_resource type="Script" uid="uid://dbhtadyxlo0kr" path="res://scenes_and_scripts/ui/menus/menu.gd" id="1_pnaky"]
+[ext_resource type="Script" uid="uid://doavdpktpac33" path="res://scenes_and_scripts/ui/menus/settings_menu/settings_menu.gd" id="1_b21ql"]
 [ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="2_7v0ur"]
 [ext_resource type="PackedScene" uid="uid://drmr04apsgv8e" path="res://scenes_and_scripts/ui/menus/settings_menu/volume_slider.tscn" id="3_pnaky"]
 
@@ -140,16 +140,16 @@ _data = {
 &"menu_open": SubResource("Animation_nk6nd")
 }
 
-[node name="SettingsMenu" type="Control" node_paths=PackedStringArray("default_focus", "animation_player")]
+[node name="SettingsMenu" type="Control" node_paths=PackedStringArray("default_focus")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_pnaky")
+script = ExtResource("1_b21ql")
 default_focus = NodePath("ControlExit/Exit")
-animation_player = NodePath("AnimationPlayer")
+metadata/_custom_type_script = "uid://dbhtadyxlo0kr"
 
 [node name="Panel" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)

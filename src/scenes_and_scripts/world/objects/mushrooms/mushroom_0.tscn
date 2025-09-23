@@ -85,7 +85,7 @@ bus = &"SFX"
 
 [node name="BoomAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_o6bic")
-volume_db = 24.0
+volume_db = 11.47
 bus = &"SFX"
 
 [node name="HitAudio" type="AudioStreamPlayer2D" parent="."]
