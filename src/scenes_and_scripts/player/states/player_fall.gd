@@ -28,9 +28,7 @@ func process(delta: float) -> Variant:
 	var direction: float = controller.get_move_dir()
 	if controller.is_on_floor_buffered():
 		if controller.get_jump_buffered():
-			controller.target.velocity.y = controller.jump_velocity
-			controller.disable_jump = true
-			controller.play_sfx(controller.sfx_jump)
+			controller.jump()
 		if direction: controller.target.velocity.x = direction * controller.speed
 		else: controller.target.velocity.x = move_toward(controller.target.velocity.x, 0, 6000 * delta)
 	else:

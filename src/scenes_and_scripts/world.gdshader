@@ -44,11 +44,15 @@ void fragment() {
 	if (COLOR.a == 0.4980392157) {
 		COLOR.a = 1.0;
 		COLOR = vec4(1, 1, 1, 1);
+	} else if (COLOR == vec4(227.0 / 255.0, 81.0 / 255.0, 0.0, 1.0)) {
+		
 	} else {
 		COLOR = vec4(final_color, original_color.a);
 	}
 }
 
 void light() {
-	LIGHT = mix(vec4(0, 0, 0, 0), texture(TEXTURE, UV), LIGHT_COLOR * night_intensity);
+	if (texture(TEXTURE, UV) != vec4(227.0 / 255.0, 81.0 / 255.0, 0.0, 1.0)) {
+		LIGHT = mix(vec4(0, 0, 0, 0), texture(TEXTURE, UV), LIGHT_COLOR * night_intensity);
+	}
 }

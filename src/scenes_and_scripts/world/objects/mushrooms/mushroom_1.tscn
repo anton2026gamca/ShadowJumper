@@ -13,3 +13,6 @@ texture = SubResource("AtlasTexture_ny3xq")
 
 [node name="BoomAudio" parent="." index="4"]
 stream = ExtResource("3_vhws5")
+
+[node name="HitParticles" parent="." index="7"]
+color = Color(0.670588, 0.431373, 0.294118, 1)

@@ -21,6 +21,7 @@ signal boom_finished
 @onready var boom_audio: AudioStreamPlayer2D = $BoomAudio
 @onready var hit_audio: AudioStreamPlayer2D = $HitAudio
 @onready var respawn_audio: AudioStreamPlayer2D = $RespawnAudio
+@onready var hit_particles: CPUParticles2D = $HitParticles
 
 var is_on: bool:
 	set(value): return
@@ -56,6 +57,7 @@ func hit() -> void:
 		point_light.turn_off()
 		hit_audio.pitch_scale = randf_range(0.5, 1.5)
 		hit_audio.play()
+		hit_particles.emitting = true
 	boom_angry_value = 0
 	stop_making_boom()
 	hit_val += 1

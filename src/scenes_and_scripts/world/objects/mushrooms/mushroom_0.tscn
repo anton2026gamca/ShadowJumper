@@ -96,3 +96,22 @@ bus = &"SFX"
 stream = ExtResource("7_eiiw0")
 max_distance = 256.0
 bus = &"SFX"
+
+[node name="HitParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+lifetime = 1.3
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_sphere_radius = 8.0
+direction = Vector2(0, -1)
+spread = 22.5
+gravity = Vector2(0, 100)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+linear_accel_min = 20.0
+linear_accel_max = 20.0
+scale_amount_max = 3.0
+color = Color(0.784314, 0.784314, 0.337255, 1)

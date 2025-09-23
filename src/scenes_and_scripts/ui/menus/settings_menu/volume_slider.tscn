@@ -6,7 +6,6 @@
 [node name="VolumeSlider" type="HBoxContainer"]
 custom_minimum_size = Vector2(0, 24)
 script = ExtResource("1_ua6cj")
-audio_bus = ""
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(100, 0)

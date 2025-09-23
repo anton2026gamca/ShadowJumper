@@ -33,7 +33,7 @@ func pause() -> void:
 	get_tree().paused = true
 
 func resume() -> void:
-	if not get_tree().paused: return
+	if not get_tree().paused or respawn_menu.is_open: return
 	await pause_menu.close()
 	get_tree().paused = false
 

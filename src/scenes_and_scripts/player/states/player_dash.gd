@@ -16,8 +16,6 @@ func process(delta: float) -> Variant:
 		controller.target.velocity.x = move_toward(controller.target.velocity.x, 0, 8000 * delta)
 	if controller.get_jump_buffered():
 		controller.target.velocity.x = min(max(controller.target.velocity.x, -controller.speed), controller.speed)
-		controller.target.velocity.y = controller.jump_velocity
-		controller.disable_jump = true
-		controller.play_sfx(controller.sfx_jump)
+		controller.jump()
 		return PlayerFall
 	return null

@@ -104,11 +104,9 @@ shape = SubResource("RectangleShape2D_5g0xv")
 
 [node name="AttackingAudio" parent="." index="5"]
 volume_db = -23.151
-bus = &"SFX"
 
 [node name="AttackAudio" parent="." index="6"]
 stream = ExtResource("4_348gh")
-bus = &"SFX"
 
 [node name="VisibleOnScreenEnabler2D" parent="." index="7"]
 position = Vector2(51, -2)

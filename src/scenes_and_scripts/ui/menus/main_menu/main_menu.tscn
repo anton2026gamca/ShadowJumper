@@ -147,6 +147,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_8w5ij")
 default_focus = NodePath("ControlPlay/Play")
 metadata/_custom_type_script = "uid://dbhtadyxlo0kr"
@@ -171,6 +172,7 @@ anchor_bottom = 0.5
 offset_left = -2450.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Play" type="Button" parent="ControlPlay"]
 layout_mode = 1
@@ -198,6 +200,7 @@ anchor_bottom = 0.5
 offset_left = -2450.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Settings" type="Button" parent="ControlSettings"]
 layout_mode = 1
@@ -225,6 +228,7 @@ anchor_bottom = 0.5
 offset_left = -2450.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Quit" type="Button" parent="ControlQuit"]
 layout_mode = 1

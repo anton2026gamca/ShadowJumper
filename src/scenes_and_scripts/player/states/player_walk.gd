@@ -10,9 +10,7 @@ func process(delta: float) -> Variant:
 	if controller.get_throw_a_rock():
 		controller.throw_a_rock()
 	if controller.get_jump_buffered():
-		controller.target.velocity.y = controller.jump_velocity
-		controller.disable_jump = true
-		controller.play_sfx(controller.sfx_jump)
+		controller.jump()
 	
 	var direction: float = controller.get_move_dir()
 	if direction:

@@ -9,3 +9,6 @@ region = Rect2(48, 0, 16, 16)
 
 [node name="Mushroom2" instance=ExtResource("1_u5vtp")]
 texture = SubResource("AtlasTexture_4dy48")
+
+[node name="HitParticles" parent="." index="7"]
+color = Color(0.764706, 0.27451, 0.211765, 1)

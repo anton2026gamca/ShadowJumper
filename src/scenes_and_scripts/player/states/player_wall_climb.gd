@@ -4,6 +4,7 @@ class_name PlayerWallClimb
 
 
 @export var controller: PlayerController
+@export var cimb_particles: CPUParticles2D
 
 
 func process(_delta: float) -> Variant:
@@ -18,9 +19,7 @@ func process(_delta: float) -> Variant:
 	var dir: int = -1 if left else (1 if right else 0)
 	if controller.get_jump_buffered():
 		controller.target.velocity.x = -dir * controller.speed
-		controller.target.velocity.y = controller.jump_velocity
-		controller.play_sfx(controller.sfx_jump)
-		controller.disable_jump = true
+		controller.jump()
 		controller.disable_climb = true
 		return PlayerFall
 	if (controller.get_move_left() if right else controller.get_move_right()):
@@ -28,5 +27,13 @@ func process(_delta: float) -> Variant:
 		controller.disable_climb = true
 		return PlayerFall
 	controller.target.velocity.y = controller.climb_down_velocity
-
+	
+	if cimb_particles:
+		cimb_particles.position.x = dir * abs(cimb_particles.position.x)
+		cimb_particles.emitting = true
+	
 	return null
+
+
+func on_exit() -> void:
+	if cimb_particles: cimb_particles.emitting = false
