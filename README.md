@@ -1,5 +1,5 @@
 # ShadowJumper
-You play as a character that can only move when the lights are off. When the lights turn on and you're caught moving, you lose!
+You need to get to the end of the level without getting electrified by a mushroom or eaten by an animal
 
 ---
 
