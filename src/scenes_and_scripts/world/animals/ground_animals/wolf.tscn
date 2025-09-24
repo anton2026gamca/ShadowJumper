@@ -109,7 +109,7 @@ chance_to_give_up = 0.003
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_xw531")
-animation = &"idle"
+frame = 1
 
 [node name="CollisionShape2D" parent="Physics/EnemyArea" index="0"]
 shape = SubResource("RectangleShape2D_vp7k5")
@@ -124,5 +124,8 @@ shape = SubResource("RectangleShape2D_5vmc2")
 stream = ExtResource("3_4al75")
 
 [node name="VisibleOnScreenEnabler2D" parent="." index="7"]
-position = Vector2(75.5, -1.5)
+position = Vector2(75, -1)
 scale = Vector2(36.35, 5.55)
+
+[node name="AttackParticles" parent="." index="8"]
+position = Vector2(10, -10)

@@ -67,7 +67,7 @@ enemy_area = NodePath("../../Physics/EnemyArea")
 attacking_audio = NodePath("../../AttackingAudio")
 metadata/_custom_type_script = "uid://dly1y5lca6fuj"
 
-[node name="GroundAnimalAttacking" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("target", "sprite", "physics_parent", "enemy_area", "ground", "wall", "hit_start_area", "hit_range_area", "attacking_audio", "attack_audio")]
+[node name="GroundAnimalAttacking" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("target", "sprite", "physics_parent", "enemy_area", "ground", "wall", "hit_start_area", "hit_range_area", "attacking_audio", "attack_audio", "attack_particles")]
 script = ExtResource("4_kja6p")
 target = NodePath("../..")
 sprite = NodePath("../../AnimatedSprite2D")
@@ -79,6 +79,7 @@ hit_start_area = NodePath("../../Physics/HitStartArea")
 hit_range_area = NodePath("../../Physics/HitRangeArea")
 attacking_audio = NodePath("../../AttackingAudio")
 attack_audio = NodePath("../../AttackAudio")
+attack_particles = NodePath("../../AttackParticles")
 metadata/_custom_type_script = "uid://rat5qcmwg87d"
 
 [node name="Physics" type="Node2D" parent="." index="4"]
@@ -124,3 +125,14 @@ bus = &"SFX"
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." index="7"]
 position = Vector2(80, -2)
 scale = Vector2(19.7, 4.1)
+
+[node name="AttackParticles" type="CPUParticles2D" parent="." index="8"]
+position = Vector2(8, -5)
+emitting = false
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_max = 3.0

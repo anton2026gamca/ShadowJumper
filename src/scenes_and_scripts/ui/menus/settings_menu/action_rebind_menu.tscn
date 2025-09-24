@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://chfcpwn5m7vp5"]
+
+[ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="1_21nxd"]
+[ext_resource type="Script" uid="uid://bhbuw4wrh3x0n" path="res://scenes_and_scripts/ui/menus/settings_menu/action_rebind_menu.gd" id="1_ygbia"]
+
+[node name="ActionRebindMenu" type="HBoxContainer"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ygbia")
+metadata/_custom_type_script = "uid://bhbuw4wrh3x0n"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_21nxd")
+vertical_alignment = 1
+clip_text = true
+
+[node name="PrimaryRebindButton" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("1_21nxd")
+text = "<Not Bound>"
+
+[node name="SecondaryRebindButton" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("1_21nxd")
+text = "<Not Bound>"
+
+[connection signal="pressed" from="PrimaryRebindButton" to="." method="rebind_primary"]
+[connection signal="pressed" from="SecondaryRebindButton" to="." method="rebind_secondary"]

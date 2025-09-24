@@ -30,16 +30,16 @@ func _ready() -> void:
 	camera.position = replay_controller.target.position
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("level_up") and current_level:
+	if Input.is_action_just_pressed("ui_up") and current_level:
 		move_to_level(Vector2i.UP)
-	if Input.is_action_just_pressed("level_down") and current_level:
+	if Input.is_action_just_pressed("ui_down") and current_level:
 		move_to_level(Vector2i.DOWN)
-	if Input.is_action_just_pressed("level_left") and current_level:
+	if Input.is_action_just_pressed("ui_left") and current_level:
 		move_to_level(Vector2i.LEFT)
-	if Input.is_action_just_pressed("level_right") and current_level:
+	if Input.is_action_just_pressed("ui_right") and current_level:
 		move_to_level(Vector2i.RIGHT)
 	
-	if Input.is_action_just_released("level_enter") and current_level and current_level.scene:
+	if Input.is_action_just_released("ui_accept") and current_level and current_level.scene:
 		enter_level()
 	
 	if Input.is_action_just_pressed("pause"):

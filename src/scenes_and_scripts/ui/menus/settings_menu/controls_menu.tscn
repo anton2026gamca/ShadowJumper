@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cccamfqr4lmoy"]
+[gd_scene load_steps=8 format=3 uid="uid://8cac1aghe7ym"]
 
-[ext_resource type="Script" uid="uid://doavdpktpac33" path="res://scenes_and_scripts/ui/menus/settings_menu/settings_menu.gd" id="1_b21ql"]
-[ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="2_7v0ur"]
-[ext_resource type="PackedScene" uid="uid://drmr04apsgv8e" path="res://scenes_and_scripts/ui/menus/settings_menu/volume_slider.tscn" id="3_pnaky"]
+[ext_resource type="Script" uid="uid://ccgwx28pm1cde" path="res://scenes_and_scripts/ui/menus/settings_menu/controls_menu.gd" id="1_cfuax"]
+[ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="2_5sum1"]
+[ext_resource type="PackedScene" uid="uid://chfcpwn5m7vp5" path="res://scenes_and_scripts/ui/menus/settings_menu/action_rebind_menu.tscn" id="3_cfuax"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nk6nd"]
 bg_color = Color(0, 0, 0, 0.572549)
@@ -48,7 +48,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("ControlSound:offset_left")
+tracks/3/path = NodePath("ControlActions:offset_left")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -60,7 +60,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("ControlControlsMenu:offset_left")
+tracks/4/path = NodePath("Control:offset_left")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -112,7 +112,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("ControlSound:offset_left")
+tracks/3/path = NodePath("ControlActions:offset_left")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -124,7 +124,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("ControlControlsMenu:offset_left")
+tracks/4/path = NodePath("Control:offset_left")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -140,15 +140,14 @@ _data = {
 &"menu_open": SubResource("Animation_nk6nd")
 }
 
-[node name="SettingsMenu" type="Control" node_paths=PackedStringArray("default_focus")]
+[node name="ControlsMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_b21ql")
-default_focus = NodePath("ControlExit/Exit")
+script = ExtResource("1_cfuax")
 metadata/_custom_type_script = "uid://dbhtadyxlo0kr"
 
 [node name="Panel" type="Panel" parent="."]
@@ -174,9 +173,9 @@ offset_right = -1002.0
 offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_7v0ur")
+theme = ExtResource("2_5sum1")
 theme_override_font_sizes/normal_font_size = 36
-text = "SETTINGS"
+text = "CONTROLS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -199,15 +198,15 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -213.0
-offset_top = -45.0
+offset_top = -89.0
 offset_right = 213.0
-offset_bottom = -29.0
+offset_bottom = -57.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_7v0ur")
+theme = ExtResource("2_5sum1")
 text = " ← EXIT"
 
-[node name="ControlSound" type="Control" parent="."]
+[node name="ControlActions" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -218,7 +217,7 @@ offset_left = -2450.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sound" type="Panel" parent="ControlSound"]
+[node name="Actions" type="Panel" parent="ControlActions"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -226,44 +225,50 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -213.0
-offset_top = -16.0
+offset_top = -52.0
 offset_right = 213.0
-offset_bottom = 94.0
+offset_bottom = 168.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_7v0ur")
+theme = ExtResource("2_5sum1")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ControlSound/Sound"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlActions/Actions"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 5.0
+offset_left = 8.0
+offset_top = 4.0
 offset_right = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ControlSound/Sound/VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
+[node name="MoveLeft" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
 layout_mode = 2
-text = "Sound:"
+action = &"move_left"
 
-[node name="Master" parent="ControlSound/Sound/VBoxContainer" instance=ExtResource("3_pnaky")]
+[node name="MoveRight" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
 layout_mode = 2
-audio_bus = &"Master"
-label = "   Master:"
+action = &"move_right"
 
-[node name="SFX" parent="ControlSound/Sound/VBoxContainer" instance=ExtResource("3_pnaky")]
+[node name="Jump" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
 layout_mode = 2
-audio_bus = &"SFX"
-label = "   SFX:"
+action = &"jump"
 
-[node name="Music" parent="ControlSound/Sound/VBoxContainer" instance=ExtResource("3_pnaky")]
+[node name="ThrowARock" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
 layout_mode = 2
-audio_bus = &"Music"
-label = "   Music:"
+action = &"throw_a_rock"
 
-[node name="ControlControlsMenu" type="Control" parent="."]
+[node name="LadderUp" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
+layout_mode = 2
+action = &"ladder_climb_up"
+
+[node name="LadderDown" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
+layout_mode = 2
+action = &"ladder_climb_down"
+
+[node name="Control" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -273,22 +278,6 @@ anchor_bottom = 0.5
 offset_left = -2450.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ControlsMenu" type="Button" parent="ControlControlsMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -213.0
-offset_top = 99.0
-offset_right = 213.0
-offset_bottom = 131.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_7v0ur")
-text = "Cnotrols"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -296,4 +285,3 @@ libraries = {
 }
 
 [connection signal="pressed" from="ControlExit/Exit" to="." method="close"]
-[connection signal="pressed" from="ControlControlsMenu/ControlsMenu" to="." method="open_controls_menu"]

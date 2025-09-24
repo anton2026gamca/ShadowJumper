@@ -17,6 +17,9 @@ class_name GroundAnimalAttacking
 @export var attacking_audio: AudioStreamPlayer2D
 @export var attack_audio: AudioStreamPlayer2D
 
+@export_group("Effects")
+@export var attack_particles: CPUParticles2D
+
 var paused: bool = false
 
 
@@ -63,6 +66,9 @@ func attack(player: Player) -> void:
 	sprite.play("attack")
 	attack_audio.pitch_scale = randf_range(0.8, 1.2)
 	attack_audio.play()
+	attack_particles.position.x = (-1 if sprite.flip_h else 1) * abs(attack_particles.position.x)
+	attack_particles.direction.x = (-1 if sprite.flip_h else 1) * abs(attack_particles.direction.x)
+	attack_particles.emitting = true
 	paused = true
 	await sprite.animation_finished
 	paused = false

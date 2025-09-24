@@ -123,3 +123,7 @@ stream = ExtResource("4_lrxyp")
 [node name="VisibleOnScreenEnabler2D" parent="." index="7"]
 position = Vector2(54.5, -0.500001)
 scale = Vector2(24.95, 4.25)
+
+[node name="AttackParticles" parent="." index="8"]
+position = Vector2(11, -7)
+lifetime = 0.2

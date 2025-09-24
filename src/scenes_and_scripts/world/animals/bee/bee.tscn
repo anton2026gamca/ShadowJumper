@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://2shoi471ka7g" path="res://assets/SFX/folder/hurt_1.wav" id="7_cal8c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cal8c"]
-radius = 7.0
+radius = 9.0
 height = 26.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rwvv8"]
@@ -259,9 +259,9 @@ target = NodePath("../..")
 target_lost_area = NodePath("../../TargetLostArea")
 bullet_scene = ExtResource("6_j8j3w")
 bullet_spawner = NodePath("../../BulletSpawner")
-shoot_audio_player = NodePath("../../Shoot")
+shoot_audio_player = NodePath("../../ShootAudio")
 metadata/_custom_type_script = "uid://bl26dx8gd55fr"
 
-[node name="Shoot" type="AudioStreamPlayer2D" parent="." index="7"]
+[node name="ShootAudio" type="AudioStreamPlayer2D" parent="." index="7"]
 stream = ExtResource("7_cal8c")
 bus = &"SFX"
