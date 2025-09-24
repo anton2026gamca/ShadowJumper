@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://xyllxx8sqe4m"]
+[gd_scene load_steps=8 format=3 uid="uid://xyllxx8sqe4m"]
 
 [ext_resource type="Script" uid="uid://fqtggun3y2qm" path="res://scenes_and_scripts/ui/levels_ui/levels_ui.gd" id="1_ullwu"]
 [ext_resource type="PackedScene" uid="uid://cn3b3uia58ox2" path="res://scenes_and_scripts/ui/levels_ui/node_indicator.tscn" id="2_1q5nf"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://wndhe0pcd3eh" path="res://scenes_and_scripts/ui/levels_ui/pause_menu.tscn" id="3_mgqop"]
 [ext_resource type="PackedScene" uid="uid://cccamfqr4lmoy" path="res://scenes_and_scripts/ui/menus/settings_menu/settings_menu.tscn" id="4_mey4e"]
 [ext_resource type="PackedScene" uid="uid://briwtstky6flh" path="res://scenes_and_scripts/ui/levels_ui/respawn_menu.tscn" id="5_43g4b"]
+[ext_resource type="PackedScene" uid="uid://8cac1aghe7ym" path="res://scenes_and_scripts/ui/menus/settings_menu/controls_menu.tscn" id="6_pwopw"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -28,7 +29,12 @@ visible = false
 layout_mode = 1
 settings_menu = NodePath("../SettingsMenu")
 
-[node name="SettingsMenu" parent="." instance=ExtResource("4_mey4e")]
+[node name="SettingsMenu" parent="." node_paths=PackedStringArray("controls_menu") instance=ExtResource("4_mey4e")]
+visible = false
+layout_mode = 1
+controls_menu = NodePath("../ControlsMenu")
+
+[node name="ControlsMenu" parent="." instance=ExtResource("6_pwopw")]
 visible = false
 layout_mode = 1
 

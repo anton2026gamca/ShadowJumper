@@ -17,8 +17,8 @@ func open() -> void:
 	super.open()
 
 func close(internal: bool = false) -> void:
-	super.close(internal)
 	save_settings()
+	await super.close(internal)
 
 func save_settings() -> void:
 	var file: ConfigFile = ConfigFile.new()

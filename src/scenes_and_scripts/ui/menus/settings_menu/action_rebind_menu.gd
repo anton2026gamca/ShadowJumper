@@ -49,7 +49,7 @@ func event_to_str(ev: InputEvent) -> String:
 			MOUSE_BUTTON_WHEEL_DOWN: return "Mouse Wheel Down"
 			_: return "Mouse Button " + str(ev.button_index)
 	else:
-		return ev.as_text()
+		return ev.as_text().substr(0, ev.as_text().find(" ("))
 
 func set_action_event(action_name: String, event: InputEvent, index: int) -> void:
 	var events: Array[InputEvent] = InputMap.action_get_events(action_name)

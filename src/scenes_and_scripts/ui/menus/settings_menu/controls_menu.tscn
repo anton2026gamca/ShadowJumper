@@ -140,7 +140,7 @@ _data = {
 &"menu_open": SubResource("Animation_nk6nd")
 }
 
-[node name="ControlsMenu" type="Control"]
+[node name="ControlsMenu" type="Control" node_paths=PackedStringArray("default_focus")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -148,6 +148,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cfuax")
+default_focus = NodePath("ControlExit/Exit")
 metadata/_custom_type_script = "uid://dbhtadyxlo0kr"
 
 [node name="Panel" type="Panel" parent="."]
@@ -197,9 +198,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -213.0
+offset_left = -290.0
 offset_top = -89.0
-offset_right = 213.0
+offset_right = 290.0
 offset_bottom = -57.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -224,10 +225,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -213.0
+offset_left = -290.0
 offset_top = -52.0
-offset_right = 213.0
-offset_bottom = 168.0
+offset_right = 290.0
+offset_bottom = 205.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_5sum1")
@@ -242,6 +243,20 @@ offset_top = 4.0
 offset_right = -4.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Pause" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
+layout_mode = 2
+action = &"pause"
+
+[node name="Label" parent="ControlActions/Actions/VBoxContainer/Pause" index="0"]
+text = "Pause:"
+
+[node name="PrimaryRebindButton" parent="ControlActions/Actions/VBoxContainer/Pause" index="1"]
+disabled = true
+text = "Escape"
+
+[node name="SecondaryRebindButton" parent="ControlActions/Actions/VBoxContainer/Pause" index="2"]
+text = ""
 
 [node name="MoveLeft" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
 layout_mode = 2
@@ -285,3 +300,5 @@ libraries = {
 }
 
 [connection signal="pressed" from="ControlExit/Exit" to="." method="close"]
+
+[editable path="ControlActions/Actions/VBoxContainer/Pause"]

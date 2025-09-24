@@ -18,6 +18,7 @@ func _ready() -> void:
 
 
 func open() -> void:
+	if is_open: return
 	is_open = true
 	visible = true
 	animation_player.play("menu_open", -1, animation_speed_scale)
@@ -29,10 +30,10 @@ func close(internal: bool = false) -> void:
 	animation_player.play("menu_open", -1, -animation_speed_scale, true)
 	if not internal:
 		starting_close.emit()
-	await animation_finished
+	await animation_player.animation_finished
+	visible = false
 	if not internal:
 		closed.emit()
-	visible = false
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	animation_finished.emit()
