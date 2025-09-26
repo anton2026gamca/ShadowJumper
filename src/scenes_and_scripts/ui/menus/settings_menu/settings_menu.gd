@@ -1,3 +1,4 @@
+@tool
 extends Menu
 class_name SettingsMenu
 
@@ -12,9 +13,9 @@ class_name SettingsMenu
 func _ready() -> void:
 	load_settings()
 
-func open() -> void:
+func open(instant: bool = false) -> void:
 	load_settings()
-	super.open()
+	super.open(instant)
 
 func close(internal: bool = false) -> void:
 	save_settings()

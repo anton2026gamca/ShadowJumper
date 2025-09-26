@@ -25,6 +25,7 @@ func _ready() -> void:
 	label_node.text = label
 
 
+@warning_ignore("shadowed_variable")
 func _on_slider_value_changed(value: float) -> void:
 	value_text.text = str(int(value)) + "%"
 	value_changed.emit(value)

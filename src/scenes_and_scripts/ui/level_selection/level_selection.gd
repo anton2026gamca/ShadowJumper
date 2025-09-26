@@ -29,7 +29,7 @@ func _ready() -> void:
 	replay_controller.target.position = current_level.position + Vector2(0, -9)
 	camera.position = replay_controller.target.position
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if (Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ladder_climb_up")) and current_level:
 		move_to_level(Vector2i.UP)
 	if (Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ladder_climb_down")) and current_level:

@@ -1,3 +1,4 @@
+@tool
 extends Menu
 class_name ControlsMenu
 
@@ -10,7 +11,8 @@ func close(internal: bool = false) -> void:
 	await super.close(internal)
 
 func save_input_map(path: String = "user://controls.cfg") -> void:
-	print("Saving")
+	if Engine.is_editor_hint():
+		return
 	var cfg: ConfigFile = ConfigFile.new()
 	for action: StringName in InputMap.get_actions():
 		var events_str: Array[String] = []
@@ -20,7 +22,8 @@ func save_input_map(path: String = "user://controls.cfg") -> void:
 	cfg.save(path)
 
 func load_input_map(path: String = "user://controls.cfg") -> void:
-	print("Loading")
+	if Engine.is_editor_hint():
+		return
 	var cfg: ConfigFile = ConfigFile.new()
 	if cfg.load(path) != OK:
 		return
@@ -30,5 +33,11 @@ func load_input_map(path: String = "user://controls.cfg") -> void:
 			var event: InputEvent = str_to_var(event_str)
 			if event != null:
 				InputMap.action_add_event(action, event)
+	for menu: ActionRebindMenu in find_children("", "ActionRebindMenu", true):
+		menu.update()
+
+func reset() -> void:
+	InputMap.load_from_project_settings()
+
 	for menu: ActionRebindMenu in find_children("", "ActionRebindMenu", true):
 		menu.update()

@@ -15,7 +15,6 @@ var hit_val: int = 0
 var boom_state: int = 0
 var boom_target: Player
 var boom_angry_value: float = 0.0
-signal boom_finished
 
 @onready var boom_start_audio: AudioStreamPlayer2D = $BoomStartAudio
 @onready var boom_audio: AudioStreamPlayer2D = $BoomAudio

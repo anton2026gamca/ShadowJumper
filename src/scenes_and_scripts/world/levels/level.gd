@@ -13,7 +13,7 @@ signal level_defeated
 func _ready() -> void:
 	camera.make_current()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 

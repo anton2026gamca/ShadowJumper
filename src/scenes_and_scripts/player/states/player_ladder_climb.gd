@@ -6,7 +6,7 @@ class_name PlayerLadderClimb
 @export var controller: PlayerController
 
 
-func process(delta: float) -> Variant:
+func process(_delta: float) -> Variant:
 	if controller.get_throw_a_rock():
 		controller.throw_a_rock()
 	var x_dir: int = controller.get_move_dir()

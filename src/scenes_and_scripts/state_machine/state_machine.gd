@@ -22,7 +22,6 @@ func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint() and not enable_in_editor or not enabled:
 		return
 	var new_type: Variant = current_state.process(delta)
-	var children: Array[Node] = get_children()
 	if not new_type:
 		return
 	var new_state: Variant = find_child_by_type(self, new_type)

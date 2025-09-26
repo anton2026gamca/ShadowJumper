@@ -61,6 +61,7 @@ func set_action_event(action_name: String, event: InputEvent, index: int) -> voi
 		if e != null:
 			InputMap.action_add_event(action_name, e)
 
+@warning_ignore("shadowed_variable")
 func get_action_event(action: String, event_index: int) -> InputEvent:
 	if not InputMap.has_action(action): return null
 	var events: Array[InputEvent] = InputMap.action_get_events(action)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://d1knch75lpy1t"]
+[gd_scene load_steps=17 format=4 uid="uid://d1knch75lpy1t"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_nbytn"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_go7g5"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/ground_animals/boar.tscn" id="7_vp6c5"]
 [ext_resource type="PackedScene" uid="uid://6twg4nqjueyw" path="res://scenes_and_scripts/world/levels/finish.tscn" id="8_wcekq"]
 [ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="9_sqshv"]
+[ext_resource type="Texture2D" uid="uid://c4r35j5un4gc6" path="res://assets/sprites/arrow.png" id="10_sqshv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1m2nw"]
 shader = ExtResource("1_nbytn")
@@ -396,6 +397,79 @@ bbcode_enabled = true
 text = "[color=lightblue][Esc][/color]"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Jump2" type="Panel" parent="Level"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.25
+offset_left = 1152.0
+offset_top = -52.0
+offset_right = 1253.0
+offset_bottom = 2.0
+scale = Vector2(0.333, 0.333)
+
+[node name="W" type="Panel" parent="Level/Jump2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.5
+offset_top = -22.0
+offset_right = -4.5
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/Jump2/W"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("9_sqshv")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[color=lightblue]W[/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpArrow" type="Panel" parent="Level/Jump2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 5.5
+offset_top = -18.0
+offset_right = 45.5
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level/Jump2/UpArrow"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("9_sqshv")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[color=lightblue]↑[/color]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Arrow" type="Sprite2D" parent="Level"]
+use_parent_material = true
+position = Vector2(1142, -19)
+texture = ExtResource("10_sqshv")
+
+[node name="Arrow2" type="Sprite2D" parent="Level"]
+use_parent_material = true
+position = Vector2(1142, -64)
+rotation = -1.5708
+texture = ExtResource("10_sqshv")
 
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]

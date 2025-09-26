@@ -19,7 +19,7 @@ func _ready() -> void:
 	Helpers.levels_ui = self
 	reset()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
@@ -34,6 +34,7 @@ func pause() -> void:
 
 func resume() -> void:
 	if not get_tree().paused or respawn_menu.is_open: return
+	print("resuming")
 	await pause_menu.close()
 	get_tree().paused = false
 

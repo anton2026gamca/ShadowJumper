@@ -14,10 +14,10 @@ signal exit_level_signal(defeated: bool)
 func _ready() -> void:
 	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause") and is_in_level:
-		if get_tree().paused: ui.resume()
-		else: ui.pause()
+		if get_tree().paused and ui.pause_menu.is_open: ui.resume()
+		elif not get_tree().paused: ui.pause()
 
 
 func load_level(level: PackedScene) -> void:

@@ -21,6 +21,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme = ExtResource("1_21nxd")
+text = ":"
 vertical_alignment = 1
 clip_text = true
 
@@ -28,13 +29,11 @@ clip_text = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme = ExtResource("1_21nxd")
-text = "<Not Bound>"
 
 [node name="SecondaryRebindButton" type="Button" parent="."]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme = ExtResource("1_21nxd")
-text = "<Not Bound>"
 
 [connection signal="pressed" from="PrimaryRebindButton" to="." method="rebind_primary"]
 [connection signal="pressed" from="SecondaryRebindButton" to="." method="rebind_secondary"]

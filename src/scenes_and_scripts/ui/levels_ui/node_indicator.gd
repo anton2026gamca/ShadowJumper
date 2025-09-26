@@ -14,7 +14,7 @@ var color: Color:
 signal destroyed
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not visible or not target or not origin_point:
 		return
 	var viewport_size: Vector2 = size - color_rect.size

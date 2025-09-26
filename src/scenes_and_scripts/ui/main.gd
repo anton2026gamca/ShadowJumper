@@ -4,20 +4,20 @@ class_name Main
 
 @export var level_selection_layer: CanvasLayer
 @export var ui_layer: CanvasLayer
-@export var main_menu: Menu
+@export var main_menu: MainMenu
 
 
 func _ready() -> void:
 	Helpers.main_menu = self
-	pause()
+	pause(true)
 
 
 func play() -> void:
 	level_selection_layer.process_mode = Node.PROCESS_MODE_PAUSABLE
 	ui_layer.process_mode = Node.PROCESS_MODE_DISABLED
 
-func pause() -> void:
-	main_menu.open()
+func pause(instant: bool = false) -> void:
+	main_menu.open(instant)
 	level_selection_layer.process_mode = Node.PROCESS_MODE_DISABLED
 	ui_layer.process_mode = Node.PROCESS_MODE_PAUSABLE
 

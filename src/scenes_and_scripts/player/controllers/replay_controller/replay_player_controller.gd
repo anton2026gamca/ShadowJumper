@@ -29,7 +29,7 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		InputMap.load_from_project_settings()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if is_recording:
 		const functions: Array[String] = [
 			"get_move_left",
@@ -103,8 +103,7 @@ func start_stop_recording() -> void:
 		target.enable_in_editor = false
 		state_machine.enable_in_editor = false
 		target.position = replay_data.start_pos
-		var len: int = len(replay_data.data)
-		replay_data.data[len - 1].frames_count = 1
+		replay_data.data[len(replay_data.data) - 1].frames_count = 1
 		replay_data.data[0].frames_count = 1
 		replay_data.adjust_x_position_on_end = adjust_x_position_on_end
 		replay_data.target_x_position_on_end = target_x_position_on_end
@@ -193,6 +192,7 @@ func get_climb_ladder_down() -> bool:
 		return current_frame_data.data["ladder_climb_down"] | false
 	return false
 
+@warning_ignore("narrowing_conversion")
 func get_climb_ladder_dir() -> int:
 	if is_recording:
 		return Input.get_axis("ladder_climb_up", "ladder_climb_down")
