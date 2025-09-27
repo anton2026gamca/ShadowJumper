@@ -30,7 +30,6 @@ func open(instant: bool = false) -> void:
 
 func close(internal: bool = false) -> void:
 	if not is_open: return
-	print("Closing menu ", name)
 	is_open = false
 	animation_player.play("menu_open", -1, -animation_speed_scale, true)
 	if not internal:

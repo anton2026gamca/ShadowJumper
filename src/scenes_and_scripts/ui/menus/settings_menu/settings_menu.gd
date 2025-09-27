@@ -30,8 +30,11 @@ func save_settings() -> void:
 
 func load_settings() -> void:
 	var file: ConfigFile = ConfigFile.new()
+	sound_music.value = 0.0
+	sound_music.value = 100.0
 	if file.load("user://settings.cfg") != OK:
 		return
+	return
 	sound_master.value = file.get_value("sound", "Master", 100.0)
 	sound_sfx.value = file.get_value("sound", "SFX", 100.0)
 	sound_music.value = file.get_value("sound", "Music", 100.0)
