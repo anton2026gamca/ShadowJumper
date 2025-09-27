@@ -1,10 +1,22 @@
-[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://8h4fm7v55cnx"]
+[gd_resource type="TileSet" load_steps=12 format=3 uid="uid://8h4fm7v55cnx"]
 
 [ext_resource type="Texture2D" uid="uid://bv83repei4m1" path="res://assets/sprites/tileset.png" id="1_fcvr3"]
 [ext_resource type="PackedScene" uid="uid://dv4h5nvuumsjq" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom_2.tscn" id="2_7lii3"]
 [ext_resource type="PackedScene" uid="uid://cbh2h5bldnuj1" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom_0.tscn" id="2_fcvr3"]
 [ext_resource type="PackedScene" uid="uid://r3q7wdh33v34" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom_1.tscn" id="3_7lii3"]
 [ext_resource type="PackedScene" uid="uid://dqdt5a5wq4x4t" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom_3.tscn" id="3_uyjym"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_uyjym"]
+tile_data = PackedInt32Array(0, 327680, 92, 1, 458752, 92)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_80oah"]
+tile_data = PackedInt32Array(0, 589824, 33, 65536, 589824, 35, 131072, 589824, 36, 1, 655360, 33, 65537, 655360, 35, 131073, 655360, 36)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_beawo"]
+tile_data = PackedInt32Array(0, 589824, 33, 65536, 589824, 34, 131072, 589824, 35, 196608, 589824, 36, 1, 655360, 33, 65537, 655360, 34, 131073, 655360, 35, 196609, 655360, 36)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_fk0lh"]
+tile_data = PackedInt32Array(0, 589824, 33, 65536, 589824, 35, 1, 655360, 33, 65537, 655360, 35)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qfnet"]
 texture = ExtResource("1_fcvr3")
@@ -6167,3 +6179,7 @@ terrain_set_0/terrain_3/name = "Bush"
 terrain_set_0/terrain_3/color = Color(0, 0.383333, 0.92, 1)
 sources/0 = SubResource("TileSetAtlasSource_qfnet")
 sources/2 = SubResource("TileSetScenesCollectionSource_fcvr3")
+pattern_0 = SubResource("TileMapPattern_uyjym")
+pattern_1 = SubResource("TileMapPattern_80oah")
+pattern_2 = SubResource("TileMapPattern_beawo")
+pattern_3 = SubResource("TileMapPattern_fk0lh")

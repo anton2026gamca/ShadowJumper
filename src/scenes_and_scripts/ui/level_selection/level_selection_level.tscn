@@ -69,7 +69,7 @@ vertical_alignment = 2
 [node name="Flag" type="Sprite2D" parent="."]
 use_parent_material = true
 texture = ExtResource("3_bjhwf")
-offset = Vector2(2.5, -16)
+offset = Vector2(2, -16)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, -14)
