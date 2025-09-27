@@ -45,7 +45,6 @@ visible = false
 layout_mode = 1
 
 [node name="Story" type="Control" parent="." node_paths=PackedStringArray("parts")]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,6 +53,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_t0nbq")
 parts = {
+"animals": NodePath("Animals"),
+"darker_forest": NodePath("DarkerForest"),
 "intro": NodePath("Intro")
 }
 
@@ -65,6 +66,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pwopw")
+
+[node name="Title" type="RichTextLabel" parent="Story/UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.25
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nhhd0")
+theme_override_font_sizes/normal_font_size = 48
+text = "STORY"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Story/UI"]
 layout_mode = 1
@@ -191,6 +205,126 @@ bbcode_enabled = true
 text = "From that broken energy you were born,
 a [color=orange]small orange something[/color].
 All you know is that the nature wants to get rid of you."
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="Animals" type="Control" parent="Story" node_paths=PackedStringArray("messages")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_ma5oc")
+messages = [NodePath("Message1"), NodePath("Message2")]
+
+[node name="Message1" type="RichTextLabel" parent="Story/Animals"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nhhd0")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "The animals of the forest are not normal anymore. Foxes, wolves, and boars attack everything they see."
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="Message2" type="RichTextLabel" parent="Story/Animals"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nhhd0")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "It’s like they want to erase the spark inside you. You don’t understand them, but you know you have to survive."
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="DarkerForest" type="Control" parent="Story" node_paths=PackedStringArray("messages")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_ma5oc")
+messages = [NodePath("Message1"), NodePath("Message2"), NodePath("Message3")]
+
+[node name="Message1" type="RichTextLabel" parent="Story/DarkerForest"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nhhd0")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "The deeper you go, the stranger the night feels. The mushrooms are everywhere, [color=yellow]glowing[/color] stronger."
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="Message2" type="RichTextLabel" parent="Story/DarkerForest"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nhhd0")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "You can feel the energy inside them, it's the same as the energy inside you. Maybe that is why they hurt you."
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="Message3" type="RichTextLabel" parent="Story/DarkerForest"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nhhd0")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "Maybe [color=orange]you[/color] don’t belong in this world at all."
 horizontal_alignment = 1
 vertical_alignment = 1
 visible_characters_behavior = 1

@@ -66,4 +66,4 @@ func reload_level() -> void:
 	level_parent.remove_child(current_level_node)
 	current_level_node.queue_free()
 	current_level_node = null
-	load_level(current_level)
+	load_level(current_level, true)

@@ -31,7 +31,7 @@ func play_part(part: String) -> void:
 		next_msg_button.visible = false
 		skip_button.grab_focus()
 		var tween: Tween = create_tween()
-		tween.tween_property(msg, "visible_characters", len(msg.text), len(msg.text) / chars_per_second)
+		tween.tween_property(msg, "visible_characters", msg.get_parsed_text().length(), msg.get_parsed_text().length() / chars_per_second)
 		tween.finished.connect(_on_tween_finished)
 		while true:
 			var intr: String = await _message_interrupt
