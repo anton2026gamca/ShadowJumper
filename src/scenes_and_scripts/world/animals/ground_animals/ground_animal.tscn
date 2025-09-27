@@ -33,6 +33,7 @@ size = Vector2(390, 78.5)
 
 [node name="GroundAnimal" instance=ExtResource("1_tqwpi")]
 use_parent_material = true
+collision_mask = 7
 script = ExtResource("1_ajlb7")
 player_die_reason = ""
 walk_speed = 0.0
@@ -87,10 +88,12 @@ metadata/_custom_type_script = "uid://rat5qcmwg87d"
 [node name="Ground" type="RayCast2D" parent="Physics" index="0"]
 position = Vector2(7, 0)
 target_position = Vector2(0, 7)
+collision_mask = 3
 
 [node name="Wall" type="RayCast2D" parent="Physics" index="1"]
 position = Vector2(0, -5)
 target_position = Vector2(10, 0)
+collision_mask = 5
 
 [node name="EnemyArea" type="Area2D" parent="Physics" index="2"]
 collision_layer = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=259 format=4 uid="uid://clkhpeqrfyoax"]
+[gd_scene load_steps=260 format=4 uid="uid://clkhpeqrfyoax"]
 
 [ext_resource type="Script" uid="uid://dd3otqv1n5e7k" path="res://scenes_and_scripts/ui/level_selection/level_selection.gd" id="1_7qmai"]
 [ext_resource type="PackedScene" uid="uid://by7kis83n7kvx" path="res://scenes_and_scripts/ui/level_selection/level_selection_level.tscn" id="2_5iw0q"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dst17rdwer7by" path="res://assets/sprites/animals/MiniWolf.png" id="21_5icjk"]
 [ext_resource type="PackedScene" uid="uid://dr1afg0p05s8p" path="res://scenes_and_scripts/world/levels/level_2.tscn" id="22_854ia"]
 [ext_resource type="PackedScene" uid="uid://f8cwujw0lgie" path="res://scenes_and_scripts/world/levels/level_3.tscn" id="24_i1iog"]
+[ext_resource type="PackedScene" uid="uid://dwfwwkf3bx52r" path="res://scenes_and_scripts/world/levels/level_5.tscn" id="27_8mm01"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0vl0e"]
 shader = ExtResource("15_jj62b")
@@ -3663,6 +3664,7 @@ Vector2i(1, 0): SubResource("Resource_011vf")
 [node name="Level5" parent="Level" node_paths=PackedStringArray("relationships") instance=ExtResource("2_5iw0q")]
 position = Vector2(1363, -48)
 number = 5
+scene = ExtResource("27_8mm01")
 relationships = {
 Vector2i(-1, 0): NodePath("../Level4")
 }

@@ -75,18 +75,23 @@ shape = SubResource("WorldBoundaryShape2D_8fu2q")
 
 [node name="Fox" parent="Level" instance=ExtResource("7_rjdnc")]
 position = Vector2(602, 35)
+collision_mask = 3
 
 [node name="Boar" parent="Level" instance=ExtResource("8_egdi8")]
 position = Vector2(915, 10)
+collision_mask = 3
 
 [node name="Fox2" parent="Level" instance=ExtResource("7_rjdnc")]
 position = Vector2(2274, -18)
+collision_mask = 3
 
 [node name="Fox3" parent="Level" instance=ExtResource("7_rjdnc")]
 position = Vector2(1661, -84)
+collision_mask = 3
 
 [node name="Boar2" parent="Level" instance=ExtResource("8_egdi8")]
 position = Vector2(2836, 12)
+collision_mask = 3
 
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]
