@@ -20,7 +20,7 @@ func _process(_delta: float) -> void:
 		elif not get_tree().paused: ui.pause()
 
 
-func load_level(level: PackedScene) -> void:
+func load_level(level: PackedScene, skip_story: bool = false) -> void:
 	current_level = level
 	var node: Level = level.instantiate()
 	current_level_node = node
@@ -30,6 +30,8 @@ func load_level(level: PackedScene) -> void:
 	is_in_level = true
 	ui.camera = node.camera
 	ui.reset()
+	if not skip_story and ui.story.parts.has(node.story_in_beginning):
+		ui.story.play_part(node.story_in_beginning)
 
 func exit_level(defeated: bool = false) -> void:
 	await get_tree().process_frame

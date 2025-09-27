@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://xyllxx8sqe4m"]
+[gd_scene load_steps=11 format=3 uid="uid://xyllxx8sqe4m"]
 
 [ext_resource type="Script" uid="uid://fqtggun3y2qm" path="res://scenes_and_scripts/ui/levels_ui/levels_ui.gd" id="1_ullwu"]
 [ext_resource type="PackedScene" uid="uid://cn3b3uia58ox2" path="res://scenes_and_scripts/ui/levels_ui/node_indicator.tscn" id="2_1q5nf"]
@@ -7,8 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://cccamfqr4lmoy" path="res://scenes_and_scripts/ui/menus/settings_menu/settings_menu.tscn" id="4_mey4e"]
 [ext_resource type="PackedScene" uid="uid://briwtstky6flh" path="res://scenes_and_scripts/ui/levels_ui/respawn_menu.tscn" id="5_43g4b"]
 [ext_resource type="PackedScene" uid="uid://8cac1aghe7ym" path="res://scenes_and_scripts/ui/menus/settings_menu/controls_menu.tscn" id="6_pwopw"]
+[ext_resource type="Script" uid="uid://cof7uusrj7u7m" path="res://scenes_and_scripts/ui/levels_ui/story.gd" id="7_t0nbq"]
+[ext_resource type="Script" uid="uid://brptd2fvttm6e" path="res://scenes_and_scripts/ui/levels_ui/story_part.gd" id="8_ma5oc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwopw"]
+bg_color = Color(0, 0, 0, 0.666667)
 
 [node name="UI" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,6 +44,157 @@ controls_menu = NodePath("../ControlsMenu")
 visible = false
 layout_mode = 1
 
+[node name="Story" type="Control" parent="." node_paths=PackedStringArray("parts")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_t0nbq")
+parts = {
+"intro": NodePath("Intro")
+}
+
+[node name="UI" type="Panel" parent="Story"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pwopw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Story/UI"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -49.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="ExitButton" type="Button" parent="Story/UI/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_nhhd0")
+theme_override_font_sizes/font_size = 18
+text = "EXIT"
+
+[node name="NextMsgButton" type="Button" parent="Story/UI/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_nhhd0")
+theme_override_font_sizes/font_size = 18
+text = "NEXT"
+
+[node name="SkipButton" type="Button" parent="Story/UI/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_nhhd0")
+theme_override_font_sizes/font_size = 18
+text = "SKIP"
+
+[node name="Intro" type="Control" parent="Story" node_paths=PackedStringArray("messages")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_ma5oc")
+messages = [NodePath("Message1"), NodePath("Message2"), NodePath("Message3"), NodePath("Message4")]
+
+[node name="Message1" type="RichTextLabel" parent="Story/Intro"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nhhd0")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "A long time ago, people wanted power from deep inside the earth. They dug too far, and they broke [color=purple]something very old[/color]."
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="Message2" type="RichTextLabel" parent="Story/Intro"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nhhd0")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[color=yellow]Strange energy[/color] came out and changed the world forever. Now the night is not safe anymore."
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="Message3" type="RichTextLabel" parent="Story/Intro"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nhhd0")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "Mushrooms glow with that energy, but their light is not good. If you touch it, it shocks you."
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="Message4" type="RichTextLabel" parent="Story/Intro"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_nhhd0")
+theme_override_font_sizes/bold_italics_font_size = 18
+theme_override_font_sizes/italics_font_size = 18
+theme_override_font_sizes/mono_font_size = 18
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 18
+bbcode_enabled = true
+text = "From that broken energy you were born,
+a [color=orange]small orange something[/color].
+All you know is that the nature wants to get rid of you."
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 1
+
 [node name="FullScreenText" type="RichTextLabel" parent="."]
 visible = false
 layout_mode = 1
@@ -58,3 +215,6 @@ vertical_alignment = 1
 [connection signal="exit_level" from="PauseMenu" to="." method="_on_exit_level_pressed"]
 [connection signal="exit_level" from="RespawnMenu" to="." method="_on_exit_level_pressed"]
 [connection signal="respawn" from="RespawnMenu" to="." method="_on_respawn_menu_respawn"]
+[connection signal="pressed" from="Story/UI/HBoxContainer/ExitButton" to="Story" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Story/UI/HBoxContainer/NextMsgButton" to="Story" method="_on_next_msg_button_pressed"]
+[connection signal="pressed" from="Story/UI/HBoxContainer/SkipButton" to="Story" method="_on_skip_button_pressed"]
