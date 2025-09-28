@@ -1,20 +1,20 @@
 extends Node2D
 
 
+@export var ui: LevelSelectionUi
+
 @export var start_level: LevelSelectionLevel
 var current_level: LevelSelectionLevel
 @export var replay_controller: ReplayPlayerController
 
 @export var camera: Camera2D
 
-@export var debug_mode: bool = false
-
 
 func _ready() -> void:
 	current_level = start_level
 	for level: LevelSelectionLevel in find_children("", "LevelSelectionLevel"):
 		if level != start_level:
-			level.visible = debug_mode
+			level.visible = false
 	for path: NodePath in Settings.beated_levels:
 		var level: Node = get_node(path)
 		if not level is LevelSelectionLevel: continue
@@ -30,6 +30,9 @@ func _ready() -> void:
 	camera.position = replay_controller.target.position
 
 func _process(_delta: float) -> void:
+	if OS.is_debug_build() and Input.is_action_just_pressed("debug_toggle_levels"):
+		_debug_toggle_all_levels_on()
+	
 	if (Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ladder_climb_up")) and current_level:
 		move_to_level(Vector2i.UP)
 	if (Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ladder_climb_down")) and current_level:
@@ -78,3 +81,12 @@ func move_to_level(dir: Vector2i) -> void:
 	await replay_controller.replay_end
 	current_level = new_level
 	Settings.last_level = get_path_to(new_level)
+
+func _debug_toggle_all_levels_on() -> void:
+	if not OS.is_debug_build():
+		return
+	var all: Array[Node] = find_children("", "LevelSelectionLevel")
+	for lvl: LevelSelectionLevel in all:
+		lvl.visible = true
+	if ui:
+		ui.bottom_right_text.text = ui.bottom_right_text.text.replace("Press [color=lightblue]L[/color] to unlock all levels", "All levels ulocked!")
