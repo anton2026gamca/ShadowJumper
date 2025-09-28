@@ -43,6 +43,7 @@ func play_part(part: String) -> void:
 			var intr: String = await _message_interrupt
 			if intr == "exit":
 				exit = true
+				typing_sound.stop()
 				break
 			elif intr == "skip":
 				skip_button.visible = false
