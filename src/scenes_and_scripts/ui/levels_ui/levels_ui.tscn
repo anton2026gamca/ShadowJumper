@@ -43,9 +43,9 @@ layout_mode = 1
 [node name="Story" parent="." node_paths=PackedStringArray("parts") instance=ExtResource("7_nrncv")]
 layout_mode = 1
 parts = {
-"animals": null,
-"darker_forest": null,
-"intro": null
+"animals": NodePath("Animals"),
+"darker_forest": NodePath("DarkerForest"),
+"intro": NodePath("Intro")
 }
 
 [node name="FullScreenText" type="RichTextLabel" parent="."]

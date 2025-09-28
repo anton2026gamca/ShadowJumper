@@ -19,7 +19,7 @@ class_name PlayerController
 @export_group("Rock throwing")
 @export var rock_scene: PackedScene
 @export var rock_travel_speed: float = 500.0
-@export var max_throw_dist: float = 192.0
+@export var max_throw_dist: float = 16 * 14
 
 var last_on_floor_time: float = -1000
 var last_jump_time: float = -1000
