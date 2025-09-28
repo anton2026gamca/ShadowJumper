@@ -9,6 +9,7 @@ var enemy: Node2D
 @export var bullet_scene: PackedScene
 @export var bullet_spawner: Node2D
 @export var shoot_audio_player: AudioStreamPlayer2D
+@export var buzzing_audio: AudioStreamPlayer2D
 
 var current_bullet: BeeBulet
 
@@ -30,6 +31,8 @@ func process(delta: float) -> Variant:
 	if not current_bullet:
 		shoot()
 		random_dir = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+		if not buzzing_audio.playing:
+			buzzing_audio.play()
 	else:
 		random_dir = Vector2(random_dir.x, move_toward(random_dir.y, 0, 0.5 * delta)).normalized()
 		target.velocity = random_dir * (target.fly_speed / 4)
@@ -45,9 +48,10 @@ func shoot() -> void:
 	current_bullet.rotation_degrees = 180
 	current_bullet.global_position = bullet_spawner.global_position
 	current_bullet.target = enemy
-	current_bullet.finished.connect(_on_bullet_finished)
+	current_bullet.finished.connect(_on_bullet_finished.bind(current_bullet))
 	shoot_audio_player.play()
 	target.get_parent().add_child(current_bullet)
 
-func _on_bullet_finished() -> void:
-	current_bullet = null
+func _on_bullet_finished(bullet: BeeBulet) -> void:
+	if bullet == current_bullet:
+		current_bullet = null

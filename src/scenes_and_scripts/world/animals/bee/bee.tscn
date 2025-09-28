@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cd7yubqxtcw2v"]
+[gd_scene load_steps=38 format=3 uid="uid://cd7yubqxtcw2v"]
 
 [ext_resource type="PackedScene" uid="uid://cjdb2ap3qdyt5" path="res://scenes_and_scripts/world/animals/animal.tscn" id="1_psrfv"]
 [ext_resource type="Script" uid="uid://c8teo0ong35gb" path="res://scenes_and_scripts/world/animals/bee/bee.gd" id="2_h0684"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://bl26dx8gd55fr" path="res://scenes_and_scripts/world/animals/bee/states/bee_attacking.gd" id="5_yntd2"]
 [ext_resource type="PackedScene" uid="uid://r80goc7odoja" path="res://scenes_and_scripts/world/animals/bee/bee_bullet.tscn" id="6_j8j3w"]
 [ext_resource type="AudioStream" uid="uid://2shoi471ka7g" path="res://assets/SFX/folder/hurt_1.wav" id="7_cal8c"]
+[ext_resource type="AudioStream" uid="uid://btku6suled1n3" path="res://assets/SFX/bee-buzz.mp3" id="8_40f0r"]
+[ext_resource type="AudioStream" uid="uid://bk0huhip0mtdp" path="res://assets/SFX/folder/disappear.wav" id="9_om06y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cal8c"]
 radius = 9.0
@@ -199,18 +201,20 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yntd2"]
-radius = 79.0
-height = 220.0
+radius = 77.0
+height = 240.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j8j3w"]
-radius = 115.0
-height = 290.0
+radius = 99.0
+height = 328.0
 
 [node name="Bee" instance=ExtResource("1_psrfv")]
 use_parent_material = true
+collision_mask = 0
 script = ExtResource("2_h0684")
 fly_speed = 250.0
 attack_min_height_diff = 100.0
+lives = 2
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, -3)
@@ -228,7 +232,8 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackStartArea" index="0"]
-position = Vector2(-29, 1)
+position = Vector2(0, -16)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_yntd2")
 
 [node name="TargetLostArea" type="Area2D" parent="." index="4"]
@@ -237,7 +242,8 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetLostArea" index="0"]
-position = Vector2(-18, -104)
+position = Vector2(0, -117)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_j8j3w")
 
 [node name="BulletSpawner" type="Node2D" parent="." index="5"]
@@ -246,22 +252,32 @@ position = Vector2(0, 25)
 [node name="StateMachine" parent="." index="6" node_paths=PackedStringArray("current_state")]
 current_state = NodePath("NotInRange")
 
-[node name="NotInRange" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("target", "attack_start_area", "sprite")]
+[node name="NotInRange" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("target", "attack_start_area", "sprite", "buzzing_audio")]
 script = ExtResource("3_wyt1c")
 target = NodePath("../..")
 attack_start_area = NodePath("../../AttackStartArea")
 sprite = NodePath("../../AnimatedSprite2D")
+buzzing_audio = NodePath("../../BuzzingAudio")
 metadata/_custom_type_script = "uid://b2vgdb2qi32nm"
 
-[node name="Attacking" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("target", "target_lost_area", "bullet_spawner", "shoot_audio_player")]
+[node name="Attacking" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("target", "target_lost_area", "bullet_spawner", "shoot_audio_player", "buzzing_audio")]
 script = ExtResource("5_yntd2")
 target = NodePath("../..")
 target_lost_area = NodePath("../../TargetLostArea")
 bullet_scene = ExtResource("6_j8j3w")
 bullet_spawner = NodePath("../../BulletSpawner")
 shoot_audio_player = NodePath("../../ShootAudio")
+buzzing_audio = NodePath("../../BuzzingAudio")
 metadata/_custom_type_script = "uid://bl26dx8gd55fr"
 
 [node name="ShootAudio" type="AudioStreamPlayer2D" parent="." index="7"]
 stream = ExtResource("7_cal8c")
 bus = &"SFX"
+
+[node name="BuzzingAudio" type="AudioStreamPlayer2D" parent="." index="8"]
+stream = ExtResource("8_40f0r")
+volume_db = -10.0
+
+[node name="DeathAudio" type="AudioStreamPlayer2D" parent="." index="9"]
+stream = ExtResource("9_om06y")
+volume_db = 10.0

@@ -44,6 +44,7 @@ layout_mode = 1
 layout_mode = 1
 parts = {
 "animals": NodePath("Animals"),
+"bee_boss": NodePath("BeeBoss"),
 "darker_forest": NodePath("DarkerForest"),
 "intro": NodePath("Intro")
 }

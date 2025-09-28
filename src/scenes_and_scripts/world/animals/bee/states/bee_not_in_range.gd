@@ -8,6 +8,7 @@ var enemy: Node2D
 
 @export var attack_start_area: Area2D
 @export var sprite: AnimatedSprite2D
+@export var buzzing_audio: AudioStreamPlayer2D
 
 
 func process(delta: float) -> Variant:
@@ -24,3 +25,15 @@ func process(delta: float) -> Variant:
 
 func on_enter() -> void:
 	enemy = Helpers.get_nearest_node_in_group(target.global_position, "Player")
+	if buzzing_audio:
+		buzzing_audio.finished.connect(_on_buzzing_audio_finished)
+		if not buzzing_audio.playing:
+			buzzing_audio.play()
+
+func on_exit() -> void:
+	if buzzing_audio:
+		buzzing_audio.finished.disconnect(_on_buzzing_audio_finished)
+
+func _on_buzzing_audio_finished() -> void:
+	await get_tree().create_timer(0.5).timeout
+	buzzing_audio.play()

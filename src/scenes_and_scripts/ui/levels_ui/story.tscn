@@ -18,6 +18,7 @@ grow_vertical = 2
 script = ExtResource("1_wp807")
 parts = {
 "animals": NodePath("Animals"),
+"bee_boss": NodePath("BeeBoss"),
 "darker_forest": NodePath("DarkerForest"),
 "intro": NodePath("Intro")
 }
@@ -294,6 +295,78 @@ theme = ExtResource("2_pl22x")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "Maybe [color=orange]you[/color] don’t belong in this world at all."
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="BeeBoss" type="Control" parent="." node_paths=PackedStringArray("messages")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_5kw2n")
+messages = [NodePath("Message1"), NodePath("Message2"), NodePath("Message3")]
+
+[node name="Message1" type="RichTextLabel" parent="BeeBoss"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_pl22x")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "Something even [color=red]worse[/color] is waiting. 
+You hear a [color=red]terrible[/color] buzzing in the forest."
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="Message2" type="RichTextLabel" parent="BeeBoss"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_pl22x")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "It's a [color=yellow]bee[/color], not a normal bee. It is huge, twisted by the broken energy. It shoots its stingers like arrows."
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="Message3" type="RichTextLabel" parent="BeeBoss"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_pl22x")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "It guards something, maybe the truth.
+To keep going, you must defeat it."
 horizontal_alignment = 1
 vertical_alignment = 1
 visible_characters_behavior = 1
