@@ -62,6 +62,7 @@ animations = [{
 use_parent_material = true
 texture = SubResource("AtlasTexture_8kcc1")
 script = ExtResource("3_f0mk6")
+down_time = 7.5
 boom_tolerance_time = 0.1
 
 [node name="PointLight" parent="." instance=ExtResource("1_2hos7")]
