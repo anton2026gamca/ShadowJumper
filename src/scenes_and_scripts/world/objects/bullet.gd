@@ -26,9 +26,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _destroy(reason: String = "") -> void:
+	await get_tree().process_frame
 	if indicator: indicator.destroy()
 	finished.emit()
-	get_parent().remove_child.call_deferred(self)
+	if get_parent(): get_parent().remove_child(self)
 	queue_free()
 
 func _on_kill_area_body_entered(body: Node2D) -> void:

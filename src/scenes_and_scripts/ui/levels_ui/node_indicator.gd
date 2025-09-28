@@ -40,6 +40,7 @@ func _process(_delta: float) -> void:
 
 
 func destroy() -> void:
+	await get_tree().process_frame
 	destroyed.emit()
-	get_parent().remove_child.call_deferred(self)
+	if get_parent(): get_parent().remove_child(self)
 	queue_free()

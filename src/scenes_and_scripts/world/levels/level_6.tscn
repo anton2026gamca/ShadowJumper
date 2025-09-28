@@ -92,7 +92,6 @@ shape = SubResource("RectangleShape2D_3rpbm")
 
 [node name="Bee" parent="Level" instance=ExtResource("7_srgj7")]
 position = Vector2(-26, -2062)
-lives = 2
 
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]
