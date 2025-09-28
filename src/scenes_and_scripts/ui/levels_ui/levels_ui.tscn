@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://xyllxx8sqe4m"]
+[gd_scene load_steps=12 format=3 uid="uid://xyllxx8sqe4m"]
 
 [ext_resource type="Script" uid="uid://fqtggun3y2qm" path="res://scenes_and_scripts/ui/levels_ui/levels_ui.gd" id="1_ullwu"]
 [ext_resource type="PackedScene" uid="uid://cn3b3uia58ox2" path="res://scenes_and_scripts/ui/levels_ui/node_indicator.tscn" id="2_1q5nf"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://8cac1aghe7ym" path="res://scenes_and_scripts/ui/menus/settings_menu/controls_menu.tscn" id="6_pwopw"]
 [ext_resource type="Script" uid="uid://cof7uusrj7u7m" path="res://scenes_and_scripts/ui/levels_ui/story.gd" id="7_t0nbq"]
 [ext_resource type="Script" uid="uid://brptd2fvttm6e" path="res://scenes_and_scripts/ui/levels_ui/story_part.gd" id="8_ma5oc"]
+[ext_resource type="AudioStream" uid="uid://bhoqyb4ikyv51" path="res://assets/SFX/typing_sound-[AudioTrimmer.com].wav" id="9_ma5oc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwopw"]
 bg_color = Color(0, 0, 0, 0.666667)
@@ -111,6 +112,11 @@ layout_mode = 2
 theme = ExtResource("2_nhhd0")
 theme_override_font_sizes/font_size = 18
 text = "SKIP"
+
+[node name="TypingSound" type="AudioStreamPlayer" parent="Story/UI"]
+stream = ExtResource("9_ma5oc")
+volume_db = -20.0
+bus = &"SFX"
 
 [node name="Intro" type="Control" parent="Story" node_paths=PackedStringArray("messages")]
 visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://f8cwujw0lgie"]
+[gd_scene load_steps=14 format=4 uid="uid://f8cwujw0lgie"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_cffxb"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="1_q3src"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/ground_animals/fox.tscn" id="6_4x3kg"]
 [ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/ground_animals/boar.tscn" id="7_443ir"]
 [ext_resource type="PackedScene" uid="uid://c2xrsqj6px78r" path="res://scenes_and_scripts/world/animals/ground_animals/wolf.tscn" id="8_xd2tb"]
+[ext_resource type="Texture2D" uid="uid://c4r35j5un4gc6" path="res://assets/sprites/arrow.png" id="9_443ir"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_au23b"]
 shader = ExtResource("1_cffxb")
@@ -76,6 +77,22 @@ collision_mask = 3
 [node name="Wolf" parent="Level" instance=ExtResource("8_xd2tb")]
 position = Vector2(1829, -512)
 collision_mask = 3
+
+[node name="Arrow" type="Sprite2D" parent="Level"]
+use_parent_material = true
+position = Vector2(1729, -400)
+texture = ExtResource("9_443ir")
+
+[node name="Arrow2" type="Sprite2D" parent="Level"]
+use_parent_material = true
+position = Vector2(1729, -463)
+rotation = -1.5708
+texture = ExtResource("9_443ir")
+
+[node name="Arrow3" type="Sprite2D" parent="Level"]
+use_parent_material = true
+position = Vector2(1729, -526)
+texture = ExtResource("9_443ir")
 
 [node name="WorldBottomLimit" type="Area2D" parent="Level"]
 collision_layer = 0

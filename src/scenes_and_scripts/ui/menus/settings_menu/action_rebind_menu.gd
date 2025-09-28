@@ -26,15 +26,6 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 
-func update():
-	label.text = action.capitalize() + ":"
-	var events: Array[InputEvent] = InputMap.action_get_events(action)
-	for i: int in len(rebind_buttons):
-		var binding: String = ""
-		if len(events) > i:
-			binding = event_to_str(events[i])
-		rebind_buttons[i].text = binding
-
 func event_to_str(ev: InputEvent) -> String:
 	if not ev:
 		return "(Not Bound)"
@@ -61,13 +52,21 @@ func set_action_event(action_name: String, event: InputEvent, index: int) -> voi
 		if e != null:
 			InputMap.action_add_event(action_name, e)
 
-@warning_ignore("shadowed_variable")
 func get_action_event(action: String, event_index: int) -> InputEvent:
 	if not InputMap.has_action(action): return null
 	var events: Array[InputEvent] = InputMap.action_get_events(action)
 	if len(events) > event_index:
 		return events[event_index]
 	return null
+
+func update():
+	label.text = action.capitalize() + ":"
+	var events: Array[InputEvent] = InputMap.action_get_events(action)
+	for i: int in len(rebind_buttons):
+		var binding: String = ""
+		if len(events) > i:
+			binding = event_to_str(events[i])
+		rebind_buttons[i].text = binding
 
 func rebind_action(index: int):
 	if not InputMap.has_action(action): return

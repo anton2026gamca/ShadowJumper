@@ -3448,6 +3448,7 @@ script = ExtResource("1_7qmai")
 start_level = NodePath("Level/Level1")
 replay_controller = NodePath("Level/Player/ReplayPlayerController")
 camera = NodePath("Camera2D")
+debug_mode = true
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("folow")]
 drag_horizontal_enabled = true
