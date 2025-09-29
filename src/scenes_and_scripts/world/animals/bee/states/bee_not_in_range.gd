@@ -4,27 +4,24 @@ class_name BeeNotInRange
 
 @export var target: Bee
 
-var enemy: Node2D
-
 @export var attack_start_area: Area2D
 @export var sprite: AnimatedSprite2D
 @export var buzzing_audio: AudioStreamPlayer2D
 
 
 func process(delta: float) -> Variant:
-	if not enemy:
-		enemy = Helpers.get_nearest_node_in_group(target.global_position, "Player")
-		if not enemy: return null
-	if attack_start_area.get_overlapping_bodies().has(enemy):
+	if not target.enemy: return null
+	if target.can_use_ultimate_attack and target.ultimate_attack_area.get_overlapping_bodies().has(target.enemy):
+		return BeeUltimateAttack
+	if attack_start_area.get_overlapping_bodies().has(target.enemy):
 		target.velocity = Vector2.ZERO
 		return BeeAttacking
-	target.velocity = (enemy.global_position - attack_start_area.global_position).normalized() * target.fly_speed
+	target.velocity = (target.enemy.global_position - attack_start_area.global_position).normalized() * target.fly_speed
 	sprite.flip_h = target.velocity.x > 0
 	return null
 
 
 func on_enter() -> void:
-	enemy = Helpers.get_nearest_node_in_group(target.global_position, "Player")
 	if buzzing_audio:
 		buzzing_audio.finished.connect(_on_buzzing_audio_finished)
 		if not buzzing_audio.playing:

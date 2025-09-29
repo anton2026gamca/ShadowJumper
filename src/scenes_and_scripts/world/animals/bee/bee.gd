@@ -2,24 +2,27 @@ extends Animal
 class_name Bee
 
 
-@export var fly_speed: float = 250.0
-@export var attack_min_height_diff: float = 100.0
-
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine: StateMachine = $StateMachine
 @onready var death_audio: AudioStreamPlayer2D = $DeathAudio
+var indicator: NodeIndicator
+var enemy: Node2D
 
 @export var lives: int = 2
+@export var fly_speed: float = 250.0
 
-var indicator: NodeIndicator
+@export var ultimate_attack_area: Area2D
+var can_use_ultimate_attack: bool = true
 
 
 func _ready() -> void:
 	super._ready()
+	enemy = Helpers.get_nearest_node_in_group(global_position, "Player")
 	indicator = Helpers.levels_ui.create_node_indicator(self)
 	indicator.color = Color.BLUE_VIOLET
 
 func _physics_process(delta: float) -> void:
+	if not enemy: enemy = Helpers.get_nearest_node_in_group(global_position, "Player")
 	move_and_slide()
 
 

@@ -4,7 +4,6 @@ class_name BeeAttacking
 
 @export var target: Bee
 
-var enemy: Node2D
 @export var target_lost_area: Area2D
 @export var bullet_scene: PackedScene
 @export var bullet_spawner: Node2D
@@ -17,17 +16,13 @@ var random_dir: Vector2
 
 
 func process(delta: float) -> Variant:
-	if not enemy:
-		enemy = Helpers.get_nearest_node_in_group(target.global_position, "Player")
-		if not enemy: return null
-	if not target_lost_area.get_overlapping_bodies().has(enemy):
+	if not target.enemy: return null
+	if target.can_use_ultimate_attack and target.ultimate_attack_area.get_overlapping_bodies().has(target.enemy):
+		return BeeUltimateAttack
+	if not target_lost_area.get_overlapping_bodies().has(target.enemy):
 		return BeeNotInRange
-	
-	# TODO: Implement attacking
-	
 	target.velocity.x = move_toward(target.velocity.x, Vector2.ZERO.x, 20.0)
 	target.velocity.y = move_toward(target.velocity.y, Vector2.ZERO.y, 20.0)
-	
 	if not current_bullet:
 		shoot()
 		random_dir = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
@@ -36,18 +31,14 @@ func process(delta: float) -> Variant:
 	else:
 		random_dir = Vector2(random_dir.x, move_toward(random_dir.y, 0, 0.5 * delta)).normalized()
 		target.velocity = random_dir * (target.fly_speed / 4)
-	
 	return null
-
-func on_enter() -> void:
-	enemy = Helpers.get_nearest_node_in_group(target.global_position, "Player")
 
 
 func shoot() -> void:
 	current_bullet = bullet_scene.instantiate()
 	current_bullet.rotation_degrees = 180
 	current_bullet.global_position = bullet_spawner.global_position
-	current_bullet.target = enemy
+	current_bullet.target = target.enemy
 	current_bullet.finished.connect(_on_bullet_finished.bind(current_bullet))
 	shoot_audio_player.play()
 	target.get_parent().add_child(current_bullet)

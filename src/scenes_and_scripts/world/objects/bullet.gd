@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Bullet
 
 
-@export var die_reason: String = "You were hit by a bullet"
+@export_multiline var die_reason: String = "You were hit by a bullet"
 
 @export var initial_speed_min: float = 400.0
 @export var initial_speed_max: float = 400.0

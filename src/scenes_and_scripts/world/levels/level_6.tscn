@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cdort0sw0grtb"]
+[gd_scene load_steps=14 format=4 uid="uid://cdort0sw0grtb"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_v8hid"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_0ki8w"]
@@ -28,6 +28,9 @@ normal = Vector2(-1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rpbm"]
 size = Vector2(704, 61)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_srgj7"]
+normal = Vector2(0, 1)
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("camera")]
 material = SubResource("ShaderMaterial_cffxb")
@@ -90,8 +93,17 @@ position = Vector2(42, -2256)
 position = Vector2(-135, -14.5)
 shape = SubResource("RectangleShape2D_3rpbm")
 
-[node name="Bee" parent="Level" instance=ExtResource("7_srgj7")]
+[node name="Bee" parent="Level" node_paths=PackedStringArray("ultimate_attack_area") instance=ExtResource("7_srgj7")]
 position = Vector2(-26, -2062)
+ultimate_attack_area = NodePath("../BeeUltimateAttackArea")
+
+[node name="BeeUltimateAttackArea" type="Area2D" parent="Level"]
+position = Vector2(5, -1624)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/BeeUltimateAttackArea"]
+shape = SubResource("WorldBoundaryShape2D_srgj7")
 
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]
