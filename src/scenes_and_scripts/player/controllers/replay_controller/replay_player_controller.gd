@@ -22,7 +22,7 @@ var current_frame_index_in_data: int = 0
 
 @export_tool_button("Reset Position") var reset_pos_btn: Callable = reset_target_position
 
-signal replay_end
+signal replay_ended
 
 
 func _ready() -> void:
@@ -69,13 +69,7 @@ func replay_next_frame() -> void:
 		current_frame_index_in_data = 0
 		current_frame_data_index += 1
 		if current_frame_data_index >= len(replay_data.data):
-			is_replaying = false
-			target.enable_in_editor = false
-			state_machine.enable_in_editor = false
-			replay_end.emit()
-			if replay_data.adjust_x_position_on_end:
-				var tween: Tween = create_tween()
-				tween.tween_property(target, "position", Vector2(replay_data.target_x_position_on_end, target.position.y), abs(replay_data.target_x_position_on_end - target.position.x) / speed)
+			end_replay()
 			return
 		current_frame_data = replay_data.data[current_frame_data_index]
 
@@ -119,6 +113,16 @@ func start_replay() -> void:
 	target.position = replay_data.start_pos
 	target.enable_in_editor = true
 	state_machine.enable_in_editor = true
+
+func end_replay() -> void:
+	is_replaying = false
+	target.enable_in_editor = false
+	state_machine.enable_in_editor = false
+	if replay_data.adjust_x_position_on_end:
+		var tween: Tween = create_tween()
+		tween.tween_property(target, "position", Vector2(replay_data.target_x_position_on_end, target.position.y), abs(replay_data.target_x_position_on_end - target.position.x) / speed)
+		await tween.finished
+	replay_ended.emit()
 
 
 func get_move_left() -> bool:

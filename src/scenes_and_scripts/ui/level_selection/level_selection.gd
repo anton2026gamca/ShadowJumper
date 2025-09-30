@@ -78,7 +78,7 @@ func move_to_level(dir: Vector2i) -> void:
 		return
 	current_level = null
 	replay_controller.start_replay()
-	await replay_controller.replay_end
+	await replay_controller.replay_ended
 	current_level = new_level
 	Settings.last_level = get_path_to(new_level)
 
