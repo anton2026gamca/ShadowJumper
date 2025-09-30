@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bp4673xstvrtx" path="res://scenes_and_scripts/world/animals/animal.gd" id="1_x5dor"]
 [ext_resource type="Script" uid="uid://dgd8hkbbbcu5j" path="res://scenes_and_scripts/state_machine/state_machine.gd" id="2_65wcd"]
-[ext_resource type="PackedScene" uid="uid://x6l0n4j6mk63" path="res://scenes_and_scripts/components/death_component.tscn" id="3_xt85k"]
+[ext_resource type="Script" uid="uid://c1vlxdllcc361" path="res://scenes_and_scripts/components/death_component.gd" id="3_xt85k"]
 
 [node name="Animal" type="CharacterBody2D"]
 collision_layer = 4
@@ -14,10 +14,12 @@ metadata/_custom_type_script = "uid://bp4673xstvrtx"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
-[node name="DeathComponent" parent="." instance=ExtResource("3_xt85k")]
-
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_65wcd")
 metadata/_custom_type_script = "uid://dgd8hkbbbcu5j"
+
+[node name="DeathComponent" type="Node" parent="."]
+script = ExtResource("3_xt85k")
+metadata/_custom_type_script = "uid://c1vlxdllcc361"
 
 [connection signal="die_signal" from="DeathComponent" to="." method="_on_death_component_die"]

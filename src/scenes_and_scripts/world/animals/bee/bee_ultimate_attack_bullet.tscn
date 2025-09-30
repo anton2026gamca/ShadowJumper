@@ -35,13 +35,13 @@ use_parent_material = true
 rotation = 1.5708
 texture = SubResource("AtlasTexture_k3haf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KillArea" index="0"]
+[node name="CollisionShape2D" parent="KillArea" index="0"]
 shape = SubResource("CapsuleShape2D_tsqiw")
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="3"]
 scale = Vector2(1, 1.33333)
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="5"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="4"]
 position = Vector2(0, 8)
 emitting = false
 amount = 16

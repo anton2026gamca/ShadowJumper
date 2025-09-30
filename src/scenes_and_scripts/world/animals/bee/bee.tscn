@@ -205,15 +205,16 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yntd2"]
-radius = 77.0
+radius = 8.0
 height = 240.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j8j3w"]
-radius = 131.0
+radius = 73.0
 height = 330.0
 
 [node name="Bee" instance=ExtResource("1_psrfv")]
 use_parent_material = true
+collision_layer = 32
 collision_mask = 0
 script = ExtResource("2_h0684")
 lives = 1
@@ -229,30 +230,7 @@ sprite_frames = SubResource("SpriteFrames_8nw61")
 animation = &"fly"
 autoplay = "fly"
 
-[node name="AttackStartArea" type="Area2D" parent="." index="3"]
-position = Vector2(0, 104)
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackStartArea" index="0"]
-position = Vector2(-1, -46)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_yntd2")
-
-[node name="TargetLostArea" type="Area2D" parent="." index="4"]
-position = Vector2(0, 227)
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetLostArea" index="0"]
-position = Vector2(0, -190)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_j8j3w")
-
-[node name="BulletSpawner" type="Node2D" parent="." index="5"]
-position = Vector2(0, 25)
-
-[node name="StateMachine" parent="." index="6" node_paths=PackedStringArray("current_state")]
+[node name="StateMachine" parent="." index="2" node_paths=PackedStringArray("current_state")]
 current_state = NodePath("NotInRange")
 
 [node name="NotInRange" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("target", "attack_start_area", "sprite", "buzzing_audio")]
@@ -281,6 +259,27 @@ bullet_spawner = NodePath("../../BulletSpawner")
 ult_attack_audio = NodePath("../../UltimateAttackAudio")
 ult_attack_shoot_audio = NodePath("../../UltimateAttackShootAudio")
 metadata/_custom_type_script = "uid://w5adbboxk2es"
+
+[node name="AttackStartArea" type="Area2D" parent="." index="3"]
+position = Vector2(0, 73)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackStartArea" index="0"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_yntd2")
+
+[node name="TargetLostArea" type="Area2D" parent="." index="4"]
+position = Vector2(0, 73)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetLostArea" index="0"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_j8j3w")
+
+[node name="BulletSpawner" type="Node2D" parent="." index="5"]
+position = Vector2(0, 25)
 
 [node name="ShootAudio" type="AudioStreamPlayer2D" parent="." index="7"]
 stream = ExtResource("7_cal8c")

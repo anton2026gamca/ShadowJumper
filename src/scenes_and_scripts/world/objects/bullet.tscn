@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvn77t44gdpwa"]
+[gd_scene load_steps=2 format=3 uid="uid://dvn77t44gdpwa"]
 
 [ext_resource type="Script" uid="uid://bjtn1ugquy0yt" path="res://scenes_and_scripts/world/objects/bullet.gd" id="1_8q5e6"]
-[ext_resource type="PackedScene" uid="uid://x6l0n4j6mk63" path="res://scenes_and_scripts/components/death_component.tscn" id="2_rxxvb"]
 
 [node name="Bullet" type="CharacterBody2D"]
 use_parent_material = true
@@ -14,14 +13,13 @@ metadata/_custom_type_script = "uid://bjtn1ugquy0yt"
 
 [node name="KillArea" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 36
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillArea"]
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-3, -3, 6, 6)
 
-[node name="DeathComponent" parent="." instance=ExtResource("2_rxxvb")]
-
 [connection signal="body_entered" from="KillArea" to="." method="_on_kill_area_body_entered"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
-[connection signal="die_signal" from="DeathComponent" to="." method="_destroy"]

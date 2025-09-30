@@ -54,7 +54,7 @@ position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_c4aqc")
 animation = &"attack"
 
-[node name="StateMachine" parent="." index="3" node_paths=PackedStringArray("current_state")]
+[node name="StateMachine" parent="." index="2" node_paths=PackedStringArray("current_state")]
 current_state = NodePath("GroundAnimalSearching")
 
 [node name="GroundAnimalSearching" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("target", "sprite", "physics_parent", "ground", "wall", "enemy_area", "attacking_audio")]

@@ -25,11 +25,11 @@ func process(delta: float) -> Variant:
 	target.velocity.y = move_toward(target.velocity.y, Vector2.ZERO.y, 20.0)
 	if not current_bullet:
 		shoot()
-		random_dir = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
+		random_dir = Vector2(randf_range(-1, 1), randf_range(-1, 0)).normalized()
 		if not buzzing_audio.playing:
 			buzzing_audio.play()
 	else:
-		random_dir = Vector2(random_dir.x, move_toward(random_dir.y, 0, 0.5 * delta)).normalized()
+		random_dir = Vector2(move_toward(random_dir.x, 0, 0.5 * delta), random_dir.y).normalized()
 		target.velocity = random_dir * (target.fly_speed / 4)
 	return null
 

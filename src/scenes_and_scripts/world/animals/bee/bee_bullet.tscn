@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://r80goc7odoja"]
+[gd_scene load_steps=9 format=3 uid="uid://r80goc7odoja"]
 
 [ext_resource type="PackedScene" uid="uid://dvn77t44gdpwa" path="res://scenes_and_scripts/world/objects/bullet.tscn" id="1_jgsbl"]
 [ext_resource type="Script" uid="uid://dgebrhx6bfngf" path="res://scenes_and_scripts/world/animals/bee/bee_bullet.gd" id="2_k3haf"]
 [ext_resource type="Texture2D" uid="uid://cweisxm4vrdqa" path="res://assets/sprites/bee.png" id="2_kv5lg"]
+[ext_resource type="Script" uid="uid://c1vlxdllcc361" path="res://scenes_and_scripts/components/death_component.gd" id="4_k3haf"]
 
 [sub_resource type="Curve" id="Curve_k3haf"]
 _limits = [0.0, 1000.0, 0.0, 500.0]
@@ -39,8 +40,14 @@ use_parent_material = true
 rotation = 1.5708
 texture = SubResource("AtlasTexture_k3haf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KillArea" index="0"]
+[node name="CollisionShape2D" parent="KillArea" index="0"]
 shape = SubResource("CapsuleShape2D_qqcfx")
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="3"]
 scale = Vector2(1, 1.33333)
+
+[node name="DeathComponent" type="Node" parent="." index="4"]
+script = ExtResource("4_k3haf")
+metadata/_custom_type_script = "uid://c1vlxdllcc361"
+
+[connection signal="die_signal" from="DeathComponent" to="." method="_destroy"]

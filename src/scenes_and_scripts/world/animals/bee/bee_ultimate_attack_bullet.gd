@@ -8,15 +8,12 @@ var time: float = 0
 @export var homing_rate_curve: Curve
 
 @onready var cpu_particles_2d: CPUParticles2D = $CPUParticles2D
-@onready var death_component: DeathComponent = $DeathComponent
 
 
 func _ready() -> void:
 	super._ready()
 	time = 0
 	cpu_particles_2d.emitting = true
-	if death_component.die_signal.is_connected(_destroy):
-		death_component.die_signal.disconnect(_destroy)
 
 func _physics_process(delta: float) -> void:
 	time += delta
