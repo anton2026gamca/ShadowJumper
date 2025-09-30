@@ -61,7 +61,7 @@ func hit() -> void:
 	stop_making_boom()
 	hit_val += 1
 	var my_hit_val: float = hit_val # Store hit val before pausing to handle multiple hit() calls
-	await get_tree().create_timer(down_time).timeout
+	await get_tree().create_timer(down_time, false).timeout
 	if hit_val == my_hit_val: # If hit_val is still the same, turn on. If not, that means hit() was called when waiting (later that this call) and let it handle the turn on.
 		respawn_audio.pitch_scale = hit_audio.pitch_scale
 		respawn_audio.play()
