@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://cbh2h5bldnuj1"]
+[gd_scene load_steps=19 format=3 uid="uid://cbh2h5bldnuj1"]
 
-[ext_resource type="PackedScene" uid="uid://e61r4s4jbhvf" path="res://scenes_and_scripts/world/objects/point_light.tscn" id="1_2hos7"]
 [ext_resource type="Texture2D" uid="uid://br8n3umvrdgvd" path="res://assets/sprites/mushrooms.png" id="2_m6ssx"]
 [ext_resource type="Script" uid="uid://b63ehe3at03rm" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom.gd" id="3_f0mk6"]
+[ext_resource type="Texture2D" uid="uid://2x4fickw1bnd" path="res://assets/sprites/light_textures/256x256/256x256 textures (54).png" id="4_6fdtu"]
 [ext_resource type="Texture2D" uid="uid://hfvkjmsvlwwj" path="res://assets/sprites/boom.png" id="4_m6ssx"]
 [ext_resource type="AudioStream" uid="uid://caskawg1l0aga" path="res://assets/SFX/folder/lightning.wav" id="5_o6bic"]
 [ext_resource type="AudioStream" uid="uid://c2su2kupk2r3q" path="res://assets/SFX/folder/select_5.wav" id="6_o6bic"]
@@ -11,6 +11,43 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_8kcc1"]
 atlas = ExtResource("2_m6ssx")
 region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="Animation" id="Animation_p2ywh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ptq1o"]
+resource_name = "on-off"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.00836992, 0.064791, 0.089802, 0.11674, 0.16027, 0.18336, 0.20837, 0.23531),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3wb6g"]
+_data = {
+&"RESET": SubResource("Animation_p2ywh"),
+&"on-off": SubResource("Animation_ptq1o")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2hos7"]
 radius = 110.0
@@ -64,8 +101,15 @@ texture = SubResource("AtlasTexture_8kcc1")
 script = ExtResource("3_f0mk6")
 down_time = 7.5
 boom_tolerance_time = 0.1
+metadata/_custom_type_script = "uid://b63ehe3at03rm"
 
-[node name="PointLight" parent="." instance=ExtResource("1_2hos7")]
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("4_6fdtu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PointLight2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_3wb6g")
+}
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
@@ -116,3 +160,13 @@ linear_accel_min = 20.0
 linear_accel_max = 20.0
 scale_amount_max = 3.0
 color = Color(0.784314, 0.784314, 0.337255, 1)
+
+[node name="RelightParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+direction = Vector2(0, -1)
+spread = 120.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+scale_amount_max = 3.0

@@ -4,8 +4,6 @@ class_name Mushroom
 
 @export var die_reason: String = "You were electrified by a mushroom :o"
 
-@onready var point_light: PointLight = $PointLight
-
 @export var down_time: float = 5.0
 var hit_val: int = 0
 
@@ -16,15 +14,15 @@ var boom_state: int = 0
 var boom_target: Player
 var boom_angry_value: float = 0.0
 
+@onready var light_animation_player: AnimationPlayer = $PointLight2D/AnimationPlayer
 @onready var boom_start_audio: AudioStreamPlayer2D = $BoomStartAudio
 @onready var boom_audio: AudioStreamPlayer2D = $BoomAudio
 @onready var hit_audio: AudioStreamPlayer2D = $HitAudio
 @onready var respawn_audio: AudioStreamPlayer2D = $RespawnAudio
 @onready var hit_particles: CPUParticles2D = $HitParticles
+@onready var relight_particles: CPUParticles2D = $RelightParticles
 
-var is_on: bool:
-	set(value): return
-	get: return point_light.is_on
+var is_on: bool = true
 
 
 func _ready() -> void:
@@ -50,10 +48,20 @@ func _physics_process(delta: float) -> void:
 	if boom_state != 0 and (len(players) == 0 or progress == 0):
 		stop_making_boom()
 
+func turn_off() -> void:
+	light_animation_player.play("on-off")
+	is_on = false
+	await light_animation_player.animation_finished
+
+func turn_on() -> void:
+	light_animation_player.play("on-off", -1, -1.0, true)
+	await light_animation_player.animation_finished
+	is_on = true
+
 
 func hit() -> void:
 	if is_on:
-		point_light.turn_off()
+		turn_off()
 		hit_audio.pitch_scale = randf_range(0.5, 1.5)
 		hit_audio.play()
 		hit_particles.emitting = true
@@ -61,12 +69,17 @@ func hit() -> void:
 	stop_making_boom()
 	hit_val += 1
 	var my_hit_val: float = hit_val # Store hit val before pausing to handle multiple hit() calls
-	await get_tree().create_timer(down_time, false).timeout
+	await get_tree().create_timer(down_time - 2, false).timeout
 	if hit_val == my_hit_val: # If hit_val is still the same, turn on. If not, that means hit() was called when waiting (later that this call) and let it handle the turn on.
+		relight_particles.emitting = true
+		relight_particles.initial_velocity_min = 5
+		relight_particles.initial_velocity_max = 5
+		hit_val = 0
+		await create_tween().tween_property(relight_particles, "initial_velocity_min", 25, 2).finished
+		relight_particles.emitting = false
 		respawn_audio.pitch_scale = hit_audio.pitch_scale
 		respawn_audio.play()
-		point_light.turn_on()
-		hit_val = 0
+		await turn_on()
 
 func start_making_boom() -> void:
 	if boom_state != 0:
