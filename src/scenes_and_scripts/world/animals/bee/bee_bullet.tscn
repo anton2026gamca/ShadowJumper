@@ -31,6 +31,7 @@ die_reason = "A bee shot you!"
 initial_speed_min = 350.0
 initial_speed_max = 450.0
 lifetime = 4.0
+on_hit_screen_shake_value = 10.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CapsuleShape2D_k3haf")

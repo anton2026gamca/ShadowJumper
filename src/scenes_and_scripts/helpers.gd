@@ -3,7 +3,7 @@ extends Node
 
 var main_menu: Main
 var levels_ui: LevelsUI
-var camera: Camera2D
+var camera: CameraPlus
 
 
 func find_child_by_type(parent: Node, type: Variant) -> Node:

@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=4 uid="uid://d1knch75lpy1t"]
+[gd_scene load_steps=16 format=4 uid="uid://d1knch75lpy1t"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_nbytn"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_go7g5"]
-[ext_resource type="Script" uid="uid://dhd8v7a51hwsm" path="res://scenes_and_scripts/folower.gd" id="3_vp6c5"]
+[ext_resource type="Script" uid="uid://dhd8v7a51hwsm" path="res://scenes_and_scripts/camera_plus.gd" id="3_vp6c5"]
 [ext_resource type="TileSet" uid="uid://8h4fm7v55cnx" path="res://assets/tileset.tres" id="4_wcekq"]
 [ext_resource type="PackedScene" uid="uid://f5m7vw1vj4fd" path="res://scenes_and_scripts/player/player.tscn" id="5_myw5i"]
 [ext_resource type="PackedScene" uid="uid://6twg4nqjueyw" path="res://scenes_and_scripts/world/levels/finish.tscn" id="8_wcekq"]
@@ -16,6 +16,11 @@ shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
 shader_parameter/night_darkness = 1.0
 shader_parameter/night_contrast = 2.0
 shader_parameter/blue_shift = 1.0
+
+[sub_resource type="Curve" id="Curve_wcekq"]
+_limits = [0.0, 1.0, 0.0, 600.0]
+_data = [Vector2(300, 1), 0.0, -0.000200234, 0, 0, Vector2(600, 0), -0.00678558, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_055t4"]
 
@@ -86,13 +91,13 @@ _data = {
 }
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("camera")]
-process_mode = 1
 material = SubResource("ShaderMaterial_1m2nw")
 script = ExtResource("2_go7g5")
 story_in_beginning = "intro"
 camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("folow")]
+process_mode = 3
 drag_vertical_enabled = true
 drag_left_margin = 0.08
 drag_right_margin = 0.08
@@ -104,6 +109,7 @@ Vector2i(-1, 0): 0.0,
 Vector2i(0, 1): 30.0,
 Vector2i(1, 0): 1769.0
 })
+distance_to_value = SubResource("Curve_wcekq")
 
 [node name="Background" type="TileMapLayer" parent="."]
 z_index = -100

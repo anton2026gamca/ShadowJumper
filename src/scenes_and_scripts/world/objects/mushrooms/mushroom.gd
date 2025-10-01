@@ -4,12 +4,18 @@ class_name Mushroom
 
 @export var die_reason: String = "You were electrified by a mushroom :o"
 
+@export_group("Hit")
 @export var down_time: float = 5.0
+@export var hit_screen_shake_value: float = 5.0
+@export var revive_screen_shake_value: float = 5.0
 var hit_val: int = 0
 
+@export_group("Boom")
 @onready var boom_sprite: AnimatedSprite2D = $Boom
 @onready var boom_area: Area2D = $Area2D
 @export var boom_tolerance_time: float = 0.5
+@export var boom_start_screen_shake_value: float = 2
+@export var boom_screen_shake_value: float = 10
 var boom_state: int = 0
 var boom_target: Player
 var boom_angry_value: float = 0.0
@@ -65,6 +71,7 @@ func hit() -> void:
 		hit_audio.pitch_scale = randf_range(0.5, 1.5)
 		hit_audio.play()
 		hit_particles.emitting = true
+		Helpers.camera.shake(hit_screen_shake_value, global_position)
 	boom_angry_value = 0
 	stop_making_boom()
 	hit_val += 1
@@ -79,6 +86,7 @@ func hit() -> void:
 		relight_particles.emitting = false
 		respawn_audio.pitch_scale = hit_audio.pitch_scale
 		respawn_audio.play()
+		Helpers.camera.shake(revive_screen_shake_value, global_position)
 		await turn_on()
 
 func start_making_boom() -> void:
@@ -89,6 +97,7 @@ func start_making_boom() -> void:
 	boom_sprite.rotation = 0
 	boom_state = 1
 	boom_start_audio.play()
+	Helpers.camera.shake(boom_start_screen_shake_value, global_position)
 
 func update_boom() -> bool:
 	if boom_angry_value > boom_tolerance_time and boom_state == 1:
@@ -96,6 +105,7 @@ func update_boom() -> bool:
 		boom_sprite.play("boom")
 		boom_state = 2
 		boom_audio.play()
+		Helpers.camera.shake(boom_screen_shake_value, global_position)
 		await boom_sprite.animation_finished
 		stop_making_boom()
 		return true

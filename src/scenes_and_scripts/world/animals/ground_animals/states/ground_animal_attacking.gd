@@ -69,6 +69,7 @@ func attack(player: Player) -> void:
 	attack_particles.position.x = (-1 if sprite.flip_h else 1) * abs(attack_particles.position.x)
 	attack_particles.direction.x = (-1 if sprite.flip_h else 1) * abs(attack_particles.direction.x)
 	attack_particles.emitting = true
+	Helpers.camera.shake(target.attack_screen_shake_value, target.global_position)
 	paused = true
 	await sprite.animation_finished
 	paused = false

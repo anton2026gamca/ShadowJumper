@@ -7,7 +7,7 @@ extends Node2D
 var current_level: LevelSelectionLevel
 @export var replay_controller: ReplayPlayerController
 
-@export var camera: Camera2D
+@export var camera: CameraPlus
 
 
 func _ready() -> void:
@@ -28,6 +28,7 @@ func _ready() -> void:
 		current_level = new_level
 	replay_controller.target.position = current_level.position + Vector2(0, -9)
 	camera.position = replay_controller.target.position
+	Helpers.camera = camera
 
 func _process(_delta: float) -> void:
 	if OS.is_debug_build() and Input.is_action_just_pressed("debug_toggle_levels"):
@@ -61,6 +62,7 @@ func enter_level() -> void:
 	parent.add_child(self)
 	get_tree().current_scene = Helpers.main_menu
 	camera.make_current()
+	Helpers.camera = camera
 	if defeated:
 		current_level.mark_completed()
 		Settings.beated_levels.append(get_path_to(current_level))

@@ -7,11 +7,14 @@ class_name PlayerFall
 
 @onready var fall_audio: AudioStreamPlayer2D = $"../../FallAudio"
 
+var last_velocity: Vector2 = Vector2.ZERO
+
 
 func process(delta: float) -> Variant:
 	if controller.get_throw_a_rock():
 		controller.throw_a_rock()
 	if controller.is_on_floor():
+		Helpers.camera.shake(last_velocity.y / 1000.0, controller.target.global_position)
 		controller.disable_jump = false
 		return PlayerWalk
 	var climb_left: bool = controller.climb_left_raycast.get_collider() is TileMapLayer
@@ -34,17 +37,14 @@ func process(delta: float) -> Variant:
 	else:
 		if direction: controller.target.velocity.x = move_toward(controller.target.velocity.x, direction * controller.speed, 900 * delta)
 		else: controller.target.velocity.x = move_toward(controller.target.velocity.x, 0, 300 * delta)
-	
 	if controller.get_jump_released() and controller.target.velocity.y < 0:
 		controller.target.velocity.y *= 0.25
-	
 	controller.apply_gravity(delta, 2 if controller.target.velocity.y > 0 else 1)
-	
 	if controller.target.velocity.y > 650:
 		if not fall_audio.playing:
 			fall_audio.play()
 	else: fall_audio.stop()
-	
+	last_velocity = controller.target.velocity
 	return null
 
 func on_exit() -> void:

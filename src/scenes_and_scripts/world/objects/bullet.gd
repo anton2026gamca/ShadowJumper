@@ -8,6 +8,8 @@ class_name Bullet
 @export var initial_speed_max: float = 400.0
 @export var lifetime: float = -1
 
+@export var on_hit_screen_shake_value: float = 0
+
 var indicator: NodeIndicator
 
 signal finished
@@ -39,6 +41,7 @@ func _on_kill_area_body_entered(body: Node2D) -> void:
 		if body is CharacterBody2D:
 			body.velocity = self.velocity
 		_destroy()
+		Helpers.camera.shake(on_hit_screen_shake_value, global_position)
 
 func _on_screen_entered() -> void:
 	if indicator: indicator.visible = false

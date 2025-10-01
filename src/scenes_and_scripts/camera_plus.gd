@@ -1,11 +1,21 @@
-extends Node2D
-class_name Follower
+extends Camera2D
+class_name CameraPlus
 
 
+@export_group("Follow")
 @export var folow: Node2D
 @export var folow_speed: Vector2 = Vector2(500.0, 500.0)
 @export var limits: Dictionary[Vector2i, float]
 
+@export_group("Screen Shake")
+@export var shake_fade: float = 5
+@export var distance_to_value: Curve
+
+var shake_value: float
+
+
+func _ready() -> void:
+	Helpers.camera = self
 
 func _process(delta: float) -> void:
 	if folow:
@@ -19,3 +29,11 @@ func _process(delta: float) -> void:
 			global_position.x = max(global_position.x, limits[Vector2i.LEFT])
 		if Vector2i.RIGHT in limits:
 			global_position.x = min(global_position.x, limits[Vector2i.RIGHT])
+	
+	shake_value = lerpf(shake_value, 0, shake_fade * delta)
+	offset = Vector2(randf_range(-shake_value, shake_value), randf_range(-shake_value, shake_value))
+
+
+func shake(value: float, origin: Vector2) -> void:
+	var distance: float = global_position.distance_to(origin)
+	shake_value = value * distance_to_value.sample(distance)
