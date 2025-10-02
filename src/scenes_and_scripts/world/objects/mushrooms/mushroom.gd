@@ -37,21 +37,22 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not is_on:
 		return
-	var players: Array[Node2D] = boom_area.get_overlapping_bodies().filter(func(body: Node2D) -> bool: return body is Player)
+	var bodies: Array[Node2D] = boom_area.get_overlapping_bodies()
 	var progress: float = 0
-	for player: Player in players:
-		if player.controller.get_move_dir() or player.controller.get_climb_ladder_dir():
+	for body: Node2D in bodies:
+		if body is Player and (body.controller.get_move_dir() or body.controller.get_climb_ladder_dir()):
 			start_making_boom()
-			boom_angry_value += delta
 			progress += delta
+	boom_angry_value += progress
 	if boom_state == 1:
 		boom_sprite.rotate(deg_to_rad(22.5))
 		if await update_boom():
-			for player: Player in players:
-				var death_component: DeathComponent = Helpers.find_child_by_type(player, DeathComponent)
+			bodies = boom_area.get_overlapping_bodies()
+			for body: Node2D in bodies:
+				var death_component: DeathComponent = Helpers.find_child_by_type(body, DeathComponent)
 				if death_component:
 					death_component.die(die_reason)
-	if boom_state != 0 and (len(players) == 0 or progress == 0):
+	if boom_state != 0 and progress == 0:
 		stop_making_boom()
 
 func turn_off() -> void:
@@ -65,7 +66,7 @@ func turn_on() -> void:
 	is_on = true
 
 
-func hit() -> void:
+func hit(down_time_override: float = -1) -> void:
 	if is_on:
 		turn_off()
 		hit_audio.pitch_scale = randf_range(0.5, 1.5)
@@ -76,7 +77,7 @@ func hit() -> void:
 	stop_making_boom()
 	hit_val += 1
 	var my_hit_val: float = hit_val # Store hit val before pausing to handle multiple hit() calls
-	await get_tree().create_timer(down_time - 2, false).timeout
+	await get_tree().create_timer(down_time_override - 2 if down_time_override >= 0 else down_time - 2, false).timeout
 	if hit_val == my_hit_val: # If hit_val is still the same, turn on. If not, that means hit() was called when waiting (later that this call) and let it handle the turn on.
 		relight_particles.emitting = true
 		relight_particles.initial_velocity_min = 5
@@ -108,6 +109,7 @@ func update_boom() -> bool:
 		Helpers.camera.shake(boom_screen_shake_value, global_position)
 		await boom_sprite.animation_finished
 		stop_making_boom()
+		hit(0)
 		return true
 	return false
 

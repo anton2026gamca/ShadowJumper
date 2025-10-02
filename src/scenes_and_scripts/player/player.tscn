@@ -32,11 +32,10 @@ shader_parameter/night_darkness = 0.7
 shader_parameter/night_contrast = 1.2
 shader_parameter/blue_shift = 0.4
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("controller") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_8afob")
-controller = NodePath("UserPlayerController")
 metadata/_custom_type_script = "uid://hrc23450dtph"
 
 [node name="Sprite" type="Sprite2D" parent="."]

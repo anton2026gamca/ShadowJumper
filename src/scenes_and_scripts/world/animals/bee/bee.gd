@@ -3,7 +3,6 @@ class_name Bee
 
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var state_machine: StateMachine = $StateMachine
 @onready var death_audio: AudioStreamPlayer2D = $DeathAudio
 var indicator: NodeIndicator
 var enemy: Node2D

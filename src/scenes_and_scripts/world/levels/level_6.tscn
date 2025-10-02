@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cdort0sw0grtb"]
+[gd_scene load_steps=19 format=4 uid="uid://cdort0sw0grtb"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_v8hid"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_0ki8w"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://f5m7vw1vj4fd" path="res://scenes_and_scripts/player/player.tscn" id="5_nfe74"]
 [ext_resource type="PackedScene" uid="uid://6twg4nqjueyw" path="res://scenes_and_scripts/world/levels/finish.tscn" id="6_vucsu"]
 [ext_resource type="PackedScene" uid="uid://cd7yubqxtcw2v" path="res://scenes_and_scripts/world/animals/bee/bee.tscn" id="7_srgj7"]
+[ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/ground_animals/fox.tscn" id="8_hrj3k"]
+[ext_resource type="PackedScene" uid="uid://c2xrsqj6px78r" path="res://scenes_and_scripts/world/animals/ground_animals/wolf.tscn" id="9_v8hid"]
+[ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/ground_animals/boar.tscn" id="10_0ki8w"]
+[ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="11_0ki8w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cffxb"]
 shader = ExtResource("1_v8hid")
@@ -111,6 +115,26 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/BeeUltimateAttackArea"]
 shape = SubResource("WorldBoundaryShape2D_srgj7")
+
+[node name="Fox" parent="Level" instance=ExtResource("8_hrj3k")]
+position = Vector2(-12, -467)
+
+[node name="Wolf" parent="Level" instance=ExtResource("9_v8hid")]
+position = Vector2(-209, -1540)
+
+[node name="Boar" parent="Level" instance=ExtResource("10_0ki8w")]
+position = Vector2(164, -2107)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Level"]
+offset_left = -41.0
+offset_top = -432.0
+offset_right = 90.0
+offset_bottom = -392.0
+theme = ExtResource("11_0ki8w")
+theme_override_font_sizes/normal_font_size = 6
+text = "You can kill animals with the help of the bee!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]

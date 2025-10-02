@@ -63,6 +63,7 @@ tile_set = ExtResource("3_g5d4h")
 
 [node name="Player" parent="Level" instance=ExtResource("4_xd2tb")]
 use_parent_material = true
+lives = null
 
 [node name="Fox" parent="Level" instance=ExtResource("6_4x3kg")]
 position = Vector2(1220, -320)

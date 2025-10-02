@@ -43,6 +43,9 @@ var disable_climb: bool = false
 var in_light_time: float = 0
 
 
+func _ready() -> void:
+	target.controller = self
+
 func _process(delta: float) -> void:
 	last_on_floor_time -= delta * 1000
 	if is_on_floor():
