@@ -46,9 +46,10 @@ ui = NodePath("../../../../UI/LevelSelectionUI")
 
 [node name="LevelSelectionUI" parent="UI" instance=ExtResource("6_jj5c1")]
 
-[node name="MainMenu" parent="UI" node_paths=PackedStringArray("settings_menu") instance=ExtResource("3_blyvd")]
+[node name="MainMenu" parent="UI" node_paths=PackedStringArray("settings_menu", "controls_menu") instance=ExtResource("3_blyvd")]
 visible = false
 settings_menu = NodePath("../SettingsMenu")
+controls_menu = NodePath("../ControlsMenu")
 
 [node name="SettingsMenu" parent="UI" node_paths=PackedStringArray("controls_menu") instance=ExtResource("4_7efjl")]
 visible = false

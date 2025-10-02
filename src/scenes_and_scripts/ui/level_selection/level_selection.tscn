@@ -4719,10 +4719,10 @@ anchor_left = 0.5
 anchor_top = 0.25
 anchor_right = 0.5
 anchor_bottom = 0.25
-offset_left = 82.0
-offset_top = -62.0
-offset_right = 183.0
-offset_bottom = -8.0
+offset_left = 59.0
+offset_top = -83.0
+offset_right = 338.0
+offset_bottom = -29.0
 scale = Vector2(0.333, 0.333)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Level/Esc"]
@@ -4735,6 +4735,6 @@ grow_vertical = 2
 theme = ExtResource("19_noog6")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
-text = "[color=lightblue][Esc][/color]"
+text = "[color=lightblue][Esc][/color] - Main Menu"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -4,10 +4,11 @@ class_name MainMenu
 
 
 @export var settings_menu: Menu
+@export var controls_menu: Menu
 
 
 func _on_settings_pressed() -> void:
 	open_sub_menu(settings_menu)
 
-func _on_quit_pressed() -> void:
-	pass
+func _on_controls_pressed() -> void:
+	open_sub_menu(controls_menu)
