@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://d1knch75lpy1t"]
+[gd_scene load_steps=20 format=4 uid="uid://d1knch75lpy1t"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_nbytn"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_go7g5"]
@@ -7,7 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://f5m7vw1vj4fd" path="res://scenes_and_scripts/player/player.tscn" id="5_myw5i"]
 [ext_resource type="PackedScene" uid="uid://6twg4nqjueyw" path="res://scenes_and_scripts/world/levels/finish.tscn" id="8_wcekq"]
 [ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="9_sqshv"]
+[ext_resource type="PackedScene" uid="uid://fwiar5566lc7" path="res://scenes_and_scripts/world/objects/powerup_object.tscn" id="9_ty57j"]
+[ext_resource type="Texture2D" uid="uid://bcavn8smqfc2i" path="res://assets/sprites/powerup.png" id="10_q3776"]
 [ext_resource type="Texture2D" uid="uid://c4r35j5un4gc6" path="res://assets/sprites/arrow.png" id="10_sqshv"]
+[ext_resource type="PackedScene" uid="uid://chjn3iar4wktf" path="res://scenes_and_scripts/components/powerups/health_powerup_component.tscn" id="11_ty57j"]
+[ext_resource type="AudioStream" uid="uid://vovpqtcvayx4" path="res://assets/SFX/folder/powerup_2.wav" id="12_q3776"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1m2nw"]
 shader = ExtResource("1_nbytn")
@@ -126,7 +130,6 @@ tile_set = ExtResource("4_wcekq")
 
 [node name="Player" parent="Level" instance=ExtResource("5_myw5i")]
 use_parent_material = true
-lives = null
 
 [node name="WorldBottomLimit" type="Area2D" parent="Level"]
 collision_layer = 0
@@ -482,6 +485,12 @@ text = "You can rebind your controls!
 Press [color=lightblue][Esc][/color]  [color=gray]->[/color]  Settings  [color=gray]->[/color]  Rebind Controls"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PowerupObject" parent="Level" instance=ExtResource("9_ty57j")]
+position = Vector2(376, 39)
+texture = ExtResource("10_q3776")
+powerup = ExtResource("11_ty57j")
+pickup_audio = ExtResource("12_q3776")
 
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]

@@ -4,6 +4,7 @@ class_name Player
 
 
 @onready var death_audio: AudioStreamPlayer2D = $DeathAudio
+@onready var sprite: Sprite2D = $Sprite
 
 var enable_in_editor: bool = false
 var controller: PlayerController
@@ -12,8 +13,12 @@ var controller: PlayerController
 signal died(reason: String)
 signal took_damage(reason: String)
 
+var default_texture: Texture2D
+var powerup: PlayerPowerup
+
 
 func _ready() -> void:
+	default_texture = sprite.texture
 	enable_in_editor = false
 
 func _physics_process(_delta: float) -> void:
@@ -28,3 +33,17 @@ func _on_death_component_die(reason: String) -> void:
 	death_audio.play()
 	if lives <= 0:
 		died.emit(reason)
+
+func pickup_powerup(powerup_scene: PackedScene) -> bool:
+	if powerup:
+		return false
+	var node: Node = powerup_scene.instantiate()
+	if not node is PlayerPowerup:
+		node.queue_free()
+		return false
+	powerup = node
+	powerup.activate(self)
+	add_child(powerup)
+	if powerup.player_texture_when_active:
+		sprite.texture = powerup.player_texture_when_active
+	return true

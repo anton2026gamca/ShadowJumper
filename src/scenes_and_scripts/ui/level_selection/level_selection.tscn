@@ -4348,10 +4348,9 @@ collision_layer = 0
 collision_mask = 3
 velocity = Vector2(-100, 0)
 script = ExtResource("4_270wt")
-lives = null
 metadata/_custom_type_script = "uid://hrc23450dtph"
 
-[node name="Sprite2D" type="Sprite2D" parent="Level/Player"]
+[node name="Sprite" type="Sprite2D" parent="Level/Player"]
 use_parent_material = true
 texture = ExtResource("8_hcr5e")
 

@@ -68,7 +68,6 @@ tile_set = ExtResource("4_u4hdh")
 
 [node name="Player" parent="Level" instance=ExtResource("5_wwy4t")]
 use_parent_material = true
-lives = null
 
 [node name="WorldBottomLimit" type="Area2D" parent="Level"]
 collision_layer = 0
