@@ -1,4 +1,4 @@
-extends Sprite2D
+extends AnimatedSprite2D
 class_name PowerupObject
 
 
@@ -14,11 +14,14 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	if not body.pickup_powerup(powerup):
 		return
-	visible = false
 	area_2d.set_deferred("monitoring", false)
 	audio_stream_player_2d.stream = pickup_audio
 	audio_stream_player_2d.play()
-	await audio_stream_player_2d.finished
-	await get_tree().process_frame
+	play("pickup")
+	Helpers.create_floating_text(get_parent(), "+1 HP", global_position + Vector2(0, -16), Color.LIGHT_BLUE)
+	await animation_finished
+	visible = false
+	while audio_stream_player_2d.playing:
+		await get_tree().process_frame
 	get_parent().remove_child(self)
 	queue_free()
