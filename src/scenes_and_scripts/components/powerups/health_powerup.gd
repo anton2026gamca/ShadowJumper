@@ -1,4 +1,4 @@
-extends PlayerPowerup
+extends Powerup
 class_name HealthPowerup
 
 

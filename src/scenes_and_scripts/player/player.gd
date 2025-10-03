@@ -14,7 +14,7 @@ signal died(reason: String)
 signal took_damage(reason: String)
 
 var default_texture: Texture2D
-var powerup: PlayerPowerup
+var powerup: Powerup
 
 
 func _ready() -> void:
@@ -34,16 +34,16 @@ func _on_death_component_die(reason: String) -> void:
 	if lives <= 0:
 		died.emit(reason)
 
-func pickup_powerup(powerup_scene: PackedScene) -> bool:
+func pickup_powerup(powerup_scene: PackedScene) -> Powerup:
 	if powerup:
-		return false
+		return null
 	var node: Node = powerup_scene.instantiate()
-	if not node is PlayerPowerup:
+	if not node is Powerup:
 		node.queue_free()
-		return false
+		return null
 	powerup = node
 	powerup.activate(self)
 	add_child(powerup)
 	if powerup.player_texture_when_active:
 		sprite.texture = powerup.player_texture_when_active
-	return true
+	return powerup

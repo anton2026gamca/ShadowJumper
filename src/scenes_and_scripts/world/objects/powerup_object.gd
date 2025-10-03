@@ -12,13 +12,14 @@ class_name PowerupObject
 func _on_body_entered(body: Node2D) -> void:
 	if not body is Player:
 		return
-	if not body.pickup_powerup(powerup):
+	var powerup_node: Powerup = body.pickup_powerup(powerup)
+	if not powerup_node:
 		return
 	area_2d.set_deferred("monitoring", false)
 	audio_stream_player_2d.stream = pickup_audio
 	audio_stream_player_2d.play()
 	play("pickup")
-	Helpers.create_floating_text(get_parent(), "+1 HP", global_position + Vector2(0, -16), Color.LIGHT_BLUE)
+	Helpers.create_floating_text(get_parent(), powerup_node.pickup_message, global_position + Vector2(0, -32), Color.LIGHT_BLUE, -16)
 	await animation_finished
 	visible = false
 	while audio_stream_player_2d.playing:

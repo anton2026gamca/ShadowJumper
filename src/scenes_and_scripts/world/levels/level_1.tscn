@@ -9,7 +9,7 @@
 [ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="9_sqshv"]
 [ext_resource type="PackedScene" uid="uid://fwiar5566lc7" path="res://scenes_and_scripts/world/objects/powerup_object.tscn" id="9_ty57j"]
 [ext_resource type="Texture2D" uid="uid://c4r35j5un4gc6" path="res://assets/sprites/arrow.png" id="10_sqshv"]
-[ext_resource type="PackedScene" uid="uid://chjn3iar4wktf" path="res://scenes_and_scripts/components/powerups/health_powerup_component.tscn" id="11_ty57j"]
+[ext_resource type="PackedScene" uid="uid://chjn3iar4wktf" path="res://scenes_and_scripts/components/powerups/health_powerup.tscn" id="11_ty57j"]
 [ext_resource type="AudioStream" uid="uid://vovpqtcvayx4" path="res://assets/SFX/folder/powerup_2.wav" id="12_q3776"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1m2nw"]
@@ -129,6 +129,7 @@ tile_set = ExtResource("4_wcekq")
 
 [node name="Player" parent="Level" instance=ExtResource("5_myw5i")]
 use_parent_material = true
+lives = 1
 
 [node name="WorldBottomLimit" type="Area2D" parent="Level"]
 collision_layer = 0
@@ -492,9 +493,9 @@ pickup_audio = ExtResource("12_q3776")
 
 [node name="PowerupHint" type="RichTextLabel" parent="Level"]
 offset_left = 252.0
-offset_top = -40.0
+offset_top = -70.0
 offset_right = 500.0
-offset_bottom = 24.0
+offset_bottom = -6.0
 theme = ExtResource("9_sqshv")
 theme_override_font_sizes/normal_font_size = 6
 bbcode_enabled = true
