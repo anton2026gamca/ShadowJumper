@@ -3,8 +3,8 @@ class_name CameraPlus
 
 
 @export_group("Follow")
-@export var folow: Node2D
-@export var folow_speed: Vector2 = Vector2(500.0, 500.0)
+@export var follow: Node2D
+@export var follow_speed: Vector2 = Vector2(500.0, 500.0)
 @export var limits: Dictionary[Vector2i, float]
 
 @export_group("Screen Shake")
@@ -18,9 +18,9 @@ func _ready() -> void:
 	Helpers.camera = self
 
 func _process(delta: float) -> void:
-	if folow:
-		global_position.x = move_toward(global_position.x, folow.global_position.x, folow_speed.x * delta)
-		global_position.y = move_toward(global_position.y, folow.global_position.y, folow_speed.y * delta)
+	if follow:
+		global_position.x = move_toward(global_position.x, follow.global_position.x, follow_speed.x * delta)
+		global_position.y = move_toward(global_position.y, follow.global_position.y, follow_speed.y * delta)
 		if Vector2i.UP in limits:
 			global_position.y = max(global_position.y, limits[Vector2i.UP])
 		if Vector2i.DOWN in limits:
