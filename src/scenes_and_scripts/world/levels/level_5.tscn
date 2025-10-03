@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://dwfwwkf3bx52r"]
+[gd_scene load_steps=25 format=4 uid="uid://dwfwwkf3bx52r"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_3ulkj"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_j68tj"]
@@ -14,7 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://c8de18v2jb1yl" path="res://assets/sprites/npc-remote.png" id="8_lusup"]
 [ext_resource type="PackedScene" uid="uid://c2xrsqj6px78r" path="res://scenes_and_scripts/world/animals/ground_animals/wolf.tscn" id="8_mrsys"]
 [ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/ground_animals/boar.tscn" id="8_s3pvv"]
-[ext_resource type="Script" uid="uid://b214hvfxqqdn0" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="9_su0ne"]
+[ext_resource type="Script" uid="uid://dfa7rp0fl76u0" path="res://scenes_and_scripts/world/npcs/npc_dialog_message.gd" id="9_k0kab"]
+[ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="9_su0ne"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cffxb"]
 shader = ExtResource("1_3ulkj")
@@ -29,13 +30,23 @@ _limits = [0.0, 1.0, 0.0, 600.0]
 _data = [Vector2(300, 1), 0.0, -0.000200234, 0, 0, Vector2(600, 0), -0.00678558, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Resource" id="Resource_k0kab"]
+[sub_resource type="Resource" id="Resource_su0ne"]
+script = ExtResource("9_k0kab")
+message = "The deeper you go, the stranger the night feels. The mushrooms are everywhere, [color=yellow]glowing[/color] stronger."
+metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
+
+[sub_resource type="Resource" id="Resource_shpph"]
+script = ExtResource("9_k0kab")
+message = "You can feel the energy inside them, it's the same as the energy inside you. Maybe that is why they hurt you."
+metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
+
+[sub_resource type="Resource" id="Resource_lk5cx"]
 script = ExtResource("9_su0ne")
-character_sprite = ExtResource("8_lusup")
-character_name = "The Hopeless Guy (remote)"
-character_name_color = Color(0.678431, 0.380392, 0.901961, 1)
-messages = Array[String](["The deeper you go, the stranger the night feels. The mushrooms are everywhere, [color=yellow]glowing[/color] stronger.", "You can feel the energy inside them, it's the same as the energy inside you. Maybe that is why they hurt you."])
-metadata/_custom_type_script = "uid://b214hvfxqqdn0"
+character_name = "The Nearly Hopeless Guy (remote)"
+character_name_color = Color(0.678431, 0.360784, 0.901961, 1)
+character_default_sprite = ExtResource("8_lusup")
+messages = Array[ExtResource("9_k0kab")]([SubResource("Resource_su0ne"), SubResource("Resource_shpph")])
+metadata/_custom_type_script = "uid://bi3gy0kfnyuym"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_443ir"]
 distance = -189.0
@@ -99,7 +110,7 @@ tile_set = ExtResource("4_u4hdh")
 
 [node name="NPC" parent="Level" instance=ExtResource("7_mrsys")]
 position = Vector2(0, 15)
-dialog = SubResource("Resource_k0kab")
+dialog = SubResource("Resource_lk5cx")
 cooldown = 100000.0
 
 [node name="Player" parent="Level" instance=ExtResource("5_wwy4t")]

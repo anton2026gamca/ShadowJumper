@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dr1afg0p05s8p"]
+[gd_scene load_steps=22 format=4 uid="uid://dr1afg0p05s8p"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_egdi8"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_o04dd"]
@@ -10,9 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://6twg4nqjueyw" path="res://scenes_and_scripts/world/levels/finish.tscn" id="6_vb6hg"]
 [ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/ground_animals/fox.tscn" id="7_rjdnc"]
 [ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/ground_animals/boar.tscn" id="8_egdi8"]
+[ext_resource type="Script" uid="uid://dfa7rp0fl76u0" path="res://scenes_and_scripts/world/npcs/npc_dialog_message.gd" id="8_wn8bj"]
 [ext_resource type="PackedScene" uid="uid://b7yk06l614q6o" path="res://scenes_and_scripts/world/npcs/npc.tscn" id="11_mo2i4"]
 [ext_resource type="Texture2D" uid="uid://c8de18v2jb1yl" path="res://assets/sprites/npc-remote.png" id="12_wn8bj"]
-[ext_resource type="Script" uid="uid://b214hvfxqqdn0" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="13_b24ec"]
+[ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="13_b24ec"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1m2nw"]
 shader = ExtResource("1_egdi8")
@@ -27,13 +28,23 @@ _limits = [0.0, 1.0, 0.0, 600.0]
 _data = [Vector2(300, 1), 0.0, -0.000200234, 0, 0, Vector2(600, 0), -0.00678558, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Resource" id="Resource_wkvbo"]
+[sub_resource type="Resource" id="Resource_v1ndp"]
+script = ExtResource("8_wn8bj")
+message = "The animals of the forest are not normal anymore. Foxes, wolves, and boars attack everything they see."
+metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
+
+[sub_resource type="Resource" id="Resource_r33o3"]
+script = ExtResource("8_wn8bj")
+message = "It’s like they want to erase the spark inside you. You don’t understand them, but you have to survive."
+metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
+
+[sub_resource type="Resource" id="Resource_b24ec"]
 script = ExtResource("13_b24ec")
-character_sprite = ExtResource("12_wn8bj")
-character_name = "The Hopeless Guy (remote)"
-character_name_color = Color(0.678431, 0.380392, 0.901961, 1)
-messages = Array[String](["The animals of the forest are not normal anymore. Foxes, wolves, and boars attack everything they see.", "It’s like they want to erase the spark inside you. You don’t understand them, but you have to survive."])
-metadata/_custom_type_script = "uid://b214hvfxqqdn0"
+character_name = "The Nearly Hopeless Guy (remote)"
+character_name_color = Color(0.678431, 0.360784, 0.901961, 1)
+character_default_sprite = ExtResource("12_wn8bj")
+messages = Array[ExtResource("8_wn8bj")]([SubResource("Resource_v1ndp"), SubResource("Resource_r33o3")])
+metadata/_custom_type_script = "uid://bi3gy0kfnyuym"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_055t4"]
 
@@ -94,7 +105,7 @@ tile_set = ExtResource("4_emr2t")
 
 [node name="NPC" parent="Level" instance=ExtResource("11_mo2i4")]
 position = Vector2(0, 15)
-dialog = SubResource("Resource_wkvbo")
+dialog = SubResource("Resource_b24ec")
 cooldown = 100000.0
 
 [node name="Player" parent="Level" instance=ExtResource("5_xdw8v")]

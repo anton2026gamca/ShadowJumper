@@ -29,12 +29,13 @@ func play_dialog(dialog: NPCDialog) -> void:
 	var music_volume_before: float = Music.volume_linear
 	create_tween().tween_property(Music, "volume_linear", 0.05, 1)
 	
-	sprite.texture = dialog.character_sprite
+	sprite.texture = dialog.character_default_sprite
 	character_name.text = dialog.character_name
 	character_name.add_theme_color_override("font_color", dialog.character_name_color)
 	
-	for msg: String in dialog.messages:
-		message_text.text = msg
+	for msg: NPCDialogMessage in dialog.messages:
+		sprite.texture = msg.character_sprite_override if msg.character_sprite_override else dialog.character_default_sprite
+		message_text.text = msg.message
 		message_text.visible_characters = 0
 		skip_button.visible = true
 		next_msg_button.visible = false

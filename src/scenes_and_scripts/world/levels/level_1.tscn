@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://d1knch75lpy1t"]
+[gd_scene load_steps=33 format=4 uid="uid://d1knch75lpy1t"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_nbytn"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_go7g5"]
@@ -7,15 +7,16 @@
 [ext_resource type="TileSet" uid="uid://8h4fm7v55cnx" path="res://assets/tileset.tres" id="4_wcekq"]
 [ext_resource type="PackedScene" uid="uid://f5m7vw1vj4fd" path="res://scenes_and_scripts/player/player.tscn" id="5_myw5i"]
 [ext_resource type="PackedScene" uid="uid://6twg4nqjueyw" path="res://scenes_and_scripts/world/levels/finish.tscn" id="8_wcekq"]
+[ext_resource type="Script" uid="uid://dfa7rp0fl76u0" path="res://scenes_and_scripts/world/npcs/npc_dialog_message.gd" id="9_lbqyf"]
 [ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="9_sqshv"]
 [ext_resource type="PackedScene" uid="uid://fwiar5566lc7" path="res://scenes_and_scripts/world/objects/powerup_object.tscn" id="9_ty57j"]
+[ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="10_lbqyf"]
 [ext_resource type="Texture2D" uid="uid://c4r35j5un4gc6" path="res://assets/sprites/arrow.png" id="10_sqshv"]
 [ext_resource type="PackedScene" uid="uid://chjn3iar4wktf" path="res://scenes_and_scripts/components/powerups/health_powerup.tscn" id="11_ty57j"]
 [ext_resource type="AudioStream" uid="uid://vovpqtcvayx4" path="res://assets/SFX/folder/powerup_2.wav" id="12_q3776"]
 [ext_resource type="Texture2D" uid="uid://c5fbm5se52uf2" path="res://assets/sprites/light_textures/64x64/64x64 textures (99).png" id="13_s2pt5"]
 [ext_resource type="PackedScene" uid="uid://b7yk06l614q6o" path="res://scenes_and_scripts/world/npcs/npc.tscn" id="14_ytwps"]
 [ext_resource type="Texture2D" uid="uid://b0sacsmluvo1l" path="res://assets/sprites/npc.png" id="15_57h2w"]
-[ext_resource type="Script" uid="uid://b214hvfxqqdn0" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="16_lbqyf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1m2nw"]
 shader = ExtResource("1_nbytn")
@@ -30,13 +31,48 @@ _limits = [0.0, 1.0, 0.0, 600.0]
 _data = [Vector2(300, 1), 0.0, -0.000200234, 0, 0, Vector2(600, 0), -0.00678558, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Resource" id="Resource_fcg3k"]
-script = ExtResource("16_lbqyf")
-character_sprite = ExtResource("15_57h2w")
+[sub_resource type="Resource" id="Resource_lbqyf"]
+script = ExtResource("9_lbqyf")
+message = "Hi, I finally found you! We need your help! Let me tell you what happened [color=green]deep in the forest[/color]."
+metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
+
+[sub_resource type="Resource" id="Resource_sxcxt"]
+script = ExtResource("9_lbqyf")
+message = "A long time ago, people wanted power from deep inside the earth. They dug too far, and they broke [color=purple]something very old[/color]."
+metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
+
+[sub_resource type="Resource" id="Resource_15ffy"]
+script = ExtResource("9_lbqyf")
+message = "[color=yellow]Strange energy[/color] came out and changed the world forever. Now the night is not safe anymore."
+metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
+
+[sub_resource type="Resource" id="Resource_css43"]
+script = ExtResource("9_lbqyf")
+message = "Mushrooms got gigantic and glow with that energy, but their light is not good."
+metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
+
+[sub_resource type="Resource" id="Resource_gyv5q"]
+script = ExtResource("9_lbqyf")
+message = "From that broken energy you were born, a [color=orange]small orange guy[/color]."
+metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
+
+[sub_resource type="Resource" id="Resource_x3vl5"]
+script = ExtResource("9_lbqyf")
+message = "For some reason, the energy can't control you, unlike us. That's why we need you! Please save the world and stop whatever is there!"
+metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
+
+[sub_resource type="Resource" id="Resource_mwxj1"]
+script = ExtResource("9_lbqyf")
+message = "Here, take this! This way, I can help you from a safe distance."
+metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
+
+[sub_resource type="Resource" id="Resource_6jh77"]
+script = ExtResource("10_lbqyf")
 character_name = "The Nearly Hopeless Guy"
 character_name_color = Color(0.678431, 0.847059, 0.901961, 1)
-messages = Array[String](["Hi, I finally found you! We need your help! Let me tell you what happened [color=green]deep in the forest[/color].", "A long time ago, people wanted power from deep inside the earth. They dug too far, and they broke [color=purple]something very old[/color].", "[color=yellow]Strange energy[/color] came out and changed the world forever. Now the night is not safe anymore.", "Mushrooms got gigantic and glow with that energy, but their light is not good.", "From that broken energy you were born, a [color=orange]small orange guy[/color].", "For some reason, the energy can't control you, unlike us. That's why we need you! Please save the world and stop whatever is there!", "Here, take this! This way, I can help you from a safe distance."])
-metadata/_custom_type_script = "uid://b214hvfxqqdn0"
+character_default_sprite = ExtResource("15_57h2w")
+messages = Array[ExtResource("9_lbqyf")]([SubResource("Resource_lbqyf"), SubResource("Resource_sxcxt"), SubResource("Resource_15ffy"), SubResource("Resource_css43"), SubResource("Resource_gyv5q"), SubResource("Resource_x3vl5"), SubResource("Resource_mwxj1")])
+metadata/_custom_type_script = "uid://bi3gy0kfnyuym"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_055t4"]
 
@@ -164,7 +200,7 @@ tile_set = ExtResource("4_wcekq")
 [node name="NPC" parent="Level" instance=ExtResource("14_ytwps")]
 position = Vector2(-16, 0)
 texture = ExtResource("15_57h2w")
-dialog = SubResource("Resource_fcg3k")
+dialog = SubResource("Resource_6jh77")
 
 [node name="Player" parent="Level" instance=ExtResource("5_myw5i")]
 use_parent_material = true
