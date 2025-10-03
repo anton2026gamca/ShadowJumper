@@ -1,88 +1,125 @@
-[gd_scene load_steps=6 format=3 uid="uid://7rlrkqwexgku"]
+[gd_scene load_steps=8 format=3 uid="uid://7rlrkqwexgku"]
 
-[ext_resource type="Script" uid="uid://cof7uusrj7u7m" path="res://scenes_and_scripts/ui/levels_ui/story.gd" id="1_wp807"]
-[ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="2_pl22x"]
-[ext_resource type="AudioStream" uid="uid://bhoqyb4ikyv51" path="res://assets/SFX/typing_sound-[AudioTrimmer.com].wav" id="3_3p1bv"]
-[ext_resource type="Script" uid="uid://brptd2fvttm6e" path="res://scenes_and_scripts/ui/levels_ui/story_part.gd" id="4_5kw2n"]
+[ext_resource type="Script" uid="uid://cof7uusrj7u7m" path="res://scenes_and_scripts/ui/levels_ui/dialog_ui.gd" id="1_8gwlk"]
+[ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="2_ae537"]
+[ext_resource type="Texture2D" uid="uid://b0sacsmluvo1l" path="res://assets/sprites/npc.png" id="3_ywsfv"]
+[ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="4_t18u5"]
+[ext_resource type="AudioStream" uid="uid://bhoqyb4ikyv51" path="res://assets/SFX/typing_sound-[AudioTrimmer.com].wav" id="5_gf26f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwopw"]
 bg_color = Color(0, 0, 0, 0.666667)
 
-[node name="Story" type="Control" node_paths=PackedStringArray("parts")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eav7e"]
+shader = ExtResource("2_ae537")
+shader_parameter/night_intensity = 0.0
+shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
+shader_parameter/night_darkness = 1.0
+shader_parameter/night_contrast = 2.0
+shader_parameter/blue_shift = 1.0
+
+[node name="DialogUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_wp807")
-parts = {
-"animals": NodePath("Animals"),
-"bee_boss": NodePath("BeeBoss"),
-"darker_forest": NodePath("DarkerForest"),
-"intro": NodePath("Intro")
-}
+script = ExtResource("1_8gwlk")
 
-[node name="UI" type="Panel" parent="."]
+[node name="UI" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -407.0
+offset_top = -211.0
+offset_right = 407.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_pwopw")
 
-[node name="Title" type="RichTextLabel" parent="UI"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 0.25
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_pl22x")
-theme_override_font_sizes/normal_font_size = 48
-text = "STORY"
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = -49.0
-offset_right = -5.0
-offset_bottom = -5.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Sprite" type="TextureRect" parent="UI/Panel/HBoxContainer"]
+material = SubResource("ShaderMaterial_eav7e")
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+texture = ExtResource("3_ywsfv")
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CharacterName" type="Label" parent="UI/Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_t18u5")
+text = "NO NAME"
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="MessageText" type="RichTextLabel" parent="UI/Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("4_t18u5")
+bbcode_enabled = true
+text = "No message!"
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
 alignment = 2
 
-[node name="ExitButton" type="Button" parent="UI/HBoxContainer"]
+[node name="ExitButton" type="Button" parent="UI/Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
-theme = ExtResource("2_pl22x")
-theme_override_font_sizes/font_size = 18
+theme = ExtResource("4_t18u5")
+theme_override_font_sizes/font_size = 12
 text = "EXIT"
 
-[node name="NextMsgButton" type="Button" parent="UI/HBoxContainer"]
+[node name="NextMsgButton" type="Button" parent="UI/Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
-theme = ExtResource("2_pl22x")
-theme_override_font_sizes/font_size = 18
+theme = ExtResource("4_t18u5")
+theme_override_font_sizes/font_size = 12
 text = "NEXT"
 
-[node name="SkipButton" type="Button" parent="UI/HBoxContainer"]
+[node name="SkipButton" type="Button" parent="UI/Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_pl22x")
-theme_override_font_sizes/font_size = 18
+theme = ExtResource("4_t18u5")
+theme_override_font_sizes/font_size = 12
 text = "SKIP"
 
 [node name="TypingSound" type="AudioStreamPlayer" parent="UI"]
-stream = ExtResource("3_3p1bv")
+stream = ExtResource("5_gf26f")
 volume_db = -20.0
 bus = &"SFX"
 
-[node name="Intro" type="Control" parent="." node_paths=PackedStringArray("messages")]
+[node name="Intro" type="Control" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -90,8 +127,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_5kw2n")
-messages = [NodePath("Message1"), NodePath("Message2"), NodePath("Message3"), NodePath("Message4")]
 
 [node name="Message1" type="RichTextLabel" parent="Intro"]
 visible = false
@@ -105,7 +140,7 @@ offset_left = -0.5
 offset_right = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_pl22x")
+theme = ExtResource("4_t18u5")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "A long time ago, people wanted power from deep inside the earth. They dug too far, and they broke [color=purple]something very old[/color]."
@@ -125,7 +160,7 @@ offset_left = -0.5
 offset_right = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_pl22x")
+theme = ExtResource("4_t18u5")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "[color=yellow]Strange energy[/color] came out and changed the world forever. Now the night is not safe anymore."
@@ -145,7 +180,7 @@ offset_left = -0.5
 offset_right = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_pl22x")
+theme = ExtResource("4_t18u5")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "Mushrooms glow with that energy, but their light is not good. If you touch it, it shocks you."
@@ -165,7 +200,7 @@ offset_left = -0.5
 offset_right = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_pl22x")
+theme = ExtResource("4_t18u5")
 theme_override_font_sizes/bold_italics_font_size = 18
 theme_override_font_sizes/italics_font_size = 18
 theme_override_font_sizes/mono_font_size = 18
@@ -179,15 +214,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 visible_characters_behavior = 1
 
-[node name="Animals" type="Control" parent="." node_paths=PackedStringArray("messages")]
+[node name="Animals" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_5kw2n")
-messages = [NodePath("Message1"), NodePath("Message2")]
 
 [node name="Message1" type="RichTextLabel" parent="Animals"]
 visible = false
@@ -201,7 +235,7 @@ offset_left = -0.5
 offset_right = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_pl22x")
+theme = ExtResource("4_t18u5")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "The animals of the forest are not normal anymore. Foxes, wolves, and boars attack everything they see."
@@ -221,7 +255,7 @@ offset_left = -0.5
 offset_right = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_pl22x")
+theme = ExtResource("4_t18u5")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "It’s like they want to erase the spark inside you. You don’t understand them, but you know you have to survive."
@@ -229,15 +263,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 visible_characters_behavior = 1
 
-[node name="DarkerForest" type="Control" parent="." node_paths=PackedStringArray("messages")]
+[node name="DarkerForest" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_5kw2n")
-messages = [NodePath("Message1"), NodePath("Message2"), NodePath("Message3")]
 
 [node name="Message1" type="RichTextLabel" parent="DarkerForest"]
 visible = false
@@ -251,7 +284,7 @@ offset_left = -0.5
 offset_right = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_pl22x")
+theme = ExtResource("4_t18u5")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "The deeper you go, the stranger the night feels. The mushrooms are everywhere, [color=yellow]glowing[/color] stronger."
@@ -271,7 +304,7 @@ offset_left = -0.5
 offset_right = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_pl22x")
+theme = ExtResource("4_t18u5")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "You can feel the energy inside them, it's the same as the energy inside you. Maybe that is why they hurt you."
@@ -291,7 +324,7 @@ offset_left = -0.5
 offset_right = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_pl22x")
+theme = ExtResource("4_t18u5")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "Maybe [color=orange]you[/color] don’t belong in this world at all."
@@ -299,15 +332,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 visible_characters_behavior = 1
 
-[node name="BeeBoss" type="Control" parent="." node_paths=PackedStringArray("messages")]
+[node name="BeeBoss" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_5kw2n")
-messages = [NodePath("Message1"), NodePath("Message2"), NodePath("Message3")]
 
 [node name="Message1" type="RichTextLabel" parent="BeeBoss"]
 visible = false
@@ -321,7 +353,7 @@ offset_left = -0.5
 offset_right = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_pl22x")
+theme = ExtResource("4_t18u5")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "Something even [color=red]worse[/color] is waiting. 
@@ -342,7 +374,7 @@ offset_left = -0.5
 offset_right = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_pl22x")
+theme = ExtResource("4_t18u5")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "It's a [color=yellow]bee[/color], not a normal bee. It is huge, twisted by the broken energy. It shoots its stingers like arrows."
@@ -362,7 +394,7 @@ offset_left = -0.5
 offset_right = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_pl22x")
+theme = ExtResource("4_t18u5")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "It guards something, maybe the truth.
@@ -371,6 +403,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 visible_characters_behavior = 1
 
-[connection signal="pressed" from="UI/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="UI/HBoxContainer/NextMsgButton" to="." method="_on_next_msg_button_pressed"]
-[connection signal="pressed" from="UI/HBoxContainer/SkipButton" to="." method="_on_skip_button_pressed"]
+[connection signal="pressed" from="UI/Panel/HBoxContainer/VBoxContainer/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="UI/Panel/HBoxContainer/VBoxContainer/HBoxContainer/NextMsgButton" to="." method="_on_next_msg_button_pressed"]
+[connection signal="pressed" from="UI/Panel/HBoxContainer/VBoxContainer/HBoxContainer/SkipButton" to="." method="_on_skip_button_pressed"]

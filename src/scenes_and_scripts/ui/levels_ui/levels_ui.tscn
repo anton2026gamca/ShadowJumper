@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cccamfqr4lmoy" path="res://scenes_and_scripts/ui/menus/settings_menu/settings_menu.tscn" id="4_mey4e"]
 [ext_resource type="PackedScene" uid="uid://briwtstky6flh" path="res://scenes_and_scripts/ui/levels_ui/respawn_menu.tscn" id="5_43g4b"]
 [ext_resource type="PackedScene" uid="uid://8cac1aghe7ym" path="res://scenes_and_scripts/ui/menus/settings_menu/controls_menu.tscn" id="6_pwopw"]
-[ext_resource type="PackedScene" uid="uid://7rlrkqwexgku" path="res://scenes_and_scripts/ui/levels_ui/story.tscn" id="7_nrncv"]
+[ext_resource type="PackedScene" uid="uid://7rlrkqwexgku" path="res://scenes_and_scripts/ui/levels_ui/dialog_ui.tscn" id="7_nrncv"]
 
 [node name="UI" type="Control"]
 process_mode = 3
@@ -40,14 +40,8 @@ controls_menu = NodePath("../ControlsMenu")
 visible = false
 layout_mode = 1
 
-[node name="Story" parent="." node_paths=PackedStringArray("parts") instance=ExtResource("7_nrncv")]
+[node name="Story" parent="." instance=ExtResource("7_nrncv")]
 layout_mode = 1
-parts = {
-"animals": NodePath("Animals"),
-"bee_boss": NodePath("BeeBoss"),
-"darker_forest": NodePath("DarkerForest"),
-"intro": NodePath("Intro")
-}
 
 [node name="FullScreenText" type="RichTextLabel" parent="."]
 visible = false
