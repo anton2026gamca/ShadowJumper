@@ -38,6 +38,7 @@ normal = Vector2(-1, 0)
 [node name="World" type="Node2D" node_paths=PackedStringArray("camera")]
 material = SubResource("ShaderMaterial_cffxb")
 script = ExtResource("1_q3src")
+world_bottom_die_reason = "You fell from too high!"
 camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("follow")]
