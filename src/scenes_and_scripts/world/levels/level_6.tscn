@@ -124,9 +124,8 @@ tile_map_data = PackedByteArray("AAD6/wEAAAAKADsAAAD7/wEAAAAKADsAAAD8/wEAAAAPADw
 tile_set = ExtResource("4_viase")
 
 [node name="NPC" parent="Level" instance=ExtResource("7_blv3s")]
-position = Vector2(0, 15)
 dialog = SubResource("Resource_3ha4w")
-cooldown = 100000.0
+cooldown = -1.0
 
 [node name="Player" parent="Level" instance=ExtResource("5_nfe74")]
 use_parent_material = true

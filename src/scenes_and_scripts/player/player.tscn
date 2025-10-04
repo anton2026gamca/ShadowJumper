@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://f5m7vw1vj4fd"]
+[gd_scene load_steps=22 format=3 uid="uid://f5m7vw1vj4fd"]
 
 [ext_resource type="Script" uid="uid://hrc23450dtph" path="res://scenes_and_scripts/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bnpceuwymc5n" path="res://scenes_and_scripts/player/states/player_walk.gd" id="2_dovo2"]
 [ext_resource type="Script" uid="uid://dgd8hkbbbcu5j" path="res://scenes_and_scripts/state_machine/state_machine.gd" id="2_gmlin"]
+[ext_resource type="Texture2D" uid="uid://d1j5i0g1gv3ek" path="res://assets/sprites/heart.png" id="3_mqn2j"]
 [ext_resource type="Script" uid="uid://c1vlxdllcc361" path="res://scenes_and_scripts/components/death_component.gd" id="3_ygw5f"]
 [ext_resource type="PackedScene" uid="uid://cf863bnjdj0rx" path="res://scenes_and_scripts/player/rock.tscn" id="4_hpak0"]
 [ext_resource type="Script" uid="uid://d076o046mjswg" path="res://scenes_and_scripts/player/states/player_dash.gd" id="5_75vfm"]
@@ -41,6 +42,33 @@ metadata/_custom_type_script = "uid://hrc23450dtph"
 [node name="Sprite" type="Sprite2D" parent="."]
 use_parent_material = true
 texture = ExtResource("10_of6dy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Sprite"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -24.0
+offset_right = 12.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Sprite/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_mqn2j")
+
+[node name="TextureRect2" type="TextureRect" parent="Sprite/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_mqn2j")
+
+[node name="TextureRect3" type="TextureRect" parent="Sprite/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_mqn2j")
 
 [node name="DeathComponent" type="Node" parent="."]
 script = ExtResource("3_ygw5f")

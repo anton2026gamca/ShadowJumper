@@ -40,7 +40,7 @@ controls_menu = NodePath("../ControlsMenu")
 visible = false
 layout_mode = 1
 
-[node name="Story" parent="." instance=ExtResource("7_nrncv")]
+[node name="DialogUI" parent="." instance=ExtResource("7_nrncv")]
 layout_mode = 1
 
 [node name="FullScreenText" type="RichTextLabel" parent="."]

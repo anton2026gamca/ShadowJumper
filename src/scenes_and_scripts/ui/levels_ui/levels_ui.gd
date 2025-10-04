@@ -4,7 +4,7 @@ class_name LevelsUI
 @onready var pause_menu: PauseMenu = $PauseMenu
 @onready var respawn_menu: RespawnMenu = $RespawnMenu
 @onready var full_screen_text: RichTextLabel = $FullScreenText
-@onready var dialog_ui: DialogUI = $Story
+@onready var dialog_ui: DialogUI = $DialogUI
 
 @export var node_indicator_scene: PackedScene
 

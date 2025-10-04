@@ -12,5 +12,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if not body is Player or not can_play: return
 	Helpers.levels_ui.dialog_ui.play_dialog(dialog)
 	can_play = false
-	await get_tree().create_timer(cooldown, false).timeout
-	can_play = true
+	if cooldown >= 0:
+		await get_tree().create_timer(cooldown, false).timeout
+		can_play = true

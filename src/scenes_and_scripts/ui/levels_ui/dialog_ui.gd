@@ -23,6 +23,7 @@ func _ready() -> void:
 func play_dialog(dialog: NPCDialog) -> void:
 	if not dialog:
 		return
+	await get_tree().process_frame
 	visible = true
 	get_tree().paused = true
 	

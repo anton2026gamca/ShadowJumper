@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://d1knch75lpy1t"]
+[gd_scene load_steps=34 format=4 uid="uid://d1knch75lpy1t"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_nbytn"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_go7g5"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dfa7rp0fl76u0" path="res://scenes_and_scripts/world/npcs/npc_dialog_message.gd" id="9_lbqyf"]
 [ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="9_sqshv"]
 [ext_resource type="PackedScene" uid="uid://fwiar5566lc7" path="res://scenes_and_scripts/world/objects/powerup_object.tscn" id="9_ty57j"]
+[ext_resource type="Texture2D" uid="uid://bjqre1u28q6d3" path="res://assets/sprites/npc-handnig_over.png" id="10_fcg3k"]
 [ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="10_lbqyf"]
 [ext_resource type="Texture2D" uid="uid://c4r35j5un4gc6" path="res://assets/sprites/arrow.png" id="10_sqshv"]
 [ext_resource type="PackedScene" uid="uid://chjn3iar4wktf" path="res://scenes_and_scripts/components/powerups/health_powerup.tscn" id="11_ty57j"]
@@ -63,6 +64,7 @@ metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_mwxj1"]
 script = ExtResource("9_lbqyf")
+character_sprite_override = ExtResource("10_fcg3k")
 message = "Here, take this! This way, I can help you from a safe distance."
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
