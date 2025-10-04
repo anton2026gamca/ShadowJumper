@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://bon1r10wk031e"]
+[gd_scene load_steps=18 format=3 uid="uid://bon1r10wk031e"]
 
 [ext_resource type="PackedScene" uid="uid://blqn31o20wf5k" path="res://scenes_and_scripts/world/animals/ground_animals/ground_animal.tscn" id="1_kct0a"]
+[ext_resource type="PackedScene" uid="uid://chjn3iar4wktf" path="res://scenes_and_scripts/components/powerups/health_powerup.tscn" id="2_i6ybc"]
 [ext_resource type="Texture2D" uid="uid://crpsdrftqxy8" path="res://assets/sprites/animals/MiniFox.png" id="2_x4i7n"]
 [ext_resource type="AudioStream" uid="uid://ns2s4d0pe8ve" path="res://assets/SFX/folder/fire_1.wav" id="4_lrxyp"]
 
@@ -101,6 +102,7 @@ run_speed = 3000.0
 chance_to_rotate = 0.0
 attack_screen_shake_value = 7.0
 chance_to_give_up = 0.0
+spawn_powerup_on_death = ExtResource("2_i6ybc")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_rasjo")
@@ -119,13 +121,13 @@ shape = SubResource("RectangleShape2D_bhof2")
 position = Vector2(15.25, -13.25)
 shape = SubResource("RectangleShape2D_i6ybc")
 
-[node name="AttackAudio" parent="." index="6"]
+[node name="AttackAudio" parent="." index="7"]
 stream = ExtResource("4_lrxyp")
 
-[node name="VisibleOnScreenEnabler2D" parent="." index="7"]
+[node name="VisibleOnScreenEnabler2D" parent="." index="8"]
 position = Vector2(54.5, -0.500001)
 scale = Vector2(24.95, 4.25)
 
-[node name="AttackParticles" parent="." index="8"]
+[node name="AttackParticles" parent="." index="9"]
 position = Vector2(11, -7)
 lifetime = 0.2

@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://dufpmtr0u2cjm"]
+[gd_scene load_steps=16 format=3 uid="uid://dufpmtr0u2cjm"]
 
 [ext_resource type="PackedScene" uid="uid://blqn31o20wf5k" path="res://scenes_and_scripts/world/animals/ground_animals/ground_animal.tscn" id="1_kqisn"]
+[ext_resource type="PackedScene" uid="uid://chjn3iar4wktf" path="res://scenes_and_scripts/components/powerups/health_powerup.tscn" id="2_5g0xv"]
 [ext_resource type="Texture2D" uid="uid://cmnrdlbkrcgec" path="res://assets/sprites/animals/MiniBoar.png" id="2_vvgje"]
 [ext_resource type="AudioStream" uid="uid://bcidwrcvmuq3a" path="res://assets/SFX/explosion.wav" id="4_348gh"]
 
@@ -87,6 +88,7 @@ run_speed = 3000.0
 chance_to_rotate = 0.0
 attack_screen_shake_value = 9.0
 chance_to_give_up = 0.0
+spawn_powerup_on_death = ExtResource("2_5g0xv")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_dlm6i")

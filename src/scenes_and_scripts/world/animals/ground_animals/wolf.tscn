@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://c2xrsqj6px78r"]
+[gd_scene load_steps=19 format=3 uid="uid://c2xrsqj6px78r"]
 
 [ext_resource type="PackedScene" uid="uid://blqn31o20wf5k" path="res://scenes_and_scripts/world/animals/ground_animals/ground_animal.tscn" id="1_ob360"]
 [ext_resource type="Texture2D" uid="uid://dst17rdwer7by" path="res://assets/sprites/animals/MiniWolf.png" id="2_4al75"]
+[ext_resource type="PackedScene" uid="uid://chjn3iar4wktf" path="res://scenes_and_scripts/components/powerups/health_powerup.tscn" id="2_5vmc2"]
 [ext_resource type="AudioStream" uid="uid://b54hlq1sif50r" path="res://assets/SFX/folder/fire_3.wav" id="3_4al75"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4al75"]
@@ -108,6 +109,7 @@ run_speed = 6300.0
 chance_to_rotate = 0.0
 attack_screen_shake_value = 10.0
 chance_to_give_up = 0.0
+spawn_powerup_on_death = ExtResource("2_5vmc2")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_xw531")
