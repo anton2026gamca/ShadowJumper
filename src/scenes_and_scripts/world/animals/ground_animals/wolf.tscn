@@ -124,12 +124,12 @@ shape = SubResource("RectangleShape2D_5878v")
 [node name="CollisionShape2D" parent="Physics/HitRangeArea" index="0"]
 shape = SubResource("RectangleShape2D_5vmc2")
 
-[node name="AttackAudio" parent="." index="6"]
+[node name="AttackAudio" parent="." index="7"]
 stream = ExtResource("3_4al75")
 
-[node name="VisibleOnScreenEnabler2D" parent="." index="7"]
+[node name="VisibleOnScreenEnabler2D" parent="." index="8"]
 position = Vector2(75, -1)
 scale = Vector2(36.35, 5.55)
 
-[node name="AttackParticles" parent="." index="8"]
+[node name="AttackParticles" parent="." index="9"]
 position = Vector2(10, -10)

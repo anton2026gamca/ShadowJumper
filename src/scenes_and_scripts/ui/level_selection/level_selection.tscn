@@ -4387,7 +4387,6 @@ alignment = 1
 script = ExtResource("8_qw1ig")
 lives = -1
 life_texture = ExtResource("9_mv4qm")
-display_if_one_life = null
 
 [node name="Sprite" type="Sprite2D" parent="Level/Player"]
 use_parent_material = true
