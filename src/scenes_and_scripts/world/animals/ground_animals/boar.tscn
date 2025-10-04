@@ -105,17 +105,17 @@ shape = SubResource("RectangleShape2D_mlr3l")
 position = Vector2(13.75, -12.25)
 shape = SubResource("RectangleShape2D_5g0xv")
 
-[node name="AttackingAudio" parent="." index="5"]
+[node name="AttackingAudio" parent="." index="6"]
 volume_db = -23.151
 
-[node name="AttackAudio" parent="." index="6"]
+[node name="AttackAudio" parent="." index="7"]
 stream = ExtResource("4_348gh")
 
-[node name="VisibleOnScreenEnabler2D" parent="." index="7"]
+[node name="VisibleOnScreenEnabler2D" parent="." index="8"]
 position = Vector2(51, -2)
 scale = Vector2(29.7, 4.1)
 
-[node name="AttackParticles" parent="." index="8"]
+[node name="AttackParticles" parent="." index="9"]
 position = Vector2(10, -11)
 emission_shape = 3
 emission_rect_extents = Vector2(3, 0)

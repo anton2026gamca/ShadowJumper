@@ -14,7 +14,7 @@ func process(delta: float) -> Variant:
 	if controller.get_throw_a_rock():
 		controller.throw_a_rock()
 	if controller.is_on_floor():
-		Helpers.camera.shake(last_velocity.y / 1000.0, controller.target.global_position)
+		#Helpers.camera.shake(last_velocity.y / 1000.0, controller.target.global_position)
 		controller.disable_jump = false
 		return PlayerWalk
 	var climb_left: bool = controller.climb_left_raycast.get_collider() is TileMapLayer

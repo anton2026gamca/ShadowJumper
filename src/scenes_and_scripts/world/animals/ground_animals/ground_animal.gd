@@ -31,7 +31,7 @@ func _on_death_component_die(reason: String) -> void:
 	if reason == "You fell from too high!": health_component.lives = 0
 	if health_component.lives != 0: return
 	await get_tree().process_frame
-	if spawn_powerup_on_death:
+	if spawn_powerup_on_death and reason != "reason::not_spawned":
 		var obj: PowerupObject = POWERUP_OBJECT.instantiate()
 		obj.global_position = global_position
 		obj.powerup = spawn_powerup_on_death

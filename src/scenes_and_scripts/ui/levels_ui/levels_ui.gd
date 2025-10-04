@@ -48,6 +48,7 @@ func _on_exit_level_pressed() -> void:
 	exit_level.emit()
 
 func _on_respawn_menu_respawn() -> void:
+	if not respawn_menu.is_open: return
 	respawn_menu.close()
 	respawn.emit()
 	get_tree().paused = false

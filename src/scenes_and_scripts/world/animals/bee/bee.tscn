@@ -1,11 +1,10 @@
-[gd_scene load_steps=44 format=3 uid="uid://cd7yubqxtcw2v"]
+[gd_scene load_steps=43 format=3 uid="uid://cd7yubqxtcw2v"]
 
 [ext_resource type="PackedScene" uid="uid://cjdb2ap3qdyt5" path="res://scenes_and_scripts/world/animals/animal.tscn" id="1_psrfv"]
 [ext_resource type="Script" uid="uid://c8teo0ong35gb" path="res://scenes_and_scripts/world/animals/bee/bee.gd" id="2_h0684"]
-[ext_resource type="Script" uid="uid://bbbqnku506paa" path="res://scenes_and_scripts/components/health_component.gd" id="3_3xiya"]
 [ext_resource type="Texture2D" uid="uid://cweisxm4vrdqa" path="res://assets/sprites/bee.png" id="3_8nw61"]
+[ext_resource type="PackedScene" uid="uid://dy7l446c42baw" path="res://scenes_and_scripts/components/health_component.tscn" id="3_qt054"]
 [ext_resource type="Script" uid="uid://b2vgdb2qi32nm" path="res://scenes_and_scripts/world/animals/bee/states/bee_not_in_range.gd" id="3_wyt1c"]
-[ext_resource type="Texture2D" uid="uid://d1j5i0g1gv3ek" path="res://assets/sprites/heart.png" id="4_g26tq"]
 [ext_resource type="Script" uid="uid://bl26dx8gd55fr" path="res://scenes_and_scripts/world/animals/bee/states/bee_attacking.gd" id="5_yntd2"]
 [ext_resource type="PackedScene" uid="uid://r80goc7odoja" path="res://scenes_and_scripts/world/animals/bee/bee_bullet.tscn" id="6_j8j3w"]
 [ext_resource type="AudioStream" uid="uid://2shoi471ka7g" path="res://assets/SFX/folder/hurt_1.wav" id="7_cal8c"]
@@ -221,18 +220,12 @@ collision_mask = 0
 script = ExtResource("2_h0684")
 fly_speed = 250.0
 
-[node name="HealthComponent" type="HBoxContainer" parent="." index="0"]
-use_parent_material = true
-offset_left = -7.0
-offset_top = -21.0
-offset_right = 7.0
-offset_bottom = -16.0
-size_flags_vertical = 4
-alignment = 1
-script = ExtResource("3_3xiya")
+[node name="HealthComponent" parent="." index="0" instance=ExtResource("3_qt054")]
+offset_left = -6.0
+offset_top = -20.0
+offset_right = 6.0
+offset_bottom = -15.0
 lives = 2
-life_texture = ExtResource("4_g26tq")
-metadata/_custom_type_script = "uid://bbbqnku506paa"
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, -3)
