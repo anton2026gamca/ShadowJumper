@@ -64,6 +64,7 @@ func enter_level() -> void:
 	camera.make_current()
 	Helpers.camera = camera
 	if defeated:
+		Settings._save()
 		current_level.mark_completed()
 		Settings.beated_levels.append(get_path_to(current_level))
 		for level: LevelSelectionLevel in current_level.relationships.values():
@@ -83,6 +84,7 @@ func move_to_level(dir: Vector2i) -> void:
 	await replay_controller.replay_ended
 	current_level = new_level
 	Settings.last_level = get_path_to(new_level)
+	Settings._save()
 
 func _debug_toggle_all_levels_on() -> void:
 	if not OS.is_debug_build():

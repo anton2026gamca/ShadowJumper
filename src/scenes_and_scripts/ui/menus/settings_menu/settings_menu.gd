@@ -30,6 +30,11 @@ func save_settings() -> void:
 
 func load_settings() -> void:
 	var file: ConfigFile = ConfigFile.new()
+	# Because of web
+	sound_master.value = 0.0
+	sound_master.value = 100.0
+	sound_sfx.value = 0.0
+	sound_sfx.value = 100.0
 	sound_music.value = 0.0
 	sound_music.value = 100.0
 	if file.load("user://settings.cfg") != OK:
@@ -40,3 +45,12 @@ func load_settings() -> void:
 
 func open_controls_menu() -> void:
 	open_sub_menu(controls_menu)
+
+func _on_reset_save_pressed() -> void:
+	Settings.reset()
+	Settings._save()
+	if OS.has_feature("web"):
+		JavaScriptBridge.eval("location.reload();")
+	else:
+		OS.shell_open(OS.get_executable_path())
+		get_tree().quit()

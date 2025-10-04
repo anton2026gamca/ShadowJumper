@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cccamfqr4lmoy"]
+[gd_scene load_steps=10 format=3 uid="uid://cccamfqr4lmoy"]
 
 [ext_resource type="Script" uid="uid://doavdpktpac33" path="res://scenes_and_scripts/ui/menus/settings_menu/settings_menu.gd" id="1_b21ql"]
 [ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="2_7v0ur"]
@@ -6,6 +6,28 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nk6nd"]
 bg_color = Color(0, 0, 0, 0.572549)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xuelm"]
+bg_color = Color(0.65, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b21ql"]
+bg_color = Color(0.65, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [sub_resource type="Animation" id="Animation_v1i6v"]
 length = 0.001
@@ -168,9 +190,9 @@ anchor_left = 0.5
 anchor_top = 0.25
 anchor_right = 0.5
 anchor_bottom = 0.25
-offset_left = -219.0
+offset_left = -1440.0
 offset_top = -96.0
-offset_right = 219.0
+offset_right = -1002.0
 offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -218,7 +240,7 @@ offset_left = -2450.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sound" type="Panel" parent="ControlSound"]
+[node name="Sound" type="PanelContainer" parent="ControlSound"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -234,14 +256,7 @@ grow_vertical = 2
 theme = ExtResource("2_7v0ur")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ControlSound/Sound"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 5.0
-offset_right = -4.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ControlSound/Sound/VBoxContainer"]
 custom_minimum_size = Vector2(0, 24)
@@ -290,6 +305,24 @@ grow_vertical = 2
 theme = ExtResource("2_7v0ur")
 text = "REBIND CONTROLS"
 
+[node name="ResetSave" type="Button" parent="ControlControlsMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.0
+offset_top = 136.0
+offset_right = 213.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_7v0ur")
+theme_override_styles/focus = SubResource("StyleBoxFlat_xuelm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b21ql")
+text = "RESET PROGRESS"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_v1i6v")
@@ -297,3 +330,4 @@ libraries = {
 
 [connection signal="pressed" from="ControlExit/Exit" to="." method="close"]
 [connection signal="pressed" from="ControlControlsMenu/ControlsMenu" to="." method="open_controls_menu"]
+[connection signal="pressed" from="ControlControlsMenu/ResetSave" to="." method="_on_reset_save_pressed"]
