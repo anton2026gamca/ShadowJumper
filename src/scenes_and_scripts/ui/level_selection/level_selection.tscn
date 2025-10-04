@@ -1,4 +1,4 @@
-[gd_scene load_steps=314 format=4 uid="uid://clkhpeqrfyoax"]
+[gd_scene load_steps=316 format=4 uid="uid://clkhpeqrfyoax"]
 
 [ext_resource type="Script" uid="uid://dd3otqv1n5e7k" path="res://scenes_and_scripts/ui/level_selection/level_selection.gd" id="1_7qmai"]
 [ext_resource type="PackedScene" uid="uid://by7kis83n7kvx" path="res://scenes_and_scripts/ui/level_selection/level_selection_level.tscn" id="2_5iw0q"]
@@ -13,8 +13,10 @@
 [ext_resource type="Script" uid="uid://bnpceuwymc5n" path="res://scenes_and_scripts/player/states/player_walk.gd" id="7_espgd"]
 [ext_resource type="AudioStream" uid="uid://cqddwufjihsoj" path="res://assets/SFX/folder/jump_2.wav" id="7_ym7cv"]
 [ext_resource type="Texture2D" uid="uid://dfehsgpqmial3" path="res://assets/sprites/player/player.png" id="8_hcr5e"]
+[ext_resource type="Script" uid="uid://bbbqnku506paa" path="res://scenes_and_scripts/components/health_component.gd" id="8_qw1ig"]
 [ext_resource type="Script" uid="uid://bfhjgtumgpcpm" path="res://scenes_and_scripts/player/states/player_fall.gd" id="8_ym7cv"]
 [ext_resource type="Script" uid="uid://d076o046mjswg" path="res://scenes_and_scripts/player/states/player_dash.gd" id="9_8gh2l"]
+[ext_resource type="Texture2D" uid="uid://d1j5i0g1gv3ek" path="res://assets/sprites/heart.png" id="9_mv4qm"]
 [ext_resource type="Script" uid="uid://duwb6lw8qv8qa" path="res://scenes_and_scripts/player/states/player_wall_climb.gd" id="10_vnfxq"]
 [ext_resource type="TileSet" uid="uid://8h4fm7v55cnx" path="res://assets/tileset.tres" id="14_it5vw"]
 [ext_resource type="AudioStream" uid="uid://dkcguk8m56rgx" path="res://assets/SFX/folder/fall.wav" id="15_6jgkc"]
@@ -4369,6 +4371,23 @@ collision_mask = 3
 velocity = Vector2(-100, 0)
 script = ExtResource("4_270wt")
 metadata/_custom_type_script = "uid://hrc23450dtph"
+
+[node name="HealthComponent" type="HBoxContainer" parent="Level/Player"]
+use_parent_material = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -16.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("8_qw1ig")
+lives = -1
+life_texture = ExtResource("9_mv4qm")
+display_if_one_life = null
 
 [node name="Sprite" type="Sprite2D" parent="Level/Player"]
 use_parent_material = true

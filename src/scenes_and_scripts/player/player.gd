@@ -9,7 +9,7 @@ class_name Player
 var enable_in_editor: bool = false
 var controller: PlayerController
 
-@export var lives: int = 1
+@onready var health_component: HealthComponent = $HealthComponent
 signal died(reason: String)
 signal took_damage(reason: String)
 
@@ -27,13 +27,13 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _on_death_component_die(reason: String) -> void:
-	lives -= 1
+	health_component.lives -= 1
 	if reason == "You fell from too high!":
-		lives = 0
+		health_component.lives = 0
 	took_damage.emit(reason)
 	death_audio.pitch_scale = randf() * 0.2 + 0.9
 	death_audio.play()
-	if lives <= 0:
+	if health_component.lives == 0:
 		died.emit(reason)
 
 func pickup_powerup(powerup_scene: PackedScene) -> Powerup:

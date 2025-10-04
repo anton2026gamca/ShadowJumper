@@ -7,7 +7,7 @@ class_name Bee
 var indicator: NodeIndicator
 var enemy: Node2D
 
-@export var lives: int = 2
+@onready var health_component: HealthComponent = $HealthComponent
 @export var fly_speed: float = 250.0
 
 @export var ultimate_attack_area: Area2D
@@ -26,8 +26,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_death_component_die(reason: String) -> void:
-	lives -= 1
-	if lives > 0:
+	health_component.lives -= 1
+	if health_component.lives > 0:
 		death_audio.play()
 		state_machine.enabled = false
 		await get_tree().create_timer(3).timeout
