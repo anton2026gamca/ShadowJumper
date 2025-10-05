@@ -82,7 +82,7 @@ func attack(player: Player) -> void:
 		if death_component:
 			death_component.die(target.get_player_die_reason())
 	else:
-		energy_collector_component.collect(energy_value_on_dodge)
+		energy_collector_component.collect("attack_dodge")
 
 func give_up() -> Variant:
 	enemy_area.monitoring = false

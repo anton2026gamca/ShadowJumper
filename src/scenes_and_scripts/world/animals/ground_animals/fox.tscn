@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://bon1r10wk031e"]
+[gd_scene load_steps=21 format=3 uid="uid://bon1r10wk031e"]
 
 [ext_resource type="PackedScene" uid="uid://blqn31o20wf5k" path="res://scenes_and_scripts/world/animals/ground_animals/ground_animal.tscn" id="1_kct0a"]
 [ext_resource type="PackedScene" uid="uid://chjn3iar4wktf" path="res://scenes_and_scripts/components/powerups/health_powerup.tscn" id="2_i6ybc"]
 [ext_resource type="Texture2D" uid="uid://crpsdrftqxy8" path="res://assets/sprites/animals/MiniFox.png" id="2_x4i7n"]
+[ext_resource type="Script" uid="uid://cp60xqistx0h6" path="res://scenes_and_scripts/components/energy_collector_amount.gd" id="4_8t4eu"]
 [ext_resource type="AudioStream" uid="uid://ns2s4d0pe8ve" path="res://assets/SFX/folder/fire_1.wav" id="4_lrxyp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rasjo"]
@@ -95,6 +96,18 @@ size = Vector2(22.25, 20.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6ybc"]
 size = Vector2(36.5, 32.5)
 
+[sub_resource type="Resource" id="Resource_kltce"]
+script = ExtResource("4_8t4eu")
+energy_value_on_collect = 25
+max_collects = 1
+metadata/_custom_type_script = "uid://cp60xqistx0h6"
+
+[sub_resource type="Resource" id="Resource_8t4eu"]
+script = ExtResource("4_8t4eu")
+energy_value_on_collect = 50
+max_collects = -1
+metadata/_custom_type_script = "uid://cp60xqistx0h6"
+
 [node name="Fox" instance=ExtResource("1_kct0a")]
 player_die_reason = "A fox bit you!"
 walk_speed = 600.0
@@ -103,7 +116,6 @@ chance_to_rotate = 0.0
 attack_screen_shake_value = 7.0
 chance_to_give_up = 0.0
 spawn_powerup_on_death = ExtResource("2_i6ybc")
-on_kill_energy_value = 50
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_rasjo")
@@ -124,6 +136,12 @@ shape = SubResource("RectangleShape2D_bhof2")
 [node name="CollisionShape2D" parent="Physics/HitRangeArea" index="0"]
 position = Vector2(15.25, -13.25)
 shape = SubResource("RectangleShape2D_i6ybc")
+
+[node name="EnergyCollectorComponent" parent="." index="6"]
+energy_amount_for_action = Dictionary[String, ExtResource("4_8t4eu")]({
+"attack_dodge": SubResource("Resource_kltce"),
+"kill": SubResource("Resource_8t4eu")
+})
 
 [node name="AttackAudio" parent="." index="8"]
 stream = ExtResource("4_lrxyp")

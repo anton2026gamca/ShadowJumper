@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://c2xrsqj6px78r"]
+[gd_scene load_steps=22 format=3 uid="uid://c2xrsqj6px78r"]
 
 [ext_resource type="PackedScene" uid="uid://blqn31o20wf5k" path="res://scenes_and_scripts/world/animals/ground_animals/ground_animal.tscn" id="1_ob360"]
 [ext_resource type="Texture2D" uid="uid://dst17rdwer7by" path="res://assets/sprites/animals/MiniWolf.png" id="2_4al75"]
 [ext_resource type="PackedScene" uid="uid://chjn3iar4wktf" path="res://scenes_and_scripts/components/powerups/health_powerup.tscn" id="2_5vmc2"]
 [ext_resource type="AudioStream" uid="uid://b54hlq1sif50r" path="res://assets/SFX/folder/fire_3.wav" id="3_4al75"]
+[ext_resource type="Script" uid="uid://cp60xqistx0h6" path="res://scenes_and_scripts/components/energy_collector_amount.gd" id="4_vp7k5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4al75"]
 atlas = ExtResource("2_4al75")
@@ -102,6 +103,18 @@ size = Vector2(28.5, 28)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vmc2"]
 size = Vector2(48, 44)
 
+[sub_resource type="Resource" id="Resource_louxl"]
+script = ExtResource("4_vp7k5")
+energy_value_on_collect = 50
+max_collects = 1
+metadata/_custom_type_script = "uid://cp60xqistx0h6"
+
+[sub_resource type="Resource" id="Resource_vp7k5"]
+script = ExtResource("4_vp7k5")
+energy_value_on_collect = 70
+max_collects = -1
+metadata/_custom_type_script = "uid://cp60xqistx0h6"
+
 [node name="Wolf" instance=ExtResource("1_ob360")]
 player_die_reason = "A wolf knocked you to the ground really hard!"
 walk_speed = 1200.0
@@ -110,7 +123,6 @@ chance_to_rotate = 0.0
 attack_screen_shake_value = 10.0
 chance_to_give_up = 0.0
 spawn_powerup_on_death = ExtResource("2_5vmc2")
-on_kill_energy_value = 70
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_xw531")
@@ -127,6 +139,12 @@ shape = SubResource("RectangleShape2D_5878v")
 
 [node name="CollisionShape2D" parent="Physics/HitRangeArea" index="0"]
 shape = SubResource("RectangleShape2D_5vmc2")
+
+[node name="EnergyCollectorComponent" parent="." index="6"]
+energy_amount_for_action = Dictionary[String, ExtResource("4_vp7k5")]({
+"attack_dodge": SubResource("Resource_louxl"),
+"kill": SubResource("Resource_vp7k5")
+})
 
 [node name="AttackAudio" parent="." index="8"]
 stream = ExtResource("3_4al75")

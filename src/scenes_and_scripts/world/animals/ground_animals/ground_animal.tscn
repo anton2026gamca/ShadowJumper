@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://blqn31o20wf5k"]
+[gd_scene load_steps=13 format=3 uid="uid://blqn31o20wf5k"]
 
 [ext_resource type="Script" uid="uid://cb1rqy15canxb" path="res://scenes_and_scripts/world/animals/ground_animals/ground_animal.gd" id="1_ajlb7"]
 [ext_resource type="PackedScene" uid="uid://cjdb2ap3qdyt5" path="res://scenes_and_scripts/world/animals/animal.tscn" id="1_tqwpi"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://ipx0cloc2jbb" path="res://assets/SFX/folder/tidal_wave.wav" id="5_etv1c"]
 [ext_resource type="Script" uid="uid://bbbqnku506paa" path="res://scenes_and_scripts/components/health_component.gd" id="5_vjuit"]
 [ext_resource type="Texture2D" uid="uid://d1j5i0g1gv3ek" path="res://assets/sprites/heart.png" id="6_kja6p"]
+[ext_resource type="Script" uid="uid://cp60xqistx0h6" path="res://scenes_and_scripts/components/energy_collector_amount.gd" id="8_etv1c"]
 [ext_resource type="Script" uid="uid://ckiexqolsrmtp" path="res://scenes_and_scripts/components/energy_collector_component.gd" id="8_kja6p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4aqc"]
@@ -47,7 +48,6 @@ attack_screen_shake_value = 5.0
 chance_to_give_up = 0.005
 give_up_time = 3.0
 spawn_powerup_on_death = null
-on_kill_energy_value = 0
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, -5)
@@ -144,6 +144,10 @@ position = Vector2(9.5, -7.5)
 [node name="EnergyCollectorComponent" type="Node2D" parent="." index="6"]
 position = Vector2(0, -14)
 script = ExtResource("8_kja6p")
+energy_amount_for_action = Dictionary[String, ExtResource("8_etv1c")]({
+"attack_dodge": null,
+"kill": null
+})
 metadata/_custom_type_script = "uid://ckiexqolsrmtp"
 
 [node name="AttackingAudio" type="AudioStreamPlayer2D" parent="." index="7"]

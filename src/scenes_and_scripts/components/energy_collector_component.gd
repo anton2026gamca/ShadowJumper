@@ -2,13 +2,27 @@ extends Node2D
 class_name EnergyCollectorComponent
 
 
-func collect(amount: int) -> void:
-	if amount == 0: return
+@export var energy_amount_for_action: Dictionary[String, EnergyCollectorAmount] = {}
+
+
+func _ready() -> void:
+	reset()
+
+func collect(action: String) -> void:
+	if not action in energy_amount_for_action: return
+	var amount: EnergyCollectorAmount = energy_amount_for_action[action]
+	if amount.times_collected >= amount.max_collects and amount.max_collects >= 0: return
+	amount.times_collected += 1
+	if amount.energy_value_on_collect == 0: return
 	var color: Color = Color.WHITE
-	if amount >= 250: color = Color.PURPLE
-	elif amount >= 100: color = Color.RED
-	elif amount >= 50: color = Color.ORANGE_RED
-	elif amount >= 35: color = Color.ORANGE
-	elif amount >= 25: color = Color.YELLOW
-	Helpers.create_floating_text(get_parent().get_parent(), "+" + str(amount) + " E", position + get_parent().position + Vector2(randf_range(-8, 8), 0), color, -10)
-	Settings.collected_energy += amount
+	if amount.energy_value_on_collect >= 250: color = Color.PURPLE
+	elif amount.energy_value_on_collect >= 100: color = Color.RED
+	elif amount.energy_value_on_collect >= 50: color = Color.ORANGE_RED
+	elif amount.energy_value_on_collect >= 35: color = Color.ORANGE
+	elif amount.energy_value_on_collect >= 25: color = Color.YELLOW
+	Helpers.create_floating_text(get_parent().get_parent(), "+" + str(amount.energy_value_on_collect) + " E", position + get_parent().position + Vector2(randf_range(-8, 8), 0), color, -10)
+	Settings.collected_energy += amount.energy_value_on_collect
+
+func reset() -> void:
+	for amount: EnergyCollectorAmount in energy_amount_for_action.values():
+		amount.times_collected = 0

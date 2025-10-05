@@ -49,12 +49,13 @@ func _physics_process(delta: float) -> void:
 	if boom_state == 1:
 		boom_sprite.rotate(deg_to_rad(22.5))
 		if await update_boom():
-			bodies = boom_area.get_overlapping_bodies()
-			for body: Node2D in bodies:
+			var new_bodies: Array[Node2D] = boom_area.get_overlapping_bodies()
+			if bodies.find_custom(func(body: Node2D) -> bool: return body is Player) >= 0 and new_bodies.find_custom(func(body: Node2D) -> bool: return body is Player) < 0:
+				energy_collector_component.collect("boom_dodge")
+			for body: Node2D in new_bodies:
 				var death_component: DeathComponent = Helpers.find_child_by_type(body, DeathComponent)
 				if death_component:
 					death_component.die(die_reason)
-			hit(0, 0)
 	if boom_state != 0 and progress == 0:
 		stop_making_boom()
 
@@ -64,19 +65,20 @@ func turn_off() -> void:
 	await light_animation_player.animation_finished
 
 func turn_on() -> void:
-	light_animation_player.play("on-off", -1, -1.0, true)
+	light_animation_player.play_backwards("on-off")
 	await light_animation_player.animation_finished
 	is_on = true
 
 
-func hit(down_time_override: float = -1, collect_energy_override: float = hit_collect_energy_value) -> void:
+func hit(down_time_override: float = -1, collect_energy: bool = true) -> void:
+	if not get_tree(): return
 	if is_on:
 		turn_off()
 		hit_audio.pitch_scale = randf_range(0.5, 1.5)
 		hit_audio.play()
 		hit_particles.emitting = true
 		Helpers.camera.shake(hit_screen_shake_value, global_position)
-		energy_collector_component.collect(collect_energy_override)
+		if collect_energy: energy_collector_component.collect("hit")
 	boom_angry_value = 0
 	stop_making_boom()
 	hit_val += 1
@@ -113,6 +115,7 @@ func update_boom() -> bool:
 		Helpers.camera.shake(boom_screen_shake_value, global_position)
 		await boom_sprite.animation_finished
 		stop_making_boom()
+		hit(0, false)
 		return true
 	return false
 

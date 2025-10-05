@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cbh2h5bldnuj1"]
+[gd_scene load_steps=23 format=3 uid="uid://cbh2h5bldnuj1"]
 
 [ext_resource type="Texture2D" uid="uid://br8n3umvrdgvd" path="res://assets/sprites/mushrooms.png" id="2_m6ssx"]
 [ext_resource type="Script" uid="uid://b63ehe3at03rm" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom.gd" id="3_f0mk6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://hfvkjmsvlwwj" path="res://assets/sprites/boom.png" id="4_m6ssx"]
 [ext_resource type="Script" uid="uid://ckiexqolsrmtp" path="res://scenes_and_scripts/components/energy_collector_component.gd" id="5_6fdtu"]
 [ext_resource type="AudioStream" uid="uid://caskawg1l0aga" path="res://assets/SFX/folder/lightning.wav" id="5_o6bic"]
+[ext_resource type="Script" uid="uid://cp60xqistx0h6" path="res://scenes_and_scripts/components/energy_collector_amount.gd" id="6_l1cgs"]
 [ext_resource type="AudioStream" uid="uid://c2su2kupk2r3q" path="res://assets/SFX/folder/select_5.wav" id="6_o6bic"]
 [ext_resource type="AudioStream" uid="uid://dsccmyvqkstfh" path="res://assets/SFX/folder/cancel_1.wav" id="7_eiiw0"]
 
@@ -96,6 +97,18 @@ animations = [{
 "speed": 60.0
 }]
 
+[sub_resource type="Resource" id="Resource_ud0e8"]
+script = ExtResource("6_l1cgs")
+energy_value_on_collect = 10
+max_collects = 3
+metadata/_custom_type_script = "uid://cp60xqistx0h6"
+
+[sub_resource type="Resource" id="Resource_l1cgs"]
+script = ExtResource("6_l1cgs")
+energy_value_on_collect = 50
+max_collects = 1
+metadata/_custom_type_script = "uid://cp60xqistx0h6"
+
 [node name="Mushroom0" type="Sprite2D" groups=["Mushrooms"]]
 use_parent_material = true
 texture = SubResource("AtlasTexture_8kcc1")
@@ -127,6 +140,10 @@ animation = &"boom"
 [node name="EnergyCollectorComponent" type="Node2D" parent="."]
 position = Vector2(0, -15)
 script = ExtResource("5_6fdtu")
+energy_amount_for_action = Dictionary[String, ExtResource("6_l1cgs")]({
+"boom_dodge": SubResource("Resource_l1cgs"),
+"hit": SubResource("Resource_ud0e8")
+})
 metadata/_custom_type_script = "uid://ckiexqolsrmtp"
 
 [node name="BoomStartAudio" type="AudioStreamPlayer2D" parent="."]

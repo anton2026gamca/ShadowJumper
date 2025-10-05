@@ -7,15 +7,12 @@ class_name Bee
 var indicator: NodeIndicator
 var enemy: Node2D
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var energy_collector_component: EnergyCollectorComponent = $EnergyCollectorComponent
 
 @export_group("Bahaviour")
 @export var fly_speed: float = 250.0
 @export var ultimate_attack_area: Area2D
 var can_use_ultimate_attack: bool = true
-
-@export_group("Energy Collecting")
-@onready var energy_collector_component: EnergyCollectorComponent = $EnergyCollectorComponent
-@export var energy_on_death: int = 250
 
 
 func _ready() -> void:
@@ -37,7 +34,7 @@ func _on_death_component_die(reason: String) -> void:
 		await get_tree().create_timer(3).timeout
 		state_machine.enabled = true
 	else:
-		energy_collector_component.collect(energy_on_death)
+		energy_collector_component.collect("kill")
 		state_machine.enabled = false
 		sprite.play("die")
 		collision_layer = 0
