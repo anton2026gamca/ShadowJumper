@@ -8,6 +8,7 @@ size = Vector2(16, 1)
 [node name="NPC" type="Sprite2D"]
 use_parent_material = true
 script = ExtResource("2_pyjwi")
+metadata/_custom_type_script = "uid://c8wcnoj0ypguk"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cdort0sw0grtb"]
+[gd_scene load_steps=34 format=4 uid="uid://cdort0sw0grtb"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_v8hid"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_0ki8w"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://c2xrsqj6px78r" path="res://scenes_and_scripts/world/animals/ground_animals/wolf.tscn" id="9_v8hid"]
 [ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="9_v8mns"]
 [ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/ground_animals/boar.tscn" id="10_0ki8w"]
+[ext_resource type="Script" uid="uid://bopmq062we6q8" path="res://scenes_and_scripts/world/npcs/npc_dialog_answer.gd" id="10_huy6g"]
+[ext_resource type="Script" uid="uid://d4mqy1pvl1f2t" path="res://scenes_and_scripts/world/npcs/npc_dialog_answer_message.gd" id="10_v8mns"]
 [ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="11_0ki8w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cffxb"]
@@ -31,30 +33,44 @@ _limits = [0.0, 1.0, 0.0, 600.0]
 _data = [Vector2(300, 1), 0.0, -0.000200234, 0, 0, Vector2(600, 0), -0.00678558, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Resource" id="Resource_v8mns"]
+[sub_resource type="Resource" id="Resource_nsejl"]
 script = ExtResource("9_huy6g")
-message = "Something even [color=red]worse[/color] is waiting. 
-You hear a [color=red]terrible[/color] buzzing in the forest."
+message = "Huh, didn't expect that, I was only joking :("
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
-[sub_resource type="Resource" id="Resource_xp644"]
+[sub_resource type="Resource" id="Resource_3gj6n"]
+script = ExtResource("10_huy6g")
+text = "Yes!"
+next_messages = Array[ExtResource("9_huy6g")]([SubResource("Resource_nsejl")])
+metadata/_custom_type_script = "uid://bopmq062we6q8"
+
+[sub_resource type="Resource" id="Resource_whxjw"]
 script = ExtResource("9_huy6g")
-message = "It's a [color=yellow]bee[/color], not a normal bee. It is huge, twisted by the broken energy. It shoots its stingers like arrows."
+message = "Ok!"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
-[sub_resource type="Resource" id="Resource_qbaq7"]
-script = ExtResource("9_huy6g")
-message = "It guards something, maybe the truth.
-To keep going, you must defeat it."
-metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
+[sub_resource type="Resource" id="Resource_sp63k"]
+script = ExtResource("10_huy6g")
+text = "No"
+next_messages = Array[ExtResource("9_huy6g")]([SubResource("Resource_whxjw")])
+metadata/_custom_type_script = "uid://bopmq062we6q8"
+
+[sub_resource type="Resource" id="Resource_huy6g"]
+script = ExtResource("10_v8mns")
+answers = Array[ExtResource("10_huy6g")]([SubResource("Resource_3gj6n"), SubResource("Resource_sp63k")])
+message = "If you have [color=yellow]50 E[/color], I can send you a powerup, do you want to?"
+metadata/_custom_type_script = "uid://d4mqy1pvl1f2t"
 
 [sub_resource type="Resource" id="Resource_3ha4w"]
 script = ExtResource("9_v8mns")
 character_name = "The Nearly Hopeless Guy (remote)"
 character_name_color = Color(0.678431, 0.360784, 0.901961, 1)
 character_default_sprite = ExtResource("8_8s50a")
-messages = Array[ExtResource("9_huy6g")]([SubResource("Resource_v8mns"), SubResource("Resource_xp644"), SubResource("Resource_qbaq7")])
+messages = Array[ExtResource("9_huy6g")]([SubResource("Resource_huy6g")])
 metadata/_custom_type_script = "uid://bi3gy0kfnyuym"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8s50a"]
+size = Vector2(72, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_443ir"]
 distance = -189.0
@@ -127,6 +143,14 @@ tile_set = ExtResource("4_viase")
 dialog = SubResource("Resource_3ha4w")
 cooldown = -1.0
 
+[node name="NPC-PowerUp" parent="Level" instance=ExtResource("7_blv3s")]
+position = Vector2(0, -592)
+dialog = SubResource("Resource_3ha4w")
+cooldown = -1.0
+
+[node name="CollisionShape2D" parent="Level/NPC-PowerUp/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_8s50a")
+
 [node name="Player" parent="Level" instance=ExtResource("5_nfe74")]
 use_parent_material = true
 
@@ -193,4 +217,5 @@ vertical_alignment = 1
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]
 [connection signal="level_defeated" from="Level/Finish" to="." method="_on_finish_level_defeated"]
 
+[editable path="Level/NPC-PowerUp"]
 [editable path="Level/Finish"]
