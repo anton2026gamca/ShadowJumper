@@ -10,7 +10,6 @@ signal collected_energy_changed
 var collected_energy: float = 0:
 	set(value):
 		collected_energy = value
-		print(collected_energy)
 		collected_energy_changed.emit()
 	get: return collected_energy
 

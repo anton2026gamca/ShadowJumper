@@ -1,0 +1,57 @@
+[gd_scene load_steps=15 format=3 uid="uid://2e00skn1yx48"]
+
+[ext_resource type="PackedScene" uid="uid://b7yk06l614q6o" path="res://scenes_and_scripts/world/npcs/npc.tscn" id="1_cfx5f"]
+[ext_resource type="Script" uid="uid://bvpygji5nfrep" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/powerup_npc.gd" id="2_k8mng"]
+[ext_resource type="Script" uid="uid://dfa7rp0fl76u0" path="res://scenes_and_scripts/world/npcs/npc_dialog_message.gd" id="3_tonsg"]
+[ext_resource type="Script" uid="uid://bopmq062we6q8" path="res://scenes_and_scripts/world/npcs/npc_dialog_answer.gd" id="4_nnsb4"]
+[ext_resource type="Texture2D" uid="uid://c8de18v2jb1yl" path="res://assets/sprites/npc-remote.png" id="5_6nw71"]
+[ext_resource type="Script" uid="uid://d4mqy1pvl1f2t" path="res://scenes_and_scripts/world/npcs/npc_dialog_answer_message.gd" id="6_e6jd1"]
+[ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="7_1khta"]
+
+[sub_resource type="Resource" id="Resource_nsejl"]
+script = ExtResource("3_tonsg")
+message = "Huh, didn't expect that, I was only joking :("
+metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
+
+[sub_resource type="Resource" id="Resource_g1kns"]
+script = ExtResource("4_nnsb4")
+text = "Yes!"
+next_messages = Array[ExtResource("3_tonsg")]([SubResource("Resource_nsejl")])
+metadata/_custom_type_script = "uid://bopmq062we6q8"
+
+[sub_resource type="Resource" id="Resource_3gj6n"]
+script = ExtResource("4_nnsb4")
+text = "Yes!"
+next_messages = Array[ExtResource("3_tonsg")]([])
+metadata/_custom_type_script = "uid://bopmq062we6q8"
+
+[sub_resource type="Resource" id="Resource_whxjw"]
+script = ExtResource("3_tonsg")
+message = "Ok!"
+metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
+
+[sub_resource type="Resource" id="Resource_sp63k"]
+script = ExtResource("4_nnsb4")
+text = "No"
+next_messages = Array[ExtResource("3_tonsg")]([SubResource("Resource_whxjw")])
+metadata/_custom_type_script = "uid://bopmq062we6q8"
+
+[sub_resource type="Resource" id="Resource_huy6g"]
+script = ExtResource("6_e6jd1")
+answers = Array[ExtResource("4_nnsb4")]([SubResource("Resource_3gj6n"), SubResource("Resource_sp63k")])
+message = "If you have [color=yellow]50 E[/color], I can send you a powerup, do you want to?"
+metadata/_custom_type_script = "uid://d4mqy1pvl1f2t"
+
+[sub_resource type="Resource" id="Resource_ewajk"]
+script = ExtResource("7_1khta")
+character_name = "The Nearly Hopeless Guy (remote)"
+character_name_color = Color(0.678431, 0.360784, 0.901961, 1)
+character_default_sprite = ExtResource("5_6nw71")
+messages = Array[ExtResource("3_tonsg")]([SubResource("Resource_huy6g")])
+metadata/_custom_type_script = "uid://bi3gy0kfnyuym"
+
+[node name="PowerupNPC" instance=ExtResource("1_cfx5f")]
+script = ExtResource("2_k8mng")
+drop_powerup_answer = SubResource("Resource_g1kns")
+powerup = null
+dialog = SubResource("Resource_ewajk")

@@ -15,7 +15,6 @@ func _ready() -> void:
 
 
 func add_collected_energy_to_total() -> void:
-	print(Settings.collected_energy)
 	if Settings.collected_energy == 0:
 		return
 	var color: Color = Color.WHITE

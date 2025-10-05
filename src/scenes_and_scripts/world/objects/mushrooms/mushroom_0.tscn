@@ -97,16 +97,16 @@ animations = [{
 "speed": 60.0
 }]
 
-[sub_resource type="Resource" id="Resource_ud0e8"]
-script = ExtResource("6_l1cgs")
-energy_value_on_collect = 10
-max_collects = 3
-metadata/_custom_type_script = "uid://cp60xqistx0h6"
-
 [sub_resource type="Resource" id="Resource_l1cgs"]
 script = ExtResource("6_l1cgs")
 energy_value_on_collect = 50
 max_collects = 1
+metadata/_custom_type_script = "uid://cp60xqistx0h6"
+
+[sub_resource type="Resource" id="Resource_ud0e8"]
+script = ExtResource("6_l1cgs")
+energy_value_on_collect = 10
+max_collects = 3
 metadata/_custom_type_script = "uid://cp60xqistx0h6"
 
 [node name="Mushroom0" type="Sprite2D" groups=["Mushrooms"]]
