@@ -9,10 +9,17 @@ signal respawn
 signal exit_level
 
 @onready var message_text: RichTextLabel = $Header/Message
+@onready var energy_collected_text: RichTextLabel = $Header/EnergyCollected
 
 
 func open_with_message(message: String) -> void:
 	message_text.text = message
+	var color: String = "white"
+	if Settings.collected_energy >= 500: color = "lime"
+	elif Settings.collected_energy >= 250: color = "yellow"
+	elif Settings.collected_energy >= 100: color = "lightblue"
+	elif Settings.collected_energy < 0: color = "red"
+	energy_collected_text.text = "[color=" + color + "]" + ("+" if Settings.collected_energy >= 0 else "") + str(int(Settings.collected_energy)) + " E[/color]"
 	open()
 
 

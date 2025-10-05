@@ -14,6 +14,7 @@ class_name GroundAnimalSearching
 @export_group("SFX")
 @export var attacking_audio: AudioStreamPlayer2D
 
+
 var last_rotate_time: float = INF
 
 

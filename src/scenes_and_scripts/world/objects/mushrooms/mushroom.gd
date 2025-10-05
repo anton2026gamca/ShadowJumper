@@ -5,9 +5,10 @@ class_name Mushroom
 @export var die_reason: String = "You were electrified by a mushroom :o"
 
 @export_group("Hit")
-@export var down_time: float = 5.0
+@export var down_time: float = 7.5
 @export var hit_screen_shake_value: float = 5.0
 @export var revive_screen_shake_value: float = 5.0
+@export var hit_collect_energy_value: int = 0
 var hit_val: int = 0
 
 @export_group("Boom")
@@ -27,6 +28,7 @@ var boom_angry_value: float = 0.0
 @onready var respawn_audio: AudioStreamPlayer2D = $RespawnAudio
 @onready var hit_particles: CPUParticles2D = $HitParticles
 @onready var relight_particles: CPUParticles2D = $RelightParticles
+@onready var energy_collector_component: EnergyCollectorComponent = $EnergyCollectorComponent
 
 var is_on: bool = true
 
@@ -52,6 +54,7 @@ func _physics_process(delta: float) -> void:
 				var death_component: DeathComponent = Helpers.find_child_by_type(body, DeathComponent)
 				if death_component:
 					death_component.die(die_reason)
+			hit(0, 0)
 	if boom_state != 0 and progress == 0:
 		stop_making_boom()
 
@@ -66,13 +69,14 @@ func turn_on() -> void:
 	is_on = true
 
 
-func hit(down_time_override: float = -1) -> void:
+func hit(down_time_override: float = -1, collect_energy_override: float = hit_collect_energy_value) -> void:
 	if is_on:
 		turn_off()
 		hit_audio.pitch_scale = randf_range(0.5, 1.5)
 		hit_audio.play()
 		hit_particles.emitting = true
 		Helpers.camera.shake(hit_screen_shake_value, global_position)
+		energy_collector_component.collect(collect_energy_override)
 	boom_angry_value = 0
 	stop_making_boom()
 	hit_val += 1
@@ -109,7 +113,6 @@ func update_boom() -> bool:
 		Helpers.camera.shake(boom_screen_shake_value, global_position)
 		await boom_sprite.animation_finished
 		stop_making_boom()
-		hit(0)
 		return true
 	return false
 

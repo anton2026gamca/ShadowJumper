@@ -20,6 +20,10 @@ class_name GroundAnimalAttacking
 @export_group("Effects")
 @export var attack_particles: CPUParticles2D
 
+@export_group("Energy Collecting")
+@export var energy_collector_component: EnergyCollectorComponent
+@export var energy_value_on_dodge: int = 0
+
 var paused: bool = false
 
 
@@ -77,6 +81,8 @@ func attack(player: Player) -> void:
 		var death_component: DeathComponent = Helpers.find_child_by_type(player, DeathComponent)
 		if death_component:
 			death_component.die(target.get_player_die_reason())
+	else:
+		energy_collector_component.collect(energy_value_on_dodge)
 
 func give_up() -> Variant:
 	enemy_area.monitoring = false

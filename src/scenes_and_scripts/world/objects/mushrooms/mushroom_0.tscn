@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://cbh2h5bldnuj1"]
+[gd_scene load_steps=20 format=3 uid="uid://cbh2h5bldnuj1"]
 
 [ext_resource type="Texture2D" uid="uid://br8n3umvrdgvd" path="res://assets/sprites/mushrooms.png" id="2_m6ssx"]
 [ext_resource type="Script" uid="uid://b63ehe3at03rm" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom.gd" id="3_f0mk6"]
 [ext_resource type="Texture2D" uid="uid://2x4fickw1bnd" path="res://assets/sprites/light_textures/256x256/256x256 textures (54).png" id="4_6fdtu"]
 [ext_resource type="Texture2D" uid="uid://hfvkjmsvlwwj" path="res://assets/sprites/boom.png" id="4_m6ssx"]
+[ext_resource type="Script" uid="uid://ckiexqolsrmtp" path="res://scenes_and_scripts/components/energy_collector_component.gd" id="5_6fdtu"]
 [ext_resource type="AudioStream" uid="uid://caskawg1l0aga" path="res://assets/SFX/folder/lightning.wav" id="5_o6bic"]
 [ext_resource type="AudioStream" uid="uid://c2su2kupk2r3q" path="res://assets/SFX/folder/select_5.wav" id="6_o6bic"]
 [ext_resource type="AudioStream" uid="uid://dsccmyvqkstfh" path="res://assets/SFX/folder/cancel_1.wav" id="7_eiiw0"]
@@ -99,7 +100,7 @@ animations = [{
 use_parent_material = true
 texture = SubResource("AtlasTexture_8kcc1")
 script = ExtResource("3_f0mk6")
-down_time = 7.5
+hit_collect_energy_value = 10
 boom_tolerance_time = 0.1
 metadata/_custom_type_script = "uid://b63ehe3at03rm"
 
@@ -122,6 +123,11 @@ shape = SubResource("CircleShape2D_2hos7")
 [node name="Boom" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7hvpb")
 animation = &"boom"
+
+[node name="EnergyCollectorComponent" type="Node2D" parent="."]
+position = Vector2(0, -15)
+script = ExtResource("5_6fdtu")
+metadata/_custom_type_script = "uid://ckiexqolsrmtp"
 
 [node name="BoomStartAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_o6bic")

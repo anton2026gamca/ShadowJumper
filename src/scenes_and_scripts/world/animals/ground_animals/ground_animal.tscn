@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://blqn31o20wf5k"]
+[gd_scene load_steps=12 format=3 uid="uid://blqn31o20wf5k"]
 
 [ext_resource type="Script" uid="uid://cb1rqy15canxb" path="res://scenes_and_scripts/world/animals/ground_animals/ground_animal.gd" id="1_ajlb7"]
 [ext_resource type="PackedScene" uid="uid://cjdb2ap3qdyt5" path="res://scenes_and_scripts/world/animals/animal.tscn" id="1_tqwpi"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://ipx0cloc2jbb" path="res://assets/SFX/folder/tidal_wave.wav" id="5_etv1c"]
 [ext_resource type="Script" uid="uid://bbbqnku506paa" path="res://scenes_and_scripts/components/health_component.gd" id="5_vjuit"]
 [ext_resource type="Texture2D" uid="uid://d1j5i0g1gv3ek" path="res://assets/sprites/heart.png" id="6_kja6p"]
+[ext_resource type="Script" uid="uid://ckiexqolsrmtp" path="res://scenes_and_scripts/components/energy_collector_component.gd" id="8_kja6p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4aqc"]
 radius = 5.0
@@ -46,6 +47,7 @@ attack_screen_shake_value = 5.0
 chance_to_give_up = 0.005
 give_up_time = 3.0
 spawn_powerup_on_death = null
+on_kill_energy_value = 0
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, -5)
@@ -72,7 +74,7 @@ enemy_area = NodePath("../../Physics/EnemyArea")
 attacking_audio = NodePath("../../AttackingAudio")
 metadata/_custom_type_script = "uid://dly1y5lca6fuj"
 
-[node name="GroundAnimalAttacking" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("target", "sprite", "physics_parent", "enemy_area", "ground", "wall", "hit_start_area", "hit_range_area", "attacking_audio", "attack_audio", "attack_particles")]
+[node name="GroundAnimalAttacking" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("target", "sprite", "physics_parent", "enemy_area", "ground", "wall", "hit_start_area", "hit_range_area", "attacking_audio", "attack_audio", "attack_particles", "energy_collector_component")]
 script = ExtResource("4_kja6p")
 target = NodePath("../..")
 sprite = NodePath("../../AnimatedSprite2D")
@@ -85,6 +87,7 @@ hit_range_area = NodePath("../../Physics/HitRangeArea")
 attacking_audio = NodePath("../../AttackingAudio")
 attack_audio = NodePath("../../AttackAudio")
 attack_particles = NodePath("../../AttackParticles")
+energy_collector_component = NodePath("../../EnergyCollectorComponent")
 metadata/_custom_type_script = "uid://rat5qcmwg87d"
 
 [node name="HealthComponent" type="HBoxContainer" parent="." index="4"]
@@ -138,19 +141,24 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Physics/HitRangeArea" index="0"]
 position = Vector2(9.5, -7.5)
 
-[node name="AttackingAudio" type="AudioStreamPlayer2D" parent="." index="6"]
+[node name="EnergyCollectorComponent" type="Node2D" parent="." index="6"]
+position = Vector2(0, -14)
+script = ExtResource("8_kja6p")
+metadata/_custom_type_script = "uid://ckiexqolsrmtp"
+
+[node name="AttackingAudio" type="AudioStreamPlayer2D" parent="." index="7"]
 stream = ExtResource("5_etv1c")
 volume_db = -30.646
 bus = &"SFX"
 
-[node name="AttackAudio" type="AudioStreamPlayer2D" parent="." index="7"]
+[node name="AttackAudio" type="AudioStreamPlayer2D" parent="." index="8"]
 bus = &"SFX"
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." index="8"]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." index="9"]
 position = Vector2(80, -2)
 scale = Vector2(19.7, 4.1)
 
-[node name="AttackParticles" type="CPUParticles2D" parent="." index="9"]
+[node name="AttackParticles" type="CPUParticles2D" parent="." index="10"]
 position = Vector2(8, -5)
 emitting = false
 lifetime = 0.3

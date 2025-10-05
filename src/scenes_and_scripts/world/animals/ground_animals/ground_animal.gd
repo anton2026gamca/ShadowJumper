@@ -17,6 +17,10 @@ class_name GroundAnimal
 @export_group("Behaviour/Death")
 @export var spawn_powerup_on_death: PackedScene
 
+@export_group("Energy Collecting")
+@onready var energy_collector_component: EnergyCollectorComponent = $EnergyCollectorComponent
+@export var on_kill_energy_value: int = 0
+
 const POWERUP_OBJECT: PackedScene = preload("res://scenes_and_scripts/world/objects/powerup_object.tscn")
 @onready var health_component: HealthComponent = $HealthComponent
 
@@ -31,11 +35,13 @@ func _on_death_component_die(reason: String) -> void:
 	if reason == "You fell from too high!": health_component.lives = 0
 	if health_component.lives != 0: return
 	await get_tree().process_frame
-	if spawn_powerup_on_death and reason != "reason::not_spawned":
-		var obj: PowerupObject = POWERUP_OBJECT.instantiate()
-		obj.global_position = global_position
-		obj.powerup = spawn_powerup_on_death
-		get_parent().add_child(obj)
+	if reason != "reason::not_spawned":
+		if spawn_powerup_on_death:
+			var obj: PowerupObject = POWERUP_OBJECT.instantiate()
+			obj.global_position = global_position
+			obj.powerup = spawn_powerup_on_death
+			get_parent().add_child(obj)
+		energy_collector_component.collect(on_kill_energy_value)
 	await super._on_death_component_die(reason)
 
 

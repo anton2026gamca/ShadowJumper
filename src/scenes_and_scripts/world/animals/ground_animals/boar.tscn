@@ -89,9 +89,13 @@ chance_to_rotate = 0.0
 attack_screen_shake_value = 9.0
 chance_to_give_up = 0.0
 spawn_powerup_on_death = ExtResource("2_5g0xv")
+on_kill_energy_value = 60
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_dlm6i")
+
+[node name="GroundAnimalAttacking" parent="StateMachine" index="1"]
+energy_value_on_dodge = 35
 
 [node name="CollisionShape2D" parent="Physics/EnemyArea" index="0"]
 position = Vector2(48.5, 0)
@@ -105,17 +109,17 @@ shape = SubResource("RectangleShape2D_mlr3l")
 position = Vector2(13.75, -12.25)
 shape = SubResource("RectangleShape2D_5g0xv")
 
-[node name="AttackingAudio" parent="." index="6"]
+[node name="AttackingAudio" parent="." index="7"]
 volume_db = -23.151
 
-[node name="AttackAudio" parent="." index="7"]
+[node name="AttackAudio" parent="." index="8"]
 stream = ExtResource("4_348gh")
 
-[node name="VisibleOnScreenEnabler2D" parent="." index="8"]
+[node name="VisibleOnScreenEnabler2D" parent="." index="9"]
 position = Vector2(51, -2)
 scale = Vector2(29.7, 4.1)
 
-[node name="AttackParticles" parent="." index="9"]
+[node name="AttackParticles" parent="." index="10"]
 position = Vector2(10, -11)
 emission_shape = 3
 emission_rect_extents = Vector2(3, 0)

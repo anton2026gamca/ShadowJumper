@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://xyllxx8sqe4m"]
+[gd_scene load_steps=10 format=3 uid="uid://xyllxx8sqe4m"]
 
 [ext_resource type="Script" uid="uid://fqtggun3y2qm" path="res://scenes_and_scripts/ui/levels_ui/levels_ui.gd" id="1_ullwu"]
 [ext_resource type="PackedScene" uid="uid://cn3b3uia58ox2" path="res://scenes_and_scripts/ui/levels_ui/node_indicator.tscn" id="2_1q5nf"]
@@ -9,7 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://8cac1aghe7ym" path="res://scenes_and_scripts/ui/menus/settings_menu/controls_menu.tscn" id="6_pwopw"]
 [ext_resource type="PackedScene" uid="uid://7rlrkqwexgku" path="res://scenes_and_scripts/ui/levels_ui/dialog_ui.tscn" id="7_nrncv"]
 
-[node name="UI" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrncv"]
+bg_color = Color(0, 0, 0, 0.686275)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 8.0
+expand_margin_right = 7.0
+
+[node name="LevelsUI" type="Control"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -20,6 +29,40 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_ullwu")
 node_indicator_scene = ExtResource("2_1q5nf")
+
+[node name="EnergyDisplay" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.5
+offset_right = 21.5
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nrncv")
+
+[node name="Label" type="Label" parent="EnergyDisplay"]
+layout_mode = 2
+theme = ExtResource("2_nhhd0")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "0 E"
+
+[node name="FullScreenText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 415.0
+grow_horizontal = 2
+mouse_filter = 2
+theme = ExtResource("2_nhhd0")
+theme_override_font_sizes/bold_italics_font_size = 36
+theme_override_font_sizes/italics_font_size = 36
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 1
 
 [node name="PauseMenu" parent="." node_paths=PackedStringArray("settings_menu") instance=ExtResource("3_mgqop")]
 visible = false
@@ -41,23 +84,8 @@ visible = false
 layout_mode = 1
 
 [node name="DialogUI" parent="." instance=ExtResource("7_nrncv")]
-layout_mode = 1
-
-[node name="FullScreenText" type="RichTextLabel" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 415.0
-grow_horizontal = 2
-mouse_filter = 2
-theme = ExtResource("2_nhhd0")
-theme_override_font_sizes/bold_italics_font_size = 36
-theme_override_font_sizes/italics_font_size = 36
-theme_override_font_sizes/normal_font_size = 36
-theme_override_font_sizes/bold_font_size = 36
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="closed" from="PauseMenu" to="." method="resume"]
 [connection signal="exit_level" from="PauseMenu" to="." method="_on_exit_level_pressed"]

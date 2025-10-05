@@ -103,11 +103,15 @@ chance_to_rotate = 0.0
 attack_screen_shake_value = 7.0
 chance_to_give_up = 0.0
 spawn_powerup_on_death = ExtResource("2_i6ybc")
+on_kill_energy_value = 50
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_rasjo")
 frame = 2
 frame_progress = 1.0
+
+[node name="GroundAnimalAttacking" parent="StateMachine" index="1"]
+energy_value_on_dodge = 25
 
 [node name="CollisionShape2D" parent="Physics/EnemyArea" index="0"]
 position = Vector2(41, 0)
@@ -121,13 +125,13 @@ shape = SubResource("RectangleShape2D_bhof2")
 position = Vector2(15.25, -13.25)
 shape = SubResource("RectangleShape2D_i6ybc")
 
-[node name="AttackAudio" parent="." index="7"]
+[node name="AttackAudio" parent="." index="8"]
 stream = ExtResource("4_lrxyp")
 
-[node name="VisibleOnScreenEnabler2D" parent="." index="8"]
+[node name="VisibleOnScreenEnabler2D" parent="." index="9"]
 position = Vector2(54.5, -0.500001)
 scale = Vector2(24.95, 4.25)
 
-[node name="AttackParticles" parent="." index="9"]
+[node name="AttackParticles" parent="." index="10"]
 position = Vector2(11, -7)
 lifetime = 0.2

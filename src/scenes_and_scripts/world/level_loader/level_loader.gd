@@ -12,7 +12,7 @@ signal exit_level_signal(defeated: bool)
 
 
 func _ready() -> void:
-	pass
+	ui.visible = false
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause") and is_in_level:
@@ -30,8 +30,7 @@ func load_level(level: PackedScene, skip_story: bool = false) -> void:
 	is_in_level = true
 	ui.camera = node.camera
 	ui.reset()
-	#if not skip_story and ui.story.parts.has(node.story_in_beginning):
-		#ui.story.play_part(node.story_in_beginning)
+	ui.visible = true
 
 func exit_level(defeated: bool = false) -> void:
 	await get_tree().process_frame
@@ -41,6 +40,7 @@ func exit_level(defeated: bool = false) -> void:
 	current_level_node.queue_free()
 	current_level_node = null
 	exit_level_signal.emit(defeated)
+	ui.visible = false
 
 func player_died(reason: String) -> void:
 	if not is_in_level:

@@ -203,6 +203,7 @@ tile_set = ExtResource("4_wcekq")
 position = Vector2(-16, 0)
 texture = ExtResource("15_57h2w")
 dialog = SubResource("Resource_6jh77")
+cooldown = -1.0
 
 [node name="Player" parent="Level" instance=ExtResource("5_myw5i")]
 use_parent_material = true

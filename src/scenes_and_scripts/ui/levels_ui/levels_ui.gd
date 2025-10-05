@@ -5,6 +5,8 @@ class_name LevelsUI
 @onready var respawn_menu: RespawnMenu = $RespawnMenu
 @onready var full_screen_text: RichTextLabel = $FullScreenText
 @onready var dialog_ui: DialogUI = $DialogUI
+@onready var energy_display: PanelContainer = $EnergyDisplay
+@onready var energy_label: Label = $EnergyDisplay/Label
 
 @export var node_indicator_scene: PackedScene
 
@@ -17,6 +19,7 @@ signal respawn
 
 
 func _ready() -> void:
+	Settings.collected_energy_changed.connect(_on_energy_collected)
 	Helpers.levels_ui = self
 	reset()
 
@@ -27,6 +30,8 @@ func _process(_delta: float) -> void:
 func reset() -> void:
 	resume()
 	destroy_all_indicators()
+	_on_energy_collected()
+	energy_display.visible = true
 
 func pause() -> void:
 	if get_tree().paused: return
@@ -40,6 +45,7 @@ func resume() -> void:
 
 func open_respawn_menu(text: String) -> void:
 	get_tree().paused = true
+	energy_display.visible = false
 	respawn_menu.open_with_message(text)
 
 func _on_exit_level_pressed() -> void:
@@ -63,3 +69,12 @@ func create_node_indicator(target: Node2D) -> NodeIndicator:
 func destroy_all_indicators() -> void:
 	for indicator: NodeIndicator in get_children().filter(func (child: Node) -> bool: return child is NodeIndicator):
 		if indicator: indicator.destroy.call_deferred()
+
+func _on_energy_collected() -> void:
+	energy_label.text = str(int(Settings.collected_energy)) + " E"
+	var color: Color = Color.WHITE
+	if Settings.collected_energy >= 500: color = Color.LIME
+	elif Settings.collected_energy >= 250: color = Color.YELLOW
+	elif Settings.collected_energy >= 100: color = Color.LIGHT_BLUE
+	elif Settings.collected_energy < 0: color = Color.RED
+	energy_label.add_theme_color_override("font_color", color)

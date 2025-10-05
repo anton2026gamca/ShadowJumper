@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cd7yubqxtcw2v"]
+[gd_scene load_steps=44 format=3 uid="uid://cd7yubqxtcw2v"]
 
 [ext_resource type="PackedScene" uid="uid://cjdb2ap3qdyt5" path="res://scenes_and_scripts/world/animals/animal.tscn" id="1_psrfv"]
 [ext_resource type="Script" uid="uid://c8teo0ong35gb" path="res://scenes_and_scripts/world/animals/bee/bee.gd" id="2_h0684"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://btku6suled1n3" path="res://assets/SFX/bee-buzz.mp3" id="8_40f0r"]
 [ext_resource type="PackedScene" uid="uid://4jda6yqfscpt" path="res://scenes_and_scripts/world/animals/bee/bee_ultimate_attack_bullet.tscn" id="8_y413e"]
 [ext_resource type="AudioStream" uid="uid://bk0huhip0mtdp" path="res://assets/SFX/folder/disappear.wav" id="9_om06y"]
+[ext_resource type="Script" uid="uid://ckiexqolsrmtp" path="res://scenes_and_scripts/components/energy_collector_component.gd" id="10_3xiya"]
 [ext_resource type="AudioStream" uid="uid://cd7g7ihyn67ll" path="res://assets/SFX/folder/harsh_destruction.wav" id="12_qt054"]
 [ext_resource type="AudioStream" uid="uid://b54hlq1sif50r" path="res://assets/SFX/folder/fire_3.wav" id="12_y413e"]
 
@@ -219,6 +220,7 @@ collision_layer = 32
 collision_mask = 0
 script = ExtResource("2_h0684")
 fly_speed = 250.0
+energy_on_death = 250
 
 [node name="HealthComponent" parent="." index="0" instance=ExtResource("3_qt054")]
 offset_left = -6.0
@@ -288,22 +290,26 @@ shape = SubResource("CapsuleShape2D_j8j3w")
 [node name="BulletSpawner" type="Node2D" parent="." index="6"]
 position = Vector2(0, 25)
 
-[node name="ShootAudio" type="AudioStreamPlayer2D" parent="." index="8"]
+[node name="EnergyCollectorComponent" type="Node2D" parent="." index="8"]
+script = ExtResource("10_3xiya")
+metadata/_custom_type_script = "uid://ckiexqolsrmtp"
+
+[node name="ShootAudio" type="AudioStreamPlayer2D" parent="." index="9"]
 stream = ExtResource("7_cal8c")
 bus = &"SFX"
 
-[node name="BuzzingAudio" type="AudioStreamPlayer2D" parent="." index="9"]
+[node name="BuzzingAudio" type="AudioStreamPlayer2D" parent="." index="10"]
 stream = ExtResource("8_40f0r")
 volume_db = -10.0
 
-[node name="DeathAudio" type="AudioStreamPlayer2D" parent="." index="10"]
+[node name="DeathAudio" type="AudioStreamPlayer2D" parent="." index="11"]
 stream = ExtResource("9_om06y")
 volume_db = 10.0
 
-[node name="UltimateAttackAudio" type="AudioStreamPlayer2D" parent="." index="11"]
+[node name="UltimateAttackAudio" type="AudioStreamPlayer2D" parent="." index="12"]
 stream = ExtResource("12_qt054")
 volume_db = 10.0
 
-[node name="UltimateAttackShootAudio" type="AudioStreamPlayer2D" parent="." index="12"]
+[node name="UltimateAttackShootAudio" type="AudioStreamPlayer2D" parent="." index="13"]
 stream = ExtResource("12_y413e")
 volume_db = 5.0

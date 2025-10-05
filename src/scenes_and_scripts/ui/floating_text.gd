@@ -6,13 +6,15 @@ class_name FloatingText
 @export var y_diff: float = -10
 @export var color: Color = Color.WHITE
 
+signal finished
+
 
 func start() -> void:
 	add_theme_color_override("font_color", color)
-	var tween: Tween = create_tween()
-	tween.tween_property(self, "position", position + y_diff * Vector2.DOWN, duration - 1)
-	tween.tween_property(self, "modulate", Color.TRANSPARENT, 1)
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(self, "position", position + y_diff * Vector2.DOWN, duration)
 	await tween.finished
+	finished.emit()
 	destroy()
 
 func destroy() -> void:

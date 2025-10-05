@@ -5,6 +5,18 @@ var last_level: NodePath
 var last_entered_level: NodePath
 var beated_levels: Array[NodePath] = []
 
+var total_energy: float = 0
+signal collected_energy_changed
+var collected_energy: float = 0:
+	set(value):
+		collected_energy = value
+		print(collected_energy)
+		collected_energy_changed.emit()
+	get: return collected_energy
+
+signal loaded
+signal saved
+
 
 func _enter_tree() -> void:
 	_load()
@@ -14,15 +26,18 @@ func _exit_tree() -> void:
 
 
 func reset() -> void:
+	collected_energy = 0
+	total_energy = 0
 	last_level = ^""
 	last_entered_level = ^""
 	beated_levels = []
 
-func _save(path: String = "user://progress.dat") -> void:
+func _save(path: String = "user://progress.dat") -> int:
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	if file == null:
-		push_error("Failed to open file for writing")
-		return
+		push_error("Failed to open file \"" + path + "\" for writing")
+		return 1
+	file.store_8(total_energy)
 	var node_paths: Array[NodePath] = [last_level, last_entered_level]
 	for node_path: NodePath in beated_levels:
 		node_paths.append(node_path)
@@ -31,7 +46,6 @@ func _save(path: String = "user://progress.dat") -> void:
 		var path_str: String = str(node_path)
 		if path_str.left(len("Level/Level")) == "Level/Level":
 			var val: int = int(path_str.substr(len("Level/Level")))
-			print(path_str.substr(len("Level/Level")))
 			file.store_8(255)
 			file.store_8(val)
 		else:
@@ -39,13 +53,16 @@ func _save(path: String = "user://progress.dat") -> void:
 			file.store_8(bytes.size())
 			file.store_buffer(bytes)
 	file.close()
+	saved.emit()
+	return 0
 
 func _load(path: String = "user://progress.dat") -> int:
 	var result: Array = []
 	var file = FileAccess.open(path, FileAccess.READ)
 	if file == null:
-		push_error("Failed to open file for reading")
+		push_warning("Failed to open file \"" + path + "\" for reading")
 		return 1
+	total_energy = file.get_8()
 	var count = file.get_8()
 	for i: int in count:
 		var path_str: String = ""
@@ -64,4 +81,5 @@ func _load(path: String = "user://progress.dat") -> int:
 	beated_levels = []
 	for i: int in range(2, len(result)):
 		beated_levels.append(result[i])
+	loaded.emit()
 	return 0
