@@ -3,6 +3,7 @@ class_name EnergyCollectorComponent
 
 
 @export var energy_amount_for_action: Dictionary[String, EnergyCollectorAmount] = {}
+var action_times_collected: Dictionary[EnergyCollectorAmount, int] = {}
 
 
 func _ready() -> void:
@@ -11,8 +12,8 @@ func _ready() -> void:
 func collect(action: String) -> void:
 	if not action in energy_amount_for_action: return
 	var amount: EnergyCollectorAmount = energy_amount_for_action[action]
-	if amount.times_collected >= amount.max_collects and amount.max_collects >= 0: return
-	amount.times_collected += 1
+	if action_times_collected[amount] >= amount.max_collects and amount.max_collects >= 0: return
+	action_times_collected[amount] += 1
 	if amount.energy_value_on_collect == 0: return
 	var color: Color = Color.WHITE
 	if amount.energy_value_on_collect >= 250: color = Color.PURPLE
@@ -24,5 +25,6 @@ func collect(action: String) -> void:
 	Settings.collected_energy += amount.energy_value_on_collect
 
 func reset() -> void:
+	action_times_collected = {}
 	for amount: EnergyCollectorAmount in energy_amount_for_action.values():
-		amount.times_collected = 0
+		action_times_collected[amount] = 0
