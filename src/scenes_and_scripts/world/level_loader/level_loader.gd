@@ -8,7 +8,7 @@ class_name LevelLoaderClass
 var is_in_level: bool = false
 @onready var ui: LevelsUI = $UICanvasLayer/UI
 
-signal exit_level_signal(defeated: bool)
+signal exit_level_signal(args: Array)
 
 
 func _ready() -> void:
@@ -32,14 +32,14 @@ func load_level(level: PackedScene, skip_story: bool = false) -> void:
 	ui.reset()
 	ui.visible = true
 
-func exit_level(defeated: bool = false) -> void:
+func exit_level(args: Array) -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	is_in_level = false
 	level_parent.remove_child(current_level_node)
 	current_level_node.queue_free()
 	current_level_node = null
-	exit_level_signal.emit(defeated)
+	exit_level_signal.emit(args)
 	ui.visible = false
 
 func player_died(reason: String) -> void:
@@ -60,10 +60,13 @@ func level_defeated() -> void:
 	await get_tree().create_timer(3).timeout
 	ui.full_screen_text.visible = false
 	ui.full_screen_text.process_mode = Node.PROCESS_MODE_PAUSABLE
-	exit_level(true)
+	exit_level([true])
 
 func reload_level() -> void:
 	level_parent.remove_child(current_level_node)
 	current_level_node.queue_free()
 	current_level_node = null
+	Settings.level_collected_energy = 0
+	if Settings.total_collected_energy < 0:
+		Settings.collect(-Settings.total_collected_energy)
 	load_level(current_level, true)

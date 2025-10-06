@@ -34,10 +34,7 @@ func _on_death_component_die(reason: String) -> void:
 	await get_tree().process_frame
 	if reason != "reason::not_spawned":
 		if spawn_powerup_on_death:
-			var obj: PowerupObject = POWERUP_OBJECT.instantiate()
-			obj.global_position = global_position
-			obj.powerup = spawn_powerup_on_death
-			get_parent().add_child(obj)
+			Helpers.spawn_powerup(get_parent(), spawn_powerup_on_death, global_position)
 		energy_collector_component.collect("kill")
 	await super._on_death_component_die(reason)
 

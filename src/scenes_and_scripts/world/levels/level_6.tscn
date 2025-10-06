@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://cdort0sw0grtb"]
+[gd_scene load_steps=32 format=4 uid="uid://cdort0sw0grtb"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_v8hid"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_0ki8w"]
@@ -57,6 +57,9 @@ character_name_color = Color(0.678431, 0.360784, 0.901961, 1)
 character_default_sprite = ExtResource("8_8s50a")
 messages = Array[ExtResource("9_huy6g")]([SubResource("Resource_xp644"), SubResource("Resource_qbaq7"), SubResource("Resource_8ch1p")])
 metadata/_custom_type_script = "uid://bi3gy0kfnyuym"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_huy6g"]
+size = Vector2(184, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_443ir"]
 distance = -189.0
@@ -132,7 +135,10 @@ cooldown = -1.0
 [node name="PowerupNPC" parent="Level" instance=ExtResource("11_v8mns")]
 position = Vector2(123, -592)
 powerup = ExtResource("12_huy6g")
-cooldown = -1.0
+
+[node name="CollisionShape2D" parent="Level/PowerupNPC/Area2D" index="0"]
+position = Vector2(-84, 15.5)
+shape = SubResource("RectangleShape2D_huy6g")
 
 [node name="Player" parent="Level" instance=ExtResource("5_nfe74")]
 use_parent_material = true

@@ -21,7 +21,7 @@ func _ready() -> void:
 		_destroy()
 		return
 	if lifetime > 0:
-		get_tree().create_timer(lifetime).timeout.connect(_destroy)
+		get_tree().create_timer(lifetime, false).timeout.connect(_destroy)
 	velocity = Vector2.UP.rotated(rotation) * randf_range(initial_speed_min, initial_speed_max)
 
 func _physics_process(delta: float) -> void:

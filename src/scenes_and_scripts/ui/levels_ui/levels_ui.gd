@@ -14,7 +14,7 @@ class_name LevelsUI
 
 var playing_level: bool = false
 
-signal exit_level
+signal exit_level(args: Array)
 signal respawn
 
 
@@ -49,9 +49,12 @@ func open_respawn_menu(text: String) -> void:
 	respawn_menu.open_with_message(text)
 
 func _on_exit_level_pressed() -> void:
-	respawn_menu.close()
+	if respawn_menu.is_open:
+		respawn_menu.close()
+		exit_level.emit([false, false])
+	else:
+		exit_level.emit([false, true])
 	resume()
-	exit_level.emit()
 
 func _on_respawn_menu_respawn() -> void:
 	if not respawn_menu.is_open: return

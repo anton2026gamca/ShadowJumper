@@ -21,14 +21,15 @@ func collected_energy_animation() -> void:
 	text.add_theme_font_size_override("font_size", 18)
 	total_energy_add_audio.play()
 	var total_before_level: float = Settings.total_collected_energy - Settings.level_collected_energy
+	if Settings.total_collected_energy < 0: Settings.total_collected_energy = 0
 	while abs(Settings.level_collected_energy) > 0.5:
 		var val: float = 1.0
 		if Settings.level_collected_energy < 0: val = -val
 		Settings.level_collected_energy -= val
 		total_before_level += val
+		if total_before_level < 0: total_before_level = 0
 		total_energy_label.text = str(int(total_before_level)) + " E"
-		#total_energy_label.add_theme_color_override("font_color", Helpers.get_energy_level_color(total_before_level))
-		print(total_before_level)
+		total_energy_label.add_theme_color_override("font_color", Helpers.get_energy_level_color(total_before_level))
 		if text: text.text = ("+" if Settings.level_collected_energy > 0 else "") + str(int(Settings.level_collected_energy))
 		await get_tree().process_frame
 	total_energy_add_audio.stop()

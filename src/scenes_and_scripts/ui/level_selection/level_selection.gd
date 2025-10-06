@@ -59,23 +59,28 @@ func enter_level() -> void:
 	get_tree().current_scene = LevelLoader
 	ui.visible = false
 	parent.remove_child(self)
-	var defeated: bool = await LevelLoader.exit_level_signal
+	var args: Array = await LevelLoader.exit_level_signal
 	parent.add_child(self)
 	ui.visible = true
 	get_tree().current_scene = Helpers.main_menu
 	camera.make_current()
 	Helpers.camera = camera
 	Settings._save()
+	var defeated: bool = args[0] if len(args) >= 1 and args[0] is bool else false
+	if defeated:
+		if not current_level.is_completed:
+			current_level.mark_completed()
+			Settings.beated_levels.append(get_path_to(current_level))
+			for level: LevelSelectionLevel in current_level.relationships.values():
+				if not level:
+					continue
+				level.visible = true
+				if current_level.number + 1 == level.number:
+					move_to_level(current_level.relationships.find_key(level))
+	else:
+		var cancel_energy: bool = args[1] if len(args) >= 2 and args[1] is bool else false
+		if cancel_energy: Settings.collect(-Settings.level_collected_energy)
 	ui.collected_energy_animation()
-	if defeated and not current_level.is_completed:
-		current_level.mark_completed()
-		Settings.beated_levels.append(get_path_to(current_level))
-		for level: LevelSelectionLevel in current_level.relationships.values():
-			if not level:
-				continue
-			level.visible = true
-			if current_level.number + 1 == level.number:
-				move_to_level(current_level.relationships.find_key(level))
 
 func move_to_level(dir: Vector2i) -> void:
 	var new_level: LevelSelectionLevel = current_level.relationships[dir] if dir in current_level.relationships else null

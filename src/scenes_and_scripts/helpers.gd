@@ -4,9 +4,10 @@ extends Node
 var main_menu: Main
 var levels_ui: LevelsUI
 var camera: CameraPlus
+var player: Player
 
 const FLOATING_TEXT_SCENE: PackedScene = preload("res://scenes_and_scripts/ui/floating_text.tscn")
-
+const POWERUP_OBJECT: PackedScene = preload("res://scenes_and_scripts/world/objects/powerup_object.tscn")
 
 func find_child_by_type(parent: Node, type: Variant) -> Node:
 	if not parent:
@@ -42,6 +43,12 @@ func create_floating_text(parent: Node, text: String, position: Vector2, color =
 func get_energy_level_color(val: float) -> Color:
 	if val >= 400: return Color.LIME
 	elif val >= 200: return Color.YELLOW
-	elif val >= 100: return Color.LIGHT_YELLOW
-	elif val < 0: return Color.RED
-	return Color.WHITE
+	elif val >= 100: return Color.GOLD
+	elif val > 0: return Color.ORANGE
+	return Color.RED
+
+func spawn_powerup(parent: Node, powerup: PackedScene, position: Vector2) -> void:
+	var obj: PowerupObject = POWERUP_OBJECT.instantiate()
+	obj.global_position = position
+	obj.powerup = powerup
+	parent.add_child(obj)
