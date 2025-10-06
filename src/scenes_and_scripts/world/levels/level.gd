@@ -23,7 +23,7 @@ func _on_world_bottom_limit_body_entered(body: Node2D) -> void:
 		death_component.die(world_bottom_die_reason)
 
 func _on_player_died(reason: String) -> void:
-	Settings.collected_energy += energy_on_death
+	Settings.collect(energy_on_death)
 	player_died.emit(reason)
 
 func _on_finish_level_defeated() -> void:

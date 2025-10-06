@@ -5,13 +5,14 @@ var last_level: NodePath
 var last_entered_level: NodePath
 var beated_levels: Array[NodePath] = []
 
-var total_energy: float = 0
 signal collected_energy_changed
-var collected_energy: float = 0:
-	set(value):
-		collected_energy = value
-		collected_energy_changed.emit()
-	get: return collected_energy
+var total_collected_energy: float = 0
+var level_collected_energy: float = 0
+func collect(value: float) -> void:
+	if value == 0: return
+	total_collected_energy += value
+	level_collected_energy += value
+	collected_energy_changed.emit()
 
 signal loaded
 signal saved
@@ -25,8 +26,8 @@ func _exit_tree() -> void:
 
 
 func reset() -> void:
-	collected_energy = 0
-	total_energy = 0
+	total_collected_energy = 0
+	level_collected_energy = 0
 	last_level = ^""
 	last_entered_level = ^""
 	beated_levels = []
@@ -36,7 +37,7 @@ func _save(path: String = "user://progress.dat") -> int:
 	if file == null:
 		push_error("Failed to open file \"" + path + "\" for writing")
 		return 1
-	file.store_8(total_energy)
+	file.store_8(total_collected_energy)
 	var node_paths: Array[NodePath] = [last_level, last_entered_level]
 	for node_path: NodePath in beated_levels:
 		node_paths.append(node_path)
@@ -61,7 +62,7 @@ func _load(path: String = "user://progress.dat") -> int:
 	if file == null:
 		push_warning("Failed to open file \"" + path + "\" for reading")
 		return 1
-	total_energy = file.get_8()
+	total_collected_energy = file.get_8()
 	var count = file.get_8()
 	for i: int in count:
 		var path_str: String = ""

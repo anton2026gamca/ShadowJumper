@@ -19,7 +19,7 @@ signal respawn
 
 
 func _ready() -> void:
-	Settings.collected_energy_changed.connect(_on_energy_collected)
+	Settings.collected_energy_changed.connect(_on_collected_energy_changed)
 	Helpers.levels_ui = self
 	reset()
 
@@ -30,7 +30,7 @@ func _process(_delta: float) -> void:
 func reset() -> void:
 	resume()
 	destroy_all_indicators()
-	_on_energy_collected()
+	_on_collected_energy_changed()
 	energy_display.visible = true
 
 func pause() -> void:
@@ -70,11 +70,11 @@ func destroy_all_indicators() -> void:
 	for indicator: NodeIndicator in get_children().filter(func (child: Node) -> bool: return child is NodeIndicator):
 		if indicator: indicator.destroy.call_deferred()
 
-func _on_energy_collected() -> void:
-	energy_label.text = str(int(Settings.collected_energy)) + " E"
+func _on_collected_energy_changed() -> void:
+	energy_label.text = str(int(Settings.total_collected_energy)) + " E"
 	var color: Color = Color.WHITE
-	if Settings.collected_energy >= 500: color = Color.LIME
-	elif Settings.collected_energy >= 250: color = Color.YELLOW
-	elif Settings.collected_energy >= 100: color = Color.LIGHT_BLUE
-	elif Settings.collected_energy < 0: color = Color.RED
+	if Settings.total_collected_energy >= 400: color = Color.LIME
+	elif Settings.total_collected_energy >= 200: color = Color.YELLOW
+	elif Settings.total_collected_energy >= 100: color = Color.LIGHT_BLUE
+	elif Settings.total_collected_energy < 0: color = Color.RED
 	energy_label.add_theme_color_override("font_color", color)

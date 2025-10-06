@@ -22,7 +22,7 @@ func collect(action: String) -> void:
 	elif amount.energy_value_on_collect >= 35: color = Color.ORANGE
 	elif amount.energy_value_on_collect >= 25: color = Color.YELLOW
 	Helpers.create_floating_text(get_parent().get_parent(), "+" + str(amount.energy_value_on_collect) + " E", position + get_parent().position + Vector2(randf_range(-8, 8), 0), color, -10)
-	Settings.collected_energy += amount.energy_value_on_collect
+	Settings.collect(amount.energy_value_on_collect)
 
 func reset() -> void:
 	action_times_collected = {}

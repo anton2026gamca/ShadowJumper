@@ -66,7 +66,7 @@ func enter_level() -> void:
 	camera.make_current()
 	Helpers.camera = camera
 	Settings._save()
-	ui.add_collected_energy_to_total()
+	ui.collected_energy_animation()
 	if defeated and not current_level.is_completed:
 		current_level.mark_completed()
 		Settings.beated_levels.append(get_path_to(current_level))
@@ -98,4 +98,4 @@ func _debug_toggle_all_levels_on() -> void:
 	for lvl: LevelSelectionLevel in all:
 		lvl.visible = true
 	if ui:
-		ui.bottom_right_text.text = ui.bottom_right_text.text.replace("Press [color=lightblue]L[/color] to unlock all levels", "All levels ulocked!")
+		ui.debug_text.text = ui.debug_text.text.replace("Press [color=lightblue]L[/color] to unlock all levels", "All levels ulocked!")
