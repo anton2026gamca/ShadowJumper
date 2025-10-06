@@ -8,16 +8,15 @@
 [ext_resource type="Script" uid="uid://d4mqy1pvl1f2t" path="res://scenes_and_scripts/world/npcs/npc_dialog_answer_message.gd" id="6_e6jd1"]
 [ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="7_1khta"]
 
-[sub_resource type="Resource" id="Resource_nsejl"]
+[sub_resource type="Resource" id="Resource_tonsg"]
 script = ExtResource("3_tonsg")
-message = "Huh, didn't expect that, I was only joking :("
+message = "Great! You should've received it!"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
-[sub_resource type="Resource" id="Resource_g1kns"]
-script = ExtResource("4_nnsb4")
-text = "Yes!"
-next_messages = Array[ExtResource("3_tonsg")]([SubResource("Resource_nsejl")])
-metadata/_custom_type_script = "uid://bopmq062we6q8"
+[sub_resource type="Resource" id="Resource_nnsb4"]
+script = ExtResource("3_tonsg")
+message = "Hmmm, something went wrong. Maybe you don't have enough energy."
+metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_3gj6n"]
 script = ExtResource("4_nnsb4")
@@ -52,6 +51,9 @@ metadata/_custom_type_script = "uid://bi3gy0kfnyuym"
 
 [node name="PowerupNPC" instance=ExtResource("1_cfx5f")]
 script = ExtResource("2_k8mng")
-drop_powerup_answer = SubResource("Resource_g1kns")
+powerup_issued_message = SubResource("Resource_tonsg")
+powerup_not_issued_message = SubResource("Resource_nnsb4")
+drop_powerup_answer = SubResource("Resource_3gj6n")
 powerup = null
 dialog = SubResource("Resource_ewajk")
+cooldown = -1.0

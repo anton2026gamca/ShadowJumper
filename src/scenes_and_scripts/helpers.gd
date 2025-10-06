@@ -38,3 +38,10 @@ func create_floating_text(parent: Node, text: String, position: Vector2, color =
 	parent.add_child(node)
 	node.start()
 	return node
+
+func get_energy_level_color(val: float) -> Color:
+	if val >= 400: return Color.LIME
+	elif val >= 200: return Color.YELLOW
+	elif val >= 100: return Color.LIGHT_YELLOW
+	elif val < 0: return Color.RED
+	return Color.WHITE

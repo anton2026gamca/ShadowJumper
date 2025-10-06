@@ -72,9 +72,4 @@ func destroy_all_indicators() -> void:
 
 func _on_collected_energy_changed() -> void:
 	energy_label.text = str(int(Settings.total_collected_energy)) + " E"
-	var color: Color = Color.WHITE
-	if Settings.total_collected_energy >= 400: color = Color.LIME
-	elif Settings.total_collected_energy >= 200: color = Color.YELLOW
-	elif Settings.total_collected_energy >= 100: color = Color.LIGHT_BLUE
-	elif Settings.total_collected_energy < 0: color = Color.RED
-	energy_label.add_theme_color_override("font_color", color)
+	energy_label.add_theme_color_override("font_color", Helpers.get_energy_level_color(Settings.total_collected_energy))
