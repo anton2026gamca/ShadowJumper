@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://d1knch75lpy1t"]
+[gd_scene load_steps=35 format=4 uid="uid://d1knch75lpy1t"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_nbytn"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_go7g5"]
@@ -75,6 +75,9 @@ character_name_color = Color(0.678431, 0.847059, 0.901961, 1)
 character_default_sprite = ExtResource("15_57h2w")
 messages = Array[ExtResource("9_lbqyf")]([SubResource("Resource_lbqyf"), SubResource("Resource_sxcxt"), SubResource("Resource_15ffy"), SubResource("Resource_css43"), SubResource("Resource_gyv5q"), SubResource("Resource_x3vl5"), SubResource("Resource_mwxj1")])
 metadata/_custom_type_script = "uid://bi3gy0kfnyuym"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcg3k"]
+size = Vector2(16, 125)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_055t4"]
 
@@ -204,6 +207,12 @@ position = Vector2(-16, 0)
 texture = ExtResource("15_57h2w")
 dialog = SubResource("Resource_6jh77")
 cooldown = -1.0
+one_time = true
+unique_id = 1
+
+[node name="CollisionShape2D" parent="Level/NPC/Area2D" index="0"]
+position = Vector2(0, -46.5)
+shape = SubResource("RectangleShape2D_fcg3k")
 
 [node name="Player" parent="Level" instance=ExtResource("5_myw5i")]
 use_parent_material = true
@@ -585,3 +594,5 @@ vertical_alignment = 1
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]
 [connection signal="level_defeated" from="Level/Finish" to="." method="_on_finish_level_defeated"]
+
+[editable path="Level/NPC"]

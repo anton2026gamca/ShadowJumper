@@ -6,7 +6,7 @@ class_name LevelsUI
 @onready var full_screen_text: RichTextLabel = $FullScreenText
 @onready var dialog_ui: DialogUI = $DialogUI
 @onready var energy_display: PanelContainer = $EnergyDisplay
-@onready var energy_label: Label = $EnergyDisplay/Label
+@onready var energy_label: Label = $EnergyDisplay/HBoxContainer/EnergyText
 
 @export var node_indicator_scene: PackedScene
 

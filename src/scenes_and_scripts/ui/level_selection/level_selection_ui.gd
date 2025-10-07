@@ -3,7 +3,7 @@ class_name LevelSelectionUi
 
 
 @onready var debug_text: RichTextLabel = $DebugText
-@onready var total_energy_label: Label = $TotalEnergyDisplay/Label
+@onready var total_energy_label: Label = $TotalEnergyDisplay/HBoxContainer/EnergyText
 @onready var total_energy_add_audio: AudioStreamPlayer = $TotalEnergyDisplay/AddAudio
 @onready var enegry_text_spawner: Node2D = $EnegryTextSpawner
 

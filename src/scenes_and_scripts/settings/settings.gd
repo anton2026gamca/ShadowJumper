@@ -14,6 +14,8 @@ func collect(value: float) -> void:
 	level_collected_energy += value
 	collected_energy_changed.emit()
 
+var disable_npcs: Array[int] = []
+
 signal loaded
 signal saved
 
@@ -31,6 +33,7 @@ func reset() -> void:
 	last_level = ^""
 	last_entered_level = ^""
 	beated_levels = []
+	disable_npcs = []
 
 func _save(path: String = "user://progress.dat") -> int:
 	var file = FileAccess.open(path, FileAccess.WRITE)
@@ -52,19 +55,23 @@ func _save(path: String = "user://progress.dat") -> int:
 			var bytes: PackedByteArray = path_str.to_utf8_buffer()
 			file.store_8(bytes.size())
 			file.store_buffer(bytes)
+	file.store_8(len(disable_npcs))
+	for id: int in disable_npcs:
+		file.store_8(id)
 	file.close()
 	saved.emit()
 	return 0
 
 func _load(path: String = "user://progress.dat") -> int:
-	var result: Array = []
 	var file = FileAccess.open(path, FileAccess.READ)
 	if file == null:
 		push_warning("Failed to open file \"" + path + "\" for reading")
 		return 1
+	
 	total_collected_energy = file.get_8()
-	var count = file.get_8()
-	for i: int in count:
+	
+	beated_levels = []
+	for i: int in file.get_8():
 		var path_str: String = ""
 		var length: int = file.get_8()
 		if length == 255:
@@ -73,13 +80,14 @@ func _load(path: String = "user://progress.dat") -> int:
 		else:
 			var bytes: PackedByteArray = file.get_buffer(length)
 			path_str = bytes.get_string_from_utf8()
-		result.append(NodePath(path_str))
-	file.close()
+		var node_path: NodePath = NodePath(path_str)
+		if i == 0: last_level = node_path
+		elif i == 1: last_entered_level = node_path
+		else: beated_levels.append(node_path)
 	
-	if len(result) > 0: last_level = result[0]
-	if len(result) > 1: last_entered_level = result[1]
-	beated_levels = []
-	for i: int in range(2, len(result)):
-		beated_levels.append(result[i])
+	for i: int in file.get_8():
+		disable_npcs.append(file.get_8())
+	
+	file.close()
 	loaded.emit()
 	return 0

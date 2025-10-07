@@ -41,10 +41,17 @@ offset_bottom = 40.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nrncv")
 
-[node name="Label" type="Label" parent="EnergyDisplay"]
+[node name="HBoxContainer" type="HBoxContainer" parent="EnergyDisplay"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EnergyDisplay/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_nhhd0")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Total Energy: "
+
+[node name="EnergyText" type="Label" parent="EnergyDisplay/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_nhhd0")
 theme_override_font_sizes/font_size = 18
 text = "0 E"
 

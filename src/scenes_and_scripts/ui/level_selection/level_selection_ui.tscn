@@ -38,17 +38,25 @@ offset_bottom = 40.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dsqpm")
 
-[node name="Label" type="Label" parent="TotalEnergyDisplay"]
+[node name="AddAudio" type="AudioStreamPlayer" parent="TotalEnergyDisplay"]
+stream = ExtResource("3_xvu0o")
+volume_db = -20.0
+bus = &"SFX"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TotalEnergyDisplay"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TotalEnergyDisplay/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_dsqpm")
+text = "Total Energy: "
+
+[node name="EnergyText" type="Label" parent="TotalEnergyDisplay/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_dsqpm")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 18
 text = "0 E"
-
-[node name="AddAudio" type="AudioStreamPlayer" parent="TotalEnergyDisplay"]
-stream = ExtResource("3_xvu0o")
-volume_db = -20.0
-bus = &"SFX"
 
 [node name="DebugText" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -59,7 +67,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_dsqpm")
 bbcode_enabled = true
-text = "[color=green]DEBUG BUILD[/color]
+text = "[ [color=gold]v1.4[/color] ]  [ [color=green]DEBUG BUILD[/color] ]
 Press [color=lightblue]L[/color] to unlock all levels"
 horizontal_alignment = 2
 vertical_alignment = 2

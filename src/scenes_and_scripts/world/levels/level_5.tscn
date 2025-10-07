@@ -111,6 +111,8 @@ tile_set = ExtResource("4_u4hdh")
 [node name="NPC" parent="Level" instance=ExtResource("7_mrsys")]
 dialog = SubResource("Resource_lk5cx")
 cooldown = -1.0
+one_time = true
+unique_id = 3
 
 [node name="Player" parent="Level" instance=ExtResource("5_wwy4t")]
 use_parent_material = true
