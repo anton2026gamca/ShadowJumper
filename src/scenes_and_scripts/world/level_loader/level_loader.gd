@@ -8,6 +8,8 @@ class_name LevelLoaderClass
 var is_in_level: bool = false
 @onready var ui: LevelsUI = $UICanvasLayer/UI
 
+@export var energy_on_player_death: float = -100
+
 signal exit_level_signal(args: Array)
 
 
@@ -45,6 +47,7 @@ func exit_level(args: Array) -> void:
 func player_died(reason: String) -> void:
 	if not is_in_level:
 		return
+	Settings.collect(energy_on_player_death)
 	ui.open_respawn_menu(reason)
 
 func level_defeated() -> void:

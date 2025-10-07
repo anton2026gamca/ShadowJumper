@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bjqre1u28q6d3"
-path="res://.godot/imported/npc-handnig_over.png-e6d9be35d20657eac7ca2b1fa472c319.ctex"
+path="res://.godot/imported/npc-handnig_over.png-e344614cbd671ecbf8a660a1207e7282.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/npc-handnig_over.png"
-dest_files=["res://.godot/imported/npc-handnig_over.png-e6d9be35d20657eac7ca2b1fa472c319.ctex"]
+source_file="res://assets/sprites/npcs/npc-handnig_over.png"
+dest_files=["res://.godot/imported/npc-handnig_over.png-e344614cbd671ecbf8a660a1207e7282.ctex"]
 
 [params]
 

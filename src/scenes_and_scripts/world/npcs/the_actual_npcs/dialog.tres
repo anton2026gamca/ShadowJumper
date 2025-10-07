@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="NPCDialog" load_steps=11 format=3 uid="uid://dd062fwxyf0gd"]
 
-[ext_resource type="Texture2D" uid="uid://c8de18v2jb1yl" path="res://assets/sprites/npc-remote.png" id="1_4wc62"]
+[ext_resource type="Texture2D" uid="uid://c8de18v2jb1yl" path="res://assets/sprites/npcs/npc-remote.png" id="1_4wc62"]
 [ext_resource type="Script" uid="uid://dfa7rp0fl76u0" path="res://scenes_and_scripts/world/npcs/npc_dialog_message.gd" id="2_tf3pw"]
 [ext_resource type="Script" uid="uid://bopmq062we6q8" path="res://scenes_and_scripts/world/npcs/npc_dialog_answer.gd" id="3_jv63p"]
 [ext_resource type="Script" uid="uid://d4mqy1pvl1f2t" path="res://scenes_and_scripts/world/npcs/npc_dialog_answer_message.gd" id="4_ifjnc"]
