@@ -19,6 +19,7 @@ var default_texture: Texture2D
 func _ready() -> void:
 	default_texture = sprite.texture
 	enable_in_editor = false
+	if Engine.is_editor_hint(): return
 	Helpers.player = self
 
 func _physics_process(_delta: float) -> void:
