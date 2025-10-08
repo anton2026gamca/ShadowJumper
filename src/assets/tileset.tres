@@ -1,10 +1,11 @@
-[gd_resource type="TileSet" load_steps=23 format=3 uid="uid://8h4fm7v55cnx"]
+[gd_resource type="TileSet" load_steps=24 format=3 uid="uid://8h4fm7v55cnx"]
 
 [ext_resource type="Texture2D" uid="uid://bv83repei4m1" path="res://assets/sprites/tileset.png" id="1_fcvr3"]
 [ext_resource type="PackedScene" uid="uid://dv4h5nvuumsjq" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom_2.tscn" id="2_7lii3"]
 [ext_resource type="PackedScene" uid="uid://cbh2h5bldnuj1" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom_0.tscn" id="2_fcvr3"]
 [ext_resource type="PackedScene" uid="uid://r3q7wdh33v34" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom_1.tscn" id="3_7lii3"]
 [ext_resource type="PackedScene" uid="uid://dqdt5a5wq4x4t" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom_3.tscn" id="3_uyjym"]
+[ext_resource type="PackedScene" uid="uid://dkkxade50jygv" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/shop/shop.tscn" id="6_80oah"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_uyjym"]
 tile_data = PackedInt32Array(0, 327680, 92, 1, 458752, 92)
@@ -821,6 +822,7 @@ scenes/1/scene = ExtResource("2_7lii3")
 scenes/2/scene = ExtResource("3_uyjym")
 scenes/3/scene = ExtResource("2_fcvr3")
 scenes/4/scene = ExtResource("3_7lii3")
+scenes/6/scene = ExtResource("6_80oah")
 
 [resource]
 physics_layer_0/collision_layer = 1

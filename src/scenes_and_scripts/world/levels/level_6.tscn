@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="9_v8mns"]
 [ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/ground_animals/boar.tscn" id="10_0ki8w"]
 [ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="11_0ki8w"]
-[ext_resource type="PackedScene" uid="uid://2e00skn1yx48" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/powerup_npc.tscn" id="11_v8mns"]
+[ext_resource type="PackedScene" uid="uid://2e00skn1yx48" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/powerup_npc/powerup_npc.tscn" id="11_v8mns"]
 [ext_resource type="PackedScene" uid="uid://chjn3iar4wktf" path="res://scenes_and_scripts/components/powerups/health_powerup.tscn" id="12_huy6g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cffxb"]

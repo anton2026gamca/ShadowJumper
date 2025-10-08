@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://2e00skn1yx48"]
 
 [ext_resource type="PackedScene" uid="uid://b7yk06l614q6o" path="res://scenes_and_scripts/world/npcs/npc.tscn" id="1_cfx5f"]
-[ext_resource type="Script" uid="uid://bvpygji5nfrep" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/powerup_npc.gd" id="2_k8mng"]
+[ext_resource type="Script" uid="uid://bvpygji5nfrep" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/powerup_npc/powerup_npc.gd" id="2_k8mng"]
 [ext_resource type="Script" uid="uid://dfa7rp0fl76u0" path="res://scenes_and_scripts/world/npcs/npc_dialog_message.gd" id="3_tonsg"]
 [ext_resource type="Script" uid="uid://bopmq062we6q8" path="res://scenes_and_scripts/world/npcs/npc_dialog_answer.gd" id="4_nnsb4"]
 [ext_resource type="Texture2D" uid="uid://c8de18v2jb1yl" path="res://assets/sprites/npcs/npc-remote.png" id="5_6nw71"]
