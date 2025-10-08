@@ -1,20 +1,75 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkkxade50jygv"]
+[gd_scene load_steps=18 format=3 uid="uid://dkkxade50jygv"]
 
 [ext_resource type="PackedScene" uid="uid://b7yk06l614q6o" path="res://scenes_and_scripts/world/npcs/npc.tscn" id="1_4gc4v"]
 [ext_resource type="Texture2D" uid="uid://bsqty6shauyt0" path="res://assets/sprites/objects-tileset.png" id="2_vfcax"]
 [ext_resource type="Script" uid="uid://d3i06b4rc34av" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/shop/shop.gd" id="3_vfcax"]
+[ext_resource type="Script" uid="uid://dfa7rp0fl76u0" path="res://scenes_and_scripts/world/npcs/npc_dialog_message.gd" id="4_vxyb2"]
+[ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="5_f3rgw"]
+[ext_resource type="Script" uid="uid://bopmq062we6q8" path="res://scenes_and_scripts/world/npcs/npc_dialog_answer.gd" id="5_g0kg5"]
+[ext_resource type="Script" uid="uid://d4mqy1pvl1f2t" path="res://scenes_and_scripts/world/npcs/npc_dialog_answer_message.gd" id="6_143t1"]
+[ext_resource type="Texture2D" uid="uid://dxljy13wbru12" path="res://assets/sprites/light_textures/shop.png" id="6_f3rgw"]
+[ext_resource type="Script" uid="uid://t7tacfv5lkiv" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/shop/shop_item.gd" id="6_k2jvw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ym84"]
 atlas = ExtResource("2_vfcax")
+region = Rect2(0, 0, 112, 64)
+
+[sub_resource type="Resource" id="Resource_143t1"]
+script = ExtResource("6_k2jvw")
+name = "Item 1"
+price = 25
+stock = 10
+metadata/_custom_type_script = "uid://t7tacfv5lkiv"
+
+[sub_resource type="Resource" id="Resource_s4jip"]
+script = ExtResource("6_k2jvw")
+name = "Item 2"
+price = 50
+stock = 2
+metadata/_custom_type_script = "uid://t7tacfv5lkiv"
+
+[sub_resource type="Resource" id="Resource_1vur6"]
+script = ExtResource("6_k2jvw")
+name = "Item 3"
+price = 100
+stock = 1
+metadata/_custom_type_script = "uid://t7tacfv5lkiv"
+
+[sub_resource type="Resource" id="Resource_k2jvw"]
+script = ExtResource("6_143t1")
+answers = Array[ExtResource("5_g0kg5")]([])
+message = "Hi, what do you want to buy?"
+metadata/_custom_type_script = "uid://d4mqy1pvl1f2t"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odjsg"]
+atlas = ExtResource("2_vfcax")
+region = Rect2(0, 0, 112, 64)
+
+[sub_resource type="Resource" id="Resource_g0kg5"]
+script = ExtResource("5_f3rgw")
+character_name = "Shop"
+character_name_color = Color(0.505882, 0.729412, 0.156863, 1)
+character_default_sprite = SubResource("AtlasTexture_odjsg")
+messages = Array[ExtResource("4_vxyb2")]([SubResource("Resource_k2jvw")])
+metadata/_custom_type_script = "uid://bi3gy0kfnyuym"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vfcax"]
 size = Vector2(80, 64)
 
-[node name="NPC" instance=ExtResource("1_4gc4v")]
+[node name="Shop" instance=ExtResource("1_4gc4v")]
+z_index = -1
 texture = SubResource("AtlasTexture_0ym84")
 offset = Vector2(0, -24)
 script = ExtResource("3_vfcax")
+items_on_sale = Array[ExtResource("6_k2jvw")]([SubResource("Resource_143t1"), SubResource("Resource_s4jip"), SubResource("Resource_1vur6")])
+pick_item_message = SubResource("Resource_k2jvw")
+dialog = SubResource("Resource_g0kg5")
+cooldown = 0.0
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_vfcax")
+
+[node name="PointLight2D" type="PointLight2D" parent="." index="1"]
+position = Vector2(0, -9)
+texture = ExtResource("6_f3rgw")

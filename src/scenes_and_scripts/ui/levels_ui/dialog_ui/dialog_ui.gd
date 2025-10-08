@@ -65,9 +65,9 @@ func _play_message(dialog: NPCDialog, msg: NPCDialogMessage) -> void:
 			answers_container.remove_child(child)
 			child.queue_free()
 		for i: int in len(msg.answers):
-			var answer_node: Button = answer_scene.instantiate()
+			var answer_node: AnswerOption = answer_scene.instantiate()
 			answer_node.text = msg.answers[i].text
-			answer_node.pressed.connect(_on_answer_selected.bind(i))
+			answer_node.button.pressed.connect(_on_answer_selected.bind(i))
 			answers_container.add_child(answer_node)
 	
 	var tween: Tween = create_tween()
@@ -90,7 +90,7 @@ func _play_message(dialog: NPCDialog, msg: NPCDialogMessage) -> void:
 			typing_sound.stop()
 			if msg is NPCDialogAnswerMessage:
 				answers_container.visible = true
-				answers_container.get_child(0).grab_focus()
+				if answers_container.get_child(0): answers_container.get_child(0).grab_focus()
 				buttons_container.visible = false
 		elif intr[0] == "next":
 			break

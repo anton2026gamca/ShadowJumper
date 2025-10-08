@@ -9,6 +9,14 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwopw"]
 bg_color = Color(0, 0, 0, 0.666667)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eav7e"]
 shader = ExtResource("2_ae537")
@@ -36,32 +44,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="UI"]
+[node name="Panel" type="PanelContainer" parent="UI"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -407.0
-offset_top = -211.0
+offset_top = -213.0
 offset_right = 407.0
-offset_bottom = -22.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_pwopw")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = -8.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 
 [node name="Sprite" type="TextureRect" parent="UI/Panel/HBoxContainer"]
 material = SubResource("ShaderMaterial_eav7e")
@@ -95,11 +94,13 @@ size_flags_vertical = 3
 theme = ExtResource("4_t18u5")
 bbcode_enabled = true
 text = "No message!"
+fit_content = true
 visible_characters_behavior = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/Panel/HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 5
 
 [node name="Answers" type="VBoxContainer" parent="UI/Panel/HBoxContainer/VBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
