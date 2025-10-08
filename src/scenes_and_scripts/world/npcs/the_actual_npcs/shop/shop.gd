@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 
 
 func parse_items() -> void:
+	pick_item_message.answers = []
 	for item: ShopItem in items_on_sale:
 		var message: String = ""
 		message += "[color=gold]"
@@ -23,8 +24,8 @@ func parse_items() -> void:
 		message += "[color=grey] | [/color]"
 		message += "[color=" + ("gray" if item.stock > 0 else "red") + "]"
 		for i: int in range(2 - len(str(item.stock))):
-			message += str(item.stock) + " "
-		message += "[/color]"
+			message += " "
+		message += str(item.stock) + "[/color]"
 		message += "[color=grey] | [/color]"
 		message += item.name
 		var answer: NPCDialogAnswer = NPCDialogAnswer.new()
