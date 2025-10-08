@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cdort0sw0grtb"]
+[gd_scene load_steps=32 format=4 uid="uid://cdort0sw0grtb"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_v8hid"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_0ki8w"]
@@ -19,8 +19,6 @@
 [ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="11_0ki8w"]
 [ext_resource type="PackedScene" uid="uid://2e00skn1yx48" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/powerup_npc.tscn" id="11_v8mns"]
 [ext_resource type="PackedScene" uid="uid://chjn3iar4wktf" path="res://scenes_and_scripts/components/powerups/health_powerup.tscn" id="12_huy6g"]
-[ext_resource type="Texture2D" uid="uid://cvhb1jxjipjp2" path="res://assets/sprites/npcs/npc-energy.png" id="20_xp644"]
-[ext_resource type="Texture2D" uid="uid://b0sacsmluvo1l" path="res://assets/sprites/npcs/npc.png" id="21_qbaq7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cffxb"]
 shader = ExtResource("1_v8hid")
@@ -205,16 +203,6 @@ theme_override_font_sizes/normal_font_size = 6
 text = "You can kill animals with the help of the bee!"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Npc-energy" type="Sprite2D" parent="Level"]
-use_parent_material = true
-position = Vector2(111, -1264)
-texture = ExtResource("20_xp644")
-
-[node name="Npc" type="Sprite2D" parent="Level"]
-use_parent_material = true
-position = Vector2(126, -1264)
-texture = ExtResource("21_qbaq7")
 
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]
