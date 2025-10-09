@@ -22,8 +22,5 @@ func pause(instant: bool = false) -> void:
 	ui_layer.process_mode = Node.PROCESS_MODE_PAUSABLE
 
 
-func _process(delta: float) -> void:
-	print(Settings.total_collected_energy)
-
 func _on_main_menu_closed() -> void:
 	play()

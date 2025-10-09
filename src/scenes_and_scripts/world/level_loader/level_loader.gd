@@ -23,6 +23,9 @@ func _process(_delta: float) -> void:
 
 
 func load_level(level: PackedScene, skip_story: bool = false) -> void:
+	if Settings.total_collected_energy < 0:
+		Settings.collect(-Settings.total_collected_energy)
+	Settings.level_collected_energy = 0
 	current_level = level
 	var node: Level = level.instantiate()
 	current_level_node = node
@@ -69,7 +72,4 @@ func reload_level() -> void:
 	level_parent.remove_child(current_level_node)
 	current_level_node.queue_free()
 	current_level_node = null
-	Settings.level_collected_energy = 0
-	if Settings.total_collected_energy < 0:
-		Settings.collect(-Settings.total_collected_energy)
 	load_level(current_level, true)
