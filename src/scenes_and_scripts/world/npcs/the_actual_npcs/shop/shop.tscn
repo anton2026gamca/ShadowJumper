@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dkkxade50jygv"]
+[gd_scene load_steps=21 format=3 uid="uid://dkkxade50jygv"]
 
 [ext_resource type="PackedScene" uid="uid://b7yk06l614q6o" path="res://scenes_and_scripts/world/npcs/npc.tscn" id="1_4gc4v"]
 [ext_resource type="Texture2D" uid="uid://bsqty6shauyt0" path="res://assets/sprites/objects-tileset.png" id="2_vfcax"]
@@ -35,6 +35,21 @@ price = 100
 stock = 0
 metadata/_custom_type_script = "uid://t7tacfv5lkiv"
 
+[sub_resource type="Resource" id="Resource_xsj7n"]
+script = ExtResource("4_vxyb2")
+message = "Great! You just bought [color=lime]{item_name}[/color] for [color=gold]{item_price} E[/color]!"
+metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
+
+[sub_resource type="Resource" id="Resource_1l807"]
+script = ExtResource("4_vxyb2")
+message = "Hmmm. Looks like [color=lime]{item_name}[/color] is [color=red]out of stock[/color]!"
+metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
+
+[sub_resource type="Resource" id="Resource_bs1v0"]
+script = ExtResource("4_vxyb2")
+message = "Oh, [color=gold]{player_energy} E[/color] is [color=red]not enough[/color] for [color=lime]{item_name}[/color]. It costs [color=gold]{item_price}[/color]!"
+metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
+
 [sub_resource type="Resource" id="Resource_k2jvw"]
 script = ExtResource("6_143t1")
 answers = Array[ExtResource("5_g0kg5")]([])
@@ -62,6 +77,9 @@ texture = SubResource("AtlasTexture_0ym84")
 offset = Vector2(0, -24)
 script = ExtResource("3_vfcax")
 items_on_sale = Array[ExtResource("6_k2jvw")]([SubResource("Resource_143t1"), SubResource("Resource_s4jip"), SubResource("Resource_1vur6")])
+bought_item_messages = Array[ExtResource("4_vxyb2")]([SubResource("Resource_xsj7n")])
+out_of_stock_messages = Array[ExtResource("4_vxyb2")]([SubResource("Resource_1l807")])
+not_enough_energy_messages = Array[ExtResource("4_vxyb2")]([SubResource("Resource_bs1v0")])
 pick_item_message = SubResource("Resource_k2jvw")
 dialog = SubResource("Resource_g0kg5")
 cooldown = 0.0
