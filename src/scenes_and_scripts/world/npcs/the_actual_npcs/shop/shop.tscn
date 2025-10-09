@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dkkxade50jygv"]
+[gd_scene load_steps=23 format=3 uid="uid://dkkxade50jygv"]
 
 [ext_resource type="PackedScene" uid="uid://b7yk06l614q6o" path="res://scenes_and_scripts/world/npcs/npc.tscn" id="1_4gc4v"]
 [ext_resource type="Texture2D" uid="uid://bsqty6shauyt0" path="res://assets/sprites/objects-tileset.png" id="2_vfcax"]
@@ -31,25 +31,17 @@ color = Color(0.4982, 0.56447, 0.94, 1)
 sprite = SubResource("AtlasTexture_s4jip")
 metadata/_custom_type_script = "uid://cqsv7sa8mhuuk"
 
-[sub_resource type="Resource" id="Resource_s4jip"]
-script = ExtResource("6_k2jvw")
-name = "Item 2"
-price = 50
-stock = 2
-color = Color(0.941176, 0.501961, 0.501961, 1)
-metadata/_custom_type_script = "uid://t7tacfv5lkiv"
-
 [sub_resource type="Resource" id="Resource_1vur6"]
 script = ExtResource("6_k2jvw")
-name = "Item 3"
-price = 100
+name = "Mystery Item"
+price = 1000
 stock = 0
 color = Color(0.941176, 0.501961, 0.501961, 1)
 metadata/_custom_type_script = "uid://t7tacfv5lkiv"
 
 [sub_resource type="Resource" id="Resource_xsj7n"]
 script = ExtResource("4_vxyb2")
-message = "Great! You just bought [color={item_color}]{item_name}[/color] for [color={price_color}]{item_price} E[/color]!"
+message = "Great! You just bought [color={item_name_color}]{item_name}[/color] for [color={price_color}]{item_price} E[/color]!"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_1l807"]
@@ -83,7 +75,7 @@ z_index = -1
 texture = SubResource("AtlasTexture_0ym84")
 offset = Vector2(0, -24)
 script = ExtResource("3_vfcax")
-items_on_sale = Array[ExtResource("6_k2jvw")]([SubResource("Resource_awftq"), SubResource("Resource_s4jip"), SubResource("Resource_1vur6")])
+items_on_sale = Array[ExtResource("6_k2jvw")]([SubResource("Resource_awftq"), SubResource("Resource_1vur6")])
 bought_item_messages = Array[ExtResource("4_vxyb2")]([SubResource("Resource_xsj7n")])
 out_of_stock_messages = Array[ExtResource("4_vxyb2")]([SubResource("Resource_1l807")])
 not_enough_energy_messages = Array[ExtResource("4_vxyb2")]([SubResource("Resource_bs1v0")])

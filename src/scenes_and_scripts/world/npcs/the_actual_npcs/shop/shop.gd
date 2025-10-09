@@ -15,7 +15,7 @@ const ITEM_NAME: String = "{item_name}"
 const ITEM_PRICE: String = "{item_price}"
 const ITEM_STOCK: String = "{item_stock}"
 
-const ITEM_NAME_COLOR: String = "{item_color}"
+const ITEM_NAME_COLOR: String = "{item_name_color}"
 const ITEM_STOCK_COLOR: String = "{item_stock_color}"
 const PRICE_COLOR: String = "gold"
 const DELIMITER_COLOR: String = "gray"
@@ -46,10 +46,13 @@ func parse_items() -> void:
 		answer.text = parse_message(message, item)
 		answer.npc_sprite_override = item.sprite
 		pick_item_message.answers.append(answer)
+	var nothing_answer: NPCDialogAnswer = NPCDialogAnswer.new()
+	nothing_answer.text = "[color=gray]  Nothing, thanks![/color]"
+	pick_item_message.answers.append(nothing_answer)
 
 func buy_item(answer: NPCDialogAnswer) -> void:
 	var index: int = pick_item_message.answers.find(answer)
-	if index < 0: return
+	if index < 0 or index >= len(items_on_sale): return
 	var item: ShopItem = items_on_sale[index]
 	if item.stock == 0:
 		answer.next_messages = out_of_stock_messages.duplicate()
