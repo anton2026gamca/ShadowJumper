@@ -10,6 +10,8 @@ class_name Shop
 
 @export var pick_item_message: NPCDialogAnswerMessage
 
+@export var buy_nothing_sprite: Texture2D
+
 
 const ITEM_NAME: String = "{item_name}"
 const ITEM_PRICE: String = "{item_price}"
@@ -48,6 +50,7 @@ func parse_items() -> void:
 		pick_item_message.answers.append(answer)
 	var nothing_answer: NPCDialogAnswer = NPCDialogAnswer.new()
 	nothing_answer.text = "[color=gray]  Nothing, thanks![/color]"
+	nothing_answer.npc_sprite_override = buy_nothing_sprite
 	pick_item_message.answers.append(nothing_answer)
 
 func buy_item(answer: NPCDialogAnswer) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dkkxade50jygv"]
+[gd_scene load_steps=25 format=3 uid="uid://dkkxade50jygv"]
 
 [ext_resource type="PackedScene" uid="uid://b7yk06l614q6o" path="res://scenes_and_scripts/world/npcs/npc.tscn" id="1_4gc4v"]
 [ext_resource type="Texture2D" uid="uid://bsqty6shauyt0" path="res://assets/sprites/objects-tileset.png" id="2_vfcax"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://dxljy13wbru12" path="res://assets/sprites/light_textures/shop.png" id="6_f3rgw"]
 [ext_resource type="Script" uid="uid://t7tacfv5lkiv" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/shop/shop_item.gd" id="6_k2jvw"]
 [ext_resource type="Script" uid="uid://cqsv7sa8mhuuk" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/shop/shop_powerup_item.gd" id="6_xsj7n"]
+[ext_resource type="Texture2D" uid="uid://brgfgsxl86u1l" path="res://assets/sprites/questionmark.png" id="8_xsj7n"]
+[ext_resource type="Texture2D" uid="uid://phccxwrkv2i7" path="res://assets/sprites/cancel.png" id="12_1l807"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ym84"]
 atlas = ExtResource("2_vfcax")
@@ -37,6 +39,7 @@ name = "Mystery Item"
 price = 1000
 stock = 0
 color = Color(0.941176, 0.501961, 0.501961, 1)
+sprite = ExtResource("8_xsj7n")
 metadata/_custom_type_script = "uid://t7tacfv5lkiv"
 
 [sub_resource type="Resource" id="Resource_xsj7n"]
@@ -80,6 +83,7 @@ bought_item_messages = Array[ExtResource("4_vxyb2")]([SubResource("Resource_xsj7
 out_of_stock_messages = Array[ExtResource("4_vxyb2")]([SubResource("Resource_1l807")])
 not_enough_energy_messages = Array[ExtResource("4_vxyb2")]([SubResource("Resource_bs1v0")])
 pick_item_message = SubResource("Resource_k2jvw")
+buy_nothing_sprite = ExtResource("12_1l807")
 dialog = SubResource("Resource_g0kg5")
 cooldown = 0.0
 
