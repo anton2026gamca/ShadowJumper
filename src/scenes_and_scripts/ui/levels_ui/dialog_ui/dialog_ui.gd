@@ -120,7 +120,6 @@ func _on_answer_pressed(answer_option: AnswerOption) -> void:
 	_message_interrupt.emit(["answer_selected", answer_option])
 
 func _selected_answer_changed(answer_option: AnswerOption, msg: NPCDialogMessage, dialog: NPCDialog) -> void:
-	print(answer_option)
 	if answer_option.dialog_answer.npc_sprite_override:
 		npc_sprite.texture = answer_option.dialog_answer.npc_sprite_override
 	else:

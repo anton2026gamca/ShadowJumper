@@ -8,6 +8,7 @@ var current_level: LevelSelectionLevel
 @export var replay_controller: ReplayPlayerController
 
 @export var camera: CameraPlus
+@export var player: Player
 
 
 func _ready() -> void:
@@ -29,6 +30,7 @@ func _ready() -> void:
 	replay_controller.target.position = current_level.position + Vector2(0, -9)
 	camera.position = replay_controller.target.position
 	Helpers.camera = camera
+	player.health_component.lives = Settings.player_lives
 
 func _process(_delta: float) -> void:
 	if OS.is_debug_build() and Input.is_action_just_pressed("debug_toggle_levels"):
@@ -52,10 +54,12 @@ func _process(_delta: float) -> void:
 
 func enter_level() -> void:
 	Settings.last_entered_level = get_path_to(current_level)
+	Settings.player_lives = player.health_component.lives
+	var player_lives_before: int = player.health_component.lives
 	if not LevelLoader is LevelLoaderClass:
 		return
 	var parent: Node = get_parent()
-	LevelLoader.load_level(current_level.scene)
+	LevelLoader.load_level(current_level.scene, player.health_component.lives)
 	get_tree().current_scene = LevelLoader
 	ui.visible = false
 	parent.remove_child(self)
@@ -77,9 +81,15 @@ func enter_level() -> void:
 				level.visible = true
 				if current_level.number + 1 == level.number:
 					move_to_level(current_level.relationships.find_key(level))
+		var lives: int = args[1] if len(args) >= 2 and args[1] is int else 1
+		player.health_component.lives = lives
 	else:
-		var cancel_energy: bool = args[1] if len(args) >= 2 and args[1] is bool else false
-		if cancel_energy: Settings.collect(-Settings.level_collected_energy)
+		player.health_component.lives = 1
+		var cancel_progress: bool = args[1] if len(args) >= 2 and args[1] is bool else false
+		if cancel_progress:
+			Settings.collect(-Settings.level_collected_energy)
+			player.health_component.lives = player_lives_before
+	Settings.player_lives = player.health_component.lives
 	ui.collected_energy_animation()
 
 func move_to_level(dir: Vector2i) -> void:

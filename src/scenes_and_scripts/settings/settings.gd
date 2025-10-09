@@ -16,6 +16,8 @@ func collect(value: float) -> void:
 
 var disable_npcs: Array[int] = []
 
+var player_lives: int = 1
+
 signal loaded
 signal saved
 
@@ -34,13 +36,14 @@ func reset() -> void:
 	last_entered_level = ^""
 	beated_levels = []
 	disable_npcs = []
+	player_lives = 1
 
 func _save(path: String = "user://progress.dat") -> int:
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	if file == null:
 		push_error("Failed to open file \"" + path + "\" for writing")
 		return 1
-	file.store_8(total_collected_energy)
+	file.store_32(total_collected_energy)
 	var node_paths: Array[NodePath] = [last_level, last_entered_level]
 	for node_path: NodePath in beated_levels:
 		node_paths.append(node_path)
@@ -58,8 +61,10 @@ func _save(path: String = "user://progress.dat") -> int:
 	file.store_8(len(disable_npcs))
 	for id: int in disable_npcs:
 		file.store_8(id)
+	file.store_8(player_lives)
 	file.close()
 	saved.emit()
+	print("Saved")
 	return 0
 
 func _load(path: String = "user://progress.dat") -> int:
@@ -67,9 +72,7 @@ func _load(path: String = "user://progress.dat") -> int:
 	if file == null:
 		push_warning("Failed to open file \"" + path + "\" for reading")
 		return 1
-	
-	total_collected_energy = file.get_8()
-	
+	total_collected_energy = file.get_32()
 	beated_levels = []
 	for i: int in file.get_8():
 		var path_str: String = ""
@@ -84,10 +87,15 @@ func _load(path: String = "user://progress.dat") -> int:
 		if i == 0: last_level = node_path
 		elif i == 1: last_entered_level = node_path
 		else: beated_levels.append(node_path)
-	
 	for i: int in file.get_8():
 		disable_npcs.append(file.get_8())
-	
+	player_lives = file.get_8()
+	if player_lives < 1:
+		player_lives = 1
+	if file.get_error():
+		reset()
+		file.close()
+		return 1
 	file.close()
 	loaded.emit()
 	return 0
