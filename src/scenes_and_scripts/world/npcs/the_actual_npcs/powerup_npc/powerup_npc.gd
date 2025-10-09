@@ -21,8 +21,8 @@ func _ready() -> void:
 			break
 
 
-func _on_msg_answer_picked(index: int, msg: NPCDialogAnswerMessage) -> void:
-	if msg.answers[index].text == drop_powerup_answer.text:
+func _on_msg_answer_picked(answer: NPCDialogAnswer, msg: NPCDialogAnswerMessage) -> void:
+	if answer.text == drop_powerup_answer.text:
 		if powerup and Settings.total_collected_energy >= 50:
 			Settings.collect(-50)
 			Helpers.spawn_powerup(get_parent(), powerup, Helpers.player.global_position)

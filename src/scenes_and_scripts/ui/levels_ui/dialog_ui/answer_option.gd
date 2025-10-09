@@ -4,6 +4,7 @@ class_name AnswerOption
 
 @export var rich_text_label: RichTextLabel
 @export var button: Button
+var dialog_answer: NPCDialogAnswer
 
 
 var text: String:

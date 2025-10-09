@@ -11,45 +11,71 @@ class_name Shop
 @export var pick_item_message: NPCDialogAnswerMessage
 
 
+const ITEM_NAME: String = "{item_name}"
+const ITEM_PRICE: String = "{item_price}"
+const ITEM_STOCK: String = "{item_stock}"
+
+const ITEM_NAME_COLOR: String = "{item_color}"
+const ITEM_STOCK_COLOR: String = "{item_stock_color}"
+const PRICE_COLOR: String = "gold"
+const DELIMITER_COLOR: String = "gray"
+
+const IN_STOCK_COLOR: String = "lime"
+const OUT_OF_STOCK_COLOR: String = "red"
+const INF_STOCK_COLOR: String = "gray"
+
+
 func parse_items() -> void:
 	pick_item_message.answers = []
 	if not pick_item_message.answer_picked.is_connected(buy_item):
 		pick_item_message.answer_picked.connect(buy_item)
 	for item: ShopItem in items_on_sale:
 		var message: String = ""
-		message += "[color=gold]"
-		for i: int in range(4 - len(str(item.price))):
+		message += "[color=" + PRICE_COLOR + "]"
+		for i: int in range(4 - len(parse_message(ITEM_PRICE, item))):
 			message += " "
-		message += str(item.price) + " E[/color]"
-		message += "[color=grey] | [/color]"
-		message += "[color=" + ("gray" if item.stock > 0 else "red") + "]"
-		for i: int in range(2 - len(str(item.stock))):
+		message += ITEM_PRICE + " E[/color]"
+		message += "[color=" + DELIMITER_COLOR + "] | [/color]"
+		message += "[color=" + ITEM_STOCK_COLOR + "]"
+		for i: int in range(3 - len(parse_message(ITEM_STOCK, item))):
 			message += " "
-		message += str(item.stock) + "[/color]"
-		message += "[color=grey] | [/color]"
-		message += item.name
+		message += ITEM_STOCK + "[/color]"
+		message += "[color=" + DELIMITER_COLOR + "] | [/color]"
+		message += "[color=" + ITEM_NAME_COLOR + "]" + ITEM_NAME + "[/color]"
 		var answer: NPCDialogAnswer = NPCDialogAnswer.new()
-		answer.text = message
+		answer.text = parse_message(message, item)
+		answer.npc_sprite_override = item.sprite
 		pick_item_message.answers.append(answer)
 
-func buy_item(index: int) -> void:
-	var dialog_answer: NPCDialogAnswer = pick_item_message.answers[index]
+func buy_item(answer: NPCDialogAnswer) -> void:
+	var index: int = pick_item_message.answers.find(answer)
+	if index < 0: return
 	var item: ShopItem = items_on_sale[index]
-	if items_on_sale[index].stock <= 0:
-		dialog_answer.next_messages = out_of_stock_messages.duplicate()
+	if item.stock == 0:
+		answer.next_messages = out_of_stock_messages.duplicate()
 	elif Settings.total_collected_energy < item.price:
-		dialog_answer.next_messages = not_enough_energy_messages.duplicate()
+		answer.next_messages = not_enough_energy_messages.duplicate()
 	else:
-		dialog_answer.next_messages = bought_item_messages.duplicate()
-		items_on_sale[index].stock -= 1
+		answer.next_messages = bought_item_messages.duplicate()
+		item.stock -= 1
 		Settings.collect(-item.price)
-	for i: int in len(dialog_answer.next_messages):
-		var msg: NPCDialogMessage = dialog_answer.next_messages[i].duplicate()
-		msg.message = msg.message.replace("{item_name}", item.name)\
-			.replace("{item_stock}", str(item.stock))\
-			.replace("{item_price}", str(item.price))\
-			.replace("{player_energy}", str(int(Settings.total_collected_energy)))
-		dialog_answer.next_messages[i] = msg
+		if item is ShopPowerupItem:
+			Helpers.spawn_powerup(self, item.powerup, Vector2.ZERO)
+	
+	for i: int in len(answer.next_messages):
+		var msg: NPCDialogMessage = answer.next_messages[i].duplicate()
+		msg.message = parse_message(msg.message, item)
+		answer.next_messages[i] = msg
+
+func parse_message(msg: String, item: ShopItem) -> String:
+	return msg\
+		.replace(ITEM_NAME, item.name)\
+		.replace(ITEM_PRICE, str(item.price))\
+		.replace(ITEM_STOCK, str(item.stock) if item.stock >= 0 else "INF")\
+		.replace(ITEM_NAME_COLOR, "#" + item.color.to_html(false))\
+		.replace("{price_color}", PRICE_COLOR)\
+		.replace(ITEM_STOCK_COLOR, IN_STOCK_COLOR if item.stock > 0 else (OUT_OF_STOCK_COLOR if item.stock == 0 else INF_STOCK_COLOR))\
+		.replace("{player_energy}", str(int(Settings.total_collected_energy)))
 
 func _on_body_entered(body: Node2D) -> void:
 	parse_items()

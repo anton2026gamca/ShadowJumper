@@ -1,31 +1,42 @@
-[gd_scene load_steps=21 format=3 uid="uid://dkkxade50jygv"]
+[gd_scene load_steps=24 format=3 uid="uid://dkkxade50jygv"]
 
 [ext_resource type="PackedScene" uid="uid://b7yk06l614q6o" path="res://scenes_and_scripts/world/npcs/npc.tscn" id="1_4gc4v"]
 [ext_resource type="Texture2D" uid="uid://bsqty6shauyt0" path="res://assets/sprites/objects-tileset.png" id="2_vfcax"]
 [ext_resource type="Script" uid="uid://d3i06b4rc34av" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/shop/shop.gd" id="3_vfcax"]
 [ext_resource type="Script" uid="uid://dfa7rp0fl76u0" path="res://scenes_and_scripts/world/npcs/npc_dialog_message.gd" id="4_vxyb2"]
+[ext_resource type="PackedScene" uid="uid://chjn3iar4wktf" path="res://scenes_and_scripts/components/powerups/health_powerup.tscn" id="5_1vur6"]
 [ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="5_f3rgw"]
 [ext_resource type="Script" uid="uid://bopmq062we6q8" path="res://scenes_and_scripts/world/npcs/npc_dialog_answer.gd" id="5_g0kg5"]
+[ext_resource type="Texture2D" uid="uid://bcavn8smqfc2i" path="res://assets/sprites/powerup.png" id="5_k2jvw"]
 [ext_resource type="Script" uid="uid://d4mqy1pvl1f2t" path="res://scenes_and_scripts/world/npcs/npc_dialog_answer_message.gd" id="6_143t1"]
 [ext_resource type="Texture2D" uid="uid://dxljy13wbru12" path="res://assets/sprites/light_textures/shop.png" id="6_f3rgw"]
 [ext_resource type="Script" uid="uid://t7tacfv5lkiv" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/shop/shop_item.gd" id="6_k2jvw"]
+[ext_resource type="Script" uid="uid://cqsv7sa8mhuuk" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/shop/shop_powerup_item.gd" id="6_xsj7n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ym84"]
 atlas = ExtResource("2_vfcax")
 region = Rect2(0, 0, 112, 64)
 
-[sub_resource type="Resource" id="Resource_143t1"]
-script = ExtResource("6_k2jvw")
-name = "Item 1"
-price = 25
-stock = 10
-metadata/_custom_type_script = "uid://t7tacfv5lkiv"
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4jip"]
+atlas = ExtResource("5_k2jvw")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="Resource" id="Resource_awftq"]
+script = ExtResource("6_xsj7n")
+powerup = ExtResource("5_1vur6")
+name = "Health Powerup"
+price = 250
+stock = -1
+color = Color(0.4982, 0.56447, 0.94, 1)
+sprite = SubResource("AtlasTexture_s4jip")
+metadata/_custom_type_script = "uid://cqsv7sa8mhuuk"
 
 [sub_resource type="Resource" id="Resource_s4jip"]
 script = ExtResource("6_k2jvw")
 name = "Item 2"
 price = 50
 stock = 2
+color = Color(0.941176, 0.501961, 0.501961, 1)
 metadata/_custom_type_script = "uid://t7tacfv5lkiv"
 
 [sub_resource type="Resource" id="Resource_1vur6"]
@@ -33,21 +44,22 @@ script = ExtResource("6_k2jvw")
 name = "Item 3"
 price = 100
 stock = 0
+color = Color(0.941176, 0.501961, 0.501961, 1)
 metadata/_custom_type_script = "uid://t7tacfv5lkiv"
 
 [sub_resource type="Resource" id="Resource_xsj7n"]
 script = ExtResource("4_vxyb2")
-message = "Great! You just bought [color=lime]{item_name}[/color] for [color=gold]{item_price} E[/color]!"
+message = "Great! You just bought [color={item_color}]{item_name}[/color] for [color={price_color}]{item_price} E[/color]!"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_1l807"]
 script = ExtResource("4_vxyb2")
-message = "Hmmm. Looks like [color=lime]{item_name}[/color] is [color=red]out of stock[/color]!"
+message = "Hmmm. Looks like [color={item_name_color}]{item_name}[/color] is [color=red]out of stock[/color]!"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_bs1v0"]
 script = ExtResource("4_vxyb2")
-message = "Oh, [color=gold]{player_energy} E[/color] is [color=red]not enough[/color] for [color=lime]{item_name}[/color]. It costs [color=gold]{item_price}[/color]!"
+message = "Oh, [color={price_color}]{player_energy} E[/color] is [color=red]not enough[/color] for [color={item_name_color}]{item_name}[/color]. It costs [color={price_color}]{item_price}[/color]!"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_k2jvw"]
@@ -56,15 +68,10 @@ answers = Array[ExtResource("5_g0kg5")]([])
 message = "Hi, what do you want to buy?"
 metadata/_custom_type_script = "uid://d4mqy1pvl1f2t"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_odjsg"]
-atlas = ExtResource("2_vfcax")
-region = Rect2(0, 0, 112, 64)
-
 [sub_resource type="Resource" id="Resource_g0kg5"]
 script = ExtResource("5_f3rgw")
 character_name = "Shop"
 character_name_color = Color(0.505882, 0.729412, 0.156863, 1)
-character_default_sprite = SubResource("AtlasTexture_odjsg")
 messages = Array[ExtResource("4_vxyb2")]([SubResource("Resource_k2jvw")])
 metadata/_custom_type_script = "uid://bi3gy0kfnyuym"
 
@@ -76,7 +83,7 @@ z_index = -1
 texture = SubResource("AtlasTexture_0ym84")
 offset = Vector2(0, -24)
 script = ExtResource("3_vfcax")
-items_on_sale = Array[ExtResource("6_k2jvw")]([SubResource("Resource_143t1"), SubResource("Resource_s4jip"), SubResource("Resource_1vur6")])
+items_on_sale = Array[ExtResource("6_k2jvw")]([SubResource("Resource_awftq"), SubResource("Resource_s4jip"), SubResource("Resource_1vur6")])
 bought_item_messages = Array[ExtResource("4_vxyb2")]([SubResource("Resource_xsj7n")])
 out_of_stock_messages = Array[ExtResource("4_vxyb2")]([SubResource("Resource_1l807")])
 not_enough_energy_messages = Array[ExtResource("4_vxyb2")]([SubResource("Resource_bs1v0")])
