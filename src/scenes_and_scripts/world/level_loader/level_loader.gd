@@ -59,6 +59,7 @@ func player_died(reason: String) -> void:
 func level_defeated() -> void:
 	if not is_in_level:
 		return
+	var player_lives: int = Helpers.player.health_component.lives
 	is_in_level = false
 	ui.full_screen_text.visible = true
 	ui.full_screen_text.text = "LEVEL\nDEFEATED !!!"
@@ -69,7 +70,7 @@ func level_defeated() -> void:
 	await get_tree().create_timer(3).timeout
 	ui.full_screen_text.visible = false
 	ui.full_screen_text.process_mode = Node.PROCESS_MODE_PAUSABLE
-	exit_level([true, Helpers.player.health_component.lives])
+	exit_level([true, player_lives])
 
 func reload_level() -> void:
 	level_parent.remove_child(current_level_node)
