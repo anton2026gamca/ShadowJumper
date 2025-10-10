@@ -69,7 +69,6 @@ func enter_level() -> void:
 	get_tree().current_scene = Helpers.main_menu
 	camera.make_current()
 	Helpers.camera = camera
-	Settings._save()
 	var defeated: bool = args[0] if len(args) >= 1 and args[0] is bool else false
 	if defeated:
 		if not current_level.is_completed:
@@ -91,6 +90,7 @@ func enter_level() -> void:
 			player.health_component.lives = player_lives_before
 	Settings.player_lives = player.health_component.lives
 	ui.collected_energy_animation()
+	Settings._save()
 
 func move_to_level(dir: Vector2i) -> void:
 	var new_level: LevelSelectionLevel = current_level.relationships[dir] if dir in current_level.relationships else null

@@ -24,7 +24,6 @@ func _process(delta: float) -> void:
 	if after_death_mode:
 		global_position.x += death_mode_velocity_x * delta
 		death_mode_velocity_x = move_toward(death_mode_velocity_x, 0, 180 * delta)
-		print(death_mode_velocity_x)
 	elif follow:
 		var x_before: float = global_position.x
 		global_position.x = move_toward(global_position.x, follow.global_position.x, follow_speed.x * delta)
