@@ -4,7 +4,7 @@ class_name Player
 
 
 @onready var death_audio: AudioStreamPlayer2D = $DeathAudio
-@onready var sprite: Sprite2D = $Sprite
+@onready var sprite: AnimatedSprite2D = $Sprite
 
 var enable_in_editor: bool = false
 var controller: PlayerController
@@ -13,13 +13,10 @@ var controller: PlayerController
 signal died(reason: String)
 signal took_damage(reason: String)
 
-var default_texture: Texture2D
-
 @onready var death_particles: CPUParticles2D = $DeathParticles
 
 
 func _ready() -> void:
-	default_texture = sprite.texture
 	enable_in_editor = false
 	if Engine.is_editor_hint(): return
 	Helpers.player = self
@@ -27,6 +24,24 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint() and not enable_in_editor:
 		return
+	
+	var anim: String = ""
+	#if abs(velocity.y) > abs(velocity.x):
+		#if velocity.y < 0:
+			#anim = "up"
+		#elif velocity.y > 0:
+			#anim = "down"
+	#else:
+	if velocity.x < 0:
+		anim = "left"
+	elif velocity.x > 0:
+		anim = "right"
+	
+	if anim != "" and sprite.frame == 0:
+		sprite.play(anim)
+	elif anim == "" and sprite.frame != 0:
+		sprite.play_backwards(sprite.animation)
+	
 	move_and_slide()
 
 func _on_death_component_die(reason: String, instant_kill: bool = false) -> void:
@@ -49,8 +64,6 @@ func pickup_powerup(powerup_scene: PackedScene) -> Powerup:
 		return null
 	node.activate(self)
 	add_child(node)
-	#if node.player_texture_when_active:
-		#sprite.texture = node.player_texture_when_active
 	return node
 
 func emit_death_particles() -> void:

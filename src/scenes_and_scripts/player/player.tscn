@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://f5m7vw1vj4fd"]
+[gd_scene load_steps=36 format=3 uid="uid://f5m7vw1vj4fd"]
 
 [ext_resource type="Script" uid="uid://hrc23450dtph" path="res://scenes_and_scripts/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bnpceuwymc5n" path="res://scenes_and_scripts/player/states/player_walk.gd" id="2_dovo2"]
@@ -19,6 +19,113 @@
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="16_mwrsu"]
 [ext_resource type="Texture2D" uid="uid://bmsgodease4bp" path="res://assets/sprites/player/player_particle.png" id="17_ygw5f"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0dxu"]
+atlas = ExtResource("10_of6dy")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dg8x"]
+atlas = ExtResource("10_of6dy")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pvod"]
+atlas = ExtResource("10_of6dy")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqn2j"]
+atlas = ExtResource("10_of6dy")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dky0r"]
+atlas = ExtResource("10_of6dy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7li6q"]
+atlas = ExtResource("10_of6dy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqqkg"]
+atlas = ExtResource("10_of6dy")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbhgm"]
+atlas = ExtResource("10_of6dy")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y04a1"]
+atlas = ExtResource("10_of6dy")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idn0m"]
+atlas = ExtResource("10_of6dy")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6p5k"]
+atlas = ExtResource("10_of6dy")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kjo1"]
+atlas = ExtResource("10_of6dy")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_krtpv"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_d0dxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dg8x")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_8pvod")
+}],
+"loop": false,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_mqn2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dky0r")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_7li6q")
+}],
+"loop": false,
+"name": &"left",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_fqqkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbhgm")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_y04a1")
+}],
+"loop": false,
+"name": &"right",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_idn0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6p5k")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_1kjo1")
+}],
+"loop": false,
+"name": &"up",
+"speed": 15.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f60y1"]
 size = Vector2(16, 16)
 
@@ -33,6 +140,10 @@ shader_parameter/night_darkness = 0.7
 shader_parameter/night_contrast = 1.2
 shader_parameter/blue_shift = 0.4
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_krtpv"]
+atlas = ExtResource("10_of6dy")
+region = Rect2(32, 0, 16, 16)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 4
 collision_mask = 7
@@ -43,9 +154,10 @@ metadata/_custom_type_script = "uid://hrc23450dtph"
 lives = 1
 display_if_one_life = false
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
-texture = ExtResource("10_of6dy")
+sprite_frames = SubResource("SpriteFrames_krtpv")
+animation = &"up"
 
 [node name="DeathComponent" type="Node" parent="."]
 script = ExtResource("3_ygw5f")
@@ -159,7 +271,7 @@ process_mode = 3
 use_parent_material = true
 emitting = false
 amount = 1
-texture = ExtResource("10_of6dy")
+texture = SubResource("AtlasTexture_krtpv")
 one_shot = true
 spread = 0.0
 
