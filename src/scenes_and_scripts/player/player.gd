@@ -15,6 +15,8 @@ signal took_damage(reason: String)
 
 var default_texture: Texture2D
 
+@onready var death_particles: CPUParticles2D = $DeathParticles
+
 
 func _ready() -> void:
 	default_texture = sprite.texture
@@ -36,6 +38,9 @@ func _on_death_component_die(reason: String, instant_kill: bool = false) -> void
 	death_audio.play()
 	if health_component.lives == 0:
 		died.emit(reason)
+		sprite.visible = false
+		Helpers.camera.enter_death_mode(velocity.x)
+		emit_death_particles()
 
 func pickup_powerup(powerup_scene: PackedScene) -> Powerup:
 	var node: Node = powerup_scene.instantiate()
@@ -47,3 +52,10 @@ func pickup_powerup(powerup_scene: PackedScene) -> Powerup:
 	#if node.player_texture_when_active:
 		#sprite.texture = node.player_texture_when_active
 	return node
+
+func emit_death_particles() -> void:
+	death_particles.direction = velocity.normalized()
+	var initial_velocity: float = Vector2.ZERO.distance_to(velocity)
+	death_particles.initial_velocity_min = initial_velocity
+	death_particles.initial_velocity_max = initial_velocity
+	death_particles.emitting = true

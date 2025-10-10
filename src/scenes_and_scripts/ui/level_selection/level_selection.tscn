@@ -4486,6 +4486,14 @@ initial_velocity_min = 10.0
 initial_velocity_max = 10.0
 scale_amount_max = 3.0
 
+[node name="DeathParticles" type="CPUParticles2D" parent="Level/Player"]
+use_parent_material = true
+emitting = false
+amount = 1
+texture = ExtResource("8_hcr5e")
+one_shot = true
+spread = 0.0
+
 [node name="Fox" type="AnimatedSprite2D" parent="Level"]
 use_parent_material = true
 position = Vector2(197, 25)

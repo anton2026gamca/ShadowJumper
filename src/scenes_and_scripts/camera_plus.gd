@@ -11,6 +11,9 @@ class_name CameraPlus
 @export var shake_fade: float = 5
 @export var distance_to_value: Curve
 
+var after_death_mode: bool = false
+var death_mode_velocity_x: float
+
 var shake_value: float
 
 
@@ -18,7 +21,12 @@ func _ready() -> void:
 	Helpers.camera = self
 
 func _process(delta: float) -> void:
-	if follow:
+	if after_death_mode:
+		global_position.x += death_mode_velocity_x * delta
+		death_mode_velocity_x = move_toward(death_mode_velocity_x, 0, 180 * delta)
+		print(death_mode_velocity_x)
+	elif follow:
+		var x_before: float = global_position.x
 		global_position.x = move_toward(global_position.x, follow.global_position.x, follow_speed.x * delta)
 		global_position.y = move_toward(global_position.y, follow.global_position.y, follow_speed.y * delta)
 		if Vector2i.UP in limits:
@@ -37,3 +45,7 @@ func _process(delta: float) -> void:
 func shake(value: float, origin: Vector2) -> void:
 	var distance: float = global_position.distance_to(origin)
 	shake_value = value * distance_to_value.sample(distance)
+
+func enter_death_mode(velocity_x: float) -> void:
+	after_death_mode = true
+	death_mode_velocity_x = velocity_x
