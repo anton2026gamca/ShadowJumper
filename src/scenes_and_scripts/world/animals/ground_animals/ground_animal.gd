@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_death_component_die(reason: String) -> void:
+func _on_death_component_die(reason: String, instant_kill: bool = false) -> void:
 	if health_component.lives == 0: return
 	health_component.lives -= 1
 	if reason == "You fell from too high!": health_component.lives = 0
@@ -36,7 +36,7 @@ func _on_death_component_die(reason: String) -> void:
 		if spawn_powerup_on_death:
 			Helpers.spawn_powerup(get_parent(), spawn_powerup_on_death, global_position)
 		energy_collector_component.collect("kill")
-	await super._on_death_component_die(reason)
+	await super._on_death_component_die(reason, instant_kill)
 
 
 func get_player_die_reason() -> String:

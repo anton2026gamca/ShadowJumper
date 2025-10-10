@@ -2,10 +2,12 @@ extends NPC
 class_name PowerupNpc
 
 
-@export var powerup_issued_message: NPCDialogMessage # Great! You should've received it!
-@export var powerup_not_issued_message: NPCDialogMessage # Looks like you don't have enough energy :(
+@export var powerup_issued_message: NPCDialogMessage
+@export var powerup_not_issued_message: NPCDialogMessage
 @export var drop_powerup_answer: NPCDialogAnswer
+@export var ask_message: NPCDialogAnswerMessage
 @export var powerup: PackedScene
+@export var powerup_price: int
 
 
 func _ready() -> void:
@@ -19,12 +21,13 @@ func _ready() -> void:
 				continue
 			msg.answer_picked.connect(_on_msg_answer_picked.bind(msg))
 			break
+	ask_message.message = ask_message.message.replace("{powerup_price}", str(powerup_price))
 
 
 func _on_msg_answer_picked(answer: NPCDialogAnswer, msg: NPCDialogAnswerMessage) -> void:
 	if answer.text == drop_powerup_answer.text:
-		if powerup and Settings.total_collected_energy >= 50:
-			Settings.collect(-50)
+		if powerup and Settings.total_collected_energy >= powerup_price:
+			Settings.collect(-powerup_price)
 			Helpers.spawn_powerup(get_parent(), powerup, Helpers.player.global_position)
 			drop_powerup_answer.next_messages = [powerup_issued_message.duplicate()]
 		else:

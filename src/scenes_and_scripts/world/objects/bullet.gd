@@ -10,6 +10,8 @@ class_name Bullet
 
 @export var on_hit_screen_shake_value: float = 0
 
+@export var instant_kill: bool = false
+
 var indicator: NodeIndicator
 
 signal finished

@@ -64,7 +64,6 @@ func _save(path: String = "user://progress.dat") -> int:
 	file.store_8(player_lives)
 	file.close()
 	saved.emit()
-	print("Saved")
 	return 0
 
 func _load(path: String = "user://progress.dat") -> int:

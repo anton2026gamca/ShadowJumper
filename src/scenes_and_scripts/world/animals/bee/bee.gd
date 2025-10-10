@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_death_component_die(reason: String) -> void:
+func _on_death_component_die(reason: String, instant_kill: bool = false) -> void:
 	health_component.lives -= 1
 	if health_component.lives > 0:
 		death_audio.play()

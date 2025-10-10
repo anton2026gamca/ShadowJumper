@@ -49,7 +49,7 @@ func parse_items() -> void:
 		answer.npc_sprite_override = item.sprite
 		pick_item_message.answers.append(answer)
 	var nothing_answer: NPCDialogAnswer = NPCDialogAnswer.new()
-	nothing_answer.text = "[color=gray]  Nothing, thanks![/color]"
+	nothing_answer.text = "[color=gray]Nothing, thanks![/color]"
 	nothing_answer.npc_sprite_override = buy_nothing_sprite
 	pick_item_message.answers.append(nothing_answer)
 

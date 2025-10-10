@@ -21,11 +21,12 @@ region = Rect2(118, 14, 8, 5)
 radius = 5.0
 height = 16.0
 
-[node name="BeeBullet" instance=ExtResource("1_cfe37")]
+[node name="BeeUltimateAttackBullet" instance=ExtResource("1_cfe37")]
 script = ExtResource("2_cfe37")
 homing_rate_curve = SubResource("Curve_cfe37")
 die_reason = "You were hit by an ultimate attack of a bee!
 You went too far into it's territory!"
+instant_kill = true
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CapsuleShape2D_cfe37")

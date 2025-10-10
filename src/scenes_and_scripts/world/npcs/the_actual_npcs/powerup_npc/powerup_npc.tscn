@@ -38,7 +38,7 @@ metadata/_custom_type_script = "uid://bopmq062we6q8"
 [sub_resource type="Resource" id="Resource_huy6g"]
 script = ExtResource("6_e6jd1")
 answers = Array[ExtResource("4_nnsb4")]([SubResource("Resource_3gj6n"), SubResource("Resource_sp63k")])
-message = "If you have [color=yellow]50 E[/color], I can send you a powerup, do you want to?"
+message = "If you have [color=yellow]{powerup_price} E[/color], I can send you a powerup, do you want to?"
 metadata/_custom_type_script = "uid://d4mqy1pvl1f2t"
 
 [sub_resource type="Resource" id="Resource_ewajk"]
@@ -54,6 +54,8 @@ script = ExtResource("2_k8mng")
 powerup_issued_message = SubResource("Resource_tonsg")
 powerup_not_issued_message = SubResource("Resource_nnsb4")
 drop_powerup_answer = SubResource("Resource_3gj6n")
+ask_message = SubResource("Resource_huy6g")
 powerup = null
+powerup_price = 0
 dialog = SubResource("Resource_ewajk")
 cooldown = -1.0

@@ -27,9 +27,9 @@ func _physics_process(_delta: float) -> void:
 		return
 	move_and_slide()
 
-func _on_death_component_die(reason: String) -> void:
+func _on_death_component_die(reason: String, instant_kill: bool = false) -> void:
 	health_component.lives -= 1
-	if reason == "You fell from too high!":
+	if instant_kill:
 		health_component.lives = 0
 	took_damage.emit(reason)
 	death_audio.pitch_scale = randf() * 0.2 + 0.9

@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_death_component_die(reason: String) -> void:
+func _on_death_component_die(reason: String, instant_kill: bool = false) -> void:
 	state_machine.enabled = false
 	animation_player.play("die")
 	await animation_player.animation_finished

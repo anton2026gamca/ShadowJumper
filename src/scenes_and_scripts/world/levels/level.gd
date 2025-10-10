@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 func _on_world_bottom_limit_body_entered(body: Node2D) -> void:
 	var death_component: DeathComponent = Helpers.find_child_by_type(body, DeathComponent)
 	if death_component:
-		death_component.die(world_bottom_die_reason)
+		death_component.die(world_bottom_die_reason, true)
 
 func _on_player_died(reason: String) -> void:
 	player_died.emit(reason)
