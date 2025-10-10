@@ -1,18 +1,68 @@
-[gd_scene load_steps=5 format=3 uid="uid://biyni2x40xhof"]
+[gd_scene load_steps=12 format=3 uid="uid://biyni2x40xhof"]
 
 [ext_resource type="Texture2D" uid="uid://bsqty6shauyt0" path="res://assets/sprites/objects-tileset.png" id="1_jbog1"]
 [ext_resource type="Script" uid="uid://ddwpil5sfb638" path="res://scenes_and_scripts/world/objects/tree_spikes.gd" id="2_cmsc2"]
+[ext_resource type="Texture2D" uid="uid://drrrpb7kuabw7" path="res://assets/sprites/spikes-light.png" id="3_v0iy7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cmsc2"]
 atlas = ExtResource("1_jbog1")
-region = Rect2(16, 66, 16, 16)
+region = Rect2(80, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0iy7"]
+atlas = ExtResource("1_jbog1")
+region = Rect2(64, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv0v1"]
+atlas = ExtResource("1_jbog1")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtn1w"]
+atlas = ExtResource("1_jbog1")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_turnv"]
+atlas = ExtResource("1_jbog1")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14aij"]
+atlas = ExtResource("1_jbog1")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_43sw0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmsc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0iy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv0v1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtn1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_turnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14aij")
+}],
+"loop": false,
+"name": &"hide-show",
+"speed": 10.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbog1"]
 size = Vector2(12, 9)
 
-[node name="TreeSpikes" type="Sprite2D"]
+[node name="TreeSpikes" type="AnimatedSprite2D"]
 use_parent_material = true
-texture = SubResource("AtlasTexture_cmsc2")
+sprite_frames = SubResource("SpriteFrames_43sw0")
+animation = &"hide-show"
+frame = 5
+frame_progress = 1.0
 offset = Vector2(0, 2)
 script = ExtResource("2_cmsc2")
 
@@ -23,5 +73,9 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_jbog1")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 2)
+texture = ExtResource("3_v0iy7")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
