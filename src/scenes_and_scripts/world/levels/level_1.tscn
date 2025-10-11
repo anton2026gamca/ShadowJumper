@@ -462,14 +462,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Esc" type="Panel" parent="Level"]
+visible = false
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.25
 anchor_right = 0.5
 anchor_bottom = 0.25
-offset_left = 485.0
+offset_left = 403.0
 offset_top = -27.0
-offset_right = 586.0
+offset_right = 504.0
 offset_bottom = 27.0
 scale = Vector2(0.333, 0.333)
 
@@ -560,10 +561,15 @@ position = Vector2(1142, -64)
 rotation = -1.5708
 texture = ExtResource("10_sqshv")
 
+[node name="PowerupObject" parent="Level" instance=ExtResource("9_ty57j")]
+position = Vector2(376, 39)
+powerup = ExtResource("11_ty57j")
+pickup_audio = ExtResource("12_q3776")
+
 [node name="RebindControlsHint" type="RichTextLabel" parent="Level"]
-offset_left = -118.0
+offset_left = -281.0
 offset_top = -112.0
-offset_right = 130.0
+offset_right = -33.0
 offset_bottom = -48.0
 theme = ExtResource("9_sqshv")
 theme_override_font_sizes/normal_font_size = 6
@@ -572,11 +578,6 @@ text = "You can rebind your controls!
 Press [color=lightblue][Esc][/color]  [color=gray]->[/color]  Settings  [color=gray]->[/color]  Rebind Controls"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="PowerupObject" parent="Level" instance=ExtResource("9_ty57j")]
-position = Vector2(376, 39)
-powerup = ExtResource("11_ty57j")
-pickup_audio = ExtResource("12_q3776")
 
 [node name="PowerupHint" type="RichTextLabel" parent="Level"]
 offset_left = 252.0
@@ -588,6 +589,18 @@ theme_override_font_sizes/normal_font_size = 6
 bbcode_enabled = true
 text = "This is a [color=lightblue]powerup[/color]!
 ↓"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LongJumpHint" type="RichTextLabel" parent="Level"]
+offset_left = 889.0
+offset_top = -68.0
+offset_right = 1137.0
+offset_bottom = -4.0
+theme = ExtResource("9_sqshv")
+theme_override_font_sizes/normal_font_size = 6
+bbcode_enabled = true
+text = "Hold [color=lightblue]jump[/color] to jump higher!"
 horizontal_alignment = 1
 vertical_alignment = 1
 

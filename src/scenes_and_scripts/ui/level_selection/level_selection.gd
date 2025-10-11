@@ -86,7 +86,8 @@ func enter_level() -> void:
 		player.health_component.lives = 1
 		var cancel_progress: bool = args[1] if len(args) >= 2 and args[1] is bool else false
 		if cancel_progress:
-			Settings.collect(-Settings.level_collected_energy)
+			Settings.collect_energy(-Settings.level_collected_energy)
+			Settings.collect_rocks(-Settings.level_rocks)
 			player.health_component.lives = player_lives_before
 	Settings.player_lives = player.health_component.lives
 	ui.collected_energy_animation()

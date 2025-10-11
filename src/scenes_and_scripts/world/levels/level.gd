@@ -13,7 +13,8 @@ func _ready() -> void:
 	camera.make_current()
 
 func _process(_delta: float) -> void:
-	pass
+	if Settings.total_rocks == 0:
+		Settings.collect_rocks(20)
 
 
 func _on_world_bottom_limit_body_entered(body: Node2D) -> void:

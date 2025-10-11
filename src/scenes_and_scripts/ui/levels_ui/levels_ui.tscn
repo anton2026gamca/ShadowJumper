@@ -30,30 +30,50 @@ mouse_filter = 2
 script = ExtResource("1_ullwu")
 node_indicator_scene = ExtResource("2_1q5nf")
 
-[node name="EnergyDisplay" type="PanelContainer" parent="."]
+[node name="TopBar" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -21.5
-offset_right = 21.5
-offset_bottom = 40.0
+offset_left = -117.0
+offset_right = 117.0
+offset_bottom = 72.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nrncv")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="EnergyDisplay"]
+[node name="HBoxContainer" type="VBoxContainer" parent="TopBar"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="EnergyDisplay" type="HBoxContainer" parent="TopBar/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="EnergyDisplay/HBoxContainer"]
+[node name="Label" type="Label" parent="TopBar/HBoxContainer/EnergyDisplay"]
 layout_mode = 2
 theme = ExtResource("2_nhhd0")
 text = "Total Energy: "
 
-[node name="EnergyText" type="Label" parent="EnergyDisplay/HBoxContainer"]
+[node name="EnergyText" type="Label" parent="TopBar/HBoxContainer/EnergyDisplay"]
 layout_mode = 2
+size_flags_horizontal = 10
 theme = ExtResource("2_nhhd0")
 theme_override_font_sizes/font_size = 18
 text = "0 E"
+
+[node name="RocksDisplay" type="HBoxContainer" parent="TopBar/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TopBar/HBoxContainer/RocksDisplay"]
+layout_mode = 2
+theme = ExtResource("2_nhhd0")
+text = "Rocks: "
+
+[node name="RocksText" type="Label" parent="TopBar/HBoxContainer/RocksDisplay"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("2_nhhd0")
+theme_override_font_sizes/font_size = 18
+text = "2 R"
 
 [node name="FullScreenText" type="RichTextLabel" parent="."]
 layout_mode = 1

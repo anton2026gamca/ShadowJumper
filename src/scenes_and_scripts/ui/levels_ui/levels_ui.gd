@@ -5,8 +5,9 @@ class_name LevelsUI
 @onready var respawn_menu: RespawnMenu = $RespawnMenu
 @onready var full_screen_text: RichTextLabel = $FullScreenText
 @onready var dialog_ui: DialogUI = $DialogUI
-@onready var energy_display: PanelContainer = $EnergyDisplay
-@onready var energy_label: Label = $EnergyDisplay/HBoxContainer/EnergyText
+@onready var top_bar: PanelContainer = $TopBar
+@onready var energy_label: Label = $TopBar/HBoxContainer/EnergyDisplay/EnergyText
+@onready var rocks_label: Label = $TopBar/HBoxContainer/RocksDisplay/RocksText
 
 @export var node_indicator_scene: PackedScene
 
@@ -20,6 +21,7 @@ signal respawn
 
 func _ready() -> void:
 	Settings.collected_energy_changed.connect(_on_collected_energy_changed)
+	Settings.rocks_changed.connect(_on_rocks_changed)
 	Helpers.levels_ui = self
 	reset()
 
@@ -31,7 +33,8 @@ func reset() -> void:
 	resume()
 	destroy_all_indicators()
 	_on_collected_energy_changed()
-	energy_display.visible = true
+	_on_rocks_changed()
+	top_bar.visible = true
 
 func pause() -> void:
 	if get_tree().paused: return
@@ -45,7 +48,7 @@ func resume() -> void:
 
 func open_respawn_menu(text: String) -> void:
 	get_tree().paused = true
-	energy_display.visible = false
+	top_bar.visible = false
 	respawn_menu.open_with_message(text)
 
 func _on_exit_level_pressed() -> void:
@@ -76,3 +79,11 @@ func destroy_all_indicators() -> void:
 func _on_collected_energy_changed() -> void:
 	energy_label.text = str(int(Settings.total_collected_energy)) + " E"
 	energy_label.add_theme_color_override("font_color", Helpers.get_energy_level_color(Settings.total_collected_energy))
+
+func _on_rocks_changed() -> void:
+	rocks_label.text = str(int(Settings.total_rocks)) + " R"
+	var color: Color = Color.LIME
+	if Settings.total_rocks < 5: color = Color.RED
+	elif Settings.total_rocks < 10: color = Color.ORANGE
+	elif Settings.total_rocks < 20: color = Color.YELLOW
+	rocks_label.add_theme_color_override("font_color", color)

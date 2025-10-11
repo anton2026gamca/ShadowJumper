@@ -64,7 +64,7 @@ func buy_item(answer: NPCDialogAnswer) -> void:
 	else:
 		answer.next_messages = bought_item_messages.duplicate()
 		item.stock -= 1
-		Settings.collect(-item.price)
+		Settings.collect_energy(-item.price)
 		if item is ShopPowerupItem:
 			Helpers.spawn_powerup(self, item.powerup, Vector2.ZERO)
 	

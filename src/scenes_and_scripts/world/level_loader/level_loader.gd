@@ -23,9 +23,12 @@ func _process(_delta: float) -> void:
 
 
 func load_level(level: PackedScene, player_lives_override: int = 1) -> void:
-	if Settings.total_collected_energy < 0:
-		Settings.collect(-Settings.total_collected_energy)
+	if Settings.total_collected_energy < 0: Settings.total_collected_energy = 0
 	Settings.level_collected_energy = 0
+	Settings.collected_energy_changed.emit()
+	if Settings.total_rocks < 0: Settings.total_rocks = 0
+	Settings.level_rocks = 0
+	Settings.rocks_changed.emit()
 	current_level = level
 	var node: Level = level.instantiate()
 	current_level_node = node
@@ -53,7 +56,7 @@ func exit_level(args: Array) -> void:
 func player_died(reason: String) -> void:
 	if not is_in_level:
 		return
-	Settings.collect(energy_on_player_death)
+	Settings.collect_energy(energy_on_player_death)
 	ui.open_respawn_menu(reason)
 
 func level_defeated() -> void:

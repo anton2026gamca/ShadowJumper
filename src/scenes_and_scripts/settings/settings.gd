@@ -8,11 +8,20 @@ var beated_levels: Array[NodePath] = []
 signal collected_energy_changed
 var total_collected_energy: float = 0
 var level_collected_energy: float = 0
-func collect(value: float) -> void:
+func collect_energy(value: float) -> void:
 	if value == 0: return
 	total_collected_energy += value
 	level_collected_energy += value
 	collected_energy_changed.emit()
+
+var total_rocks: float = 0
+var level_rocks: float = 0
+signal rocks_changed
+func collect_rocks(value: float) -> void:
+	if value == 0: return
+	total_rocks += value
+	level_rocks += value
+	rocks_changed.emit()
 
 var disable_npcs: Array[int] = []
 
@@ -37,12 +46,16 @@ func reset() -> void:
 	beated_levels = []
 	disable_npcs = []
 	player_lives = 1
+	total_rocks = 0
+	level_rocks = 0
 
 func _save(path: String = "user://progress.dat") -> int:
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	if file == null:
 		push_error("Failed to open file \"" + path + "\" for writing")
 		return 1
+	if total_collected_energy < 0: total_collected_energy = 0
+	if total_rocks < 0: total_rocks = 0
 	file.store_32(total_collected_energy)
 	var node_paths: Array[NodePath] = [last_level, last_entered_level]
 	for node_path: NodePath in beated_levels:
@@ -62,6 +75,7 @@ func _save(path: String = "user://progress.dat") -> int:
 	for id: int in disable_npcs:
 		file.store_8(id)
 	file.store_8(player_lives)
+	file.store_8(total_rocks)
 	file.close()
 	saved.emit()
 	return 0
@@ -89,8 +103,8 @@ func _load(path: String = "user://progress.dat") -> int:
 	for i: int in file.get_8():
 		disable_npcs.append(file.get_8())
 	player_lives = file.get_8()
-	if player_lives < 1:
-		player_lives = 1
+	if player_lives < 1: player_lives = 1
+	total_rocks = file.get_8()
 	if file.get_error():
 		reset()
 		file.close()
