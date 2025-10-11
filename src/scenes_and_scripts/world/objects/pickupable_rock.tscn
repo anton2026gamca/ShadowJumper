@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctsgnxa0h53q6"]
+
+[ext_resource type="Texture2D" uid="uid://ccaw8j1ie331p" path="res://assets/sprites/rock.png" id="1_lp8nj"]
+[ext_resource type="Script" uid="uid://cg7fskvuolnmi" path="res://scenes_and_scripts/world/objects/pickupable_rock.gd" id="2_6e255"]
+[ext_resource type="Texture2D" uid="uid://veu71stw05av" path="res://assets/sprites/light_textures/64x64/64x64 textures (7).png" id="2_lp8nj"]
+[ext_resource type="AudioStream" uid="uid://cpoqstt2umhse" path="res://assets/SFX/folder/collect_7.wav" id="4_kscfn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lp8nj"]
+size = Vector2(8, 8)
+
+[node name="PickupableRock" type="Sprite2D"]
+texture = ExtResource("1_lp8nj")
+script = ExtResource("2_6e255")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.34, 0.967, 1)
+texture = ExtResource("2_lp8nj")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_lp8nj")
+
+[node name="PickupAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_kscfn")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

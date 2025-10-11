@@ -108,7 +108,7 @@ func get_nearest_mushroom() -> Mushroom:
 	return nearest
 
 func throw_a_rock() -> void:
-	#if Settings.total_rocks <= 0: return
+	if Settings.total_rocks <= 0: return
 	var nearest_mushroom: Mushroom = get_nearest_mushroom()
 	if nearest_mushroom:
 		var rock: Rock = rock_scene.instantiate()
