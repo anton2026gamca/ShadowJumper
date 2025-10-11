@@ -67,6 +67,10 @@ func buy_item(answer: NPCDialogAnswer) -> void:
 		Settings.collect_energy(-item.price)
 		if item is ShopPowerupItem:
 			Helpers.spawn_powerup(self, item.powerup, Vector2.ZERO)
+		elif item is ShopRocksItem:
+			var text: FloatingText = Helpers.create_floating_text(self, ("+" if item.rocks_amount >= 0 else "") + str(int(item.rocks_amount)) + " R", Vector2(0, -24), item.color, -10)
+			text.process_mode = Node.PROCESS_MODE_ALWAYS
+			Settings.collect_rocks(item.rocks_amount)
 	
 	for i: int in len(answer.next_messages):
 		var msg: NPCDialogMessage = answer.next_messages[i].duplicate()

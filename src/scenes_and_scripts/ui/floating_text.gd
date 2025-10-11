@@ -11,7 +11,7 @@ signal finished
 
 func start() -> void:
 	add_theme_color_override("font_color", color)
-	var tween: Tween = get_tree().create_tween()
+	var tween: Tween = create_tween()
 	tween.tween_property(self, "position", position + y_diff * Vector2.DOWN, duration)
 	await tween.finished
 	finished.emit()

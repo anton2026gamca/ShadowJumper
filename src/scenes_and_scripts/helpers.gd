@@ -29,7 +29,7 @@ func get_nearest_node_in_group(from_pos: Vector2, group: String) -> Node2D:
 			nearest = node
 	return nearest
 
-func create_floating_text(parent: Node, text: String, position: Vector2, color = Color.RED, y_diff: float = 0, duration: float = 4) -> FloatingText:
+func create_floating_text(parent: Node, text: String, position: Vector2, color = Color.WHITE, y_diff: float = 0, duration: float = 4) -> FloatingText:
 	var node: FloatingText = FLOATING_TEXT_SCENE.instantiate()
 	node.text = text
 	node.position = position - node.size / 2

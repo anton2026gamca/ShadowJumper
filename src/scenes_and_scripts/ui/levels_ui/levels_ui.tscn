@@ -66,7 +66,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="TopBar/HBoxContainer/RocksDisplay"]
 layout_mode = 2
 theme = ExtResource("2_nhhd0")
-text = "Rocks: "
+text = "Magical Rocks: "
 
 [node name="RocksText" type="Label" parent="TopBar/HBoxContainer/RocksDisplay"]
 layout_mode = 2

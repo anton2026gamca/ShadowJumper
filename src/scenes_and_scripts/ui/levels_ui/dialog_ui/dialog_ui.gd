@@ -51,6 +51,7 @@ func play_dialog(dialog: NPCDialog) -> void:
 	dialog_finished.emit()
 
 func _play_message(dialog: NPCDialog, msg: NPCDialogMessage) -> void:
+	msg.message_started.emit()
 	npc_sprite.texture = msg.character_sprite_override if msg.character_sprite_override else dialog.character_default_sprite
 	message_text.text = msg.message
 	message_text.visible_characters = 0
@@ -94,6 +95,7 @@ func _play_message(dialog: NPCDialog, msg: NPCDialogMessage) -> void:
 				answers_container.visible = true
 				if answers_container.get_child(0): answers_container.get_child(0).grab_focus()
 				buttons_container.visible = false
+			msg.message_finished.emit()
 		elif intr[0] == "next":
 			break
 		elif msg is NPCDialogAnswerMessage and intr[0] == "answer_selected" and len(intr) >= 2 and intr[1] is AnswerOption:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dkkxade50jygv"]
+[gd_scene load_steps=27 format=3 uid="uid://dkkxade50jygv"]
 
 [ext_resource type="PackedScene" uid="uid://b7yk06l614q6o" path="res://scenes_and_scripts/world/npcs/npc.tscn" id="1_4gc4v"]
 [ext_resource type="Texture2D" uid="uid://bsqty6shauyt0" path="res://assets/sprites/objects-tileset.png" id="2_vfcax"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://t7tacfv5lkiv" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/shop/shop_item.gd" id="6_k2jvw"]
 [ext_resource type="Script" uid="uid://cqsv7sa8mhuuk" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/shop/shop_powerup_item.gd" id="6_xsj7n"]
 [ext_resource type="Texture2D" uid="uid://brgfgsxl86u1l" path="res://assets/sprites/questionmark.png" id="8_xsj7n"]
+[ext_resource type="Script" uid="uid://cagcm1bcrjskk" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/shop/shop_rocks_item.gd" id="9_bs1v0"]
 [ext_resource type="Texture2D" uid="uid://phccxwrkv2i7" path="res://assets/sprites/cancel.png" id="12_1l807"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ym84"]
@@ -28,10 +29,19 @@ script = ExtResource("6_xsj7n")
 powerup = ExtResource("5_1vur6")
 name = "Health Powerup"
 price = 250
-stock = -1
+stock = 3
 color = Color(0.4982, 0.56447, 0.94, 1)
 sprite = SubResource("AtlasTexture_s4jip")
 metadata/_custom_type_script = "uid://cqsv7sa8mhuuk"
+
+[sub_resource type="Resource" id="Resource_gn2i3"]
+script = ExtResource("9_bs1v0")
+rocks_amount = 50.0
+name = "50 Magical Rocks"
+price = 50
+stock = -1
+color = Color(1, 1, 1, 1)
+metadata/_custom_type_script = "uid://cagcm1bcrjskk"
 
 [sub_resource type="Resource" id="Resource_1vur6"]
 script = ExtResource("6_k2jvw")
@@ -78,7 +88,7 @@ z_index = -1
 texture = SubResource("AtlasTexture_0ym84")
 offset = Vector2(0, -24)
 script = ExtResource("3_vfcax")
-items_on_sale = Array[ExtResource("6_k2jvw")]([SubResource("Resource_awftq"), SubResource("Resource_1vur6")])
+items_on_sale = Array[ExtResource("6_k2jvw")]([SubResource("Resource_awftq"), SubResource("Resource_gn2i3"), SubResource("Resource_1vur6")])
 bought_item_messages = Array[ExtResource("4_vxyb2")]([SubResource("Resource_xsj7n")])
 out_of_stock_messages = Array[ExtResource("4_vxyb2")]([SubResource("Resource_1l807")])
 not_enough_energy_messages = Array[ExtResource("4_vxyb2")]([SubResource("Resource_bs1v0")])

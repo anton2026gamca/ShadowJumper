@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://d1knch75lpy1t"]
+[gd_scene load_steps=36 format=4 uid="uid://d1knch75lpy1t"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_nbytn"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_go7g5"]
@@ -7,6 +7,7 @@
 [ext_resource type="TileSet" uid="uid://8h4fm7v55cnx" path="res://assets/tileset.tres" id="4_wcekq"]
 [ext_resource type="PackedScene" uid="uid://f5m7vw1vj4fd" path="res://scenes_and_scripts/player/player.tscn" id="5_myw5i"]
 [ext_resource type="PackedScene" uid="uid://6twg4nqjueyw" path="res://scenes_and_scripts/world/levels/finish.tscn" id="8_wcekq"]
+[ext_resource type="Script" uid="uid://bqnpp22rxc1kg" path="res://scenes_and_scripts/world/npcs/rock_npc.gd" id="9_57h2w"]
 [ext_resource type="Script" uid="uid://dfa7rp0fl76u0" path="res://scenes_and_scripts/world/npcs/npc_dialog_message.gd" id="9_lbqyf"]
 [ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="9_sqshv"]
 [ext_resource type="PackedScene" uid="uid://fwiar5566lc7" path="res://scenes_and_scripts/world/objects/powerup_object.tscn" id="9_ty57j"]
@@ -31,6 +32,12 @@ shader_parameter/blue_shift = 1.0
 _limits = [0.0, 1.0, 0.0, 600.0]
 _data = [Vector2(300, 1), 0.0, -0.000200234, 0, 0, Vector2(600, 0), -0.00678558, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Resource" id="Resource_mwxj1"]
+script = ExtResource("9_lbqyf")
+character_sprite_override = ExtResource("10_fcg3k")
+message = "Here, take this! This way, I can help you from a safe distance."
+metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_lbqyf"]
 script = ExtResource("9_lbqyf")
@@ -60,12 +67,6 @@ metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 [sub_resource type="Resource" id="Resource_x3vl5"]
 script = ExtResource("9_lbqyf")
 message = "For some reason, the energy can't control you, unlike us. That's why we need you! Please save the world and stop whatever is there!"
-metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
-
-[sub_resource type="Resource" id="Resource_mwxj1"]
-script = ExtResource("9_lbqyf")
-character_sprite_override = ExtResource("10_fcg3k")
-message = "Here, take this! This way, I can help you from a safe distance."
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_6jh77"]
@@ -205,6 +206,10 @@ tile_set = ExtResource("4_wcekq")
 [node name="NPC" parent="Level" instance=ExtResource("14_ytwps")]
 position = Vector2(-16, 0)
 texture = ExtResource("15_57h2w")
+script = ExtResource("9_57h2w")
+rocks_amount = 50.0
+text_color = Color(0, 1, 0, 1)
+give_rocks_after_message = SubResource("Resource_mwxj1")
 dialog = SubResource("Resource_6jh77")
 cooldown = -1.0
 one_time = true

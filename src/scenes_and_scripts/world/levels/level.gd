@@ -12,10 +12,6 @@ signal level_defeated
 func _ready() -> void:
 	camera.make_current()
 
-func _process(_delta: float) -> void:
-	if Settings.total_rocks == 0:
-		Settings.collect_rocks(20)
-
 
 func _on_world_bottom_limit_body_entered(body: Node2D) -> void:
 	var death_component: DeathComponent = Helpers.find_child_by_type(body, DeathComponent)

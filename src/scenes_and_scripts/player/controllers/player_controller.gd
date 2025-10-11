@@ -108,10 +108,10 @@ func get_nearest_mushroom() -> Mushroom:
 	return nearest
 
 func throw_a_rock() -> void:
-	if Settings.total_rocks <= 0: return
+	#if Settings.total_rocks <= 0: return
 	var nearest_mushroom: Mushroom = get_nearest_mushroom()
 	if nearest_mushroom:
-		var rock: Node2D = rock_scene.instantiate()
+		var rock: Rock = rock_scene.instantiate()
 		target.get_parent().add_child(rock)
 		rock.global_position = target.global_position
 		var tween: Tween = get_tree().create_tween()
@@ -120,7 +120,7 @@ func throw_a_rock() -> void:
 		
 		await tween.finished
 		
-		rock.get_parent().remove_child(rock)
+		rock.destroy()
 		if nearest_mushroom:
 			nearest_mushroom.hit()
 
