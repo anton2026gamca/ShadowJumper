@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cageqw7eibf0d" path="res://scenes_and_scripts/ui/floating_text.gd" id="2_bseqx"]
 
 [node name="FloatingText" type="Label"]
+z_index = 5
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
