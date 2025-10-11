@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://cdort0sw0grtb"]
+[gd_scene load_steps=33 format=4 uid="uid://cdort0sw0grtb"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_v8hid"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_0ki8w"]
@@ -19,6 +19,7 @@
 [ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="11_0ki8w"]
 [ext_resource type="PackedScene" uid="uid://2e00skn1yx48" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/powerup_npc/powerup_npc.tscn" id="11_v8mns"]
 [ext_resource type="PackedScene" uid="uid://chjn3iar4wktf" path="res://scenes_and_scripts/components/powerups/health_powerup.tscn" id="12_huy6g"]
+[ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock.tscn" id="20_3ha4w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cffxb"]
 shader = ExtResource("1_v8hid")
@@ -204,6 +205,93 @@ theme_override_font_sizes/normal_font_size = 6
 text = "You can kill animals with the help of the bee!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PickupableRock" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(-37, -24)
+
+[node name="PickupableRock2" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(68, -124)
+
+[node name="PickupableRock3" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(154, -108)
+
+[node name="PickupableRock4" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(-190, -174)
+
+[node name="PickupableRock5" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(-146, -321)
+
+[node name="PickupableRock6" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(20, -374)
+
+[node name="PickupableRock7" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(115, -237)
+
+[node name="PickupableRock8" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(-97, -416)
+
+[node name="PickupableRock9" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(-59, -380)
+
+[node name="PickupableRock10" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(116, -477)
+
+[node name="PickupableRock11" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(192, -478)
+
+[node name="PickupableRock12" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(108, -591)
+
+[node name="PickupableRock13" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(-152, -654)
+
+[node name="PickupableRock14" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(-261, -656)
+
+[node name="PickupableRock15" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(106, -780)
+
+[node name="PickupableRock16" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(50, -879)
+
+[node name="PickupableRock17" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(65, -989)
+
+[node name="PickupableRock18" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(-277, -928)
+
+[node name="PickupableRock19" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(23, -1139)
+
+[node name="PickupableRock20" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(112, -1398)
+
+[node name="PickupableRock21" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(-194, -1428)
+
+[node name="PickupableRock22" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(-253, -1542)
+
+[node name="PickupableRock23" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(12, -1806)
+
+[node name="PickupableRock24" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(-270, -1738)
+
+[node name="PickupableRock25" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(-183, -1887)
+
+[node name="PickupableRock26" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(-223, -2018)
+
+[node name="PickupableRock27" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(-96, -2287)
+
+[node name="PickupableRock28" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(-57, -2411)
+
+[node name="PickupableRock29" parent="." instance=ExtResource("20_3ha4w")]
+position = Vector2(-137, -2649)
 
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]

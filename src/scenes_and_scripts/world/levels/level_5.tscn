@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dwfwwkf3bx52r"]
+[gd_scene load_steps=26 format=4 uid="uid://dwfwwkf3bx52r"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_3ulkj"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_j68tj"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/ground_animals/boar.tscn" id="8_s3pvv"]
 [ext_resource type="Script" uid="uid://dfa7rp0fl76u0" path="res://scenes_and_scripts/world/npcs/npc_dialog_message.gd" id="9_k0kab"]
 [ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="9_su0ne"]
+[ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock.tscn" id="17_su0ne"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cffxb"]
 shader = ExtResource("1_3ulkj")
@@ -185,6 +186,48 @@ texture = ExtResource("8_3ulkj")
 use_parent_material = true
 position = Vector2(2597, -658)
 texture = ExtResource("8_3ulkj")
+
+[node name="PickupableRock" parent="." instance=ExtResource("17_su0ne")]
+position = Vector2(496, -137)
+
+[node name="PickupableRock2" parent="." instance=ExtResource("17_su0ne")]
+position = Vector2(734, -142)
+
+[node name="PickupableRock3" parent="." instance=ExtResource("17_su0ne")]
+position = Vector2(928, -176)
+
+[node name="PickupableRock4" parent="." instance=ExtResource("17_su0ne")]
+position = Vector2(1481, -402)
+
+[node name="PickupableRock5" parent="." instance=ExtResource("17_su0ne")]
+position = Vector2(19, -41)
+
+[node name="PickupableRock6" parent="." instance=ExtResource("17_su0ne")]
+position = Vector2(51, -79)
+
+[node name="PickupableRock7" parent="." instance=ExtResource("17_su0ne")]
+position = Vector2(1544, -403)
+
+[node name="PickupableRock8" parent="." instance=ExtResource("17_su0ne")]
+position = Vector2(1763, -396)
+
+[node name="PickupableRock9" parent="." instance=ExtResource("17_su0ne")]
+position = Vector2(2060, -433)
+
+[node name="PickupableRock10" parent="." instance=ExtResource("17_su0ne")]
+position = Vector2(2165, -674)
+
+[node name="PickupableRock11" parent="." instance=ExtResource("17_su0ne")]
+position = Vector2(2360, -554)
+
+[node name="PickupableRock12" parent="." instance=ExtResource("17_su0ne")]
+position = Vector2(2511, -672)
+
+[node name="PickupableRock13" parent="." instance=ExtResource("17_su0ne")]
+position = Vector2(2184, -496)
+
+[node name="PickupableRock14" parent="." instance=ExtResource("17_su0ne")]
+position = Vector2(1900, -636)
 
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]

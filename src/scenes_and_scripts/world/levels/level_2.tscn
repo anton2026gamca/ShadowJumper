@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://dr1afg0p05s8p"]
+[gd_scene load_steps=23 format=4 uid="uid://dr1afg0p05s8p"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_egdi8"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_o04dd"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b7yk06l614q6o" path="res://scenes_and_scripts/world/npcs/npc.tscn" id="11_mo2i4"]
 [ext_resource type="Texture2D" uid="uid://c8de18v2jb1yl" path="res://assets/sprites/npcs/npc-remote.png" id="12_wn8bj"]
 [ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="13_b24ec"]
+[ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock.tscn" id="15_b24ec"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1m2nw"]
 shader = ExtResource("1_egdi8")
@@ -148,6 +149,42 @@ collision_mask = 3
 [node name="Boar2" parent="Level" instance=ExtResource("8_egdi8")]
 position = Vector2(2836, 12)
 collision_mask = 3
+
+[node name="PickupableRock" parent="Level" instance=ExtResource("15_b24ec")]
+position = Vector2(51, 8)
+
+[node name="PickupableRock2" parent="Level" instance=ExtResource("15_b24ec")]
+position = Vector2(84, -42)
+
+[node name="PickupableRock3" parent="Level" instance=ExtResource("15_b24ec")]
+position = Vector2(136, -51)
+
+[node name="PickupableRock4" parent="Level" instance=ExtResource("15_b24ec")]
+position = Vector2(529, -27)
+
+[node name="PickupableRock5" parent="Level" instance=ExtResource("15_b24ec")]
+position = Vector2(818, -33)
+
+[node name="PickupableRock6" parent="Level" instance=ExtResource("15_b24ec")]
+position = Vector2(1279, -30)
+
+[node name="PickupableRock7" parent="Level" instance=ExtResource("15_b24ec")]
+position = Vector2(1338, -86)
+
+[node name="PickupableRock8" parent="Level" instance=ExtResource("15_b24ec")]
+position = Vector2(1760, -103)
+
+[node name="PickupableRock9" parent="Level" instance=ExtResource("15_b24ec")]
+position = Vector2(1987, -115)
+
+[node name="PickupableRock10" parent="Level" instance=ExtResource("15_b24ec")]
+position = Vector2(2295, -50)
+
+[node name="PickupableRock11" parent="Level" instance=ExtResource("15_b24ec")]
+position = Vector2(2694, -42)
+
+[node name="PickupableRock12" parent="Level" instance=ExtResource("15_b24ec")]
+position = Vector2(3161, -38)
 
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]

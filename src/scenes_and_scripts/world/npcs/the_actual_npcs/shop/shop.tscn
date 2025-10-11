@@ -36,11 +36,11 @@ metadata/_custom_type_script = "uid://cqsv7sa8mhuuk"
 
 [sub_resource type="Resource" id="Resource_gn2i3"]
 script = ExtResource("9_bs1v0")
-rocks_amount = 50.0
-name = "50 Magical Rocks"
+rocks_amount = 15.0
+name = "15 Magical Rocks"
 price = 50
 stock = -1
-color = Color(1, 1, 1, 1)
+color = Color(0.627451, 0.12549, 0.941176, 1)
 metadata/_custom_type_script = "uid://cagcm1bcrjskk"
 
 [sub_resource type="Resource" id="Resource_1vur6"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cr6bahr2qcew0"]
+[gd_scene load_steps=18 format=4 uid="uid://cr6bahr2qcew0"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_cffxb"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="1_q3src"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c5fbm5se52uf2" path="res://assets/sprites/light_textures/64x64/64x64 textures (99).png" id="6_vy1ok"]
 [ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/ground_animals/fox.tscn" id="8_0gkre"]
 [ext_resource type="PackedScene" uid="uid://c2xrsqj6px78r" path="res://scenes_and_scripts/world/animals/ground_animals/wolf.tscn" id="8_xd2tb"]
+[ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock.tscn" id="11_vy1ok"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cffxb"]
 shader = ExtResource("1_cffxb")
@@ -136,6 +137,27 @@ chance_to_spawn = 0.7
 [node name="Wolf3" parent="Level" instance=ExtResource("8_xd2tb")]
 position = Vector2(3825, -65)
 chance_to_spawn = 0.1
+
+[node name="PickupableRock" parent="." instance=ExtResource("11_vy1ok")]
+position = Vector2(107, -8)
+
+[node name="PickupableRock2" parent="." instance=ExtResource("11_vy1ok")]
+position = Vector2(728, 69)
+
+[node name="PickupableRock3" parent="." instance=ExtResource("11_vy1ok")]
+position = Vector2(1140, -174)
+
+[node name="PickupableRock4" parent="." instance=ExtResource("11_vy1ok")]
+position = Vector2(1460, -176)
+
+[node name="PickupableRock5" parent="." instance=ExtResource("11_vy1ok")]
+position = Vector2(2056, -93)
+
+[node name="PickupableRock6" parent="." instance=ExtResource("11_vy1ok")]
+position = Vector2(1941, -90)
+
+[node name="PickupableRock7" parent="." instance=ExtResource("11_vy1ok")]
+position = Vector2(1980, -127)
 
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]

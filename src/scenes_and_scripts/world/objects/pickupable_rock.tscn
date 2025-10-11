@@ -13,7 +13,7 @@ texture = ExtResource("1_lp8nj")
 script = ExtResource("2_6e255")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-color = Color(1, 0.34, 0.967, 1)
+color = Color(0.627451, 0.12549, 0.941176, 1)
 texture = ExtResource("2_lp8nj")
 
 [node name="Area2D" type="Area2D" parent="."]
