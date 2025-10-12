@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwkfut2sgxlh7"]
+
+[ext_resource type="PackedScene" uid="uid://bgf5b0504t1c6" path="res://scenes_and_scripts/world/objects/grass_blade.tscn" id="1_v62n5"]
+[ext_resource type="Texture2D" uid="uid://n5cgkfo83fbs" path="res://assets/sprites/grass.png" id="2_m3c4n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eobw2"]
+atlas = ExtResource("2_m3c4n")
+region = Rect2(0, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v62n5"]
+atlas = ExtResource("2_m3c4n")
+region = Rect2(7, 0, 10, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3c4n"]
+atlas = ExtResource("2_m3c4n")
+region = Rect2(18, 0, 7, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2k8k1"]
+atlas = ExtResource("2_m3c4n")
+region = Rect2(27, 0, 5, 16)
+
+[node name="GrassTile" type="Node2D"]
+use_parent_material = true
+
+[node name="Node2D" type="Node2D" parent="."]
+use_parent_material = true
+scale = Vector2(1, -1)
+
+[node name="GrassBlade1" parent="Node2D" instance=ExtResource("1_v62n5")]
+position = Vector2(-2.5, -8)
+scale = Vector2(1, -1)
+texture = SubResource("AtlasTexture_eobw2")
+offset = Vector2(-2, -8)
+
+[node name="GrassBlade2" parent="Node2D" instance=ExtResource("1_v62n5")]
+position = Vector2(-6.99382e-07, -8)
+scale = Vector2(1, -1)
+texture = SubResource("AtlasTexture_v62n5")
+offset = Vector2(-3, -8)
+
+[node name="GrassBlade3" parent="." instance=ExtResource("1_v62n5")]
+position = Vector2(3, 8)
+texture = SubResource("AtlasTexture_m3c4n")
+offset = Vector2(0.5, -8)
+
+[node name="GrassBlade4" parent="." instance=ExtResource("1_v62n5")]
+position = Vector2(5, 8)
+texture = SubResource("AtlasTexture_2k8k1")
+offset = Vector2(0.5, -8)

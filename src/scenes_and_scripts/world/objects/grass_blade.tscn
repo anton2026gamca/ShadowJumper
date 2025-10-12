@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://bgf5b0504t1c6"]
+
+[ext_resource type="Texture2D" uid="uid://n5cgkfo83fbs" path="res://assets/sprites/grass.png" id="1_wd4kx"]
+[ext_resource type="Script" uid="uid://bx5hwqeaxy7ia" path="res://scenes_and_scripts/world/objects/grass_blade.gd" id="2_mshbo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t2q3"]
+atlas = ExtResource("1_wd4kx")
+region = Rect2(18, 0, 7, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wd4kx"]
+size = Vector2(6, 9)
+
+[sub_resource type="Animation" id="Animation_5caxc"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.13446]
+}
+
+[sub_resource type="Animation" id="Animation_wd4kx"]
+resource_name = "bend"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.13446]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_12msk"]
+_data = {
+&"RESET": SubResource("Animation_5caxc"),
+&"bend": SubResource("Animation_wd4kx")
+}
+
+[node name="GrassBlade" type="Sprite2D"]
+use_parent_material = true
+texture = SubResource("AtlasTexture_6t2q3")
+offset = Vector2(0, -8)
+script = ExtResource("2_mshbo")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Area2D" type="Area2D" parent="Node"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Area2D"]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_wd4kx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_12msk")
+}
+
+[connection signal="body_entered" from="Node/Area2D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Node/Area2D" to="." method="_on_body_exited"]
