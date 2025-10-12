@@ -232,7 +232,11 @@ position = Vector2(2184, -510)
 [node name="PickupableRock14" parent="Level/PickupableRocks" instance=ExtResource("17_su0ne")]
 position = Vector2(1900, -636)
 
-[node name="Leaves" type="CPUParticles2D" parent="Level"]
+[node name="LeaveParticles" type="Node2D" parent="Level"]
+z_index = 5
+use_parent_material = true
+
+[node name="Leaves1" type="CPUParticles2D" parent="Level/LeaveParticles"]
 use_parent_material = true
 position = Vector2(919, -395)
 amount = 16
@@ -248,11 +252,7 @@ initial_velocity_max = 20.0
 angular_velocity_min = -50.0
 angular_velocity_max = 50.0
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Level/Leaves"]
-position = Vector2(-85.5, 300)
-scale = Vector2(33.95, 30)
-
-[node name="Leaves2" type="CPUParticles2D" parent="Level"]
+[node name="Leaves2" type="CPUParticles2D" parent="Level/LeaveParticles"]
 use_parent_material = true
 position = Vector2(1426, -718)
 amount = 16
@@ -268,11 +268,7 @@ initial_velocity_max = 20.0
 angular_velocity_min = -50.0
 angular_velocity_max = 50.0
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Level/Leaves2"]
-position = Vector2(-107.5, 300)
-scale = Vector2(36.15, 30)
-
-[node name="Leaves3" type="CPUParticles2D" parent="Level"]
+[node name="Leaves3" type="CPUParticles2D" parent="Level/LeaveParticles"]
 use_parent_material = true
 position = Vector2(1916, -810)
 amount = 16
@@ -288,11 +284,7 @@ initial_velocity_max = 20.0
 angular_velocity_min = -50.0
 angular_velocity_max = 50.0
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Level/Leaves3"]
-position = Vector2(-103.5, 300)
-scale = Vector2(35.75, 30)
-
-[node name="Leaves4" type="CPUParticles2D" parent="Level"]
+[node name="Leaves4" type="CPUParticles2D" parent="Level/LeaveParticles"]
 use_parent_material = true
 position = Vector2(2429, -912)
 amount = 16
@@ -307,10 +299,6 @@ initial_velocity_min = 20.0
 initial_velocity_max = 20.0
 angular_velocity_min = -50.0
 angular_velocity_max = 50.0
-
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Level/Leaves4"]
-position = Vector2(-113, 300)
-scale = Vector2(36.7, 30)
 
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]
