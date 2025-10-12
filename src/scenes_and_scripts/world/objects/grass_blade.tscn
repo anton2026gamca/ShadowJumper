@@ -52,6 +52,10 @@ texture = SubResource("AtlasTexture_6t2q3")
 offset = Vector2(0, -8)
 script = ExtResource("2_mshbo")
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../Node/Area2D")
+update_rotation = false
+
 [node name="Node" type="Node" parent="."]
 
 [node name="Area2D" type="Area2D" parent="Node"]
@@ -67,6 +71,10 @@ shape = SubResource("RectangleShape2D_wd4kx")
 libraries = {
 &"": SubResource("AnimationLibrary_12msk")
 }
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0, -8)
+rect = Rect2(-8, -8, 16, 16)
 
 [connection signal="body_entered" from="Node/Area2D" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="Node/Area2D" to="." method="_on_body_exited"]
