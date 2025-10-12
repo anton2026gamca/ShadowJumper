@@ -19,6 +19,7 @@ func collected_energy_animation() -> void:
 	if Settings.level_collected_energy == 0: return
 	var text: FloatingText = Helpers.create_floating_text(enegry_text_spawner, ("+" if Settings.level_collected_energy >= 0 else "") + str(int(Settings.level_collected_energy)), Vector2.ZERO, Helpers.get_energy_level_color(Settings.level_collected_energy), -32)
 	text.add_theme_font_size_override("font_size", 18)
+	text.process_mode = Node.PROCESS_MODE_ALWAYS
 	total_energy_add_audio.play()
 	var total_before_level: float = Settings.total_collected_energy - Settings.level_collected_energy
 	if Settings.total_collected_energy < 0: Settings.total_collected_energy = 0
