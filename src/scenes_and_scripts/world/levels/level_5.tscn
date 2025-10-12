@@ -224,7 +224,7 @@ position = Vector2(2360, -554)
 position = Vector2(2511, -672)
 
 [node name="PickupableRock13" parent="." instance=ExtResource("17_su0ne")]
-position = Vector2(2184, -496)
+position = Vector2(2184, -510)
 
 [node name="PickupableRock14" parent="." instance=ExtResource("17_su0ne")]
 position = Vector2(1900, -636)

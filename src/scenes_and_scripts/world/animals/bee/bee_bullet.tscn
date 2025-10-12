@@ -51,4 +51,4 @@ scale = Vector2(1, 1.33333)
 script = ExtResource("4_k3haf")
 metadata/_custom_type_script = "uid://c1vlxdllcc361"
 
-[connection signal="die_signal" from="DeathComponent" to="." method="_destroy"]
+[connection signal="die_signal" from="DeathComponent" to="." method="_on_death_component_die"]

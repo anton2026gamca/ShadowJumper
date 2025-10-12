@@ -11,9 +11,11 @@ size = Vector2(8, 8)
 [node name="PickupableRock" type="Sprite2D"]
 texture = ExtResource("1_lp8nj")
 script = ExtResource("2_6e255")
+text_color = Color(0.745098, 0.341176, 1, 1)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-color = Color(0.627451, 0.12549, 0.941176, 1)
+color = Color(0.745098, 0.341176, 1, 1)
+energy = 1.5
 texture = ExtResource("2_lp8nj")
 
 [node name="Area2D" type="Area2D" parent="."]

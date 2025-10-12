@@ -139,16 +139,16 @@ position = Vector2(3825, -65)
 chance_to_spawn = 0.1
 
 [node name="PickupableRock" parent="." instance=ExtResource("11_vy1ok")]
-position = Vector2(107, -8)
+position = Vector2(83, -40)
 
 [node name="PickupableRock2" parent="." instance=ExtResource("11_vy1ok")]
 position = Vector2(728, 69)
 
 [node name="PickupableRock3" parent="." instance=ExtResource("11_vy1ok")]
-position = Vector2(1140, -174)
+position = Vector2(1139, -217)
 
 [node name="PickupableRock4" parent="." instance=ExtResource("11_vy1ok")]
-position = Vector2(1460, -176)
+position = Vector2(1440, -170)
 
 [node name="PickupableRock5" parent="." instance=ExtResource("11_vy1ok")]
 position = Vector2(2056, -93)

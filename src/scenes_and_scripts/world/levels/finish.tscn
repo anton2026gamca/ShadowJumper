@@ -8,13 +8,17 @@
 normal = Vector2(-1, 0)
 
 [node name="Finish" type="Node2D"]
+use_parent_material = true
 script = ExtResource("2_fwcx2")
 metadata/_custom_type_script = "uid://cuw3gukclwpcl"
 
 [node name="Finish" type="Sprite2D" parent="."]
+use_parent_material = true
 texture = ExtResource("1_0l42j")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.815686, 0, 1)
+energy = 1.25
 texture = ExtResource("3_0l42j")
 
 [node name="StaticBody2D" type="Area2D" parent="."]

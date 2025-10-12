@@ -50,6 +50,6 @@ void fragment() {
 
 void light() {
 	if (texture(TEXTURE, UV) != vec4(227.0 / 255.0, 81.0 / 255.0, 0.0, 1.0)) {
-		LIGHT = mix(vec4(0, 0, 0, 0), texture(TEXTURE, UV), LIGHT_COLOR * night_intensity);
+		LIGHT = mix(vec4(0, 0, 0, 0), texture(TEXTURE, UV), night_intensity * LIGHT_ENERGY * LIGHT_COLOR);
 	}
 }

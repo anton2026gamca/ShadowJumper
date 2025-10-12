@@ -30,3 +30,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, 5)
 	rotation = velocity.angle() + PI / 2
 	move_and_slide()
+
+
+func _on_death_component_die(reason: String, instant_kill: bool) -> void:
+	_destroy(reason)
