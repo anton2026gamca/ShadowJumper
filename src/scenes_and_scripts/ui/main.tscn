@@ -1,11 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgnkbfbtrhkl8"]
+[gd_scene load_steps=9 format=3 uid="uid://cgnkbfbtrhkl8"]
 
 [ext_resource type="Script" uid="uid://dqgu60xixvo2u" path="res://scenes_and_scripts/ui/main.gd" id="1_1wink"]
 [ext_resource type="PackedScene" uid="uid://clkhpeqrfyoax" path="res://scenes_and_scripts/ui/level_selection/level_selection.tscn" id="2_7efjl"]
+[ext_resource type="Shader" uid="uid://dopio8f6jxl6x" path="res://scenes_and_scripts/world_post_processing.gdshader" id="2_xcigm"]
 [ext_resource type="PackedScene" uid="uid://b1y61w7c7cgn5" path="res://scenes_and_scripts/ui/menus/main_menu/main_menu.tscn" id="3_blyvd"]
 [ext_resource type="PackedScene" uid="uid://cccamfqr4lmoy" path="res://scenes_and_scripts/ui/menus/settings_menu/settings_menu.tscn" id="4_7efjl"]
 [ext_resource type="PackedScene" uid="uid://8cac1aghe7ym" path="res://scenes_and_scripts/ui/menus/settings_menu/controls_menu.tscn" id="5_blyvd"]
 [ext_resource type="PackedScene" uid="uid://sedvuk2vb5qi" path="res://scenes_and_scripts/ui/level_selection/level_selection_ui.tscn" id="6_jj5c1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbjwx"]
+shader = ExtResource("2_xcigm")
+shader_parameter/radius = 0.85
+shader_parameter/softness = 0.7
+shader_parameter/intensity = 0.5
+shader_parameter/center = Vector2(0.5, 0.5)
 
 [node name="Main" type="Control" node_paths=PackedStringArray("level_selection_layer", "ui_layer", "main_menu")]
 layout_mode = 3
@@ -21,7 +29,8 @@ main_menu = NodePath("UI/MainMenu")
 
 [node name="LevelSelection" type="CanvasLayer" parent="."]
 
-[node name="MainMenu" type="SubViewportContainer" parent="LevelSelection"]
+[node name="LevelSelection" type="SubViewportContainer" parent="LevelSelection"]
+material = SubResource("ShaderMaterial_jbjwx")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -30,7 +39,7 @@ grow_vertical = 2
 stretch = true
 stretch_shrink = 3
 
-[node name="SubViewport" type="SubViewport" parent="LevelSelection/MainMenu"]
+[node name="SubViewport" type="SubViewport" parent="LevelSelection/LevelSelection"]
 transparent_bg = true
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
@@ -39,7 +48,7 @@ audio_listener_enable_2d = true
 size = Vector2i(426, 240)
 render_target_update_mode = 4
 
-[node name="LevelSelection" parent="LevelSelection/MainMenu/SubViewport" node_paths=PackedStringArray("ui") instance=ExtResource("2_7efjl")]
+[node name="LevelSelection" parent="LevelSelection/LevelSelection/SubViewport" node_paths=PackedStringArray("ui") instance=ExtResource("2_7efjl")]
 ui = NodePath("../../../../UI/LevelSelectionUI")
 
 [node name="UI" type="CanvasLayer" parent="."]

@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cph6tm6lwbqev"]
+[gd_scene load_steps=6 format=3 uid="uid://cph6tm6lwbqev"]
 
 [ext_resource type="Script" uid="uid://cjkiwfp4mi1bl" path="res://scenes_and_scripts/world/level_loader/level_loader.gd" id="1_dnh7v"]
 [ext_resource type="PackedScene" uid="uid://xyllxx8sqe4m" path="res://scenes_and_scripts/ui/levels_ui/levels_ui.tscn" id="2_0aejv"]
+[ext_resource type="Shader" uid="uid://dopio8f6jxl6x" path="res://scenes_and_scripts/world_post_processing.gdshader" id="2_didmr"]
 [ext_resource type="AudioStream" uid="uid://b3gjh1iw38xoe" path="res://assets/SFX/folder/powerup_3.wav" id="3_mb2jk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1upr6"]
+shader = ExtResource("2_didmr")
+shader_parameter/radius = 0.85
+shader_parameter/softness = 0.7
+shader_parameter/intensity = 0.5
+shader_parameter/center = Vector2(0.5, 0.5)
 
 [node name="LevelLoader" type="Node2D" node_paths=PackedStringArray("level_parent")]
 process_mode = 3
@@ -12,9 +20,12 @@ level_parent = NodePath("WorldCanvasLayer/SubViewportContainer/SubViewport/Level
 [node name="WorldCanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="WorldCanvasLayer"]
+material = SubResource("ShaderMaterial_1upr6")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch = true
