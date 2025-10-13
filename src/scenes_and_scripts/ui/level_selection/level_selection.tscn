@@ -1,4 +1,4 @@
-[gd_scene load_steps=340 format=4 uid="uid://clkhpeqrfyoax"]
+[gd_scene load_steps=341 format=4 uid="uid://clkhpeqrfyoax"]
 
 [ext_resource type="Script" uid="uid://dd3otqv1n5e7k" path="res://scenes_and_scripts/ui/level_selection/level_selection.gd" id="1_7qmai"]
 [ext_resource type="PackedScene" uid="uid://by7kis83n7kvx" path="res://scenes_and_scripts/ui/level_selection/level_selection_level.tscn" id="2_5iw0q"]
@@ -494,6 +494,14 @@ size = Vector2(16, 16)
 size = Vector2(14, 14)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j5kpb"]
+shader = ExtResource("15_jj62b")
+shader_parameter/night_intensity = 0.0
+shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
+shader_parameter/night_darkness = 0.7
+shader_parameter/night_contrast = 1.2
+shader_parameter/blue_shift = 0.4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sppe1"]
 shader = ExtResource("15_jj62b")
 shader_parameter/night_intensity = 0.0
 shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
@@ -4650,6 +4658,23 @@ position = Vector2(0, 8)
 emitting = false
 texture = ExtResource("17_854ia")
 lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.1
+emission_shape = 3
+emission_rect_extents = Vector2(8, 0)
+direction = Vector2(0, 1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+scale_amount_max = 3.0
+
+[node name="LandParticles" type="CPUParticles2D" parent="Level/Player"]
+material = SubResource("ShaderMaterial_sppe1")
+position = Vector2(0, 8)
+emitting = false
+texture = ExtResource("17_854ia")
+lifetime = 0.4
 one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 0.1
