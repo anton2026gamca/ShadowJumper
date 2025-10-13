@@ -72,9 +72,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_12msk")
 }
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-position = Vector2(0, -8)
-rect = Rect2(-8, -8, 16, 16)
-
 [connection signal="body_entered" from="Node/Area2D" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="Node/Area2D" to="." method="_on_body_exited"]

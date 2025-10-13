@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://dwfwwkf3bx52r"]
+[gd_scene load_steps=37 format=4 uid="uid://dwfwwkf3bx52r"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_3ulkj"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_j68tj"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="9_su0ne"]
 [ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock.tscn" id="17_su0ne"]
 [ext_resource type="Texture2D" uid="uid://dylddsv1gbd7s" path="res://assets/sprites/leave.png" id="18_k0kab"]
+[ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://scenes_and_scripts/fog.gdshader" id="19_lk5cx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cffxb"]
 shader = ExtResource("1_3ulkj")
@@ -59,6 +60,53 @@ normal = Vector2(1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u6qt4"]
 normal = Vector2(-1, 0)
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qcv8i"]
+frequency = 0.007
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2ukdk"]
+width = 1280
+height = 720
+seamless = true
+noise = SubResource("FastNoiseLite_qcv8i")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s6t6l"]
+shader = ExtResource("19_lk5cx")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_2ukdk")
+shader_parameter/min_fog_value = 0.0
+shader_parameter/max_fog_value = 0.07
+shader_parameter/scroll_speed = Vector2(-0.04, 0.02)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_shpph"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qcv8i"]
+width = 1280
+height = 720
+seamless = true
+noise = SubResource("FastNoiseLite_shpph")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ukdk"]
+shader = ExtResource("19_lk5cx")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_qcv8i")
+shader_parameter/min_fog_value = 0.0
+shader_parameter/max_fog_value = 0.04
+shader_parameter/scroll_speed = Vector2(0.03, -0.05)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lk5cx"]
+frequency = 0.02
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lk5cx"]
+width = 1280
+height = 720
+seamless = true
+noise = SubResource("FastNoiseLite_lk5cx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_shpph"]
+shader = ExtResource("19_lk5cx")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_lk5cx")
+shader_parameter/min_fog_value = 0.0
+shader_parameter/max_fog_value = 0.02
+shader_parameter/scroll_speed = Vector2(0.03, 0.03)
+
 [node name="World" type="Node2D" node_paths=PackedStringArray("camera")]
 material = SubResource("ShaderMaterial_cffxb")
 script = ExtResource("2_j68tj")
@@ -95,7 +143,7 @@ use_parent_material = true
 scroll_scale = Vector2(0.333, 0.333)
 
 [node name="Moon" type="Sprite2D" parent="ParallaxMoon"]
-z_index = -1
+z_index = -50
 use_parent_material = true
 position = Vector2(420, 0)
 texture = ExtResource("5_blifk")
@@ -299,6 +347,41 @@ initial_velocity_min = 20.0
 initial_velocity_max = 20.0
 angular_velocity_min = -50.0
 angular_velocity_max = 50.0
+
+[node name="ParallaxFog" type="Node2D" parent="."]
+
+[node name="FogBack" type="Parallax2D" parent="ParallaxFog"]
+scroll_scale = Vector2(0.5, 0.5)
+repeat_size = Vector2(1280, 720)
+
+[node name="Fog" type="ColorRect" parent="ParallaxFog/FogBack"]
+z_index = -10
+material = SubResource("ShaderMaterial_s6t6l")
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(1, 1, 1, 0)
+
+[node name="FogMiddle" type="Parallax2D" parent="ParallaxFog"]
+scroll_scale = Vector2(1.1, 1.1)
+repeat_size = Vector2(1280, 720)
+
+[node name="Fog" type="ColorRect" parent="ParallaxFog/FogMiddle"]
+z_index = 9
+material = SubResource("ShaderMaterial_2ukdk")
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(1, 1, 1, 0)
+
+[node name="FogFront" type="Parallax2D" parent="ParallaxFog"]
+scroll_scale = Vector2(1.5, 1.5)
+repeat_size = Vector2(1280, 720)
+
+[node name="Fog" type="ColorRect" parent="ParallaxFog/FogFront"]
+z_index = 10
+material = SubResource("ShaderMaterial_shpph")
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(1, 1, 1, 0)
 
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]

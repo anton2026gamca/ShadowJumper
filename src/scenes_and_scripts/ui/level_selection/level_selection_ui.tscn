@@ -67,7 +67,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_dsqpm")
 bbcode_enabled = true
-text = "[ [color=gold]v1.6[/color] ]  [ [color=green]DEBUG BUILD[/color] ]
+text = "[ [color=gold]v1.7[/color] ]  [ [color=green]DEBUG BUILD[/color] ]
 Press [color=lightblue]L[/color] to unlock all levels"
 horizontal_alignment = 2
 vertical_alignment = 2
