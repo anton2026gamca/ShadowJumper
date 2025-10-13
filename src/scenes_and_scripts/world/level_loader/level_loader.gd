@@ -65,10 +65,16 @@ func level_defeated() -> void:
 	var player_lives: int = Helpers.player.health_component.lives
 	is_in_level = false
 	ui.full_screen_text.visible = true
-	ui.full_screen_text.text = "LEVEL\nDEFEATED !!!"
+	ui.full_screen_text.text = "LEVEL\nDEFEATED !!!\n"
+	ui.full_screen_text.text += "[code]\n"
+	var energy_color: String = Helpers.get_energy_level_color(Settings.level_collected_energy).to_html(false)
+	ui.full_screen_text.text += "Collected energy this run: [color=#" + energy_color + "]" + ("+" if Settings.level_collected_energy > 0 else "") + str(int(Settings.level_collected_energy)) + " E[/color]\n"
+	var rocks_color: String = "lime" if Settings.level_rocks > 0 else "yellow"
+	ui.full_screen_text.text += "Rocks this run: [color=" + rocks_color + "]" + ("+" if Settings.level_rocks > 0 else "") + str(int(Settings.level_rocks)) + " R[/color]\n"
+	ui.full_screen_text.text += "[/code]"
 	ui.full_screen_text.visible_characters = 0
 	ui.full_screen_text.process_mode = Node.PROCESS_MODE_ALWAYS
-	get_tree().create_tween().tween_property(ui.full_screen_text, "visible_characters", len("LEVEL\nDEFEATED !!!"), 0.5)
+	get_tree().create_tween().tween_property(ui.full_screen_text, "visible_characters", len(ui.full_screen_text.get_parsed_text()), 1)
 	$LevelDefeatedSFX.play()
 	await get_tree().create_timer(3).timeout
 	ui.full_screen_text.visible = false
