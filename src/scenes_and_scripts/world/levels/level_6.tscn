@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cdort0sw0grtb"]
+[gd_scene load_steps=45 format=4 uid="uid://cdort0sw0grtb"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_v8hid"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_0ki8w"]
@@ -13,7 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://cd7yubqxtcw2v" path="res://scenes_and_scripts/world/animals/bee/bee.tscn" id="7_srgj7"]
 [ext_resource type="Texture2D" uid="uid://c8de18v2jb1yl" path="res://assets/sprites/npcs/npc-remote.png" id="8_8s50a"]
 [ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/ground_animals/fox.tscn" id="8_hrj3k"]
+[ext_resource type="PackedScene" uid="uid://bbfi7d15xxxan" path="res://scenes_and_scripts/world/parallax_fog.tscn" id="8_qbaq7"]
 [ext_resource type="Script" uid="uid://dfa7rp0fl76u0" path="res://scenes_and_scripts/world/npcs/npc_dialog_message.gd" id="9_huy6g"]
+[ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://scenes_and_scripts/fog.gdshader" id="9_patrw"]
 [ext_resource type="PackedScene" uid="uid://c2xrsqj6px78r" path="res://scenes_and_scripts/world/animals/ground_animals/wolf.tscn" id="9_v8hid"]
 [ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="9_v8mns"]
 [ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/ground_animals/boar.tscn" id="10_0ki8w"]
@@ -34,6 +36,59 @@ shader_parameter/blue_shift = 1.0
 _limits = [0.0, 1.0, 0.0, 600.0]
 _data = [Vector2(300, 1), 0.0, -0.000200234, 0, 0, Vector2(600, 0), -0.00678558, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qbaq7"]
+frequency = 0.007
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_patrw"]
+width = 1280
+height = 720
+seamless = true
+noise = SubResource("FastNoiseLite_qbaq7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ch1p"]
+shader = ExtResource("9_patrw")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_patrw")
+shader_parameter/min_fog_value = 0.0
+shader_parameter/max_fog_value = 0.07
+shader_parameter/fog_intensity = 1.0
+shader_parameter/scroll_speed = Vector2(-0.007, 0.003)
+shader_parameter/scroll_scale = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_msttb"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2tp0m"]
+width = 1280
+height = 720
+seamless = true
+noise = SubResource("FastNoiseLite_msttb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_msttb"]
+shader = ExtResource("9_patrw")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_2tp0m")
+shader_parameter/min_fog_value = 0.0
+shader_parameter/max_fog_value = 0.04
+shader_parameter/fog_intensity = 1.0
+shader_parameter/scroll_speed = Vector2(0.01, -0.017)
+shader_parameter/scroll_scale = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rjpot"]
+frequency = 0.02
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5ow7n"]
+width = 1280
+height = 720
+seamless = true
+noise = SubResource("FastNoiseLite_rjpot")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2tp0m"]
+shader = ExtResource("9_patrw")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_5ow7n")
+shader_parameter/min_fog_value = 0.0
+shader_parameter/max_fog_value = 0.02
+shader_parameter/fog_intensity = 1.0
+shader_parameter/scroll_speed = Vector2(0.01, 0.01)
+shader_parameter/scroll_scale = 1.0
 
 [sub_resource type="Resource" id="Resource_xp644"]
 script = ExtResource("9_huy6g")
@@ -142,6 +197,17 @@ texture = ExtResource("5_viase")
 position = Vector2(163, -64)
 range_z_max = -1
 texture = ExtResource("6_nfe74")
+
+[node name="ParallaxFog" parent="." instance=ExtResource("8_qbaq7")]
+
+[node name="Fog" parent="ParallaxFog/FogBack" index="0"]
+material = SubResource("ShaderMaterial_8ch1p")
+
+[node name="Fog" parent="ParallaxFog/FogMiddle" index="0"]
+material = SubResource("ShaderMaterial_msttb")
+
+[node name="Fog" parent="ParallaxFog/FogFront" index="0"]
+material = SubResource("ShaderMaterial_2tp0m")
 
 [node name="Level" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -318,5 +384,6 @@ position = Vector2(-137, -2649)
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]
 [connection signal="level_defeated" from="Level/Finish" to="." method="_on_finish_level_defeated"]
 
+[editable path="ParallaxFog"]
 [editable path="Level/PowerupNPC"]
 [editable path="Level/Finish"]

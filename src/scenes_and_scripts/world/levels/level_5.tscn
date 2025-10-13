@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://dwfwwkf3bx52r"]
+[gd_scene load_steps=38 format=4 uid="uid://dwfwwkf3bx52r"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_3ulkj"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_j68tj"]
@@ -8,17 +8,18 @@
 [ext_resource type="PackedScene" uid="uid://f5m7vw1vj4fd" path="res://scenes_and_scripts/player/player.tscn" id="5_wwy4t"]
 [ext_resource type="PackedScene" uid="uid://6twg4nqjueyw" path="res://scenes_and_scripts/world/levels/finish.tscn" id="6_blifk"]
 [ext_resource type="Texture2D" uid="uid://c5fbm5se52uf2" path="res://assets/sprites/light_textures/64x64/64x64 textures (99).png" id="6_nd6b2"]
+[ext_resource type="PackedScene" uid="uid://bbfi7d15xxxan" path="res://scenes_and_scripts/world/parallax_fog.tscn" id="7_lk5cx"]
 [ext_resource type="PackedScene" uid="uid://b7yk06l614q6o" path="res://scenes_and_scripts/world/npcs/npc.tscn" id="7_mrsys"]
 [ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/ground_animals/fox.tscn" id="7_nd6b2"]
 [ext_resource type="Texture2D" uid="uid://c4r35j5un4gc6" path="res://assets/sprites/arrow.png" id="8_3ulkj"]
 [ext_resource type="Texture2D" uid="uid://c8de18v2jb1yl" path="res://assets/sprites/npcs/npc-remote.png" id="8_lusup"]
 [ext_resource type="PackedScene" uid="uid://c2xrsqj6px78r" path="res://scenes_and_scripts/world/animals/ground_animals/wolf.tscn" id="8_mrsys"]
 [ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/ground_animals/boar.tscn" id="8_s3pvv"]
+[ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://scenes_and_scripts/fog.gdshader" id="8_shpph"]
 [ext_resource type="Script" uid="uid://dfa7rp0fl76u0" path="res://scenes_and_scripts/world/npcs/npc_dialog_message.gd" id="9_k0kab"]
 [ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="9_su0ne"]
 [ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock.tscn" id="17_su0ne"]
 [ext_resource type="Texture2D" uid="uid://dylddsv1gbd7s" path="res://assets/sprites/leave.png" id="18_k0kab"]
-[ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://scenes_and_scripts/fog.gdshader" id="19_lk5cx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cffxb"]
 shader = ExtResource("1_3ulkj")
@@ -32,6 +33,59 @@ shader_parameter/blue_shift = 1.0
 _limits = [0.0, 1.0, 0.0, 600.0]
 _data = [Vector2(300, 1), 0.0, -0.000200234, 0, 0, Vector2(600, 0), -0.00678558, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qbaq7"]
+frequency = 0.007
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_patrw"]
+width = 1280
+height = 720
+seamless = true
+noise = SubResource("FastNoiseLite_qbaq7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qcv8i"]
+shader = ExtResource("8_shpph")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_patrw")
+shader_parameter/min_fog_value = 0.0
+shader_parameter/max_fog_value = 0.07
+shader_parameter/fog_intensity = 0.9
+shader_parameter/scroll_speed = Vector2(-0.007, 0.003)
+shader_parameter/scroll_scale = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_msttb"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2tp0m"]
+width = 1280
+height = 720
+seamless = true
+noise = SubResource("FastNoiseLite_msttb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ukdk"]
+shader = ExtResource("8_shpph")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_2tp0m")
+shader_parameter/min_fog_value = 0.0
+shader_parameter/max_fog_value = 0.04
+shader_parameter/fog_intensity = 0.9
+shader_parameter/scroll_speed = Vector2(0.01, -0.017)
+shader_parameter/scroll_scale = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rjpot"]
+frequency = 0.02
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5ow7n"]
+width = 1280
+height = 720
+seamless = true
+noise = SubResource("FastNoiseLite_rjpot")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s6t6l"]
+shader = ExtResource("8_shpph")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_5ow7n")
+shader_parameter/min_fog_value = 0.0
+shader_parameter/max_fog_value = 0.02
+shader_parameter/fog_intensity = 0.9
+shader_parameter/scroll_speed = Vector2(0.01, 0.01)
+shader_parameter/scroll_scale = 1.0
 
 [sub_resource type="Resource" id="Resource_su0ne"]
 script = ExtResource("9_k0kab")
@@ -59,53 +113,6 @@ normal = Vector2(1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u6qt4"]
 normal = Vector2(-1, 0)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_qcv8i"]
-frequency = 0.007
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2ukdk"]
-width = 1280
-height = 720
-seamless = true
-noise = SubResource("FastNoiseLite_qcv8i")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s6t6l"]
-shader = ExtResource("19_lk5cx")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_2ukdk")
-shader_parameter/min_fog_value = 0.0
-shader_parameter/max_fog_value = 0.07
-shader_parameter/scroll_speed = Vector2(-0.04, 0.02)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_shpph"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qcv8i"]
-width = 1280
-height = 720
-seamless = true
-noise = SubResource("FastNoiseLite_shpph")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ukdk"]
-shader = ExtResource("19_lk5cx")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_qcv8i")
-shader_parameter/min_fog_value = 0.0
-shader_parameter/max_fog_value = 0.04
-shader_parameter/scroll_speed = Vector2(0.03, -0.05)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_lk5cx"]
-frequency = 0.02
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lk5cx"]
-width = 1280
-height = 720
-seamless = true
-noise = SubResource("FastNoiseLite_lk5cx")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_shpph"]
-shader = ExtResource("19_lk5cx")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_lk5cx")
-shader_parameter/min_fog_value = 0.0
-shader_parameter/max_fog_value = 0.02
-shader_parameter/scroll_speed = Vector2(0.03, 0.03)
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("camera")]
 material = SubResource("ShaderMaterial_cffxb")
@@ -152,6 +159,18 @@ texture = ExtResource("5_blifk")
 position = Vector2(163, -64)
 range_z_max = -1
 texture = ExtResource("6_nd6b2")
+
+[node name="ParallaxFog" parent="." instance=ExtResource("7_lk5cx")]
+fog_intensity = 0.9
+
+[node name="Fog" parent="ParallaxFog/FogBack" index="0"]
+material = SubResource("ShaderMaterial_qcv8i")
+
+[node name="Fog" parent="ParallaxFog/FogMiddle" index="0"]
+material = SubResource("ShaderMaterial_2ukdk")
+
+[node name="Fog" parent="ParallaxFog/FogFront" index="0"]
+material = SubResource("ShaderMaterial_s6t6l")
 
 [node name="Level" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -348,41 +367,8 @@ initial_velocity_max = 20.0
 angular_velocity_min = -50.0
 angular_velocity_max = 50.0
 
-[node name="ParallaxFog" type="Node2D" parent="."]
-
-[node name="FogBack" type="Parallax2D" parent="ParallaxFog"]
-scroll_scale = Vector2(0.5, 0.5)
-repeat_size = Vector2(1280, 720)
-
-[node name="Fog" type="ColorRect" parent="ParallaxFog/FogBack"]
-z_index = -10
-material = SubResource("ShaderMaterial_s6t6l")
-offset_right = 1280.0
-offset_bottom = 720.0
-color = Color(1, 1, 1, 0)
-
-[node name="FogMiddle" type="Parallax2D" parent="ParallaxFog"]
-scroll_scale = Vector2(1.1, 1.1)
-repeat_size = Vector2(1280, 720)
-
-[node name="Fog" type="ColorRect" parent="ParallaxFog/FogMiddle"]
-z_index = 9
-material = SubResource("ShaderMaterial_2ukdk")
-offset_right = 1280.0
-offset_bottom = 720.0
-color = Color(1, 1, 1, 0)
-
-[node name="FogFront" type="Parallax2D" parent="ParallaxFog"]
-scroll_scale = Vector2(1.5, 1.5)
-repeat_size = Vector2(1280, 720)
-
-[node name="Fog" type="ColorRect" parent="ParallaxFog/FogFront"]
-z_index = 10
-material = SubResource("ShaderMaterial_shpph")
-offset_right = 1280.0
-offset_bottom = 720.0
-color = Color(1, 1, 1, 0)
-
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]
 [connection signal="level_defeated" from="Level/Finish" to="." method="_on_finish_level_defeated"]
+
+[editable path="ParallaxFog"]

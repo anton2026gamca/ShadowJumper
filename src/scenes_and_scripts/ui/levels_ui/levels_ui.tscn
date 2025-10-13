@@ -102,7 +102,6 @@ layout_mode = 1
 settings_menu = NodePath("../SettingsMenu")
 
 [node name="SettingsMenu" parent="." node_paths=PackedStringArray("controls_menu") instance=ExtResource("4_mey4e")]
-visible = false
 layout_mode = 1
 controls_menu = NodePath("../ControlsMenu")
 

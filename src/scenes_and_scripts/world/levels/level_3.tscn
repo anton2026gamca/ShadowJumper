@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://f8cwujw0lgie"]
+[gd_scene load_steps=29 format=4 uid="uid://f8cwujw0lgie"]
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_cffxb"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="1_q3src"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/ground_animals/fox.tscn" id="6_4x3kg"]
 [ext_resource type="Texture2D" uid="uid://c5fbm5se52uf2" path="res://assets/sprites/light_textures/64x64/64x64 textures (99).png" id="6_i1spp"]
 [ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/ground_animals/boar.tscn" id="7_443ir"]
+[ext_resource type="PackedScene" uid="uid://bbfi7d15xxxan" path="res://scenes_and_scripts/world/parallax_fog.tscn" id="7_yca3p"]
+[ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://scenes_and_scripts/fog.gdshader" id="8_r2iab"]
 [ext_resource type="PackedScene" uid="uid://c2xrsqj6px78r" path="res://scenes_and_scripts/world/animals/ground_animals/wolf.tscn" id="8_xd2tb"]
 [ext_resource type="Texture2D" uid="uid://c4r35j5un4gc6" path="res://assets/sprites/arrow.png" id="9_443ir"]
 [ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock.tscn" id="13_i1spp"]
@@ -26,6 +28,59 @@ shader_parameter/blue_shift = 1.0
 _limits = [0.0, 1.0, 0.0, 600.0]
 _data = [Vector2(300, 1), 0.0, -0.000200234, 0, 0, Vector2(600, 0), -0.00678558, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qbaq7"]
+frequency = 0.007
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_patrw"]
+width = 1280
+height = 720
+seamless = true
+noise = SubResource("FastNoiseLite_qbaq7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sxl0r"]
+shader = ExtResource("8_r2iab")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_patrw")
+shader_parameter/min_fog_value = 0.0
+shader_parameter/max_fog_value = 0.07
+shader_parameter/fog_intensity = 0.7
+shader_parameter/scroll_speed = Vector2(-0.007, 0.003)
+shader_parameter/scroll_scale = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_msttb"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2tp0m"]
+width = 1280
+height = 720
+seamless = true
+noise = SubResource("FastNoiseLite_msttb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hvdi1"]
+shader = ExtResource("8_r2iab")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_2tp0m")
+shader_parameter/min_fog_value = 0.0
+shader_parameter/max_fog_value = 0.04
+shader_parameter/fog_intensity = 0.7
+shader_parameter/scroll_speed = Vector2(0.01, -0.017)
+shader_parameter/scroll_scale = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rjpot"]
+frequency = 0.02
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5ow7n"]
+width = 1280
+height = 720
+seamless = true
+noise = SubResource("FastNoiseLite_rjpot")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vyaot"]
+shader = ExtResource("8_r2iab")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_5ow7n")
+shader_parameter/min_fog_value = 0.0
+shader_parameter/max_fog_value = 0.02
+shader_parameter/fog_intensity = 0.7
+shader_parameter/scroll_speed = Vector2(0.01, 0.01)
+shader_parameter/scroll_scale = 1.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ai2m8"]
 
@@ -79,6 +134,18 @@ texture = ExtResource("5_qnobs")
 position = Vector2(163, -64)
 range_z_max = -2
 texture = ExtResource("6_i1spp")
+
+[node name="ParallaxFog" parent="." instance=ExtResource("7_yca3p")]
+fog_intensity = 0.7
+
+[node name="Fog" parent="ParallaxFog/FogBack" index="0"]
+material = SubResource("ShaderMaterial_sxl0r")
+
+[node name="Fog" parent="ParallaxFog/FogMiddle" index="0"]
+material = SubResource("ShaderMaterial_hvdi1")
+
+[node name="Fog" parent="ParallaxFog/FogFront" index="0"]
+material = SubResource("ShaderMaterial_vyaot")
 
 [node name="LevelBackground" type="TileMapLayer" parent="."]
 z_index = -1
@@ -147,30 +214,34 @@ shape = SubResource("WorldBoundaryShape2D_8fu2q")
 [node name="Finish" parent="Level" instance=ExtResource("5_4x3kg")]
 position = Vector2(2534, -432)
 
-[node name="PickupableRock" parent="." instance=ExtResource("13_i1spp")]
+[node name="PickupableRocks" type="Node2D" parent="Level"]
+
+[node name="PickupableRock" parent="Level/PickupableRocks" instance=ExtResource("13_i1spp")]
 position = Vector2(114, -32)
 
-[node name="PickupableRock2" parent="." instance=ExtResource("13_i1spp")]
+[node name="PickupableRock2" parent="Level/PickupableRocks" instance=ExtResource("13_i1spp")]
 position = Vector2(558, -84)
 
-[node name="PickupableRock3" parent="." instance=ExtResource("13_i1spp")]
+[node name="PickupableRock3" parent="Level/PickupableRocks" instance=ExtResource("13_i1spp")]
 position = Vector2(1128, -244)
 
-[node name="PickupableRock4" parent="." instance=ExtResource("13_i1spp")]
+[node name="PickupableRock4" parent="Level/PickupableRocks" instance=ExtResource("13_i1spp")]
 position = Vector2(1267, -272)
 
-[node name="PickupableRock5" parent="." instance=ExtResource("13_i1spp")]
+[node name="PickupableRock5" parent="Level/PickupableRocks" instance=ExtResource("13_i1spp")]
 position = Vector2(1454, -373)
 
-[node name="PickupableRock6" parent="." instance=ExtResource("13_i1spp")]
+[node name="PickupableRock6" parent="Level/PickupableRocks" instance=ExtResource("13_i1spp")]
 position = Vector2(1633, -378)
 
-[node name="PickupableRock7" parent="." instance=ExtResource("13_i1spp")]
+[node name="PickupableRock7" parent="Level/PickupableRocks" instance=ExtResource("13_i1spp")]
 position = Vector2(1767, -562)
 
-[node name="PickupableRock8" parent="." instance=ExtResource("13_i1spp")]
+[node name="PickupableRock8" parent="Level/PickupableRocks" instance=ExtResource("13_i1spp")]
 position = Vector2(2355, -476)
 
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]
 [connection signal="level_defeated" from="Level/Finish" to="." method="_on_finish_level_defeated"]
+
+[editable path="ParallaxFog"]

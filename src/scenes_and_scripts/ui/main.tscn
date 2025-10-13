@@ -61,7 +61,6 @@ settings_menu = NodePath("../SettingsMenu")
 controls_menu = NodePath("../ControlsMenu")
 
 [node name="SettingsMenu" parent="UI" node_paths=PackedStringArray("controls_menu") instance=ExtResource("4_7efjl")]
-visible = false
 controls_menu = NodePath("../ControlsMenu")
 
 [node name="ControlsMenu" parent="UI" instance=ExtResource("5_blyvd")]
