@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgnkbfbtrhkl8"]
+[gd_scene load_steps=11 format=3 uid="uid://cgnkbfbtrhkl8"]
 
 [ext_resource type="Script" uid="uid://dqgu60xixvo2u" path="res://scenes_and_scripts/ui/main.gd" id="1_1wink"]
 [ext_resource type="PackedScene" uid="uid://clkhpeqrfyoax" path="res://scenes_and_scripts/ui/level_selection/level_selection.tscn" id="2_7efjl"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cccamfqr4lmoy" path="res://scenes_and_scripts/ui/menus/settings_menu/settings_menu.tscn" id="4_7efjl"]
 [ext_resource type="PackedScene" uid="uid://8cac1aghe7ym" path="res://scenes_and_scripts/ui/menus/settings_menu/controls_menu.tscn" id="5_blyvd"]
 [ext_resource type="PackedScene" uid="uid://sedvuk2vb5qi" path="res://scenes_and_scripts/ui/level_selection/level_selection_ui.tscn" id="6_jj5c1"]
+[ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="8_4afco"]
+[ext_resource type="Script" uid="uid://sj6w0vop2rxd" path="res://scenes_and_scripts/ui/fps_text.gd" id="9_gkhac"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jbjwx"]
 shader = ExtResource("2_xcigm")
@@ -65,5 +67,16 @@ controls_menu = NodePath("../ControlsMenu")
 
 [node name="ControlsMenu" parent="UI" instance=ExtResource("5_blyvd")]
 visible = false
+
+[node name="FPS" type="RichTextLabel" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("8_4afco")
+bbcode_enabled = true
+script = ExtResource("9_gkhac")
 
 [connection signal="closed" from="UI/MainMenu" to="." method="_on_main_menu_closed"]
