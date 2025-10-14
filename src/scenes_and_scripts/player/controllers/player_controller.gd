@@ -33,12 +33,14 @@ var disable_climb: bool = false
 @export var climb_ladder_area: Area2D
 
 @export_group("SFX")
-@export var enable_sfx: bool = true
-@export var sfx_jump: AudioStream
-@export var sfx_dash: AudioStream
+@export var jump_audio: AudioStreamPlayer2D
+@export var dash_audio: AudioStreamPlayer2D
+@export var fall_audio: AudioStreamPlayer2D
 
 @export_group("Effects")
 @export var jump_particles: CPUParticles2D
+@export var land_particles: CPUParticles2D
+@export var climb_particles: CPUParticles2D
 
 var in_light_time: float = 0
 
@@ -127,7 +129,9 @@ func throw_a_rock() -> void:
 func jump() -> void:
 	target.velocity.y = jump_velocity
 	disable_jump = true
-	play_sfx(sfx_jump)
+	if jump_audio:
+		jump_audio.pitch_scale = randf_range(0.75, 1.25)
+		jump_audio.play()
 	if jump_particles: jump_particles.restart()
 
 @warning_ignore("shadowed_variable_base_class")
@@ -137,15 +141,3 @@ func apply_gravity(delta: float, scale: float = 1.0) -> void:
 		g = ProjectSettings.get_setting("physics/2d/default_gravity") as float * ProjectSettings.get_setting("physics/2d/default_gravity_vector") as Vector2
 	target.velocity += g * delta * scale
 	target.velocity.y = min(target.velocity.y, max_fall_velocity)
-
-func play_sfx(sfx: AudioStream) -> void:
-	if not enable_sfx:
-		return
-	var pl: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
-	pl.stream = sfx
-	pl.autoplay = true
-	pl.pitch_scale = randf_range(0.75, 1.25)
-	pl.bus = &"SFX"
-	target.add_child(pl)
-	await pl.finished
-	target.remove_child(pl)

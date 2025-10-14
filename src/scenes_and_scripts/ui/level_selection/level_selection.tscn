@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://dka34qujie42c" path="res://scenes_and_scripts/player/controllers/replay_controller/player_replay_data.gd" id="6_ym7cv"]
 [ext_resource type="Script" uid="uid://bnpceuwymc5n" path="res://scenes_and_scripts/player/states/player_walk.gd" id="7_espgd"]
 [ext_resource type="PackedScene" uid="uid://bbfi7d15xxxan" path="res://scenes_and_scripts/world/parallax_fog.tscn" id="7_mv4qm"]
-[ext_resource type="AudioStream" uid="uid://cqddwufjihsoj" path="res://assets/SFX/folder/jump_2.wav" id="7_ym7cv"]
 [ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://scenes_and_scripts/fog.gdshader" id="8_62hx8"]
 [ext_resource type="Texture2D" uid="uid://dfehsgpqmial3" path="res://assets/sprites/player/player.png" id="8_hcr5e"]
 [ext_resource type="Script" uid="uid://bbbqnku506paa" path="res://scenes_and_scripts/components/health_component.gd" id="8_qw1ig"]
@@ -502,6 +501,14 @@ shader_parameter/night_contrast = 1.2
 shader_parameter/blue_shift = 0.4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sppe1"]
+shader = ExtResource("15_jj62b")
+shader_parameter/night_intensity = 0.0
+shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
+shader_parameter/night_darkness = 0.7
+shader_parameter/night_contrast = 1.2
+shader_parameter/blue_shift = 0.4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_akybc"]
 shader = ExtResource("15_jj62b")
 shader_parameter/night_intensity = 0.0
 shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
@@ -4577,7 +4584,7 @@ use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_qw1ig")
 animation = &"up"
 
-[node name="ReplayPlayerController" type="Node" parent="Level/Player" node_paths=PackedStringArray("state_machine", "target", "climb_left_raycast", "climb_right_raycast", "climb_ladder_area", "jump_particles")]
+[node name="ReplayPlayerController" type="Node" parent="Level/Player" node_paths=PackedStringArray("state_machine", "target", "climb_left_raycast", "climb_right_raycast", "climb_ladder_area", "jump_audio", "fall_audio", "jump_particles", "land_particles", "climb_particles")]
 script = ExtResource("5_qgt8i")
 state_machine = NodePath("../StateMachine")
 adjust_x_position_on_end = true
@@ -4585,13 +4592,14 @@ target_x_position_on_end = 1363.0
 replay_data = SubResource("Resource_8mm01")
 target = NodePath("..")
 coyote_time = 150.0
-max_throw_dist = 512.0
 climb_left_raycast = NodePath("../RayCastLeft")
 climb_right_raycast = NodePath("../RayCastRight")
 climb_ladder_area = NodePath("../ClimbLadderArea")
-sfx_jump = ExtResource("6_espgd")
-sfx_dash = ExtResource("7_ym7cv")
+jump_audio = NodePath("../JumpAudio")
+fall_audio = NodePath("../FallAudio")
 jump_particles = NodePath("../JumpParticles")
+land_particles = NodePath("../LandParticles")
+climb_particles = NodePath("../ClimbParticles")
 metadata/_custom_type_script = "uid://bmswg047sanf"
 
 [node name="StateMachine" type="Node" parent="Level/Player" node_paths=PackedStringArray("current_state")]
@@ -4635,6 +4643,10 @@ target_position = Vector2(-9, 0)
 target_position = Vector2(9, 0)
 
 [node name="AudioListener2D" type="AudioListener2D" parent="Level/Player"]
+
+[node name="JumpAudio" type="AudioStreamPlayer2D" parent="Level/Player"]
+stream = ExtResource("6_espgd")
+bus = &"SFX"
 
 [node name="FallAudio" type="AudioStreamPlayer2D" parent="Level/Player"]
 stream = ExtResource("15_6jgkc")
@@ -4693,6 +4705,19 @@ amount = 1
 texture = ExtResource("8_hcr5e")
 one_shot = true
 spread = 0.0
+
+[node name="ClimbParticles" type="CPUParticles2D" parent="Level/Player"]
+material = SubResource("ShaderMaterial_akybc")
+position = Vector2(9, 0)
+emitting = false
+texture = ExtResource("17_854ia")
+lifetime = 0.5
+lifetime_randomness = 0.1
+emission_shape = 3
+emission_rect_extents = Vector2(0, 8)
+direction = Vector2(0, -1)
+gravity = Vector2(0, -10)
+scale_amount_max = 3.0
 
 [node name="Fox" type="AnimatedSprite2D" parent="Level"]
 use_parent_material = true

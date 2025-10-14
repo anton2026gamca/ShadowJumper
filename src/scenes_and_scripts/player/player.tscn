@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://f5m7vw1vj4fd"]
+[gd_scene load_steps=35 format=3 uid="uid://f5m7vw1vj4fd"]
 
 [ext_resource type="Script" uid="uid://hrc23450dtph" path="res://scenes_and_scripts/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bnpceuwymc5n" path="res://scenes_and_scripts/player/states/player_walk.gd" id="2_dovo2"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://duwb6lw8qv8qa" path="res://scenes_and_scripts/player/states/player_wall_climb.gd" id="6_75vfm"]
 [ext_resource type="Script" uid="uid://dy5m06qmahh2u" path="res://scenes_and_scripts/player/controllers/user_controller/user_player_controller.gd" id="6_je7p5"]
 [ext_resource type="AudioStream" uid="uid://dchrahvns7vh0" path="res://assets/SFX/folder/jump_3.wav" id="7_je7p5"]
-[ext_resource type="AudioStream" uid="uid://cqddwufjihsoj" path="res://assets/SFX/folder/jump_2.wav" id="8_fm80t"]
 [ext_resource type="Texture2D" uid="uid://dfehsgpqmial3" path="res://assets/sprites/player/player.png" id="10_of6dy"]
 [ext_resource type="Script" uid="uid://cw5xylamhg1ob" path="res://scenes_and_scripts/player/states/player_ladder_climb.gd" id="12_co2wg"]
 [ext_resource type="AudioStream" uid="uid://rvdsv75uvl1g" path="res://assets/SFX/folder/lose_1.wav" id="12_ob7be"]
@@ -163,16 +162,18 @@ animation = &"up"
 script = ExtResource("3_ygw5f")
 metadata/_custom_type_script = "uid://c1vlxdllcc361"
 
-[node name="UserPlayerController" type="Node" parent="." node_paths=PackedStringArray("target", "climb_left_raycast", "climb_right_raycast", "climb_ladder_area", "jump_particles")]
+[node name="UserPlayerController" type="Node" parent="." node_paths=PackedStringArray("target", "climb_left_raycast", "climb_right_raycast", "climb_ladder_area", "jump_audio", "fall_audio", "jump_particles", "land_particles", "climb_particles")]
 script = ExtResource("6_je7p5")
 target = NodePath("..")
 rock_scene = ExtResource("4_hpak0")
 climb_left_raycast = NodePath("../ClimbLeftRayCast")
 climb_right_raycast = NodePath("../RayCastRight")
 climb_ladder_area = NodePath("../ClimbLadderArea")
-sfx_jump = ExtResource("7_je7p5")
-sfx_dash = ExtResource("8_fm80t")
+jump_audio = NodePath("../JumpAudio")
+fall_audio = NodePath("../FallAudio")
 jump_particles = NodePath("../JumpParticles")
+land_particles = NodePath("../LandParticles")
+climb_particles = NodePath("../ClimbParticles")
 metadata/_custom_type_script = "uid://dy5m06qmahh2u"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
@@ -195,10 +196,9 @@ script = ExtResource("5_75vfm")
 controller = NodePath("../../UserPlayerController")
 metadata/_custom_type_script = "uid://d076o046mjswg"
 
-[node name="PlayerWallClimb" type="Node" parent="StateMachine" node_paths=PackedStringArray("controller", "cimb_particles")]
+[node name="PlayerWallClimb" type="Node" parent="StateMachine" node_paths=PackedStringArray("controller")]
 script = ExtResource("6_75vfm")
 controller = NodePath("../../UserPlayerController")
-cimb_particles = NodePath("../../CimbParticles")
 metadata/_custom_type_script = "uid://duwb6lw8qv8qa"
 
 [node name="PlayerLadderClimb" type="Node" parent="StateMachine" node_paths=PackedStringArray("controller")]
@@ -227,13 +227,17 @@ shape = SubResource("RectangleShape2D_m74vl")
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
 
-[node name="DeathAudio" type="AudioStreamPlayer2D" parent="."]
-process_mode = 3
-stream = ExtResource("12_ob7be")
+[node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_je7p5")
 bus = &"SFX"
 
 [node name="FallAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_m74vl")
+bus = &"SFX"
+
+[node name="DeathAudio" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("12_ob7be")
 bus = &"SFX"
 
 [node name="JumpParticles" type="CPUParticles2D" parent="."]
@@ -270,7 +274,7 @@ initial_velocity_min = 10.0
 initial_velocity_max = 10.0
 scale_amount_max = 3.0
 
-[node name="CimbParticles" type="CPUParticles2D" parent="."]
+[node name="ClimbParticles" type="CPUParticles2D" parent="."]
 material = SubResource("ShaderMaterial_ygw5f")
 position = Vector2(9, 0)
 emitting = false

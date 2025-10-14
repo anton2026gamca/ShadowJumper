@@ -3,7 +3,6 @@ extends CharacterBody2D
 class_name Player
 
 
-@onready var death_audio: AudioStreamPlayer2D = $DeathAudio
 @onready var sprite: AnimatedSprite2D = $Sprite
 
 var enable_in_editor: bool = false
@@ -14,6 +13,7 @@ signal died(reason: String)
 signal took_damage(reason: String)
 
 @onready var death_particles: CPUParticles2D = $DeathParticles
+@onready var death_audio: AudioStreamPlayer2D = $DeathAudio
 
 
 func _ready() -> void:
