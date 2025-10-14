@@ -16,16 +16,19 @@ class_name PlayerController
 @export var coyote_time: float = 100.0
 @export var ladder_climb_speed: float = 100.0
 
-@export_group("Rock throwing")
-@export var rock_scene: PackedScene
-@export var rock_travel_speed: float = 500.0
-@export var max_throw_dist: float = 16 * 14
-
 var last_on_floor_time: float = -1000
 var last_jump_time: float = -1000
 
 var disable_jump: bool = false
 var disable_climb: bool = false
+
+@export_group("Rock throwing")
+@export var rock_scene: PackedScene
+@export var rock_travel_speed: float = 500.0
+@export var max_throw_dist: float = 16 * 14
+
+@export_group("Hit and Death")
+@export var immunity_time: float = 2.0
 
 @export_group("Physics")
 @export var climb_left_raycast: RayCast2D

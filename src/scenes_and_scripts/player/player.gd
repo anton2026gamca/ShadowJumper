@@ -15,6 +15,8 @@ signal took_damage(reason: String)
 @onready var death_particles: CPUParticles2D = $DeathParticles
 @onready var death_audio: AudioStreamPlayer2D = $DeathAudio
 
+var has_immunity: bool = false
+
 
 func _ready() -> void:
 	enable_in_editor = false
@@ -45,6 +47,8 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _on_death_component_die(reason: String, instant_kill: bool = false) -> void:
+	if has_immunity and not instant_kill:
+		return
 	health_component.lives -= 1
 	if instant_kill:
 		health_component.lives = 0
@@ -56,6 +60,12 @@ func _on_death_component_die(reason: String, instant_kill: bool = false) -> void
 		sprite.visible = false
 		Helpers.camera.enter_death_mode(velocity.x)
 		emit_death_particles()
+	else:
+		has_immunity = true
+		sprite.modulate.a = 0.5
+		await get_tree().create_timer(controller.immunity_time, false).timeout
+		sprite.modulate.a = 1
+		has_immunity = false
 
 func pickup_powerup(powerup_scene: PackedScene) -> Powerup:
 	var node: Node = powerup_scene.instantiate()
