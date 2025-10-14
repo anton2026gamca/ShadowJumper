@@ -258,11 +258,11 @@ initial_velocity_max = 50.0
 scale_amount_max = 3.0
 
 [node name="LandParticles" type="CPUParticles2D" parent="."]
-material = SubResource("ShaderMaterial_ygw5f")
+light_mask = 0
 position = Vector2(0, 8)
 emitting = false
 texture = ExtResource("17_ygw5f")
-lifetime = 0.4
+lifetime = 0.2
 one_shot = true
 explosiveness = 1.0
 lifetime_randomness = 0.1
