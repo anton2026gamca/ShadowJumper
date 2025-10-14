@@ -158,6 +158,10 @@ use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_krtpv")
 animation = &"up"
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_f60y1")
+
 [node name="DeathComponent" type="Node" parent="."]
 script = ExtResource("3_ygw5f")
 metadata/_custom_type_script = "uid://c1vlxdllcc361"
@@ -205,10 +209,6 @@ metadata/_custom_type_script = "uid://duwb6lw8qv8qa"
 script = ExtResource("12_co2wg")
 controller = NodePath("../../UserPlayerController")
 metadata/_custom_type_script = "uid://cw5xylamhg1ob"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("RectangleShape2D_f60y1")
 
 [node name="ClimbLeftRayCast" type="RayCast2D" parent="."]
 target_position = Vector2(-9, 0)

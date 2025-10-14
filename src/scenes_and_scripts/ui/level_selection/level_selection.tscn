@@ -4592,7 +4592,6 @@ target_x_position_on_end = 1363.0
 replay_data = SubResource("Resource_8mm01")
 target = NodePath("..")
 coyote_time = 150.0
-immunity_time = null
 climb_left_raycast = NodePath("../RayCastLeft")
 climb_right_raycast = NodePath("../RayCastRight")
 climb_ladder_area = NodePath("../ClimbLadderArea")

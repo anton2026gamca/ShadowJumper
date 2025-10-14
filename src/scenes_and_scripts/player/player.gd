@@ -14,6 +14,7 @@ signal took_damage(reason: String)
 
 @onready var death_particles: CPUParticles2D = $DeathParticles
 @onready var death_audio: AudioStreamPlayer2D = $DeathAudio
+@onready var climb_ladder_area: Area2D = $ClimbLadderArea
 
 var has_immunity: bool = false
 
