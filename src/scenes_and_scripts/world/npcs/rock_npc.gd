@@ -17,4 +17,4 @@ func _process(delta: float) -> void:
 func _on_message_finished() -> void:
 	var text: FloatingText = Helpers.create_floating_text(self, ("+" if rocks_amount >= 0 else "") + str(int(rocks_amount)) + " R", Vector2(0, -24), text_color, -10)
 	text.process_mode = Node.PROCESS_MODE_ALWAYS
-	Settings.collect_rocks(rocks_amount)
+	Progress.collect_rocks(rocks_amount)

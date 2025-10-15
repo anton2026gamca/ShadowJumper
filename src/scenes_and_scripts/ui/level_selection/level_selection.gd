@@ -16,8 +16,8 @@ func _ready() -> void:
 	for level: LevelSelectionLevel in find_children("", "LevelSelectionLevel"):
 		if level != start_level:
 			level.visible = false
-	for key: int in Settings.levels_data.keys():
-		if not Settings.levels_data[key].get("defeated", false):
+	for key: int in Progress.levels_data.keys():
+		if not Progress.levels_data[key].get("defeated", false):
 			continue
 		var level: LevelSelectionLevel = find_level_by_number(key)
 		if not level: continue
@@ -26,12 +26,12 @@ func _ready() -> void:
 		for neighbour_level: LevelSelectionLevel in level.relationships.values():
 			if not neighbour_level: continue
 			neighbour_level.visible = true
-	var new_level: LevelSelectionLevel = find_level_by_number(Settings.last_level)
+	var new_level: LevelSelectionLevel = find_level_by_number(Progress.last_level)
 	if new_level: current_level = new_level
 	replay_controller.target.position = current_level.position + Vector2(0, -9)
 	camera.position = replay_controller.target.position
 	Helpers.camera = camera
-	player.health_component.lives = Settings.player_lives
+	player.health_component.lives = Progress.player_lives
 
 func _process(_delta: float) -> void:
 	if OS.is_debug_build() and Input.is_action_just_pressed("debug_toggle_levels"):
@@ -61,7 +61,7 @@ func find_level_by_number(num: int) -> LevelSelectionLevel:
 	return levels[index]
 
 func enter_level() -> void:
-	Settings.player_lives = player.health_component.lives
+	Progress.player_lives = player.health_component.lives
 	var player_lives_before: int = player.health_component.lives
 	if not LevelLoader is LevelLoaderClass:
 		return
@@ -80,7 +80,7 @@ func enter_level() -> void:
 	if defeated:
 		if not current_level.is_completed:
 			current_level.mark_completed()
-			Helpers.dictionary_set_path(Settings.levels_data, [current_level.number, "defeated"], true)
+			Helpers.dictionary_set_path(Progress.levels_data, [current_level.number, "defeated"], true)
 			for level: LevelSelectionLevel in current_level.relationships.values():
 				if not level:
 					continue
@@ -93,12 +93,12 @@ func enter_level() -> void:
 		player.health_component.lives = 1
 		var cancel_progress: bool = args[1] if len(args) >= 2 and args[1] is bool else false
 		if cancel_progress:
-			Settings.collect_energy(-Settings.level_collected_energy)
-			Settings.collect_rocks(-Settings.level_rocks)
+			Progress.collect_energy(-Progress.level_collected_energy)
+			Progress.collect_rocks(-Progress.level_rocks)
 			player.health_component.lives = player_lives_before
-	Settings.player_lives = player.health_component.lives
+	Progress.player_lives = player.health_component.lives
 	ui.collected_energy_animation()
-	Settings._save()
+	Progress._save()
 
 func move_to_level(dir: Vector2i) -> void:
 	var new_level: LevelSelectionLevel = current_level.relationships[dir] if dir in current_level.relationships else null
@@ -111,8 +111,8 @@ func move_to_level(dir: Vector2i) -> void:
 	replay_controller.start_replay()
 	await replay_controller.replay_ended
 	current_level = new_level
-	Settings.last_level = new_level.number
-	Settings._save()
+	Progress.last_level = new_level.number
+	Progress._save()
 
 func _debug_toggle_all_levels_on() -> void:
 	if not OS.is_debug_build():

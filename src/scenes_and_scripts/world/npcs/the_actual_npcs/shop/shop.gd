@@ -59,19 +59,19 @@ func buy_item(answer: NPCDialogAnswer) -> void:
 	var item: ShopItem = items_on_sale[index]
 	if item.stock == 0:
 		answer.next_messages = out_of_stock_messages.duplicate()
-	elif Settings.total_collected_energy < item.price:
+	elif Progress.total_collected_energy < item.price:
 		answer.next_messages = not_enough_energy_messages.duplicate()
 	else:
 		answer.next_messages = bought_item_messages.duplicate()
 		item.stock -= 1
-		Settings.collect_energy(-item.price)
+		Progress.collect_energy(-item.price)
 		if item is ShopPowerupItem:
 			Helpers.spawn_powerup(self, item.powerup, Vector2.ZERO)
 		elif item is ShopRocksItem:
 			# It has to be $Area2D instead of self because of some weird thing with TileMapLayer
 			var text: FloatingText = Helpers.create_floating_text($Area2D, ("+" if item.rocks_amount >= 0 else "") + str(int(item.rocks_amount)) + " R", Vector2(0, -32), item.color, -10)
 			text.process_mode = Node.PROCESS_MODE_ALWAYS
-			Settings.collect_rocks(item.rocks_amount)
+			Progress.collect_rocks(item.rocks_amount)
 	
 	for i: int in len(answer.next_messages):
 		var msg: NPCDialogMessage = answer.next_messages[i].duplicate()
@@ -86,7 +86,7 @@ func parse_message(msg: String, item: ShopItem) -> String:
 		.replace(ITEM_NAME_COLOR, "#" + item.color.to_html(false))\
 		.replace("{price_color}", PRICE_COLOR)\
 		.replace(ITEM_STOCK_COLOR, IN_STOCK_COLOR if item.stock > 0 else (OUT_OF_STOCK_COLOR if item.stock == 0 else INF_STOCK_COLOR))\
-		.replace("{player_energy}", str(int(Settings.total_collected_energy)))
+		.replace("{player_energy}", str(int(Progress.total_collected_energy)))
 
 func _on_body_entered(body: Node2D) -> void:
 	parse_items()

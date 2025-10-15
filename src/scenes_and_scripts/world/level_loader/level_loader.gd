@@ -25,19 +25,19 @@ func _process(_delta: float) -> void:
 
 
 func load_level(level: PackedScene, level_number: int, player_lives_override: int = 1) -> void:
-	if Settings.total_collected_energy < 0: Settings.total_collected_energy = 0
-	Settings.level_collected_energy = 0
-	Settings.collected_energy_changed.emit()
-	if Settings.total_rocks < 0: Settings.total_rocks = 0
-	Settings.level_rocks = 0
-	Settings.rocks_changed.emit()
+	if Progress.total_collected_energy < 0: Progress.total_collected_energy = 0
+	Progress.level_collected_energy = 0
+	Progress.collected_energy_changed.emit()
+	if Progress.total_rocks < 0: Progress.total_rocks = 0
+	Progress.level_rocks = 0
+	Progress.rocks_changed.emit()
 	current_level_scene = level
 	current_level_number = level_number
-	var data: Variant = Helpers.dictionary_get_path(Settings.levels_data, [level_number, "data"])
-	if Helpers.dictionary_get_path(Settings.levels_data, [level_number, "data"]) is Dictionary:
+	var data: Variant = Helpers.dictionary_get_path(Progress.levels_data, [level_number, "data"])
+	if Helpers.dictionary_get_path(Progress.levels_data, [level_number, "data"]) is Dictionary:
 		current_level_data = data
 	else:
-		current_level_data = Helpers.dictionary_set_path(Settings.levels_data, [level_number, "data"], {})
+		current_level_data = Helpers.dictionary_set_path(Progress.levels_data, [level_number, "data"], {})
 	var node: Level = level.instantiate()
 	current_level_node = node
 	node.player_died.connect(player_died)
@@ -64,7 +64,7 @@ func exit_level(args: Array) -> void:
 func player_died(reason: String) -> void:
 	if not is_in_level:
 		return
-	Settings.collect_energy(energy_on_player_death)
+	Progress.collect_energy(energy_on_player_death)
 	ui.open_respawn_menu(reason)
 
 func level_defeated() -> void:
@@ -75,10 +75,10 @@ func level_defeated() -> void:
 	ui.full_screen_text.visible = true
 	ui.full_screen_text.text = "LEVEL\nDEFEATED !!!\n"
 	ui.full_screen_text.text += "[code]\n"
-	var energy_color: String = Helpers.get_energy_level_color(Settings.level_collected_energy).to_html(false)
-	ui.full_screen_text.text += "Collected energy this run: [color=#" + energy_color + "]" + ("+" if Settings.level_collected_energy > 0 else "") + str(int(Settings.level_collected_energy)) + " E[/color]\n"
-	var rocks_color: String = "lime" if Settings.level_rocks > 0 else "yellow"
-	ui.full_screen_text.text += "Rocks this run: [color=" + rocks_color + "]" + ("+" if Settings.level_rocks > 0 else "") + str(int(Settings.level_rocks)) + " R[/color]\n"
+	var energy_color: String = Helpers.get_energy_level_color(Progress.level_collected_energy).to_html(false)
+	ui.full_screen_text.text += "Collected energy this run: [color=#" + energy_color + "]" + ("+" if Progress.level_collected_energy > 0 else "") + str(int(Progress.level_collected_energy)) + " E[/color]\n"
+	var rocks_color: String = "lime" if Progress.level_rocks > 0 else "yellow"
+	ui.full_screen_text.text += "Rocks this run: [color=" + rocks_color + "]" + ("+" if Progress.level_rocks > 0 else "") + str(int(Progress.level_rocks)) + " R[/color]\n"
 	ui.full_screen_text.text += "[/code]"
 	ui.full_screen_text.visible_characters = 0
 	ui.full_screen_text.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -94,4 +94,4 @@ func reload_level() -> void:
 	current_level_node.queue_free()
 	current_level_node = null
 	load_level(current_level_scene, current_level_number, true)
-	Settings._save()
+	Progress._save()

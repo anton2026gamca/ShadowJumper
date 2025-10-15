@@ -17,7 +17,7 @@ func _on_body_entered(body: Node2D) -> void:
 		point_light_2d.visible = false
 		var text: FloatingText = Helpers.create_floating_text(get_parent(), ("+" if amount >= 0 else "") + str(int(amount)) + " R", position + Vector2(0, -24), text_color, -10)
 		text.process_mode = Node.PROCESS_MODE_ALWAYS
-		Settings.collect_rocks(amount)
+		Progress.collect_rocks(amount)
 		pickup_audio.play()
 		pickup_audio.pitch_scale = randf_range(0.7, 1.3)
 		pickup_particles.emitting = true

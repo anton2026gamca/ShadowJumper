@@ -20,8 +20,8 @@ signal respawn
 
 
 func _ready() -> void:
-	Settings.collected_energy_changed.connect(_on_collected_energy_changed)
-	Settings.rocks_changed.connect(_on_rocks_changed)
+	Progress.collected_energy_changed.connect(_on_collected_energy_changed)
+	Progress.rocks_changed.connect(_on_rocks_changed)
 	Helpers.levels_ui = self
 	reset()
 
@@ -77,13 +77,13 @@ func destroy_all_indicators() -> void:
 		if indicator: indicator.destroy.call_deferred()
 
 func _on_collected_energy_changed() -> void:
-	energy_label.text = str(int(Settings.total_collected_energy)) + " E"
-	energy_label.add_theme_color_override("font_color", Helpers.get_energy_level_color(Settings.total_collected_energy))
+	energy_label.text = str(int(Progress.total_collected_energy)) + " E"
+	energy_label.add_theme_color_override("font_color", Helpers.get_energy_level_color(Progress.total_collected_energy))
 
 func _on_rocks_changed() -> void:
-	rocks_label.text = str(int(Settings.total_rocks)) + " R"
+	rocks_label.text = str(int(Progress.total_rocks)) + " R"
 	var color: Color = Color.LIME
-	if Settings.total_rocks < 5: color = Color.RED
-	elif Settings.total_rocks < 10: color = Color.ORANGE
-	elif Settings.total_rocks < 20: color = Color.YELLOW
+	if Progress.total_rocks < 5: color = Color.RED
+	elif Progress.total_rocks < 10: color = Color.ORANGE
+	elif Progress.total_rocks < 20: color = Color.YELLOW
 	rocks_label.add_theme_color_override("font_color", color)

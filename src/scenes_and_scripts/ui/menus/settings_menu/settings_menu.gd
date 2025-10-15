@@ -47,8 +47,8 @@ func open_controls_menu() -> void:
 	open_sub_menu(controls_menu)
 
 func _on_reset_save_pressed() -> void:
-	Settings.reset()
-	Settings._save()
+	Progress.reset()
+	Progress._save()
 	if OS.has_feature("web"):
 		JavaScriptBridge.eval("location.reload();")
 	else:

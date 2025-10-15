@@ -26,8 +26,8 @@ func _ready() -> void:
 
 func _on_msg_answer_picked(answer: NPCDialogAnswer, msg: NPCDialogAnswerMessage) -> void:
 	if answer.text == drop_powerup_answer.text:
-		if powerup and Settings.total_collected_energy >= powerup_price:
-			Settings.collect_energy(-powerup_price)
+		if powerup and Progress.total_collected_energy >= powerup_price:
+			Progress.collect_energy(-powerup_price)
 			Helpers.spawn_powerup(get_parent(), powerup, Helpers.player.global_position)
 			drop_powerup_answer.next_messages = [powerup_issued_message.duplicate()]
 		else:
