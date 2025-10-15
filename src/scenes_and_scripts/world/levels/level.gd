@@ -5,6 +5,8 @@ class_name Level
 @export var world_bottom_die_reason: String = "You fell out of the world!"
 @export var camera: Camera2D
 
+var number: int
+
 signal player_died(reason: String)
 signal level_defeated
 

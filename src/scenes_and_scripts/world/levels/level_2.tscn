@@ -175,7 +175,7 @@ tile_set = ExtResource("4_emr2t")
 dialog = SubResource("Resource_b24ec")
 cooldown = -1.0
 one_time = true
-unique_id = 2
+unique_id = 1
 
 [node name="Player" parent="Level" instance=ExtResource("5_xdw8v")]
 use_parent_material = true

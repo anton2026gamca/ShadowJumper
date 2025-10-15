@@ -16,17 +16,18 @@ func _ready() -> void:
 	for level: LevelSelectionLevel in find_children("", "LevelSelectionLevel"):
 		if level != start_level:
 			level.visible = false
-	for path: NodePath in Settings.beated_levels:
-		var level: Node = get_node(path)
-		if not level is LevelSelectionLevel: continue
+	for key: int in Settings.levels_data.keys():
+		if not Settings.levels_data[key].get("defeated", false):
+			continue
+		var level: LevelSelectionLevel = find_level_by_number(key)
+		if not level: continue
 		level.visible = true
 		level.mark_completed()
 		for neighbour_level: LevelSelectionLevel in level.relationships.values():
 			if not neighbour_level: continue
 			neighbour_level.visible = true
-	var new_level: Node = get_node_or_null(Settings.last_level)
-	if new_level is LevelSelectionLevel:
-		current_level = new_level
+	var new_level: LevelSelectionLevel = find_level_by_number(Settings.last_level)
+	if new_level: current_level = new_level
 	replay_controller.target.position = current_level.position + Vector2(0, -9)
 	camera.position = replay_controller.target.position
 	Helpers.camera = camera
@@ -52,14 +53,20 @@ func _process(_delta: float) -> void:
 		Helpers.main_menu.pause()
 
 
+func find_level_by_number(num: int) -> LevelSelectionLevel:
+	var levels: Array[Node] = find_children("", "LevelSelectionLevel")
+	var index: int = levels.find_custom(func(level: LevelSelectionLevel) -> bool: return level.number == num)
+	if index < 0:
+		return null
+	return levels[index]
+
 func enter_level() -> void:
-	Settings.last_entered_level = get_path_to(current_level)
 	Settings.player_lives = player.health_component.lives
 	var player_lives_before: int = player.health_component.lives
 	if not LevelLoader is LevelLoaderClass:
 		return
 	var parent: Node = get_parent()
-	LevelLoader.load_level(current_level.scene, player.health_component.lives)
+	LevelLoader.load_level(current_level.scene, current_level.number, player.health_component.lives)
 	get_tree().current_scene = LevelLoader
 	ui.visible = false
 	parent.remove_child(self)
@@ -73,7 +80,7 @@ func enter_level() -> void:
 	if defeated:
 		if not current_level.is_completed:
 			current_level.mark_completed()
-			Settings.beated_levels.append(get_path_to(current_level))
+			Helpers.dictionary_set_path(Settings.levels_data, [current_level.number, "defeated"], true)
 			for level: LevelSelectionLevel in current_level.relationships.values():
 				if not level:
 					continue
@@ -104,7 +111,7 @@ func move_to_level(dir: Vector2i) -> void:
 	replay_controller.start_replay()
 	await replay_controller.replay_ended
 	current_level = new_level
-	Settings.last_level = get_path_to(new_level)
+	Settings.last_level = new_level.number
 	Settings._save()
 
 func _debug_toggle_all_levels_on() -> void:

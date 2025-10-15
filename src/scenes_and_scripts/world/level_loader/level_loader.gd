@@ -3,8 +3,10 @@ class_name LevelLoaderClass
 
 
 @export var level_parent: Node
-@export var current_level: PackedScene
-@export var current_level_node: Level
+var current_level_number: int
+var current_level_data: Dictionary
+var current_level_scene: PackedScene
+var current_level_node: Level
 var is_in_level: bool = false
 @onready var ui: LevelsUI = $UICanvasLayer/UI
 
@@ -22,14 +24,20 @@ func _process(_delta: float) -> void:
 		elif not get_tree().paused: ui.pause()
 
 
-func load_level(level: PackedScene, player_lives_override: int = 1) -> void:
+func load_level(level: PackedScene, level_number: int, player_lives_override: int = 1) -> void:
 	if Settings.total_collected_energy < 0: Settings.total_collected_energy = 0
 	Settings.level_collected_energy = 0
 	Settings.collected_energy_changed.emit()
 	if Settings.total_rocks < 0: Settings.total_rocks = 0
 	Settings.level_rocks = 0
 	Settings.rocks_changed.emit()
-	current_level = level
+	current_level_scene = level
+	current_level_number = level_number
+	var data: Variant = Helpers.dictionary_get_path(Settings.levels_data, [level_number, "data"])
+	if Helpers.dictionary_get_path(Settings.levels_data, [level_number, "data"]) is Dictionary:
+		current_level_data = data
+	else:
+		current_level_data = Helpers.dictionary_set_path(Settings.levels_data, [level_number, "data"], {})
 	var node: Level = level.instantiate()
 	current_level_node = node
 	node.player_died.connect(player_died)
@@ -85,5 +93,5 @@ func reload_level() -> void:
 	level_parent.remove_child(current_level_node)
 	current_level_node.queue_free()
 	current_level_node = null
-	load_level(current_level, true)
+	load_level(current_level_scene, current_level_number, true)
 	Settings._save()

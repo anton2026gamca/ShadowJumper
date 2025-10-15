@@ -219,7 +219,7 @@ tile_set = ExtResource("4_viase")
 dialog = SubResource("Resource_patrw")
 cooldown = -1.0
 one_time = true
-unique_id = 4
+unique_id = 1
 
 [node name="PowerupNPC" parent="Level" instance=ExtResource("11_v8mns")]
 position = Vector2(123, -592)

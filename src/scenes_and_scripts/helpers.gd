@@ -52,3 +52,60 @@ func spawn_powerup(parent: Node, powerup: PackedScene, position: Vector2) -> voi
 	obj.global_position = position
 	obj.powerup = powerup
 	parent.add_child(obj)
+
+func dictionary_has_path(dict: Dictionary, path: Array) -> bool:
+	var current: Variant = dict
+	for key: Variant in path:
+		if current is Array:
+			if not key is int or key < 0 or key >= current.size():
+				return false
+			current = current.get(key)
+		if current is Dictionary:
+			current = current.get(key)
+		else:
+			return false
+	return true
+
+func dictionary_get_path(dict: Dictionary, path: Array, default: Variant = null) -> Variant:
+	var current: Variant = dict
+	for key: Variant in path:
+		if current is Array:
+			if not key is int or key < 0 or key >= current.size():
+				return default
+			current = current[key]
+		elif current is Dictionary:
+			if not current.has(key):
+				return default
+			current = current[key]
+		else:
+			return default
+	return current
+
+func dictionary_set_path(dict: Dictionary, path: Array, value: Variant) -> Variant:
+	if path.is_empty():
+		return null
+	var current: Variant = dict
+	for i in range(path.size() - 1):
+		var key: Variant = path[i]
+		if current is Dictionary:
+			if not current.has(key):
+				current[key] = {}
+			elif not current[key] is Dictionary and not current[key] is Array:
+				return null
+			current = current[key]
+		elif current is Array:
+			if not key is int or key < 0:
+				return null
+			while key >= current.size():
+				current.append({})
+			current = current[key]
+		else:
+			return null
+	var last_key = path[path.size() - 1]
+	if current is Dictionary:
+		current[last_key] = value
+	elif current is Array and last_key is int and last_key >= 0 and last_key < current.size():
+		current[last_key] = value
+	else:
+		return null
+	return value
