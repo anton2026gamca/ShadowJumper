@@ -91,10 +91,10 @@ animations = [{
 size = Vector2(312, 78.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhof2"]
-size = Vector2(22.25, 20.5)
+size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6ybc"]
-size = Vector2(36.5, 32.5)
+size = Vector2(28, 28)
 
 [sub_resource type="Resource" id="Resource_kltce"]
 script = ExtResource("4_8t4eu")
@@ -130,11 +130,11 @@ position = Vector2(41, 0)
 shape = SubResource("RectangleShape2D_8t4eu")
 
 [node name="CollisionShape2D" parent="Physics/HitStartArea" index="0"]
-position = Vector2(11.125, -10.25)
+position = Vector2(8, -8)
 shape = SubResource("RectangleShape2D_bhof2")
 
 [node name="CollisionShape2D" parent="Physics/HitRangeArea" index="0"]
-position = Vector2(15.25, -13.25)
+position = Vector2(11, -11)
 shape = SubResource("RectangleShape2D_i6ybc")
 
 [node name="EnergyCollectorComponent" parent="." index="6"]
