@@ -17,6 +17,7 @@ use_parent_material = true
 texture = ExtResource("1_0l42j")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 color = Color(1, 0.815686, 0, 1)
 energy = 1.25
 texture = ExtResource("3_0l42j")
