@@ -81,7 +81,7 @@ func dictionary_get_path(dict: Dictionary, path: Array, default: Variant = null)
 			return default
 	return current
 
-func dictionary_set_path(dict: Dictionary, path: Array, value: Variant) -> Variant:
+func dictionary_set_path(dict: Dictionary, path: Array, value: Variant, force_string_key: bool = false) -> Variant:
 	if path.is_empty():
 		return null
 	var current: Variant = dict
@@ -90,7 +90,7 @@ func dictionary_set_path(dict: Dictionary, path: Array, value: Variant) -> Varia
 		if current is Dictionary:
 			if not current.has(key):
 				current[key] = {}
-			elif not current[key] is Dictionary and not current[key] is Array:
+			if force_string_key and not key is String:
 				return null
 			current = current[key]
 		elif current is Array:

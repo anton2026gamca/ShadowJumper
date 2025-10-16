@@ -11,37 +11,33 @@ class_name SettingsMenu
 
 
 func _ready() -> void:
-	load_settings()
+	Settings.loaded.connect(update_from_settings)
 
 func open(instant: bool = false) -> void:
-	load_settings()
+	update_from_settings()
 	super.open(instant)
 
 func close(internal: bool = false) -> void:
-	save_settings()
+	save_audio()
 	await super.close(internal)
 
-func save_settings() -> void:
-	var file: ConfigFile = ConfigFile.new()
-	file.set_value("sound", "Master", sound_master.value)
-	file.set_value("sound", "SFX", sound_sfx.value)
-	file.set_value("sound", "Music", sound_music.value)
-	file.save("user://settings.cfg")
+func save_audio() -> void:
+	Settings.set_value(Settings.Category.AUDIO, ["master"], sound_master.value)
+	Settings.set_value(Settings.Category.AUDIO, ["sfx"], sound_sfx.value)
+	Settings.set_value(Settings.Category.AUDIO, ["music"], sound_music.value)
+	Settings.save_to_file()
 
-func load_settings() -> void:
-	var file: ConfigFile = ConfigFile.new()
-	# Because of web
+func update_from_settings() -> void:
 	sound_master.value = 0.0
 	sound_master.value = 100.0
 	sound_sfx.value = 0.0
 	sound_sfx.value = 100.0
 	sound_music.value = 0.0
 	sound_music.value = 100.0
-	if file.load("user://settings.cfg") != OK:
-		return
-	sound_master.value = file.get_value("sound", "Master", 100.0)
-	sound_sfx.value = file.get_value("sound", "SFX", 100.0)
-	sound_music.value = file.get_value("sound", "Music", 100.0)
+	# ^ Because of web
+	sound_master.value = Settings.get_value(Settings.Category.AUDIO, ["master"], 100.0)
+	sound_sfx.value = Settings.get_value(Settings.Category.AUDIO, ["sfx"], 100.0)
+	sound_music.value = Settings.get_value(Settings.Category.AUDIO, ["music"], 100.0)
 
 func open_controls_menu() -> void:
 	open_sub_menu(controls_menu)

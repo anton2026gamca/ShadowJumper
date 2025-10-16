@@ -14,10 +14,6 @@ var is_rebinding: bool = false
 signal on_event(e: InputEvent)
 
 
-func _ready() -> void:
-	InputMap.load_from_project_settings()
-	update()
-
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion: return
 	if not event.is_released(): return
