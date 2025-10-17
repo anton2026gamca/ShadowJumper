@@ -1,0 +1,158 @@
+[gd_scene load_steps=23 format=3 uid="uid://dpy2qsq5apfgn"]
+
+[ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="1_xobde"]
+[ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_qn6tr"]
+[ext_resource type="Script" uid="uid://dhd8v7a51hwsm" path="res://scenes_and_scripts/camera_plus.gd" id="3_ciwo4"]
+[ext_resource type="TileSet" uid="uid://8h4fm7v55cnx" path="res://assets/tileset.tres" id="4_vb1h2"]
+[ext_resource type="Texture2D" uid="uid://cyg6ig5l1nget" path="res://assets/sprites/background.png" id="5_nn5pw"]
+[ext_resource type="Texture2D" uid="uid://c5fbm5se52uf2" path="res://assets/sprites/light_textures/64x64/64x64 textures (99).png" id="6_v3d0k"]
+[ext_resource type="PackedScene" uid="uid://bbfi7d15xxxan" path="res://scenes_and_scripts/world/parallax_fog.tscn" id="7_8tbc5"]
+[ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://scenes_and_scripts/fog.gdshader" id="8_2artr"]
+[ext_resource type="PackedScene" uid="uid://f5m7vw1vj4fd" path="res://scenes_and_scripts/player/player.tscn" id="15_g2sbh"]
+[ext_resource type="PackedScene" uid="uid://6twg4nqjueyw" path="res://scenes_and_scripts/world/levels/finish.tscn" id="16_2bwmf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1m2nw"]
+shader = ExtResource("1_xobde")
+shader_parameter/night_intensity = 1.0
+shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
+shader_parameter/night_darkness = 1.0
+shader_parameter/night_contrast = 2.0
+shader_parameter/blue_shift = 1.0
+
+[sub_resource type="Curve" id="Curve_wcekq"]
+_limits = [0.0, 1.0, 0.0, 600.0]
+_data = [Vector2(300, 1), 0.0, -0.000200234, 0, 0, Vector2(600, 0), -0.00678558, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qbaq7"]
+frequency = 0.007
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_patrw"]
+width = 1280
+height = 720
+seamless = true
+noise = SubResource("FastNoiseLite_qbaq7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iqtme"]
+shader = ExtResource("8_2artr")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_patrw")
+shader_parameter/min_fog_value = 0.0
+shader_parameter/max_fog_value = 0.07
+shader_parameter/fog_intensity = 1.0
+shader_parameter/scroll_speed = Vector2(-0.007, 0.003)
+shader_parameter/scroll_scale = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_msttb"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2tp0m"]
+width = 1280
+height = 720
+seamless = true
+noise = SubResource("FastNoiseLite_msttb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfgm2"]
+shader = ExtResource("8_2artr")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_2tp0m")
+shader_parameter/min_fog_value = 0.0
+shader_parameter/max_fog_value = 0.04
+shader_parameter/fog_intensity = 1.0
+shader_parameter/scroll_speed = Vector2(0.01, -0.017)
+shader_parameter/scroll_scale = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rjpot"]
+frequency = 0.02
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5ow7n"]
+width = 1280
+height = 720
+seamless = true
+noise = SubResource("FastNoiseLite_rjpot")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kpwu0"]
+shader = ExtResource("8_2artr")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_5ow7n")
+shader_parameter/min_fog_value = 0.0
+shader_parameter/max_fog_value = 0.02
+shader_parameter/fog_intensity = 1.0
+shader_parameter/scroll_speed = Vector2(0.01, 0.01)
+shader_parameter/scroll_scale = 1.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_055t4"]
+
+[node name="World" type="Node2D" node_paths=PackedStringArray("camera")]
+material = SubResource("ShaderMaterial_1m2nw")
+script = ExtResource("2_qn6tr")
+world_bottom_die_reason = "You fell from too high!"
+camera = NodePath("Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("follow")]
+process_mode = 3
+drag_vertical_enabled = true
+drag_left_margin = 0.08
+drag_right_margin = 0.08
+editor_draw_drag_margin = true
+script = ExtResource("3_ciwo4")
+follow = NodePath("../Level/Player")
+limits = Dictionary[Vector2i, float]({
+Vector2i(-1, 0): -269.0,
+Vector2i(0, 1): 30.0,
+Vector2i(1, 0): 1769.0
+})
+distance_to_value = SubResource("Curve_wcekq")
+
+[node name="ParallaxBackground" type="Parallax2D" parent="."]
+use_parent_material = true
+scroll_scale = Vector2(0.167, 0.167)
+
+[node name="Background" type="TileMapLayer" parent="ParallaxBackground"]
+z_index = -100
+use_parent_material = true
+tile_set = ExtResource("4_vb1h2")
+collision_enabled = false
+
+[node name="ParallaxMoon" type="Parallax2D" parent="."]
+use_parent_material = true
+scroll_scale = Vector2(0.333, 0.333)
+
+[node name="Moon" type="Sprite2D" parent="ParallaxMoon"]
+z_index = -1
+use_parent_material = true
+texture = ExtResource("5_nn5pw")
+
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxMoon/Moon"]
+position = Vector2(163, -64)
+range_z_max = -1
+texture = ExtResource("6_v3d0k")
+
+[node name="ParallaxFog" parent="." instance=ExtResource("7_8tbc5")]
+
+[node name="Fog" parent="ParallaxFog/FogBack" index="0"]
+material = SubResource("ShaderMaterial_iqtme")
+
+[node name="Fog" parent="ParallaxFog/FogMiddle" index="0"]
+material = SubResource("ShaderMaterial_qfgm2")
+
+[node name="Fog" parent="ParallaxFog/FogFront" index="0"]
+material = SubResource("ShaderMaterial_kpwu0")
+
+[node name="Level" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_set = ExtResource("4_vb1h2")
+
+[node name="Player" parent="Level" instance=ExtResource("15_g2sbh")]
+use_parent_material = true
+
+[node name="WorldBottomLimit" type="Area2D" parent="Level"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/WorldBottomLimit"]
+shape = SubResource("WorldBoundaryShape2D_055t4")
+
+[node name="Finish" parent="Level" instance=ExtResource("16_2bwmf")]
+
+[connection signal="died" from="Level/Player" to="." method="_on_player_died"]
+[connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]
+[connection signal="level_defeated" from="Level/Finish" to="." method="_on_finish_level_defeated"]
+
+[editable path="ParallaxFog"]
