@@ -93,11 +93,6 @@ drag_right_margin = 0.08
 editor_draw_drag_margin = true
 script = ExtResource("3_ciwo4")
 follow = NodePath("../Level/Player")
-limits = Dictionary[Vector2i, float]({
-Vector2i(-1, 0): -269.0,
-Vector2i(0, 1): 30.0,
-Vector2i(1, 0): 1769.0
-})
 distance_to_value = SubResource("Curve_wcekq")
 
 [node name="ParallaxBackground" type="Parallax2D" parent="."]
@@ -121,7 +116,7 @@ texture = ExtResource("5_nn5pw")
 
 [node name="PointLight2D" type="PointLight2D" parent="ParallaxMoon/Moon"]
 position = Vector2(163, -64)
-range_z_max = -1
+range_z_max = -50
 texture = ExtResource("6_v3d0k")
 
 [node name="ParallaxFog" parent="." instance=ExtResource("7_8tbc5")]
