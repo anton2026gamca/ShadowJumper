@@ -14,10 +14,10 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1m2nw"]
 shader = ExtResource("1_xobde")
 shader_parameter/night_intensity = 1.0
-shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
 shader_parameter/night_darkness = 1.0
 shader_parameter/night_contrast = 2.0
-shader_parameter/blue_shift = 1.0
+shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
+shader_parameter/tint_shift = 1.0
 
 [sub_resource type="Curve" id="Curve_wcekq"]
 _limits = [0.0, 1.0, 0.0, 600.0]
@@ -145,6 +145,10 @@ collision_mask = 4
 shape = SubResource("WorldBoundaryShape2D_055t4")
 
 [node name="Finish" parent="Level" instance=ExtResource("16_2bwmf")]
+
+[node name="FrontDecoration" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_set = ExtResource("4_vb1h2")
 
 [connection signal="died" from="Level/Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Level/WorldBottomLimit" to="." method="_on_world_bottom_limit_body_entered"]

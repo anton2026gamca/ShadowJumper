@@ -230,4 +230,7 @@ initial_velocity_max = 20.0
 angular_velocity_min = -50.0
 angular_velocity_max = 50.0
 
+[node name="FrontDecoration" parent="." index="5"]
+tile_map_data = PackedByteArray("AAAPAAAAAgAAAAAACAAQAAAAAgAAAAAACAARAAAAAgAAAAAACAANAAAAAgAAAAAACAAFAAAAAgAAAAAACAAHAAAAAgAAAAAACAACAAAAAgAAAAAACAD6/wAAAgAAAAAACAD4/wAAAgAAAAAACAA=")
+
 [editable path="ParallaxFog"]

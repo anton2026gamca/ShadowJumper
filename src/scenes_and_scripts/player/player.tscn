@@ -134,10 +134,10 @@ size = Vector2(10, 10)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ygw5f"]
 shader = ExtResource("16_mwrsu")
 shader_parameter/night_intensity = 0.0
-shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
 shader_parameter/night_darkness = 0.7
 shader_parameter/night_contrast = 1.2
-shader_parameter/blue_shift = 0.4
+shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
+shader_parameter/tint_shift = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_krtpv"]
 atlas = ExtResource("10_of6dy")

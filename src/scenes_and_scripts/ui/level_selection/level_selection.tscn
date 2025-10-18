@@ -34,15 +34,15 @@
 [ext_resource type="PackedScene" uid="uid://dr1afg0p05s8p" path="res://scenes_and_scripts/world/levels/level_2.tscn" id="22_854ia"]
 [ext_resource type="PackedScene" uid="uid://f8cwujw0lgie" path="res://scenes_and_scripts/world/levels/level_3.tscn" id="24_i1iog"]
 [ext_resource type="PackedScene" uid="uid://dwfwwkf3bx52r" path="res://scenes_and_scripts/world/levels/level_5.tscn" id="27_8mm01"]
-[ext_resource type="PackedScene" uid="uid://cdort0sw0grtb" path="res://scenes_and_scripts/world/levels/level_6.tscn" id="28_p18ra"]
+[ext_resource type="PackedScene" uid="uid://cvpj82spjy3wa" path="res://scenes_and_scripts/world/levels/level_7.tscn" id="34_mv4qm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0vl0e"]
 shader = ExtResource("15_jj62b")
 shader_parameter/night_intensity = 1.0
-shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
 shader_parameter/night_darkness = 1.0
 shader_parameter/night_contrast = 2.0
-shader_parameter/blue_shift = 1.0
+shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
+shader_parameter/tint_shift = 1.0
 
 [sub_resource type="Curve" id="Curve_p18ra"]
 _limits = [0.0, 1.0, 0.0, 1200.0]
@@ -495,26 +495,26 @@ size = Vector2(14, 14)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j5kpb"]
 shader = ExtResource("15_jj62b")
 shader_parameter/night_intensity = 0.0
-shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
 shader_parameter/night_darkness = 0.7
 shader_parameter/night_contrast = 1.2
-shader_parameter/blue_shift = 0.4
+shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
+shader_parameter/tint_shift = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sppe1"]
 shader = ExtResource("15_jj62b")
 shader_parameter/night_intensity = 0.0
-shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
 shader_parameter/night_darkness = 0.7
 shader_parameter/night_contrast = 1.2
-shader_parameter/blue_shift = 0.4
+shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
+shader_parameter/tint_shift = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_akybc"]
 shader = ExtResource("15_jj62b")
 shader_parameter/night_intensity = 0.0
-shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
 shader_parameter/night_darkness = 0.7
 shader_parameter/night_contrast = 1.2
-shader_parameter/blue_shift = 0.4
+shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
+shader_parameter/tint_shift = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rasjo"]
 atlas = ExtResource("18_j5kpb")
@@ -4820,7 +4820,7 @@ Vector2i(1, 0): SubResource("Resource_1amol")
 [node name="Level6" parent="Level" node_paths=PackedStringArray("relationships") instance=ExtResource("2_5iw0q")]
 position = Vector2(1777, -208)
 number = 6
-scene = ExtResource("28_p18ra")
+scene = ExtResource("34_mv4qm")
 relationships = {
 Vector2i(-1, 0): NodePath("../Level5")
 }
