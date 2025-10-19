@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dkkxade50jygv"]
+[gd_scene load_steps=28 format=3 uid="uid://dkkxade50jygv"]
 
 [ext_resource type="PackedScene" uid="uid://b7yk06l614q6o" path="res://scenes_and_scripts/world/npcs/npc.tscn" id="1_4gc4v"]
 [ext_resource type="Texture2D" uid="uid://bsqty6shauyt0" path="res://assets/sprites/objects-tileset.png" id="2_vfcax"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://t7tacfv5lkiv" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/shop/shop_item.gd" id="6_k2jvw"]
 [ext_resource type="Script" uid="uid://cqsv7sa8mhuuk" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/shop/shop_powerup_item.gd" id="6_xsj7n"]
 [ext_resource type="Texture2D" uid="uid://brgfgsxl86u1l" path="res://assets/sprites/questionmark.png" id="8_xsj7n"]
+[ext_resource type="Texture2D" uid="uid://cpuy41k6kkvy7" path="res://assets/sprites/rock-shop.png" id="9_awftq"]
 [ext_resource type="Script" uid="uid://cagcm1bcrjskk" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/shop/shop_rocks_item.gd" id="9_bs1v0"]
 [ext_resource type="Texture2D" uid="uid://phccxwrkv2i7" path="res://assets/sprites/cancel.png" id="12_1l807"]
 
@@ -41,6 +42,7 @@ name = "15 Magical Rocks"
 price = 50
 stock = -1
 color = Color(0.627451, 0.12549, 0.941176, 1)
+sprite = ExtResource("9_awftq")
 metadata/_custom_type_script = "uid://cagcm1bcrjskk"
 
 [sub_resource type="Resource" id="Resource_1vur6"]
