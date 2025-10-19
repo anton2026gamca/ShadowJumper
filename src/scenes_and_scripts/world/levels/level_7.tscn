@@ -113,6 +113,65 @@ position = Vector2(-65, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/LeftLimit" index="0"]
 shape = SubResource("WorldBoundaryShape2D_7hj13")
 
+[node name="RightLimit" type="StaticBody2D" parent="Level" index="4"]
+position = Vector2(2586, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/RightLimit" index="0"]
+shape = SubResource("WorldBoundaryShape2D_3kued")
+
+[node name="PickupableRocks" type="Node2D" parent="Level" index="86"]
+
+[node name="PickupableRock" parent="Level/PickupableRocks" index="0" instance=ExtResource("4_378yb")]
+position = Vector2(143, -41)
+
+[node name="PickupableRock2" parent="Level/PickupableRocks" index="1" instance=ExtResource("4_378yb")]
+position = Vector2(478, 2)
+
+[node name="PickupableRock3" parent="Level/PickupableRocks" index="2" instance=ExtResource("4_378yb")]
+position = Vector2(436, 106)
+
+[node name="PickupableRock4" parent="Level/PickupableRocks" index="3" instance=ExtResource("4_378yb")]
+position = Vector2(735, -79)
+
+[node name="PickupableRock5" parent="Level/PickupableRocks" index="4" instance=ExtResource("4_378yb")]
+position = Vector2(685, 92)
+
+[node name="PickupableRock6" parent="Level/PickupableRocks" index="5" instance=ExtResource("4_378yb")]
+position = Vector2(528, 214)
+
+[node name="PickupableRock7" parent="Level/PickupableRocks" index="6" instance=ExtResource("4_378yb")]
+position = Vector2(970, 130)
+
+[node name="PickupableRock8" parent="Level/PickupableRocks" index="7" instance=ExtResource("4_378yb")]
+position = Vector2(1002, -191)
+
+[node name="PickupableRock9" parent="Level/PickupableRocks" index="8" instance=ExtResource("4_378yb")]
+position = Vector2(1079, -153)
+
+[node name="PickupableRock10" parent="Level/PickupableRocks" index="9" instance=ExtResource("4_378yb")]
+position = Vector2(1327, 84)
+
+[node name="PickupableRock11" parent="Level/PickupableRocks" index="10" instance=ExtResource("4_378yb")]
+position = Vector2(1426, -169)
+
+[node name="PickupableRock12" parent="Level/PickupableRocks" index="11" instance=ExtResource("4_378yb")]
+position = Vector2(1760, -94)
+
+[node name="PickupableRock13" parent="Level/PickupableRocks" index="12" instance=ExtResource("4_378yb")]
+position = Vector2(1650, 161)
+
+[node name="PickupableRock14" parent="Level/PickupableRocks" index="13" instance=ExtResource("4_378yb")]
+position = Vector2(296, -89)
+
+[node name="PickupableRock15" parent="Level/PickupableRocks" index="14" instance=ExtResource("4_378yb")]
+position = Vector2(825, 22)
+
+[node name="PickupableRock16" parent="Level/PickupableRocks" index="15" instance=ExtResource("4_378yb")]
+position = Vector2(1333, -26)
+
+[node name="PickupableRock17" parent="Level/PickupableRocks" index="16" instance=ExtResource("4_378yb")]
+position = Vector2(2032, -198)
+
 [node name="FrontDecoration" parent="." index="5"]
 tile_map_data = PackedByteArray("AAB+APf/AgAAAAAACAB/APf/AgAAAAAACAB6APf/AgAAAAAACACaAPT/AgAAAAAACAClAPX/AgAAAAAACACkAPX/AgAAAAAACACxAPX/AgAAAAAACACwAPX/AgAAAAAACACvAPX/AgAAAAAACACuAPX/AgAAAAAACACtAPX/AgAAAAAACACrAPX/AgAAAAAACABaAAYAAgAAAAAACABbAAYAAgAAAAAACAB1AAEAAAAsAFQAAAB2AAAAAAAlAFQAAAB3AP//AAAlAFMAAAB5AP7/AAAuAFQAAAB4AP7/AAAlAFMAAAB9APz/AAAoAFMAAAB7AP3/AAAnAFQAAAB6AP3/AAAlAFMAAAB8APz/AAAnAFMAAACEAP3/AAArAFQAAAB+APz/AAAoAFMAAAB/APz/AAAoAFMAAACAAPz/AAAoAFMAAACBAPz/AAAoAFMAAACCAPz/AAAoAFMAAACDAPz/AAAqAFMAAAB1AAIAAAAsAFUAAACNAPv/AAAsAFQAAACOAPr/AAAlAFMAAACPAPr/AAAtAFQAAACQAPr/AAAqAFQAAACRAPr/AAAnAFQAAAB9APv/AgAAAAAACAB+APv/AgAAAAAACAB/APv/AgAAAAAACACCAPv/AgAAAAAACACBAPv/AgAAAAAACABtABAAAAAsAFYAAABtAA8AAAAlAFMAAABuAA8AAAApAFcAAABuAA4AAAAsAFYAAABuAA0AAAAsAFUAAABuAAwAAAAsAFYAAABuAAsAAAAsAFcAAABuAAoAAAAlAFQAAAA=")
 
