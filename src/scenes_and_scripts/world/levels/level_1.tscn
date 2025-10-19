@@ -67,7 +67,7 @@ shader_parameter/fog_intensity = 0.5
 shader_parameter/scroll_speed = Vector2(0.01, 0.01)
 shader_parameter/scroll_scale = 1.0
 
-[sub_resource type="Resource" id="Resource_s2pt5"]
+[sub_resource type="Resource" id="Resource_mwxj1"]
 script = ExtResource("9_lbqyf")
 character_sprite_override = ExtResource("10_fcg3k")
 message = "Here, take this! This way, I can help you from a safe distance."
@@ -101,12 +101,6 @@ metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 [sub_resource type="Resource" id="Resource_x3vl5"]
 script = ExtResource("9_lbqyf")
 message = "For some reason, the energy can't control you, unlike us. That's why we need you! Please save the world and stop whatever is there!"
-metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
-
-[sub_resource type="Resource" id="Resource_mwxj1"]
-script = ExtResource("9_lbqyf")
-character_sprite_override = ExtResource("10_fcg3k")
-message = "Here, take this! This way, I can help you from a safe distance."
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_ytwps"]
@@ -223,7 +217,7 @@ texture = ExtResource("15_57h2w")
 script = ExtResource("9_57h2w")
 rocks_amount = 50.0
 text_color = Color(0.745098, 0.341176, 1, 1)
-give_rocks_after_message = SubResource("Resource_s2pt5")
+give_rocks_after_message = SubResource("Resource_mwxj1")
 dialog = SubResource("Resource_ytwps")
 cooldown = -1.0
 one_time = true
