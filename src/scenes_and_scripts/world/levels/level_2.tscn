@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://dr1afg0p05s8p"]
+[gd_scene load_steps=24 format=4 uid="uid://dr1afg0p05s8p"]
 
 [ext_resource type="PackedScene" uid="uid://dpy2qsq5apfgn" path="res://scenes_and_scripts/world/levels/level_template.tscn" id="1_0husi"]
 [ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/ground_animals/fox.tscn" id="7_rjdnc"]
@@ -85,6 +85,9 @@ metadata/_custom_type_script = "uid://bi3gy0kfnyuym"
 normal = Vector2(1, 0)
 distance = -214.0
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0husi"]
+normal = Vector2(-1, 0)
+
 [node name="World" instance=ExtResource("1_0husi")]
 
 [node name="Camera2D" parent="." index="0"]
@@ -133,27 +136,33 @@ position = Vector2(0, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/LeftLimit" index="0"]
 shape = SubResource("WorldBoundaryShape2D_wn8bj")
 
-[node name="Fox" parent="Level" index="5" instance=ExtResource("7_rjdnc")]
+[node name="RightLimit" type="StaticBody2D" parent="Level" index="5"]
+position = Vector2(3250, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/RightLimit" index="0"]
+shape = SubResource("WorldBoundaryShape2D_0husi")
+
+[node name="Fox" parent="Level" index="6" instance=ExtResource("7_rjdnc")]
 position = Vector2(602, 35)
 collision_mask = 3
 
-[node name="Boar" parent="Level" index="6" instance=ExtResource("8_egdi8")]
+[node name="Boar" parent="Level" index="7" instance=ExtResource("8_egdi8")]
 position = Vector2(915, 10)
 collision_mask = 3
 
-[node name="Fox2" parent="Level" index="7" instance=ExtResource("7_rjdnc")]
+[node name="Fox2" parent="Level" index="8" instance=ExtResource("7_rjdnc")]
 position = Vector2(2274, -18)
 collision_mask = 3
 
-[node name="Fox3" parent="Level" index="8" instance=ExtResource("7_rjdnc")]
+[node name="Fox3" parent="Level" index="9" instance=ExtResource("7_rjdnc")]
 position = Vector2(1838, -82)
 collision_mask = 3
 
-[node name="Boar2" parent="Level" index="9" instance=ExtResource("8_egdi8")]
+[node name="Boar2" parent="Level" index="10" instance=ExtResource("8_egdi8")]
 position = Vector2(2836, 12)
 collision_mask = 3
 
-[node name="PickupableRocks" type="Node2D" parent="Level" index="10"]
+[node name="PickupableRocks" type="Node2D" parent="Level" index="11"]
 
 [node name="PickupableRock" parent="Level/PickupableRocks" index="0" instance=ExtResource("15_b24ec")]
 position = Vector2(51, 8)

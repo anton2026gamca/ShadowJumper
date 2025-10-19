@@ -116,7 +116,9 @@ size = Vector2(16, 125)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_57h2w"]
 normal = Vector2(1, 0)
-distance = -501.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_s2pt5"]
+normal = Vector2(-1, 0)
 
 [sub_resource type="Animation" id="Animation_o2hu2"]
 length = 0.001
@@ -234,15 +236,21 @@ position = Vector2(-269, 0)
 position = Vector2(0, 160)
 
 [node name="LeftLimit" type="StaticBody2D" parent="Level" index="3"]
-position = Vector2(0, 1)
+position = Vector2(-501, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/LeftLimit" index="0"]
 shape = SubResource("WorldBoundaryShape2D_57h2w")
 
-[node name="Finish" parent="Level" index="4"]
+[node name="RightLimit" type="StaticBody2D" parent="Level" index="4"]
+position = Vector2(2060, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/RightLimit" index="0"]
+shape = SubResource("WorldBoundaryShape2D_s2pt5")
+
+[node name="Finish" parent="Level" index="5"]
 position = Vector2(1771, -160)
 
-[node name="PickupableRocks" type="Node2D" parent="Level" index="5"]
+[node name="PickupableRocks" type="Node2D" parent="Level" index="6"]
 
 [node name="PickupableRock" parent="Level/PickupableRocks" index="0" instance=ExtResource("15_15ffy")]
 position = Vector2(-123, 9)
@@ -259,7 +267,7 @@ position = Vector2(917, 2)
 [node name="PickupableRock5" parent="Level/PickupableRocks" index="4" instance=ExtResource("15_15ffy")]
 position = Vector2(971, 2)
 
-[node name="Tutorial" type="Node2D" parent="Level" index="6"]
+[node name="Tutorial" type="Node2D" parent="Level" index="7"]
 
 [node name="Move" type="Panel" parent="Level/Tutorial" index="0"]
 anchors_preset = -1
