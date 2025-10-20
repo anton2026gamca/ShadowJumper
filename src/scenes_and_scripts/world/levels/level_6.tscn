@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=4 uid="uid://cdort0sw0grtb"]
+[gd_scene load_steps=26 format=4 uid="uid://cdort0sw0grtb"]
 
 [ext_resource type="PackedScene" uid="uid://dpy2qsq5apfgn" path="res://scenes_and_scripts/world/levels/level_template.tscn" id="1_viase"]
 [ext_resource type="Texture2D" uid="uid://dylddsv1gbd7s" path="res://assets/sprites/leave.png" id="2_nfe74"]
+[ext_resource type="Texture2D" uid="uid://b4eqv5jakr7va" path="res://assets/sprites/leave-parallax.png" id="3_vucsu"]
 [ext_resource type="PackedScene" uid="uid://b7yk06l614q6o" path="res://scenes_and_scripts/world/npcs/npc.tscn" id="7_blv3s"]
 [ext_resource type="PackedScene" uid="uid://cd7yubqxtcw2v" path="res://scenes_and_scripts/world/animals/bee/bee.tscn" id="7_srgj7"]
 [ext_resource type="Texture2D" uid="uid://c8de18v2jb1yl" path="res://assets/sprites/npcs/npc-remote.png" id="8_8s50a"]
@@ -36,8 +37,6 @@ direction = Vector3(0, 1, 0)
 initial_velocity_min = 20.0
 initial_velocity_max = 20.0
 gravity = Vector3(0, 0, 0)
-scale_min = 2.0
-scale_max = 2.0
 
 [sub_resource type="Resource" id="Resource_xp644"]
 script = ExtResource("9_huy6g")
@@ -113,17 +112,16 @@ process_material = SubResource("ParticleProcessMaterial_vucsu")
 
 [node name="ParallaxLeaves2" type="Parallax2D" parent="ParallaxLeaves" index="1"]
 use_parent_material = true
-scroll_scale = Vector2(1.5, 1.5)
+scroll_scale = Vector2(1.3, 1.3)
 repeat_size = Vector2(1280, 720)
 repeat_times = 2
 
 [node name="Leaves" type="GPUParticles2D" parent="ParallaxLeaves/ParallaxLeaves2" index="0"]
 z_index = 5
-use_parent_material = true
 position = Vector2(0, -360)
 amount = 128
-amount_ratio = 0.1
-texture = ExtResource("2_nfe74")
+amount_ratio = 0.2
+texture = ExtResource("3_vucsu")
 lifetime = 30.0
 preprocess = 30.0
 visibility_rect = Rect2(-640, 0, 1280, 720)
