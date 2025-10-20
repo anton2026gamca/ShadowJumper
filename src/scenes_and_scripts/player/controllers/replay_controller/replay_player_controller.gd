@@ -131,71 +131,71 @@ func get_move_left() -> bool:
 	if is_recording:
 		return Input.is_action_pressed("move_left")
 	if is_replaying:
-		return Helpers.dictionary_get_path(current_frame_data.data, ["get_move_left"], false)
+		return dictionary_get_path(current_frame_data.data, ["get_move_left"], false)
 	return false
 
 func get_move_right() -> bool:
 	if is_recording:
 		return Input.is_action_pressed("move_right")
 	if is_replaying:
-		return Helpers.dictionary_get_path(current_frame_data.data, ["get_move_right"], false)
+		return dictionary_get_path(current_frame_data.data, ["get_move_right"], false)
 	return false
 
 func get_move_dir() -> float:
 	if is_recording:
 		return Input.get_axis("move_left", "move_right")
 	if is_replaying:
-		return Helpers.dictionary_get_path(current_frame_data.data, ["get_move_dir"], 0)
+		return dictionary_get_path(current_frame_data.data, ["get_move_dir"], 0)
 	return 0
 
 func get_jump() -> bool:
 	if is_recording:
 		return Input.is_action_just_pressed("jump") and not disable_jump
 	if is_replaying:
-		return Helpers.dictionary_get_path(current_frame_data.data, ["get_jump"], false)
+		return dictionary_get_path(current_frame_data.data, ["get_jump"], false)
 	return false
 
 func get_jump_released() -> bool:
 	if is_recording:
 		return Input.is_action_just_released("jump")
 	if is_replaying:
-		return Helpers.dictionary_get_path(current_frame_data.data, ["get_jump_released"], false)
+		return dictionary_get_path(current_frame_data.data, ["get_jump_released"], false)
 	return false
 
 func get_jump_buffered() -> bool:
 	if is_replaying:
-		return Helpers.dictionary_get_path(current_frame_data.data, ["get_jump_buffered"], false)
+		return dictionary_get_path(current_frame_data.data, ["get_jump_buffered"], false)
 	return super.get_jump_buffered()
 
 func get_dash() -> bool:
 	if is_recording:
 		return Input.is_action_pressed("dash")
 	if is_replaying:
-		return Helpers.dictionary_get_path(current_frame_data.data, ["get_dash"], false)
+		return dictionary_get_path(current_frame_data.data, ["get_dash"], false)
 	return false
 
 func is_on_floor() -> bool:
 	if is_replaying:
-		return Helpers.dictionary_get_path(current_frame_data.data, ["is_on_floor"], false)
+		return dictionary_get_path(current_frame_data.data, ["is_on_floor"], false)
 	return super.is_on_floor()
 
 func is_on_floor_buffered() -> bool:
 	if is_replaying:
-		return Helpers.dictionary_get_path(current_frame_data.data, ["is_on_floor_buffered"], false)
+		return dictionary_get_path(current_frame_data.data, ["is_on_floor_buffered"], false)
 	return super.is_on_floor_buffered()
 
 func get_climb_ladder_up() -> bool:
 	if is_recording:
 		return Input.is_action_pressed("ladder_climb_up")
 	if is_replaying:
-		return Helpers.dictionary_get_path(current_frame_data.data, ["ladder_climb_up"], false)
+		return dictionary_get_path(current_frame_data.data, ["ladder_climb_up"], false)
 	return false
 
 func get_climb_ladder_down() -> bool:
 	if is_recording:
 		return Input.is_action_pressed("ladder_climb_down")
 	if is_replaying:
-		return Helpers.dictionary_get_path(current_frame_data.data, ["ladder_climb_down"], false)
+		return dictionary_get_path(current_frame_data.data, ["ladder_climb_down"], false)
 	return false
 
 @warning_ignore("narrowing_conversion")
@@ -203,5 +203,21 @@ func get_climb_ladder_dir() -> int:
 	if is_recording:
 		return Input.get_axis("ladder_climb_up", "ladder_climb_down")
 	if is_replaying:
-		return Helpers.dictionary_get_path(current_frame_data.data, ["ladder_climb_dir"], 0)
+		return dictionary_get_path(current_frame_data.data, ["ladder_climb_dir"], 0)
 	return false
+
+
+func dictionary_get_path(dict: Dictionary, path: Array, default: Variant = null) -> Variant:
+	var current: Variant = dict
+	for key: Variant in path:
+		if current is Array:
+			if not key is int or key < 0 or key >= current.size():
+				return default
+			current = current[key]
+		elif current is Dictionary:
+			if not current.has(key):
+				return default
+			current = current[key]
+		else:
+			return default
+	return current
