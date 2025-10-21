@@ -63,8 +63,6 @@ func find_level_by_number(num: int) -> LevelSelectionLevel:
 func enter_level() -> void:
 	Progress.player_lives = player.health_component.lives
 	var player_lives_before: int = player.health_component.lives
-	if not LevelLoader is LevelLoaderClass:
-		return
 	var parent: Node = get_parent()
 	LevelLoader.load_level(current_level.scene, current_level.number, player.health_component.lives)
 	get_tree().current_scene = LevelLoader

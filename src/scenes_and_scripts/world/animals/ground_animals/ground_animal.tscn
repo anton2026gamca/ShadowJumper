@@ -47,6 +47,7 @@ rotate_down_time = 2.0
 attack_screen_shake_value = 5.0
 chance_to_give_up = 0.005
 give_up_time = 3.0
+attack_hitstop = 0.2
 spawn_powerup_on_death = null
 
 [node name="CollisionShape2D" parent="." index="0"]

@@ -101,6 +101,7 @@ run_speed = 3000.0
 chance_to_rotate = 0.0
 attack_screen_shake_value = 9.0
 chance_to_give_up = 0.0
+attack_hitstop = 0.3
 spawn_powerup_on_death = ExtResource("2_5g0xv")
 
 [node name="AnimatedSprite2D" parent="." index="1"]

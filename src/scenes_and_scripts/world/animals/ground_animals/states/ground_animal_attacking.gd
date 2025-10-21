@@ -76,18 +76,20 @@ func attack(player: Player) -> void:
 	Helpers.camera.shake(target.attack_screen_shake_value, target.global_position)
 	paused = true
 	await sprite.animation_finished
-	paused = false
 	if hit_range_area.get_overlapping_bodies().has(player):
 		var death_component: DeathComponent = Helpers.find_child_by_type(player, DeathComponent)
 		if death_component:
 			death_component.die(target.get_player_die_reason())
+		LevelLoader.hitstop(target.attack_hitstop)
 	else:
 		energy_collector_component.collect("attack_dodge")
+	await get_tree().create_timer(0.5, false).timeout
+	paused = false
 
 func give_up() -> Variant:
 	enemy_area.monitoring = false
 	sprite.flip_h = not sprite.flip_h
-	get_tree().create_timer(target.give_up_time).timeout.connect(resume_monitoring)
+	get_tree().create_timer(target.give_up_time, false).timeout.connect(resume_monitoring)
 	return GroundAnimalSearching
 
 func play_attacking_audio() -> void:

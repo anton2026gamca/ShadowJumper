@@ -17,6 +17,7 @@ var hit_val: int = 0
 @export var boom_tolerance_time: float = 0.5
 @export var boom_start_screen_shake_value: float = 2
 @export var boom_screen_shake_value: float = 10
+@export var boom_hitstop: float = 0.2
 var boom_state: int = 0
 var boom_target: Player
 var boom_angry_value: float = 0.0
@@ -34,7 +35,8 @@ var is_on: bool = true
 
 
 func _ready() -> void:
-	pass
+	boom_sprite.animation = "boom"
+	boom_sprite.frame = 0
 
 func _physics_process(delta: float) -> void:
 	if not LevelLoader.is_in_level:
@@ -58,6 +60,7 @@ func _physics_process(delta: float) -> void:
 				var death_component: DeathComponent = Helpers.find_child_by_type(body, DeathComponent)
 				if death_component:
 					death_component.die(die_reason)
+			LevelLoader.hitstop(boom_hitstop)
 	if boom_state != 0 and progress == 0:
 		stop_making_boom()
 

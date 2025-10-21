@@ -4,6 +4,7 @@ class_name TreeSpikes
 
 @export var die_reason: String = "You stepped on really sharp spikes!"
 @export var cooldown: float = 2.0
+@export var hitstop_time: float = 0.2
 
 
 var is_hidden: bool = false
@@ -17,6 +18,7 @@ func _on_body_entered(body: Node2D) -> void:
 	var death_component: DeathComponent = Helpers.find_child_by_type(body, DeathComponent)
 	if death_component:
 		death_component.die(die_reason)
+		LevelLoader.hitstop(hitstop_time)
 		_hide()
 
 

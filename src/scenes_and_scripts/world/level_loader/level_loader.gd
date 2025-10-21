@@ -1,5 +1,4 @@
 extends Node2D
-class_name LevelLoaderClass
 
 
 @export var level_parent: Node
@@ -64,6 +63,7 @@ func exit_level(args: Array) -> void:
 func player_died(reason: String) -> void:
 	if not is_in_level:
 		return
+	is_in_level = false
 	Progress.collect_energy(energy_on_player_death)
 	ui.open_respawn_menu(reason)
 
@@ -95,3 +95,10 @@ func reload_level() -> void:
 	current_level_node = null
 	load_level(current_level_scene, current_level_number, true)
 	Progress._save()
+
+func hitstop(time: float) -> void:
+	get_tree().paused = true
+	await get_tree().create_timer(time).timeout
+	if not is_in_level:
+		return
+	get_tree().paused = false

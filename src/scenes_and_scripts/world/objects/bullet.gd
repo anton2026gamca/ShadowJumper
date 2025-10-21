@@ -9,6 +9,7 @@ class_name Bullet
 @export var lifetime: float = -1
 
 @export var on_hit_screen_shake_value: float = 0
+@export var on_hit_hitstop_time: float = 0
 
 @export var instant_kill: bool = false
 
@@ -39,11 +40,12 @@ func _destroy(reason: String = "") -> void:
 func _on_kill_area_body_entered(body: Node2D) -> void:
 	var death_component: DeathComponent = Helpers.find_child_by_type(body, DeathComponent)
 	if death_component:
-		death_component.die(die_reason)
+		death_component.die(die_reason, instant_kill)
 		if body is CharacterBody2D:
 			body.velocity = self.velocity
 		_destroy()
 		Helpers.camera.shake(on_hit_screen_shake_value, global_position)
+		LevelLoader.hitstop(on_hit_hitstop_time)
 
 func _on_screen_entered() -> void:
 	if indicator: indicator.visible = false

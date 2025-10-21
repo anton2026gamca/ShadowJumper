@@ -14,12 +14,14 @@ class_name GroundAnimal
 @export var attack_screen_shake_value: float = 5.0
 @export var chance_to_give_up: float = 0.003
 @export var give_up_time: float = 3.0
+@export var attack_hitstop: float = 0.2
 @export_group("Behaviour/Death")
 @export var spawn_powerup_on_death: PackedScene
 
 const POWERUP_OBJECT: PackedScene = preload("res://scenes_and_scripts/world/objects/powerup_object.tscn")
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var energy_collector_component: EnergyCollectorComponent = $EnergyCollectorComponent
+@onready var death_component: DeathComponent = $DeathComponent
 
 
 func _physics_process(delta: float) -> void:
@@ -31,6 +33,8 @@ func _on_death_component_die(reason: String, instant_kill: bool = false) -> void
 	health_component.lives -= 1
 	if reason == "You fell from too high!": health_component.lives = 0
 	if health_component.lives != 0: return
+	remove_child(death_component)
+	death_component.queue_free()
 	await get_tree().process_frame
 	if reason != "reason::not_spawned":
 		if spawn_powerup_on_death:
