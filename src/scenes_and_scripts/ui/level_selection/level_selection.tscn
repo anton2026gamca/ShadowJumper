@@ -1,4 +1,4 @@
-[gd_scene load_steps=479 format=4 uid="uid://clkhpeqrfyoax"]
+[gd_scene load_steps=483 format=4 uid="uid://clkhpeqrfyoax"]
 
 [ext_resource type="Script" uid="uid://dd3otqv1n5e7k" path="res://scenes_and_scripts/ui/level_selection/level_selection.gd" id="1_7qmai"]
 [ext_resource type="PackedScene" uid="uid://by7kis83n7kvx" path="res://scenes_and_scripts/ui/level_selection/level_selection_level.tscn" id="2_5iw0q"]
@@ -37,6 +37,9 @@
 [ext_resource type="Texture2D" uid="uid://cweisxm4vrdqa" path="res://assets/sprites/bee.png" id="28_rt6pt"]
 [ext_resource type="PackedScene" uid="uid://cdort0sw0grtb" path="res://scenes_and_scripts/world/levels/level_6.tscn" id="34_62hx8"]
 [ext_resource type="PackedScene" uid="uid://cvpj82spjy3wa" path="res://scenes_and_scripts/world/levels/level_7.tscn" id="34_mv4qm"]
+[ext_resource type="Texture2D" uid="uid://dylddsv1gbd7s" path="res://assets/sprites/leave.png" id="38_akybc"]
+[ext_resource type="Texture2D" uid="uid://b4eqv5jakr7va" path="res://assets/sprites/leave-parallax.png" id="38_bcbph"]
+[ext_resource type="Script" uid="uid://cukaycaqn33ua" path="res://scenes_and_scripts/world/world_parallax.gd" id="38_sppe1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0vl0e"]
 shader = ExtResource("15_jj62b")
@@ -6632,6 +6635,19 @@ _data = {
 &"change": SubResource("Animation_qbkjl")
 }
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sppe1"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(200, 0, 1)
+angle_min = -30.0
+angle_max = 30.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 40.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+
 [node name="LevelSelection" type="Node2D" node_paths=PackedStringArray("start_level", "replay_controller", "camera", "player")]
 material = SubResource("ShaderMaterial_0vl0e")
 script = ExtResource("1_7qmai")
@@ -7202,6 +7218,45 @@ bbcode_enabled = true
 text = "[color=lightblue][Esc][/color] - Main Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Leaves" type="Node2D" parent="Level"]
+use_parent_material = true
+
+[node name="Leaves1" type="CPUParticles2D" parent="Level/Leaves"]
+z_index = 5
+use_parent_material = true
+position = Vector2(1971, -711)
+amount = 96
+texture = ExtResource("38_akybc")
+lifetime = 30.0
+preprocess = 70.0
+emission_shape = 3
+emission_rect_extents = Vector2(250, 1)
+direction = Vector2(0, 1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+
+[node name="ParallaxLeaves" type="Parallax2D" parent="Level/Leaves"]
+use_parent_material = true
+scroll_scale = Vector2(1.3, 1.3)
+scroll_offset = Vector2(1952, -358)
+script = ExtResource("38_sppe1")
+
+[node name="Leaves" type="GPUParticles2D" parent="Level/Leaves/ParallaxLeaves"]
+z_index = 10
+position = Vector2(0, -360)
+amount = 96
+amount_ratio = 0.2
+texture = ExtResource("38_bcbph")
+lifetime = 30.0
+preprocess = 30.0
+visibility_rect = Rect2(-640, 0, 1280, 720)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_sppe1")
 
 [editable path="ParallaxFog"]
 [editable path="Level/Level8"]

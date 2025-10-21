@@ -134,7 +134,7 @@ repeat_times = 2
 z_index = 5
 use_parent_material = true
 position = Vector2(0, -360)
-amount = 128
+amount = 96
 texture = ExtResource("5_5os5s")
 lifetime = 30.0
 preprocess = 30.0
@@ -151,7 +151,7 @@ repeat_times = 2
 [node name="Leaves" type="GPUParticles2D" parent="ParallaxLeaves/ParallaxLeaves2" index="0"]
 z_index = 5
 position = Vector2(0, -360)
-amount = 128
+amount = 96
 amount_ratio = 0.2
 texture = ExtResource("5_0kubr")
 lifetime = 30.0
