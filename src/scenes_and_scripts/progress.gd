@@ -5,6 +5,7 @@ const VERSION: int = 1
 
 var last_level: int
 var levels_data: Dictionary[int, Dictionary] = {}
+var global_data: Dictionary = {}
 
 signal collected_energy_changed
 var total_collected_energy: float = 0
@@ -52,6 +53,7 @@ func _save(path: String = "user://progress.json") -> void:
 		"version" = VERSION,
 		"last_level" = last_level,
 		"levels" = levels_data,
+		"global" = global_data,
 		"player_lives" = player_lives,
 		"energy" = total_collected_energy,
 		"rocks" = total_rocks,
@@ -72,6 +74,7 @@ func _load(path: String = "user://progress.json") -> void:
 		if not key is int and (not key is String or not key.is_valid_int()):
 			continue
 		levels_data[int(key)] = levels_data_raw[key]
+	global_data = data.get("global", {})
 	player_lives = data.get("player_lives", 1)
 	total_collected_energy = data.get("energy", 0)
 	total_rocks = data.get("rocks", 0)

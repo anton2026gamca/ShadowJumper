@@ -13,18 +13,30 @@ class_name Shop
 @export var buy_nothing_sprite: Texture2D
 
 
-const ITEM_NAME: String = "{item_name}"
-const ITEM_PRICE: String = "{item_price}"
-const ITEM_STOCK: String = "{item_stock}"
-
-const ITEM_NAME_COLOR: String = "{item_name_color}"
-const ITEM_STOCK_COLOR: String = "{item_stock_color}"
-const PRICE_COLOR: String = "gold"
-const DELIMITER_COLOR: String = "gray"
-
 const IN_STOCK_COLOR: String = "lime"
 const OUT_OF_STOCK_COLOR: String = "red"
 const INF_STOCK_COLOR: String = "gray"
+
+const TOKEN: Dictionary[String, String] = {
+	ITEM_NAME = "{item_name}",
+	ITEM_PRICE = "{item_price}",
+	ITEM_STOCK = "{item_stock}",
+	ITEM_NAME_COLOR = "{item_name_color}",
+	ITEM_STOCK_COLOR = "{item_stock_color}",
+	DELIMITER_COLOR = "{delimiter_color}",
+	PRICE_COLOR = "{price_color}",
+	PLAYER_ENERGY = "{player_energy}",
+}
+var TOKEN_TO_VALUE: Dictionary[String, Callable] = {
+	TOKEN.ITEM_NAME: func(item: ShopItem) -> String: return item.name,
+	TOKEN.ITEM_PRICE: func(item: ShopItem) -> String: return str(item.price),
+	TOKEN.ITEM_STOCK: func(item: ShopItem) -> String: return str(int(Helpers.dictionary_get_path(Progress.global_data, ["shop", item.name, "stock"], item.stock))) if item.stock >= 0 else "INF",
+	TOKEN.ITEM_NAME_COLOR: func(item: ShopItem) -> String: return "#" + item.color.to_html(false),
+	TOKEN.ITEM_STOCK_COLOR: func(item: ShopItem) -> String: return IN_STOCK_COLOR if item.stock > 0 else (OUT_OF_STOCK_COLOR if item.stock == 0 else INF_STOCK_COLOR),
+	TOKEN.DELIMITER_COLOR: func(item: ShopItem) -> String: return "gray",
+	TOKEN.PRICE_COLOR: func(item: ShopItem) -> String: return "gold",
+	TOKEN.PLAYER_ENERGY: func(item: ShopItem) -> String: return str(int(Progress.total_collected_energy)),
+}
 
 
 func parse_items() -> void:
@@ -33,17 +45,17 @@ func parse_items() -> void:
 		pick_item_message.answer_picked.connect(buy_item)
 	for item: ShopItem in items_on_sale:
 		var message: String = ""
-		message += "[color=" + PRICE_COLOR + "]"
-		for i: int in range(4 - len(parse_message(ITEM_PRICE, item))):
+		message += "[color=" + TOKEN.PRICE_COLOR + "]"
+		for i: int in range(4 - len(parse_message(TOKEN.ITEM_PRICE, item))):
 			message += " "
-		message += ITEM_PRICE + " E[/color]"
-		message += "[color=" + DELIMITER_COLOR + "] | [/color]"
-		message += "[color=" + ITEM_STOCK_COLOR + "]"
-		for i: int in range(3 - len(parse_message(ITEM_STOCK, item))):
+		message += TOKEN.ITEM_PRICE + " E[/color]"
+		message += "[color=" + TOKEN.DELIMITER_COLOR + "] | [/color]"
+		message += "[color=" + TOKEN.ITEM_STOCK_COLOR + "]"
+		for i: int in range(3 - len(parse_message(TOKEN.ITEM_STOCK, item))):
 			message += " "
-		message += ITEM_STOCK + "[/color]"
-		message += "[color=" + DELIMITER_COLOR + "] | [/color]"
-		message += "[color=" + ITEM_NAME_COLOR + "]" + ITEM_NAME + "[/color]"
+		message += TOKEN.ITEM_STOCK + "[/color]"
+		message += "[color=" + TOKEN.DELIMITER_COLOR + "] | [/color]"
+		message += "[color=" + TOKEN.ITEM_NAME_COLOR + "]" + TOKEN.ITEM_NAME + "[/color]"
 		var answer: NPCDialogAnswer = NPCDialogAnswer.new()
 		answer.text = parse_message(message, item)
 		answer.npc_sprite_override = item.sprite
@@ -57,13 +69,14 @@ func buy_item(answer: NPCDialogAnswer) -> void:
 	var index: int = pick_item_message.answers.find(answer)
 	if index < 0 or index >= len(items_on_sale): return
 	var item: ShopItem = items_on_sale[index]
-	if item.stock == 0:
+	var stock: int = Helpers.dictionary_get_path(Progress.global_data, ["shop", item.name, "stock"], item.stock)
+	if stock == 0:
 		answer.next_messages = out_of_stock_messages.duplicate()
 	elif Progress.total_collected_energy < item.price:
 		answer.next_messages = not_enough_energy_messages.duplicate()
 	else:
 		answer.next_messages = bought_item_messages.duplicate()
-		item.stock -= 1
+		Helpers.dictionary_set_path(Progress.global_data, ["shop", item.name, "stock"], stock - 1 if stock >= 1 else stock)
 		Progress.collect_energy(-item.price)
 		if item is ShopPowerupItem:
 			Helpers.spawn_powerup(self, item.powerup, Vector2.ZERO)
@@ -79,14 +92,11 @@ func buy_item(answer: NPCDialogAnswer) -> void:
 		answer.next_messages[i] = msg
 
 func parse_message(msg: String, item: ShopItem) -> String:
-	return msg\
-		.replace(ITEM_NAME, item.name)\
-		.replace(ITEM_PRICE, str(item.price))\
-		.replace(ITEM_STOCK, str(item.stock) if item.stock >= 0 else "INF")\
-		.replace(ITEM_NAME_COLOR, "#" + item.color.to_html(false))\
-		.replace("{price_color}", PRICE_COLOR)\
-		.replace(ITEM_STOCK_COLOR, IN_STOCK_COLOR if item.stock > 0 else (OUT_OF_STOCK_COLOR if item.stock == 0 else INF_STOCK_COLOR))\
-		.replace("{player_energy}", str(int(Progress.total_collected_energy)))
+	for token: String in TOKEN.values():
+		if not TOKEN_TO_VALUE.has(token):
+			continue
+		msg = msg.replace(token, TOKEN_TO_VALUE[token].call(item))
+	return msg
 
 func _on_body_entered(body: Node2D) -> void:
 	parse_items()
