@@ -12,6 +12,7 @@ var enemy: Node2D
 @export_group("Bahaviour")
 @export var fly_speed: float = 250.0
 @export var ultimate_attack_area: Area2D
+@export var shoot_cooldown: float = 1
 var can_use_ultimate_attack: bool = true
 
 

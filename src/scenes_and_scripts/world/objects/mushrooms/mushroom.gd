@@ -8,16 +8,16 @@ class_name Mushroom
 @export var down_time: float = 7.5
 @export var hit_screen_shake_value: float = 5.0
 @export var revive_screen_shake_value: float = 5.0
-@export var hit_collect_energy_value: int = 0
+@export var hit_collect_energy_value: int = 10
 var hit_val: int = 0
 
 @export_group("Boom")
 @onready var boom_sprite: AnimatedSprite2D = $Boom
 @onready var boom_area: Area2D = $Area2D
-@export var boom_tolerance_time: float = 0.5
+@export var boom_tolerance_time: float = 0.1
 @export var boom_start_screen_shake_value: float = 2
 @export var boom_screen_shake_value: float = 10
-@export var boom_hitstop: float = 0.2
+@export var boom_hitstop: float = 0.1
 var boom_state: int = 0
 var boom_target: Player
 var boom_angry_value: float = 0.0

@@ -113,9 +113,6 @@ metadata/_custom_type_script = "uid://cp60xqistx0h6"
 use_parent_material = true
 texture = SubResource("AtlasTexture_8kcc1")
 script = ExtResource("3_f0mk6")
-hit_collect_energy_value = 10
-boom_tolerance_time = 0.1
-boom_hitstop = 0.1
 metadata/_custom_type_script = "uid://b63ehe3at03rm"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

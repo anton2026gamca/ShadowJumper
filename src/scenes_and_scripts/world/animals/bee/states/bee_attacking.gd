@@ -12,6 +12,8 @@ class_name BeeAttacking
 
 var current_bullet: BeeBulet
 
+var shoot_enabled: bool = true
+
 var random_dir: Vector2
 
 
@@ -23,7 +25,7 @@ func process(delta: float) -> Variant:
 		return BeeNotInRange
 	target.velocity.x = move_toward(target.velocity.x, Vector2.ZERO.x, 20.0)
 	target.velocity.y = move_toward(target.velocity.y, Vector2.ZERO.y, 20.0)
-	if not current_bullet:
+	if not current_bullet and shoot_enabled:
 		shoot()
 		random_dir = Vector2(randf_range(-1, 1), randf_range(-1, 0)).normalized()
 		if not buzzing_audio.playing:
@@ -35,6 +37,7 @@ func process(delta: float) -> Variant:
 
 
 func shoot() -> void:
+	if not shoot_enabled: return
 	current_bullet = bullet_scene.instantiate()
 	current_bullet.rotation_degrees = 180
 	current_bullet.global_position = bullet_spawner.global_position
@@ -42,6 +45,8 @@ func shoot() -> void:
 	current_bullet.finished.connect(_on_bullet_finished.bind(current_bullet))
 	shoot_audio_player.play()
 	target.get_parent().add_child(current_bullet)
+	shoot_enabled = false
+	get_tree().create_timer(target.shoot_cooldown).timeout.connect(func() -> void: shoot_enabled = true)
 
 func _on_bullet_finished(bullet: BeeBulet) -> void:
 	if bullet == current_bullet:

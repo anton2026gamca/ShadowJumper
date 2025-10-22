@@ -167,6 +167,7 @@ shape = SubResource("WorldBoundaryShape2D_8s50a")
 [node name="Bee" parent="Level" index="7" node_paths=PackedStringArray("ultimate_attack_area") instance=ExtResource("7_srgj7")]
 position = Vector2(-26, -2062)
 ultimate_attack_area = NodePath("../BeeUltimateAttackArea")
+shoot_cooldown = 1.0
 
 [node name="BeeUltimateAttackArea" type="Area2D" parent="Level" index="8"]
 position = Vector2(5, -1624)
