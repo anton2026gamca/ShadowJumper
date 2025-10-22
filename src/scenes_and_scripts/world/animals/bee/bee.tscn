@@ -312,6 +312,7 @@ stream = ExtResource("8_40f0r")
 volume_db = -10.0
 
 [node name="DeathAudio" type="AudioStreamPlayer2D" parent="." index="11"]
+process_mode = 3
 stream = ExtResource("9_om06y")
 volume_db = 10.0
 
