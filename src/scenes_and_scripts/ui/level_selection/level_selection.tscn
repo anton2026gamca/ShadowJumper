@@ -39,7 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://cvpj82spjy3wa" path="res://scenes_and_scripts/world/levels/level_7.tscn" id="34_mv4qm"]
 [ext_resource type="Texture2D" uid="uid://dylddsv1gbd7s" path="res://assets/sprites/leave.png" id="38_akybc"]
 [ext_resource type="Texture2D" uid="uid://b4eqv5jakr7va" path="res://assets/sprites/leave-parallax.png" id="38_bcbph"]
-[ext_resource type="Script" uid="uid://cukaycaqn33ua" path="res://scenes_and_scripts/world/world_parallax.gd" id="38_sppe1"]
+[ext_resource type="Script" uid="uid://cukaycaqn33ua" path="res://scenes_and_scripts/world/world_parallax_2d.gd" id="38_sppe1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0vl0e"]
 shader = ExtResource("15_jj62b")

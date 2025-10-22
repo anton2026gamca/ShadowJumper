@@ -1,5 +1,5 @@
 extends Parallax2D
-class_name WorldParallax
+class_name WorldParallax2D
 
 
 @export_range(0, 1, 0.01) var anchor_x: float = 0.5
