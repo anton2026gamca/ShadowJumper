@@ -6,7 +6,11 @@ class_name ParallaxFogsManager
 @export_tool_button("Make Unique") var make_unique_btn: Callable = make_unique
 @export_tool_button("Update") var update_btn: Callable = update
 @export var fog_layers: Array[CanvasItem]
-@export_range(0, 2, 0.01) var fog_intensity: float = 1.0
+@export_range(0, 2, 0.01) var fog_intensity: float = 1.0:
+	set(value):
+		fog_intensity = value
+		update()
+	get: return fog_intensity
 @export_range(0, 2, 0.01) var scroll_scale: float = 1.0
 
 

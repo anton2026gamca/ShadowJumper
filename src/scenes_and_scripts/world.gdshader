@@ -6,6 +6,12 @@ uniform float night_contrast : hint_range(0.5, 2.0) = 2; // Contrast adjustment 
 uniform vec3 night_tint = vec3(0.2, 0.3, 0.8); // Night color tinting
 uniform float tint_shift : hint_range(0.0, 1.0) = 1; // Tint shift intensity
 
+varying vec4 modulate;
+
+void vertex() {
+	modulate = COLOR;
+}
+
 void fragment() {
 	vec4 original_color = texture(TEXTURE, UV); // Get the original color
 	float luminance = dot(original_color.rgb, vec3(0.299, 0.587, 0.114)); // Calculate luminance for preserving brightness relationships
@@ -22,6 +28,7 @@ void fragment() {
 	} else {
 		COLOR = vec4(final_color, original_color.a);
 	}
+	COLOR *= modulate;
 }
 
 void light() {
