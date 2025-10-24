@@ -23,8 +23,10 @@ shader = ExtResource("2_ae537")
 shader_parameter/night_intensity = 0.0
 shader_parameter/night_darkness = 1.0
 shader_parameter/night_contrast = 2.0
-shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
+shader_parameter/night_tint = Color(0.2, 0.3, 0.8, 1)
 shader_parameter/tint_shift = 1.0
+shader_parameter/ambient_light_color = Color(0.2, 0.3, 0.8, 1)
+shader_parameter/ambient_light_value = 0.4
 
 [node name="DialogUI" type="Control"]
 layout_mode = 3

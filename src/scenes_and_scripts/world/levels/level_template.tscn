@@ -12,13 +12,15 @@
 [ext_resource type="PackedScene" uid="uid://f5m7vw1vj4fd" path="res://scenes_and_scripts/player/player.tscn" id="15_g2sbh"]
 [ext_resource type="PackedScene" uid="uid://6twg4nqjueyw" path="res://scenes_and_scripts/world/levels/finish.tscn" id="16_2bwmf"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1m2nw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gp364"]
 shader = ExtResource("1_xobde")
 shader_parameter/night_intensity = 1.0
 shader_parameter/night_darkness = 1.0
 shader_parameter/night_contrast = 2.0
-shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
+shader_parameter/night_tint = Color(0.0683835, 0.142258, 0.511226, 1)
 shader_parameter/tint_shift = 1.0
+shader_parameter/ambient_light_color = Color(0.304, 0.386667, 0.8, 1)
+shader_parameter/ambient_light_value = 0.4
 
 [sub_resource type="Curve" id="Curve_wcekq"]
 _limits = [0.0, 1.0, 0.0, 600.0]
@@ -39,7 +41,7 @@ shader = ExtResource("8_2artr")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_patrw")
 shader_parameter/min_fog_value = 0.0
 shader_parameter/max_fog_value = 0.07
-shader_parameter/fog_intensity = 0.5
+shader_parameter/fog_intensity = 1.3
 shader_parameter/scroll_speed = Vector2(-0.007, 0.003)
 shader_parameter/scroll_scale = 1.0
 
@@ -56,7 +58,7 @@ shader = ExtResource("8_2artr")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_2tp0m")
 shader_parameter/min_fog_value = 0.0
 shader_parameter/max_fog_value = 0.04
-shader_parameter/fog_intensity = 0.5
+shader_parameter/fog_intensity = 1.3
 shader_parameter/scroll_speed = Vector2(0.01, -0.017)
 shader_parameter/scroll_scale = 1.0
 
@@ -74,14 +76,14 @@ shader = ExtResource("8_2artr")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_5ow7n")
 shader_parameter/min_fog_value = 0.0
 shader_parameter/max_fog_value = 0.02
-shader_parameter/fog_intensity = 0.5
+shader_parameter/fog_intensity = 1.3
 shader_parameter/scroll_speed = Vector2(0.01, 0.01)
 shader_parameter/scroll_scale = 1.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_055t4"]
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("camera")]
-material = SubResource("ShaderMaterial_1m2nw")
+material = SubResource("ShaderMaterial_gp364")
 script = ExtResource("2_qn6tr")
 world_bottom_die_reason = "You fell from too high!"
 camera = NodePath("Camera2D")

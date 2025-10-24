@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=4 uid="uid://dwfwwkf3bx52r"]
+[gd_scene load_steps=18 format=4 uid="uid://dwfwwkf3bx52r"]
 
 [ext_resource type="PackedScene" uid="uid://dpy2qsq5apfgn" path="res://scenes_and_scripts/world/levels/level_template.tscn" id="1_u4hdh"]
+[ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="2_wwy4t"]
 [ext_resource type="PackedScene" uid="uid://b7yk06l614q6o" path="res://scenes_and_scripts/world/npcs/npc.tscn" id="7_mrsys"]
 [ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/ground_animals/fox.tscn" id="7_nd6b2"]
 [ext_resource type="Texture2D" uid="uid://c4r35j5un4gc6" path="res://assets/sprites/arrow.png" id="8_3ulkj"]
@@ -11,6 +12,16 @@
 [ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="9_su0ne"]
 [ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock.tscn" id="17_su0ne"]
 [ext_resource type="Texture2D" uid="uid://dylddsv1gbd7s" path="res://assets/sprites/leave.png" id="18_k0kab"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wwy4t"]
+shader = ExtResource("2_wwy4t")
+shader_parameter/night_intensity = 1.0
+shader_parameter/night_darkness = 1.0
+shader_parameter/night_contrast = 2.0
+shader_parameter/night_tint = Color(0.0683835, 0.142258, 0.511226, 1)
+shader_parameter/tint_shift = 1.0
+shader_parameter/ambient_light_color = Color(0.304, 0.386667, 0.8, 1)
+shader_parameter/ambient_light_value = 0.4
 
 [sub_resource type="Resource" id="Resource_su0ne"]
 script = ExtResource("9_k0kab")
@@ -34,6 +45,7 @@ metadata/_custom_type_script = "uid://bi3gy0kfnyuym"
 normal = Vector2(1, 0)
 
 [node name="World" instance=ExtResource("1_u4hdh")]
+material = SubResource("ShaderMaterial_wwy4t")
 
 [node name="Camera2D" parent="." index="0"]
 limits = Dictionary[Vector2i, float]({

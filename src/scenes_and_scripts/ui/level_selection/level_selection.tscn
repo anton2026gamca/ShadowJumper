@@ -46,8 +46,10 @@ shader = ExtResource("15_jj62b")
 shader_parameter/night_intensity = 1.0
 shader_parameter/night_darkness = 1.0
 shader_parameter/night_contrast = 2.0
-shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
+shader_parameter/night_tint = Color(0.2, 0.3, 0.8, 1)
 shader_parameter/tint_shift = 1.0
+shader_parameter/ambient_light_color = Color(0.2, 0.3, 0.8, 1)
+shader_parameter/ambient_light_value = 0.4
 
 [sub_resource type="Curve" id="Curve_p18ra"]
 _limits = [0.0, 1.0, 0.0, 1200.0]
@@ -934,24 +936,30 @@ shader = ExtResource("15_jj62b")
 shader_parameter/night_intensity = 0.0
 shader_parameter/night_darkness = 0.7
 shader_parameter/night_contrast = 1.2
-shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
+shader_parameter/night_tint = Color(0.2, 0.3, 0.8, 1)
 shader_parameter/tint_shift = 1.0
+shader_parameter/ambient_light_color = Color(0.2, 0.3, 0.8, 1)
+shader_parameter/ambient_light_value = 0.4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sppe1"]
 shader = ExtResource("15_jj62b")
 shader_parameter/night_intensity = 0.0
 shader_parameter/night_darkness = 0.7
 shader_parameter/night_contrast = 1.2
-shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
+shader_parameter/night_tint = Color(0.2, 0.3, 0.8, 1)
 shader_parameter/tint_shift = 1.0
+shader_parameter/ambient_light_color = Color(0.2, 0.3, 0.8, 1)
+shader_parameter/ambient_light_value = 0.4
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_akybc"]
 shader = ExtResource("15_jj62b")
 shader_parameter/night_intensity = 0.0
 shader_parameter/night_darkness = 0.7
 shader_parameter/night_contrast = 1.2
-shader_parameter/night_tint = Vector3(0.2, 0.3, 0.8)
+shader_parameter/night_tint = Color(0.2, 0.3, 0.8, 1)
 shader_parameter/tint_shift = 1.0
+shader_parameter/ambient_light_color = Color(0.2, 0.3, 0.8, 1)
+shader_parameter/ambient_light_value = 0.4
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rasjo"]
 atlas = ExtResource("18_j5kpb")
