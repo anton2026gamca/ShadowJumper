@@ -24,7 +24,7 @@ config/icon="uid://d3tvi8n1gvnj"
 Progress="*res://scenes_and_scripts/progress.gd"
 LevelLoader="*res://scenes_and_scripts/world/level_loader/level_loader.tscn"
 Music="*res://scenes_and_scripts/music.tscn"
-Helpers="*res://scenes_and_scripts/helpers.gd"
+Helpers="*res://scenes_and_scripts/helpers/helpers.gd"
 Settings="*res://scenes_and_scripts/settings.gd"
 
 [display]

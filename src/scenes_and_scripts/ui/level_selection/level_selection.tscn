@@ -6658,6 +6658,7 @@ gravity = Vector3(0, 0, 0)
 
 [node name="LevelSelection" type="Node2D" node_paths=PackedStringArray("start_level", "replay_controller", "camera", "player")]
 material = SubResource("ShaderMaterial_0vl0e")
+position = Vector2(273, 1)
 script = ExtResource("1_7qmai")
 start_level = NodePath("Level/Level1")
 replay_controller = NodePath("Level/Player/ReplayPlayerController")

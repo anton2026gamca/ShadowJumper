@@ -12,7 +12,8 @@ signal level_defeated
 
 
 func _ready() -> void:
-	camera.make_current()
+	if Engine.is_editor_hint():
+		camera.make_current()
 
 
 func _on_world_bottom_limit_body_entered(body: Node2D) -> void:
