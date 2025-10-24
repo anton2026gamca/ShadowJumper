@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://f5m7vw1vj4fd"]
+[gd_scene load_steps=37 format=3 uid="uid://f5m7vw1vj4fd"]
 
 [ext_resource type="Script" uid="uid://hrc23450dtph" path="res://scenes_and_scripts/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bnpceuwymc5n" path="res://scenes_and_scripts/player/states/player_walk.gd" id="2_dovo2"]
@@ -141,6 +141,26 @@ shader_parameter/tint_shift = 1.0
 shader_parameter/ambient_light_color = Color(0.2, 0.3, 0.8, 1)
 shader_parameter/ambient_light_value = 0.4
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mqn2j"]
+shader = ExtResource("16_mwrsu")
+shader_parameter/night_intensity = 0.0
+shader_parameter/night_darkness = 1.0
+shader_parameter/night_contrast = 2.0
+shader_parameter/night_tint = Color(0.2, 0.3, 0.8, 1)
+shader_parameter/tint_shift = 1.0
+shader_parameter/ambient_light_color = Color(0.2, 0.3, 0.8, 1)
+shader_parameter/ambient_light_value = 0.4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dky0r"]
+shader = ExtResource("16_mwrsu")
+shader_parameter/night_intensity = 0.0
+shader_parameter/night_darkness = 1.0
+shader_parameter/night_contrast = 2.0
+shader_parameter/night_tint = Color(0.2, 0.3, 0.8, 1)
+shader_parameter/tint_shift = 1.0
+shader_parameter/ambient_light_color = Color(0.2, 0.3, 0.8, 1)
+shader_parameter/ambient_light_value = 0.4
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_krtpv"]
 atlas = ExtResource("10_of6dy")
 region = Rect2(32, 0, 16, 16)
@@ -230,9 +250,10 @@ shape = SubResource("RectangleShape2D_m74vl")
 current = true
 
 [node name="Particles" type="Node2D" parent="."]
-material = SubResource("ShaderMaterial_ygw5f")
+use_parent_material = true
 
 [node name="JumpParticles" type="CPUParticles2D" parent="Particles"]
+material = SubResource("ShaderMaterial_ygw5f")
 use_parent_material = true
 position = Vector2(0, 8)
 emitting = false
@@ -251,6 +272,7 @@ scale_amount_max = 3.0
 
 [node name="LandParticles" type="CPUParticles2D" parent="Particles"]
 light_mask = 0
+material = SubResource("ShaderMaterial_mqn2j")
 use_parent_material = true
 position = Vector2(0, 8)
 emitting = false
@@ -268,6 +290,7 @@ initial_velocity_max = 10.0
 scale_amount_max = 3.0
 
 [node name="ClimbParticles" type="CPUParticles2D" parent="Particles"]
+material = SubResource("ShaderMaterial_dky0r")
 use_parent_material = true
 position = Vector2(9, 0)
 emitting = false

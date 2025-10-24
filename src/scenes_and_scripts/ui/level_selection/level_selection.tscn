@@ -931,31 +931,31 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48tp8"]
 size = Vector2(14, 14)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j5kpb"]
-shader = ExtResource("15_jj62b")
-shader_parameter/night_intensity = 0.0
-shader_parameter/night_darkness = 0.7
-shader_parameter/night_contrast = 1.2
-shader_parameter/night_tint = Color(0.2, 0.3, 0.8, 1)
-shader_parameter/tint_shift = 1.0
-shader_parameter/ambient_light_color = Color(0.2, 0.3, 0.8, 1)
-shader_parameter/ambient_light_value = 0.4
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sppe1"]
-shader = ExtResource("15_jj62b")
-shader_parameter/night_intensity = 0.0
-shader_parameter/night_darkness = 0.7
-shader_parameter/night_contrast = 1.2
-shader_parameter/night_tint = Color(0.2, 0.3, 0.8, 1)
-shader_parameter/tint_shift = 1.0
-shader_parameter/ambient_light_color = Color(0.2, 0.3, 0.8, 1)
-shader_parameter/ambient_light_value = 0.4
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_akybc"]
 shader = ExtResource("15_jj62b")
 shader_parameter/night_intensity = 0.0
-shader_parameter/night_darkness = 0.7
-shader_parameter/night_contrast = 1.2
+shader_parameter/night_darkness = 1.0
+shader_parameter/night_contrast = 2.0
+shader_parameter/night_tint = Color(0.2, 0.3, 0.8, 1)
+shader_parameter/tint_shift = 1.0
+shader_parameter/ambient_light_color = Color(0.2, 0.3, 0.8, 1)
+shader_parameter/ambient_light_value = 0.4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f7ngw"]
+shader = ExtResource("15_jj62b")
+shader_parameter/night_intensity = 0.0
+shader_parameter/night_darkness = 1.0
+shader_parameter/night_contrast = 2.0
+shader_parameter/night_tint = Color(0.2, 0.3, 0.8, 1)
+shader_parameter/tint_shift = 1.0
+shader_parameter/ambient_light_color = Color(0.2, 0.3, 0.8, 1)
+shader_parameter/ambient_light_value = 0.4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_esqs0"]
+shader = ExtResource("15_jj62b")
+shader_parameter/night_intensity = 0.0
+shader_parameter/night_darkness = 1.0
+shader_parameter/night_contrast = 2.0
 shader_parameter/night_tint = Color(0.2, 0.3, 0.8, 1)
 shader_parameter/tint_shift = 1.0
 shader_parameter/ambient_light_color = Color(0.2, 0.3, 0.8, 1)
@@ -6767,9 +6767,9 @@ climb_right_raycast = NodePath("../RayCastRight")
 climb_ladder_area = NodePath("../ClimbLadderArea")
 jump_audio = NodePath("../JumpAudio")
 fall_audio = NodePath("../FallAudio")
-jump_particles = NodePath("../JumpParticles")
-land_particles = NodePath("../LandParticles")
-climb_particles = NodePath("../ClimbParticles")
+jump_particles = NodePath("../Particles/JumpParticles")
+land_particles = NodePath("../Particles/LandParticles")
+climb_particles = NodePath("../Particles/ClimbParticles")
 metadata/_custom_type_script = "uid://bmswg047sanf"
 
 [node name="StateMachine" type="Node" parent="Level/Player" node_paths=PackedStringArray("current_state")]
@@ -6835,8 +6835,11 @@ collision_mask = 8
 visible = false
 shape = SubResource("RectangleShape2D_48tp8")
 
-[node name="JumpParticles" type="CPUParticles2D" parent="Level/Player"]
-material = SubResource("ShaderMaterial_j5kpb")
+[node name="Particles" type="Node2D" parent="Level/Player"]
+use_parent_material = true
+
+[node name="JumpParticles" type="CPUParticles2D" parent="Level/Player/Particles"]
+material = SubResource("ShaderMaterial_akybc")
 position = Vector2(0, 8)
 emitting = false
 texture = ExtResource("17_854ia")
@@ -6852,8 +6855,8 @@ initial_velocity_min = 10.0
 initial_velocity_max = 10.0
 scale_amount_max = 3.0
 
-[node name="LandParticles" type="CPUParticles2D" parent="Level/Player"]
-material = SubResource("ShaderMaterial_sppe1")
+[node name="LandParticles" type="CPUParticles2D" parent="Level/Player/Particles"]
+material = SubResource("ShaderMaterial_f7ngw")
 position = Vector2(0, 8)
 emitting = false
 texture = ExtResource("17_854ia")
@@ -6869,16 +6872,8 @@ initial_velocity_min = 10.0
 initial_velocity_max = 10.0
 scale_amount_max = 3.0
 
-[node name="DeathParticles" type="CPUParticles2D" parent="Level/Player"]
-use_parent_material = true
-emitting = false
-amount = 1
-texture = ExtResource("8_hcr5e")
-one_shot = true
-spread = 0.0
-
-[node name="ClimbParticles" type="CPUParticles2D" parent="Level/Player"]
-material = SubResource("ShaderMaterial_akybc")
+[node name="ClimbParticles" type="CPUParticles2D" parent="Level/Player/Particles"]
+material = SubResource("ShaderMaterial_esqs0")
 position = Vector2(9, 0)
 emitting = false
 texture = ExtResource("17_854ia")
@@ -6889,6 +6884,14 @@ emission_rect_extents = Vector2(0, 8)
 direction = Vector2(0, -1)
 gravity = Vector2(0, -10)
 scale_amount_max = 3.0
+
+[node name="DeathParticles" type="CPUParticles2D" parent="Level/Player/Particles"]
+use_parent_material = true
+emitting = false
+amount = 1
+texture = ExtResource("8_hcr5e")
+one_shot = true
+spread = 0.0
 
 [node name="Fox" type="AnimatedSprite2D" parent="Level"]
 use_parent_material = true
