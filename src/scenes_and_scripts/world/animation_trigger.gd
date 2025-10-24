@@ -15,6 +15,9 @@ var current_transition: int = 0
 
 
 func _ready() -> void:
+	for i: int in len(transitions):
+		var property: StringName = "parameters/" + transitions[i].blend_space_path + "/blend_position"
+		animation_tree.set(property, 0)
 	animation_tree.active = true
 	update()
 	last_pos = source.position
@@ -36,7 +39,6 @@ func update() -> void:
 			if source.position.x <= right:
 				current_transition = i + 1
 				var value: float = clamp((source.position.x - left) / area.shape.size.x * 2.0 - 1.0, -1.0, 1.0)
-				print(value, "A")
 				var property: StringName = "parameters/" + transitions[i].blend_space_path + "/blend_position"
 				animation_tree.set(property, value)
 				break
