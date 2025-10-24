@@ -83,7 +83,7 @@ messages = Array[ExtResource("4_vxyb2")]([SubResource("Resource_k2jvw")])
 metadata/_custom_type_script = "uid://bi3gy0kfnyuym"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vfcax"]
-size = Vector2(80, 64)
+size = Vector2(32, 1)
 
 [node name="Shop" instance=ExtResource("1_4gc4v")]
 z_index = -1
@@ -100,7 +100,7 @@ dialog = SubResource("Resource_g0kg5")
 cooldown = 0.0
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
-position = Vector2(0, -24)
+position = Vector2(0, 7.5)
 shape = SubResource("RectangleShape2D_vfcax")
 
 [node name="PointLight2D" type="PointLight2D" parent="." index="1"]
