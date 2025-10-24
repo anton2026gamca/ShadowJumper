@@ -39,7 +39,7 @@ shader = ExtResource("8_2artr")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_patrw")
 shader_parameter/min_fog_value = 0.0
 shader_parameter/max_fog_value = 0.07
-shader_parameter/fog_intensity = 1.0
+shader_parameter/fog_intensity = 0.5
 shader_parameter/scroll_speed = Vector2(-0.007, 0.003)
 shader_parameter/scroll_scale = 1.0
 
@@ -56,7 +56,7 @@ shader = ExtResource("8_2artr")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_2tp0m")
 shader_parameter/min_fog_value = 0.0
 shader_parameter/max_fog_value = 0.04
-shader_parameter/fog_intensity = 1.0
+shader_parameter/fog_intensity = 0.5
 shader_parameter/scroll_speed = Vector2(0.01, -0.017)
 shader_parameter/scroll_scale = 1.0
 
@@ -74,7 +74,7 @@ shader = ExtResource("8_2artr")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_5ow7n")
 shader_parameter/min_fog_value = 0.0
 shader_parameter/max_fog_value = 0.02
-shader_parameter/fog_intensity = 1.0
+shader_parameter/fog_intensity = 0.5
 shader_parameter/scroll_speed = Vector2(0.01, 0.01)
 shader_parameter/scroll_scale = 1.0
 
@@ -85,6 +85,7 @@ material = SubResource("ShaderMaterial_1m2nw")
 script = ExtResource("2_qn6tr")
 world_bottom_die_reason = "You fell from too high!"
 camera = NodePath("Camera2D")
+metadata/_custom_type_script = "uid://c4fquxdxhixbr"
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("follow")]
 process_mode = 3

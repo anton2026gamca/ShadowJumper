@@ -8,6 +8,8 @@ class_name PowerupObject
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var area_2d: Area2D = $Area2D
 
+signal picked_up
+
 
 func _on_body_entered(body: Node2D) -> void:
 	if not body is Player:
@@ -20,6 +22,7 @@ func _on_body_entered(body: Node2D) -> void:
 	audio_stream_player_2d.play()
 	play("pickup")
 	Helpers.create_floating_text(get_parent(), powerup_node.pickup_message, global_position + Vector2(0, -32), Color.LIGHT_BLUE, -16)
+	picked_up.emit()
 	await animation_finished
 	visible = false
 	while audio_stream_player_2d.playing:

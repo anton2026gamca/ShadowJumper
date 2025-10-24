@@ -160,6 +160,7 @@ sprite_frames = SubResource("SpriteFrames_pw8vb")
 animation = &"pickup"
 autoplay = "default"
 script = ExtResource("1_lontc")
+metadata/_custom_type_script = "uid://btldh7c6poxop"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
