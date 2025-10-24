@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://dwfwwkf3bx52r"]
+[gd_scene load_steps=34 format=4 uid="uid://dwfwwkf3bx52r"]
 
 [ext_resource type="PackedScene" uid="uid://dpy2qsq5apfgn" path="res://scenes_and_scripts/world/levels/level_template.tscn" id="1_u4hdh"]
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="2_wwy4t"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/ground_animals/boar.tscn" id="8_s3pvv"]
 [ext_resource type="Script" uid="uid://dfa7rp0fl76u0" path="res://scenes_and_scripts/world/npcs/npc_dialog_message.gd" id="9_k0kab"]
 [ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="9_su0ne"]
+[ext_resource type="Script" uid="uid://ctd2vydvf54ij" path="res://scenes_and_scripts/world/animation_trigger.gd" id="13_mrsys"]
+[ext_resource type="Script" uid="uid://ck5s3oyvqqjgb" path="res://scenes_and_scripts/world/animation_trigger_transition.gd" id="14_lusup"]
+[ext_resource type="Script" uid="uid://drjxngbn6hl21" path="res://scenes_and_scripts/helpers/color_shader_parameter_animation_helper.gd" id="15_su0ne"]
 [ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock.tscn" id="17_su0ne"]
 [ext_resource type="Texture2D" uid="uid://dylddsv1gbd7s" path="res://assets/sprites/leave.png" id="18_k0kab"]
 
@@ -18,9 +21,9 @@ shader = ExtResource("2_wwy4t")
 shader_parameter/night_intensity = 1.0
 shader_parameter/night_darkness = 1.0
 shader_parameter/night_contrast = 2.0
-shader_parameter/night_tint = Color(0.0683835, 0.142258, 0.511226, 1)
+shader_parameter/night_tint = Color(0.4, 0.4, 0.4, 1)
 shader_parameter/tint_shift = 1.0
-shader_parameter/ambient_light_color = Color(0.304, 0.386667, 0.8, 1)
+shader_parameter/ambient_light_color = Color(0.4, 0.4, 0.4, 1)
 shader_parameter/ambient_light_value = 0.4
 
 [sub_resource type="Resource" id="Resource_su0ne"]
@@ -43,6 +46,123 @@ metadata/_custom_type_script = "uid://bi3gy0kfnyuym"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_blifk"]
 normal = Vector2(1, 0)
+
+[sub_resource type="Resource" id="Resource_mrsys"]
+script = ExtResource("14_lusup")
+blend_space_path = &"Transition1"
+area = NodePath("Transition1")
+metadata/_custom_type_script = "uid://ck5s3oyvqqjgb"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_spee7"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k0kab"]
+animation = &"transition_1"
+play_mode = 1
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 1.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lk5cx"]
+animation = &"transition_1"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 1.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_curd2"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_k0kab")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_lk5cx")
+blend_point_1/pos = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s4xkq"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8vd74"]
+advance_mode = 2
+advance_expression = "current_transition == 1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aq8y7"]
+advance_mode = 2
+advance_expression = "current_transition != 1
+"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_lusup"]
+states/End/position = Vector2(896.666, 102.49)
+states/RESET/node = SubResource("AnimationNodeAnimation_spee7")
+states/RESET/position = Vector2(388.667, 100.395)
+states/Start/position = Vector2(208, 100)
+states/Transition1/node = SubResource("AnimationNodeBlendSpace1D_curd2")
+states/Transition1/position = Vector2(639.209, 99.7349)
+transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_s4xkq"), "RESET", "Transition1", SubResource("AnimationNodeStateMachineTransition_8vd74"), "Transition1", "RESET", SubResource("AnimationNodeStateMachineTransition_aq8y7")]
+graph_offset = Vector2(-25, -34)
+
+[sub_resource type="Animation" id="Animation_aq8y7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationTrigger/AnimationTree/AnimationPlayer/AmbientLightColorShaderParameterAnimationHelper:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.305882, 0.388235, 0.8, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationTrigger/AnimationTree/AnimationPlayer/NightTintShaderParameterAnimationHelper:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0666667, 0.141176, 0.509804, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uwl5t"]
+resource_name = "transition_1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationTrigger/AnimationTree/AnimationPlayer/AmbientLightColorShaderParameterAnimationHelper:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.305882, 0.388235, 0.8, 1), Color(0.4, 0.4, 0.4, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationTrigger/AnimationTree/AnimationPlayer/NightTintShaderParameterAnimationHelper:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0666667, 0.141176, 0.509804, 1), Color(0.4, 0.4, 0.4, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_su0ne"]
+_data = {
+&"RESET": SubResource("Animation_aq8y7"),
+&"transition_1": SubResource("Animation_uwl5t")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcv8i"]
+size = Vector2(454, 976)
 
 [node name="World" instance=ExtResource("1_u4hdh")]
 material = SubResource("ShaderMaterial_wwy4t")
@@ -67,6 +187,9 @@ dialog = SubResource("Resource_wwy4t")
 cooldown = -1.0
 one_time = true
 unique_id = 1
+
+[node name="Player" parent="Level" index="1"]
+position = Vector2(1234, 0)
 
 [node name="WorldBottomLimit" parent="Level" index="2"]
 position = Vector2(0, 270)
@@ -241,6 +364,44 @@ initial_velocity_min = 20.0
 initial_velocity_max = 20.0
 angular_velocity_min = -50.0
 angular_velocity_max = 50.0
+
+[node name="AnimationTrigger" type="Node2D" parent="Level" index="18" node_paths=PackedStringArray("animation_tree", "source")]
+script = ExtResource("13_mrsys")
+animation_tree = NodePath("AnimationTree")
+transitions = Array[ExtResource("14_lusup")]([SubResource("Resource_mrsys")])
+source = NodePath("../Player")
+metadata/_custom_type_script = "uid://ctd2vydvf54ij"
+
+[node name="AnimationTree" type="AnimationTree" parent="Level/AnimationTrigger" index="0"]
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_lusup")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("AnimationPlayer")
+parameters/Transition1/blend_position = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Level/AnimationTrigger/AnimationTree" index="0"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_su0ne")
+}
+
+[node name="AmbientLightColorShaderParameterAnimationHelper" type="Node" parent="Level/AnimationTrigger/AnimationTree/AnimationPlayer" index="0" node_paths=PackedStringArray("node_with_material")]
+script = ExtResource("15_su0ne")
+value = Color(0.4, 0.4, 0.4, 1)
+node_with_material = NodePath("../../../../..")
+param = &"ambient_light_color"
+metadata/_custom_type_script = "uid://drjxngbn6hl21"
+
+[node name="NightTintShaderParameterAnimationHelper" type="Node" parent="Level/AnimationTrigger/AnimationTree/AnimationPlayer" index="1" node_paths=PackedStringArray("node_with_material")]
+script = ExtResource("15_su0ne")
+value = Color(0.4, 0.4, 0.4, 1)
+node_with_material = NodePath("../../../../..")
+param = &"night_tint"
+metadata/_custom_type_script = "uid://drjxngbn6hl21"
+
+[node name="Transition1" type="CollisionShape2D" parent="Level/AnimationTrigger" index="1"]
+position = Vector2(757, 0)
+shape = SubResource("RectangleShape2D_qcv8i")
 
 [node name="FrontDecoration" parent="." index="5"]
 tile_map_data = PackedByteArray("AAAPAAAAAgAAAAAACAAQAAAAAgAAAAAACAARAAAAAgAAAAAACAANAAAAAgAAAAAACAAFAAAAAgAAAAAACAAHAAAAAgAAAAAACAACAAAAAgAAAAAACAD6/wAAAgAAAAAACAD4/wAAAgAAAAAACAA=")

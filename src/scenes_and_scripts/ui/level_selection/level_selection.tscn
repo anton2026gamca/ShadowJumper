@@ -1,4 +1,4 @@
-[gd_scene load_steps=483 format=4 uid="uid://clkhpeqrfyoax"]
+[gd_scene load_steps=499 format=4 uid="uid://clkhpeqrfyoax"]
 
 [ext_resource type="Script" uid="uid://dd3otqv1n5e7k" path="res://scenes_and_scripts/ui/level_selection/level_selection.gd" id="1_7qmai"]
 [ext_resource type="PackedScene" uid="uid://by7kis83n7kvx" path="res://scenes_and_scripts/ui/level_selection/level_selection_level.tscn" id="2_5iw0q"]
@@ -40,15 +40,18 @@
 [ext_resource type="Texture2D" uid="uid://dylddsv1gbd7s" path="res://assets/sprites/leave.png" id="38_akybc"]
 [ext_resource type="Texture2D" uid="uid://b4eqv5jakr7va" path="res://assets/sprites/leave-parallax.png" id="38_bcbph"]
 [ext_resource type="Script" uid="uid://cukaycaqn33ua" path="res://scenes_and_scripts/world/world_parallax_2d.gd" id="38_sppe1"]
+[ext_resource type="Script" uid="uid://ctd2vydvf54ij" path="res://scenes_and_scripts/world/animation_trigger.gd" id="41_xxkge"]
+[ext_resource type="Script" uid="uid://ck5s3oyvqqjgb" path="res://scenes_and_scripts/world/animation_trigger_transition.gd" id="42_mdgjv"]
+[ext_resource type="Script" uid="uid://drjxngbn6hl21" path="res://scenes_and_scripts/helpers/color_shader_parameter_animation_helper.gd" id="43_ypebg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0vl0e"]
 shader = ExtResource("15_jj62b")
 shader_parameter/night_intensity = 1.0
 shader_parameter/night_darkness = 1.0
 shader_parameter/night_contrast = 2.0
-shader_parameter/night_tint = Color(0.2, 0.3, 0.8, 1)
+shader_parameter/night_tint = Color(0.0666667, 0.141176, 0.509804, 1)
 shader_parameter/tint_shift = 1.0
-shader_parameter/ambient_light_color = Color(0.2, 0.3, 0.8, 1)
+shader_parameter/ambient_light_color = Color(0.305882, 0.388235, 0.8, 1)
 shader_parameter/ambient_light_value = 0.4
 
 [sub_resource type="Curve" id="Curve_p18ra"]
@@ -6656,6 +6659,123 @@ angular_velocity_min = -50.0
 angular_velocity_max = 50.0
 gravity = Vector3(0, 0, 0)
 
+[sub_resource type="Resource" id="Resource_gmpfs"]
+script = ExtResource("42_mdgjv")
+blend_space_path = &"Transition1"
+area = NodePath("Transition1")
+metadata/_custom_type_script = "uid://ck5s3oyvqqjgb"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_spee7"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k0kab"]
+animation = &"transition_1"
+play_mode = 1
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 1.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lk5cx"]
+animation = &"transition_1"
+use_custom_timeline = true
+timeline_length = 1.0
+stretch_time_scale = true
+start_offset = 1.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_curd2"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_k0kab")
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_lk5cx")
+blend_point_1/pos = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s4xkq"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8vd74"]
+advance_mode = 2
+advance_expression = "current_transition == 1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aq8y7"]
+advance_mode = 2
+advance_expression = "current_transition != 1
+"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xxkge"]
+states/End/position = Vector2(899.333, 100)
+states/RESET/node = SubResource("AnimationNodeAnimation_spee7")
+states/RESET/position = Vector2(388.667, 100.395)
+states/Start/position = Vector2(208, 100)
+states/Transition1/node = SubResource("AnimationNodeBlendSpace1D_curd2")
+states/Transition1/position = Vector2(639.209, 99.8715)
+transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_s4xkq"), "RESET", "Transition1", SubResource("AnimationNodeStateMachineTransition_8vd74"), "Transition1", "RESET", SubResource("AnimationNodeStateMachineTransition_aq8y7")]
+graph_offset = Vector2(-25, -34)
+
+[sub_resource type="Animation" id="Animation_aq8y7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationTrigger/AnimationTree/AnimationPlayer/AmbientLightColorShaderParameterAnimationHelper:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.305882, 0.388235, 0.8, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationTrigger/AnimationTree/AnimationPlayer/NightTintShaderParameterAnimationHelper:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0666667, 0.141176, 0.509804, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uwl5t"]
+resource_name = "transition_1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationTrigger/AnimationTree/AnimationPlayer/AmbientLightColorShaderParameterAnimationHelper:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.305882, 0.388235, 0.8, 1), Color(0.4, 0.4, 0.4, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationTrigger/AnimationTree/AnimationPlayer/NightTintShaderParameterAnimationHelper:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0666667, 0.141176, 0.509804, 1), Color(0.4, 0.4, 0.4, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xxkge"]
+_data = {
+&"RESET": SubResource("Animation_aq8y7"),
+&"transition_1": SubResource("Animation_uwl5t")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iww10"]
+size = Vector2(170, 1152)
+
 [node name="LevelSelection" type="Node2D" node_paths=PackedStringArray("start_level", "replay_controller", "camera", "player")]
 material = SubResource("ShaderMaterial_0vl0e")
 position = Vector2(273, 1)
@@ -7269,6 +7389,44 @@ preprocess = 30.0
 visibility_rect = Rect2(-640, 0, 1280, 720)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_sppe1")
+
+[node name="AnimationTrigger" type="Node2D" parent="Level" node_paths=PackedStringArray("animation_tree", "source")]
+script = ExtResource("41_xxkge")
+animation_tree = NodePath("AnimationTree")
+transitions = Array[ExtResource("42_mdgjv")]([SubResource("Resource_gmpfs")])
+source = NodePath("../Player")
+metadata/_custom_type_script = "uid://ctd2vydvf54ij"
+
+[node name="AnimationTree" type="AnimationTree" parent="Level/AnimationTrigger"]
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_xxkge")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("AnimationPlayer")
+parameters/Transition1/blend_position = -1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Level/AnimationTrigger/AnimationTree"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_xxkge")
+}
+
+[node name="AmbientLightColorShaderParameterAnimationHelper" type="Node" parent="Level/AnimationTrigger/AnimationTree/AnimationPlayer" node_paths=PackedStringArray("node_with_material")]
+script = ExtResource("43_ypebg")
+value = Color(0.305882, 0.388235, 0.8, 1)
+node_with_material = NodePath("../../../../..")
+param = &"ambient_light_color"
+metadata/_custom_type_script = "uid://drjxngbn6hl21"
+
+[node name="NightTintShaderParameterAnimationHelper" type="Node" parent="Level/AnimationTrigger/AnimationTree/AnimationPlayer" node_paths=PackedStringArray("node_with_material")]
+script = ExtResource("43_ypebg")
+value = Color(0.0666667, 0.141176, 0.509804, 1)
+node_with_material = NodePath("../../../../..")
+param = &"night_tint"
+metadata/_custom_type_script = "uid://drjxngbn6hl21"
+
+[node name="Transition1" type="CollisionShape2D" parent="Level/AnimationTrigger"]
+position = Vector2(1663, -256)
+shape = SubResource("RectangleShape2D_iww10")
 
 [editable path="ParallaxFog"]
 [editable path="Level/Level8"]

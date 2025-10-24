@@ -17,7 +17,7 @@ shader = ExtResource("1_mxcuo")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_patrw")
 shader_parameter/min_fog_value = 0.0
 shader_parameter/max_fog_value = 0.07
-shader_parameter/fog_intensity = 1.0
+shader_parameter/fog_intensity = 0.7
 shader_parameter/scroll_speed = Vector2(-0.007, 0.003)
 shader_parameter/scroll_scale = 1.0
 
@@ -34,7 +34,7 @@ shader = ExtResource("1_mxcuo")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_2tp0m")
 shader_parameter/min_fog_value = 0.0
 shader_parameter/max_fog_value = 0.04
-shader_parameter/fog_intensity = 1.0
+shader_parameter/fog_intensity = 0.7
 shader_parameter/scroll_speed = Vector2(0.01, -0.017)
 shader_parameter/scroll_scale = 1.0
 
@@ -52,7 +52,7 @@ shader = ExtResource("1_mxcuo")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_5ow7n")
 shader_parameter/min_fog_value = 0.0
 shader_parameter/max_fog_value = 0.02
-shader_parameter/fog_intensity = 1.0
+shader_parameter/fog_intensity = 0.7
 shader_parameter/scroll_speed = Vector2(0.01, 0.01)
 shader_parameter/scroll_scale = 1.0
 
@@ -67,8 +67,10 @@ repeat_size = Vector2(1280, 720)
 [node name="Fog" type="ColorRect" parent="FogBack"]
 z_index = -10
 material = SubResource("ShaderMaterial_8ch1p")
-offset_right = 1280.0
-offset_bottom = 720.0
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
 color = Color(1, 1, 1, 0)
 
 [node name="FogMiddle" type="Parallax2D" parent="."]
@@ -78,8 +80,10 @@ repeat_size = Vector2(1280, 720)
 [node name="Fog" type="ColorRect" parent="FogMiddle"]
 z_index = 9
 material = SubResource("ShaderMaterial_motvu")
-offset_right = 1280.0
-offset_bottom = 720.0
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
 color = Color(1, 1, 1, 0)
 
 [node name="FogFront" type="Parallax2D" parent="."]
@@ -89,6 +93,8 @@ repeat_size = Vector2(1280, 720)
 [node name="Fog" type="ColorRect" parent="FogFront"]
 z_index = 10
 material = SubResource("ShaderMaterial_xugxg")
-offset_right = 1280.0
-offset_bottom = 720.0
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
 color = Color(1, 1, 1, 0)
