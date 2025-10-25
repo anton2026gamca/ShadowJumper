@@ -21,6 +21,7 @@ shader_parameter/night_tint = Color(0.0683835, 0.142258, 0.511226, 1)
 shader_parameter/tint_shift = 1.0
 shader_parameter/ambient_light_color = Color(0.304, 0.386667, 0.8, 1)
 shader_parameter/ambient_light_value = 0.4
+shader_parameter/luminance_weights = Color(0.299, 0.587, 0.114, 1)
 
 [sub_resource type="Curve" id="Curve_wcekq"]
 _limits = [0.0, 1.0, 0.0, 600.0]

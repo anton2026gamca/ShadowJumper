@@ -1,4 +1,4 @@
-[gd_scene load_steps=495 format=4 uid="uid://clkhpeqrfyoax"]
+[gd_scene load_steps=494 format=4 uid="uid://clkhpeqrfyoax"]
 
 [ext_resource type="Script" uid="uid://dd3otqv1n5e7k" path="res://scenes_and_scripts/ui/level_selection/level_selection.gd" id="1_7qmai"]
 [ext_resource type="PackedScene" uid="uid://by7kis83n7kvx" path="res://scenes_and_scripts/ui/level_selection/level_selection_level.tscn" id="2_5iw0q"]
@@ -43,7 +43,6 @@
 [ext_resource type="Script" uid="uid://cukaycaqn33ua" path="res://scenes_and_scripts/world/world_parallax_2d.gd" id="38_sppe1"]
 [ext_resource type="Script" uid="uid://ctd2vydvf54ij" path="res://scenes_and_scripts/world/animation_trigger.gd" id="41_xxkge"]
 [ext_resource type="Script" uid="uid://ck5s3oyvqqjgb" path="res://scenes_and_scripts/world/animation_trigger_transition.gd" id="42_mdgjv"]
-[ext_resource type="Script" uid="uid://drjxngbn6hl21" path="res://scenes_and_scripts/helpers/color_shader_parameter_animation_helper.gd" id="43_ypebg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0vl0e"]
 shader = ExtResource("15_jj62b")
@@ -54,6 +53,7 @@ shader_parameter/night_tint = Color(0.0666667, 0.141176, 0.509804, 1)
 shader_parameter/tint_shift = 1.0
 shader_parameter/ambient_light_color = Color(0.305882, 0.388235, 0.8, 1)
 shader_parameter/ambient_light_value = 0.4
+shader_parameter/luminance_weights = Color(0.299, 0.587, 0.114, 1)
 
 [sub_resource type="Curve" id="Curve_p18ra"]
 _limits = [0.0, 1.0, 0.0, 1200.0]
@@ -944,6 +944,7 @@ shader_parameter/night_tint = Color(0.2, 0.3, 0.8, 1)
 shader_parameter/tint_shift = 1.0
 shader_parameter/ambient_light_color = Color(0.2, 0.3, 0.8, 1)
 shader_parameter/ambient_light_value = 0.4
+shader_parameter/luminance_weights = Color(0.299, 0.587, 0.114, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f7ngw"]
 shader = ExtResource("15_jj62b")
@@ -954,6 +955,7 @@ shader_parameter/night_tint = Color(0.2, 0.3, 0.8, 1)
 shader_parameter/tint_shift = 1.0
 shader_parameter/ambient_light_color = Color(0.2, 0.3, 0.8, 1)
 shader_parameter/ambient_light_value = 0.4
+shader_parameter/luminance_weights = Color(0.299, 0.587, 0.114, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_esqs0"]
 shader = ExtResource("15_jj62b")
@@ -964,6 +966,7 @@ shader_parameter/night_tint = Color(0.2, 0.3, 0.8, 1)
 shader_parameter/tint_shift = 1.0
 shader_parameter/ambient_light_color = Color(0.2, 0.3, 0.8, 1)
 shader_parameter/ambient_light_value = 0.4
+shader_parameter/luminance_weights = Color(0.299, 0.587, 0.114, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rasjo"]
 atlas = ExtResource("18_j5kpb")
@@ -6677,7 +6680,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationTrigger/AnimationPlayer/AmbientLightColorShaderParameterAnimationHelper:value")
+tracks/0/path = NodePath("..:material:shader_parameter/ambient_light_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -6689,7 +6692,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationTrigger/AnimationPlayer/NightTintShaderParameterAnimationHelper:value")
+tracks/1/path = NodePath("..:material:shader_parameter/night_tint")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -6710,32 +6713,44 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.7]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:material:shader_parameter/luminance_weights")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.299, 0.587, 0.114, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_uwl5t"]
 resource_name = "transition_1"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationTrigger/AnimationPlayer/AmbientLightColorShaderParameterAnimationHelper:value")
+tracks/0/path = NodePath("..:material:shader_parameter/ambient_light_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.305882, 0.388235, 0.8, 1), Color(0.4, 0.4, 0.4, 1)]
+"values": [Color(0.305882, 0.388235, 0.8, 1), Color(0.419608, 0.439216, 0.4, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationTrigger/AnimationPlayer/NightTintShaderParameterAnimationHelper:value")
+tracks/1/path = NodePath("..:material:shader_parameter/night_tint")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.0666667, 0.141176, 0.509804, 1), Color(0.4, 0.4, 0.4, 1)]
+"values": [Color(0.0666667, 0.141176, 0.509804, 1), Color(0.278431, 0.301961, 0.282353, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -6755,26 +6770,26 @@ resource_name = "transition_2"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationTrigger/AnimationPlayer/AmbientLightColorShaderParameterAnimationHelper:value")
+tracks/0/path = NodePath("..:material:shader_parameter/ambient_light_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.4, 0.4, 0.4, 1), Color(0, 0, 0, 1)]
+"values": [Color(0.419608, 0.439216, 0.4, 1), Color(0.690196, 0.65098, 0.619608, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationTrigger/AnimationPlayer/NightTintShaderParameterAnimationHelper:value")
+tracks/1/path = NodePath("..:material:shader_parameter/night_tint")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.4, 0.4, 0.4, 1), Color(0.658824, 0.588235, 0.588235, 1)]
+"values": [Color(0.278431, 0.301961, 0.282353, 1), Color(0.658824, 0.588235, 0.588235, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -6787,6 +6802,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 1.5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:material:shader_parameter/luminance_weights")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.299, 0.587, 0.114, 1), Color(0.501961, 1, 0.188235, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xxkge"]
@@ -7421,20 +7448,6 @@ root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_xxkge")
 }
-
-[node name="NightTintShaderParameterAnimationHelper" type="Node" parent="Level/AnimationTrigger/AnimationPlayer" node_paths=PackedStringArray("node_with_material")]
-script = ExtResource("43_ypebg")
-value = Color(0.0666667, 0.141176, 0.509804, 1)
-node_with_material = NodePath("../../../..")
-param = &"night_tint"
-metadata/_custom_type_script = "uid://drjxngbn6hl21"
-
-[node name="AmbientLightColorShaderParameterAnimationHelper" type="Node" parent="Level/AnimationTrigger/AnimationPlayer" node_paths=PackedStringArray("node_with_material")]
-script = ExtResource("43_ypebg")
-value = Color(0.305882, 0.388235, 0.8, 1)
-node_with_material = NodePath("../../../..")
-param = &"ambient_light_color"
-metadata/_custom_type_script = "uid://drjxngbn6hl21"
 
 [node name="Transition1" type="CollisionShape2D" parent="Level/AnimationTrigger"]
 position = Vector2(1663, -256)

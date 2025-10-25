@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cvpj82spjy3wa"]
+[gd_scene load_steps=28 format=4 uid="uid://cvpj82spjy3wa"]
 
 [ext_resource type="PackedScene" uid="uid://dpy2qsq5apfgn" path="res://scenes_and_scripts/world/levels/level_template.tscn" id="1_xsf6m"]
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="2_3kued"]
@@ -8,17 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://dylddsv1gbd7s" path="res://assets/sprites/leave.png" id="5_5os5s"]
 [ext_resource type="Script" uid="uid://ctd2vydvf54ij" path="res://scenes_and_scripts/world/animation_trigger.gd" id="7_70aeg"]
 [ext_resource type="Script" uid="uid://ck5s3oyvqqjgb" path="res://scenes_and_scripts/world/animation_trigger_transition.gd" id="8_8bowb"]
-[ext_resource type="Script" uid="uid://drjxngbn6hl21" path="res://scenes_and_scripts/helpers/color_shader_parameter_animation_helper.gd" id="8_ew2wy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0kubr"]
 shader = ExtResource("2_3kued")
 shader_parameter/night_intensity = 1.0
 shader_parameter/night_darkness = 1.0
 shader_parameter/night_contrast = 2.0
-shader_parameter/night_tint = Color(0.400007, 0.400005, 0.400005, 1)
+shader_parameter/night_tint = Color(0.4, 0.4, 0.4, 1)
 shader_parameter/tint_shift = 1.0
-shader_parameter/ambient_light_color = Color(0.399989, 0.399989, 0.399989, 1)
+shader_parameter/ambient_light_color = Color(0.4, 0.4, 0.4, 1)
 shader_parameter/ambient_light_value = 0.4
+shader_parameter/luminance_weights = Color(0.298039, 0.588235, 0.113725, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qbaq7"]
 frequency = 0.007
@@ -112,26 +112,38 @@ resource_name = "transition_1"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/NightTintShaderParameterAnimationHelper:value")
+tracks/0/path = NodePath("..:material:shader_parameter/night_tint")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.4, 0.4, 0.4, 1), Color(0.658824, 0.588235, 0.588235, 1)]
+"values": [Color(0.279, 0.3, 0.2804, 1), Color(0.658824, 0.588235, 0.588235, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/AmbientLightColorShaderParameterAnimationHelper2:value")
+tracks/1/path = NodePath("..:material:shader_parameter/ambient_light_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1.03526),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.4, 0.4, 0.4, 1), Color(0, 0, 0, 1)]
+"values": [Color(0.41954, 0.44, 0.4004, 1), Color(0.69, 0.65205, 0.621, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:material:shader_parameter/luminance_weights")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.298039, 0.588235, 0.113725, 1), Color(0.5005, 1, 0.19, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_okxwu"]
@@ -139,7 +151,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/NightTintShaderParameterAnimationHelper:value")
+tracks/0/path = NodePath("..:material:shader_parameter/night_tint")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -151,7 +163,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/AmbientLightColorShaderParameterAnimationHelper2:value")
+tracks/1/path = NodePath("..:material:shader_parameter/ambient_light_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -159,6 +171,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0.4, 0.4, 0.4, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:material:shader_parameter/luminance_weights")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.298039, 0.588235, 0.113725, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jeej0"]
@@ -319,29 +343,17 @@ position = Vector2(2032, -198)
 
 [node name="AnimationTrigger" type="Node2D" parent="Level" index="6" node_paths=PackedStringArray("animation_player", "source")]
 script = ExtResource("7_70aeg")
+enabled = false
 animation_player = NodePath("AnimationPlayer")
 transitions = Array[ExtResource("8_8bowb")]([SubResource("Resource_okxwu")])
 source = NodePath("../Player")
 metadata/_custom_type_script = "uid://ctd2vydvf54ij"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Level/AnimationTrigger" index="0"]
+root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_jeej0")
 }
-
-[node name="NightTintShaderParameterAnimationHelper" type="Node" parent="Level/AnimationTrigger/AnimationPlayer" index="0" node_paths=PackedStringArray("node_with_material")]
-script = ExtResource("8_ew2wy")
-value = Color(0.4, 0.4, 0.4, 1)
-node_with_material = NodePath("../../../..")
-param = &"night_tint"
-metadata/_custom_type_script = "uid://drjxngbn6hl21"
-
-[node name="AmbientLightColorShaderParameterAnimationHelper2" type="Node" parent="Level/AnimationTrigger/AnimationPlayer" index="1" node_paths=PackedStringArray("node_with_material")]
-script = ExtResource("8_ew2wy")
-value = Color(0.4, 0.4, 0.4, 1)
-node_with_material = NodePath("../../../..")
-param = &"ambient_light_color"
-metadata/_custom_type_script = "uid://drjxngbn6hl21"
 
 [node name="Transition1" type="CollisionShape2D" parent="Level/AnimationTrigger" index="1"]
 position = Vector2(1663, 0)

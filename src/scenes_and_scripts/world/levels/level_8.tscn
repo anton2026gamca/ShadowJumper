@@ -12,8 +12,9 @@ shader_parameter/night_darkness = 1.0
 shader_parameter/night_contrast = 2.0
 shader_parameter/night_tint = Color(0.658824, 0.588235, 0.588235, 1)
 shader_parameter/tint_shift = 1.0
-shader_parameter/ambient_light_color = Color(0, 0, 0, 1)
+shader_parameter/ambient_light_color = Color(0.690196, 0.65098, 0.619608, 1)
 shader_parameter/ambient_light_value = 0.4
+shader_parameter/luminance_weights = Color(0.501961, 1, 0.188235, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qbaq7"]
 frequency = 0.007

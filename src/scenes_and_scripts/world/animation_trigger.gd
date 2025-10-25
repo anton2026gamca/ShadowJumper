@@ -16,9 +16,10 @@ var time: float = 0
 
 
 func _ready() -> void:
-	enabled = true
-	current_transition = 0
-	animation_player.play("RESET")
+	if not Engine.is_editor_hint():
+		enabled = true
+		current_transition = 0
+		animation_player.play("RESET")
 
 func _process(delta: float) -> void:
 	if source:

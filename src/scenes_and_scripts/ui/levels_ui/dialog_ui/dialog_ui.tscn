@@ -27,6 +27,7 @@ shader_parameter/night_tint = Color(0.2, 0.3, 0.8, 1)
 shader_parameter/tint_shift = 1.0
 shader_parameter/ambient_light_color = Color(0.2, 0.3, 0.8, 1)
 shader_parameter/ambient_light_value = 0.4
+shader_parameter/luminance_weights = Color(0.299, 0.587, 0.114, 1)
 
 [node name="DialogUI" type="Control"]
 layout_mode = 3
