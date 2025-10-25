@@ -2,6 +2,6 @@ extends Resource
 class_name AnimationTriggerTransition
 
 
-@export var blend_space_path: StringName
+@export var animation_name: StringName
 ## CollisionShape2D
 @export var area: NodePath
