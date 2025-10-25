@@ -37,12 +37,12 @@ height = 720
 seamless = true
 noise = SubResource("FastNoiseLite_qbaq7")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iqtme"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfgm2"]
 shader = ExtResource("8_2artr")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_patrw")
 shader_parameter/min_fog_value = 0.0
 shader_parameter/max_fog_value = 0.07
-shader_parameter/fog_intensity = 1.5
+shader_parameter/fog_intensity = 1.0
 shader_parameter/scroll_speed = Vector2(-0.007, 0.003)
 shader_parameter/scroll_scale = 1.0
 
@@ -54,12 +54,12 @@ height = 720
 seamless = true
 noise = SubResource("FastNoiseLite_msttb")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfgm2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kpwu0"]
 shader = ExtResource("8_2artr")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_2tp0m")
 shader_parameter/min_fog_value = 0.0
 shader_parameter/max_fog_value = 0.04
-shader_parameter/fog_intensity = 1.5
+shader_parameter/fog_intensity = 1.0
 shader_parameter/scroll_speed = Vector2(0.01, -0.017)
 shader_parameter/scroll_scale = 1.0
 
@@ -72,12 +72,12 @@ height = 720
 seamless = true
 noise = SubResource("FastNoiseLite_rjpot")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kpwu0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o0d8l"]
 shader = ExtResource("8_2artr")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_5ow7n")
 shader_parameter/min_fog_value = 0.0
 shader_parameter/max_fog_value = 0.02
-shader_parameter/fog_intensity = 1.5
+shader_parameter/fog_intensity = 1.0
 shader_parameter/scroll_speed = Vector2(0.01, 0.01)
 shader_parameter/scroll_scale = 1.0
 
@@ -129,13 +129,13 @@ texture = ExtResource("6_v3d0k")
 [node name="ParallaxFog" parent="." instance=ExtResource("7_8tbc5")]
 
 [node name="Fog" parent="ParallaxFog/FogBack" index="0"]
-material = SubResource("ShaderMaterial_iqtme")
-
-[node name="Fog" parent="ParallaxFog/FogMiddle" index="0"]
 material = SubResource("ShaderMaterial_qfgm2")
 
-[node name="Fog" parent="ParallaxFog/FogFront" index="0"]
+[node name="Fog" parent="ParallaxFog/FogMiddle" index="0"]
 material = SubResource("ShaderMaterial_kpwu0")
+
+[node name="Fog" parent="ParallaxFog/FogFront" index="0"]
+material = SubResource("ShaderMaterial_o0d8l")
 
 [node name="Level" type="TileMapLayer" parent="."]
 use_parent_material = true

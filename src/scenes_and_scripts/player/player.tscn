@@ -257,7 +257,6 @@ use_parent_material = true
 
 [node name="JumpParticles" type="CPUParticles2D" parent="Particles"]
 material = SubResource("ShaderMaterial_ygw5f")
-use_parent_material = true
 position = Vector2(0, 8)
 emitting = false
 texture = ExtResource("17_ygw5f")
@@ -276,7 +275,6 @@ scale_amount_max = 3.0
 [node name="LandParticles" type="CPUParticles2D" parent="Particles"]
 light_mask = 0
 material = SubResource("ShaderMaterial_mqn2j")
-use_parent_material = true
 position = Vector2(0, 8)
 emitting = false
 texture = ExtResource("17_ygw5f")
@@ -294,7 +292,6 @@ scale_amount_max = 3.0
 
 [node name="ClimbParticles" type="CPUParticles2D" parent="Particles"]
 material = SubResource("ShaderMaterial_dky0r")
-use_parent_material = true
 position = Vector2(9, 0)
 emitting = false
 texture = ExtResource("17_ygw5f")
