@@ -4,10 +4,7 @@ class_name AnimationTrigger
 
 
 @export var enabled: bool = true
-
 @export var animation_player: AnimationPlayer
-@export var transitions: Array[AnimationTriggerTransition] = []
-
 @export var source: Node2D
 
 var current_transition: int = 0
@@ -28,18 +25,18 @@ func _process(delta: float) -> void:
 func update() -> void:
 	if not enabled:
 		return
-	for i: int in len(transitions):
-		var area: Node = get_node(transitions[i].area)
-		if not area is CollisionShape2D or not area.shape is RectangleShape2D:
+	var areas: Array[Node] = find_children("", "AnimationTriggerArea")
+	for i: int in len(areas):
+		if not areas[i].shape is RectangleShape2D:
 			continue
-		var left: float = area.position.x - area.shape.size.x / 2.0
-		var right: float = area.position.x + area.shape.size.x / 2.0
-		if right < source.position.x and not i == len(transitions) - 1:
+		var left: float = areas[i].position.x - areas[i].shape.size.x / 2.0
+		var right: float = areas[i].position.x + areas[i].shape.size.x / 2.0
+		if right < source.position.x and not i == len(areas) - 1:
 			continue
 		current_transition = i + 1
-		var value: float = clamp((source.position.x - left) / area.shape.size.x, 0.0, 1.0)
+		var value: float = clamp((source.position.x - left) / areas[i].shape.size.x, 0.0, 1.0)
 		var direction: float = Vector2(value - animation_player.current_animation_position, 0.0).normalized().x
 		if value == 0: value = randf_range(0, 0.01) # Randomize the values at the ends so that the animation player updates
 		if value == 1: value = randf_range(0.99, 1)
-		animation_player.play_section(transitions[i].animation_name, value, -1, -1, direction)
+		animation_player.play_section(areas[i].animation, value, -1, -1, direction)
 		break

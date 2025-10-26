@@ -1,4 +1,4 @@
-[gd_scene load_steps=494 format=4 uid="uid://clkhpeqrfyoax"]
+[gd_scene load_steps=492 format=4 uid="uid://clkhpeqrfyoax"]
 
 [ext_resource type="Script" uid="uid://dd3otqv1n5e7k" path="res://scenes_and_scripts/ui/level_selection/level_selection.gd" id="1_7qmai"]
 [ext_resource type="PackedScene" uid="uid://by7kis83n7kvx" path="res://scenes_and_scripts/ui/level_selection/level_selection_level.tscn" id="2_5iw0q"]
@@ -41,8 +41,8 @@
 [ext_resource type="Texture2D" uid="uid://dylddsv1gbd7s" path="res://assets/sprites/leave.png" id="38_akybc"]
 [ext_resource type="Texture2D" uid="uid://b4eqv5jakr7va" path="res://assets/sprites/leave-parallax.png" id="38_bcbph"]
 [ext_resource type="Script" uid="uid://cukaycaqn33ua" path="res://scenes_and_scripts/world/world_parallax_2d.gd" id="38_sppe1"]
-[ext_resource type="Script" uid="uid://ctd2vydvf54ij" path="res://scenes_and_scripts/world/animation_trigger.gd" id="41_xxkge"]
-[ext_resource type="Script" uid="uid://ck5s3oyvqqjgb" path="res://scenes_and_scripts/world/animation_trigger_transition.gd" id="42_mdgjv"]
+[ext_resource type="Script" uid="uid://ctd2vydvf54ij" path="res://scenes_and_scripts/helpers/animation_trigger.gd" id="41_xxkge"]
+[ext_resource type="Script" uid="uid://b6xr8kf0xn6jm" path="res://scenes_and_scripts/helpers/animation_trigger_area.gd" id="44_mdgjv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0vl0e"]
 shader = ExtResource("15_jj62b")
@@ -6663,18 +6663,6 @@ angular_velocity_min = -50.0
 angular_velocity_max = 50.0
 gravity = Vector3(0, 0, 0)
 
-[sub_resource type="Resource" id="Resource_gmpfs"]
-script = ExtResource("42_mdgjv")
-animation_name = &"transition_1"
-area = NodePath("Transition1")
-metadata/_custom_type_script = "uid://ck5s3oyvqqjgb"
-
-[sub_resource type="Resource" id="Resource_pepiq"]
-script = ExtResource("42_mdgjv")
-animation_name = &"transition_2"
-area = NodePath("Transition2")
-metadata/_custom_type_script = "uid://ck5s3oyvqqjgb"
-
 [sub_resource type="Animation" id="Animation_aq8y7"]
 length = 0.001
 tracks/0/type = "value"
@@ -7439,7 +7427,6 @@ process_mode = 3
 script = ExtResource("41_xxkge")
 enabled = false
 animation_player = NodePath("AnimationPlayer")
-transitions = Array[ExtResource("42_mdgjv")]([SubResource("Resource_gmpfs"), SubResource("Resource_pepiq")])
 source = NodePath("../Player")
 metadata/_custom_type_script = "uid://ctd2vydvf54ij"
 
@@ -7449,13 +7436,19 @@ libraries = {
 &"": SubResource("AnimationLibrary_xxkge")
 }
 
-[node name="Transition1" type="CollisionShape2D" parent="Level/AnimationTrigger"]
+[node name="Animation1" type="CollisionShape2D" parent="Level/AnimationTrigger"]
 position = Vector2(1663, -256)
 shape = SubResource("RectangleShape2D_iww10")
+script = ExtResource("44_mdgjv")
+animation = &"transition_1"
+metadata/_custom_type_script = "uid://b6xr8kf0xn6jm"
 
-[node name="Transition2" type="CollisionShape2D" parent="Level/AnimationTrigger"]
+[node name="Animation2" type="CollisionShape2D" parent="Level/AnimationTrigger"]
 position = Vector2(2281, -256)
 shape = SubResource("RectangleShape2D_mdgjv")
+script = ExtResource("44_mdgjv")
+animation = &"transition_2"
+metadata/_custom_type_script = "uid://b6xr8kf0xn6jm"
 
 [node name="FrontDecoration" type="TileMapLayer" parent="."]
 use_parent_material = true

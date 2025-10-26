@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://dwfwwkf3bx52r"]
+[gd_scene load_steps=24 format=4 uid="uid://dwfwwkf3bx52r"]
 
 [ext_resource type="PackedScene" uid="uid://dpy2qsq5apfgn" path="res://scenes_and_scripts/world/levels/level_template.tscn" id="1_u4hdh"]
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="2_wwy4t"]
@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/ground_animals/boar.tscn" id="8_s3pvv"]
 [ext_resource type="Script" uid="uid://dfa7rp0fl76u0" path="res://scenes_and_scripts/world/npcs/npc_dialog_message.gd" id="9_k0kab"]
 [ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="9_su0ne"]
-[ext_resource type="Script" uid="uid://ctd2vydvf54ij" path="res://scenes_and_scripts/world/animation_trigger.gd" id="13_mrsys"]
-[ext_resource type="Script" uid="uid://ck5s3oyvqqjgb" path="res://scenes_and_scripts/world/animation_trigger_transition.gd" id="14_lusup"]
+[ext_resource type="Script" uid="uid://ctd2vydvf54ij" path="res://scenes_and_scripts/helpers/animation_trigger.gd" id="13_mrsys"]
+[ext_resource type="Script" uid="uid://b6xr8kf0xn6jm" path="res://scenes_and_scripts/helpers/animation_trigger_area.gd" id="15_mrsys"]
 [ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock.tscn" id="17_su0ne"]
 [ext_resource type="Texture2D" uid="uid://dylddsv1gbd7s" path="res://assets/sprites/leave.png" id="18_k0kab"]
 
@@ -46,12 +46,6 @@ metadata/_custom_type_script = "uid://bi3gy0kfnyuym"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_blifk"]
 normal = Vector2(1, 0)
-
-[sub_resource type="Resource" id="Resource_mrsys"]
-script = ExtResource("14_lusup")
-animation_name = &"transition_1"
-area = NodePath("Transition1")
-metadata/_custom_type_script = "uid://ck5s3oyvqqjgb"
 
 [sub_resource type="Animation" id="Animation_aq8y7"]
 length = 0.001
@@ -319,7 +313,6 @@ process_mode = 3
 script = ExtResource("13_mrsys")
 enabled = false
 animation_player = NodePath("AnimationPlayer")
-transitions = Array[ExtResource("14_lusup")]([SubResource("Resource_mrsys")])
 source = NodePath("../Player")
 metadata/_custom_type_script = "uid://ctd2vydvf54ij"
 
@@ -329,9 +322,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_su0ne")
 }
 
-[node name="Transition1" type="CollisionShape2D" parent="Level/AnimationTrigger" index="1"]
+[node name="Animation1" type="CollisionShape2D" parent="Level/AnimationTrigger" index="1"]
 position = Vector2(757, 0)
 shape = SubResource("RectangleShape2D_qcv8i")
+script = ExtResource("15_mrsys")
+animation = &"transition_1"
+metadata/_custom_type_script = "uid://b6xr8kf0xn6jm"
 
 [node name="FrontDecoration" parent="." index="5"]
 tile_map_data = PackedByteArray("AAAPAAAAAgAAAAAACAAQAAAAAgAAAAAACAARAAAAAgAAAAAACAANAAAAAgAAAAAACAAFAAAAAgAAAAAACAAHAAAAAgAAAAAACAACAAAAAgAAAAAACAD6/wAAAgAAAAAACAD4/wAAAgAAAAAACAA=")
