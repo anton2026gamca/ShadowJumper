@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dpy2qsq5apfgn" path="res://scenes_and_scripts/world/levels/level_template.tscn" id="1_0husi"]
 [ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/ground_animals/fox.tscn" id="7_rjdnc"]
 [ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/ground_animals/boar.tscn" id="8_egdi8"]
-[ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://scenes_and_scripts/fog.gdshader" id="8_wkvbo"]
+[ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://shaders/fog.gdshader" id="8_wkvbo"]
 [ext_resource type="Script" uid="uid://dfa7rp0fl76u0" path="res://scenes_and_scripts/world/npcs/npc_dialog_message.gd" id="8_wn8bj"]
 [ext_resource type="PackedScene" uid="uid://b7yk06l614q6o" path="res://scenes_and_scripts/world/npcs/npc.tscn" id="11_mo2i4"]
 [ext_resource type="Texture2D" uid="uid://c8de18v2jb1yl" path="res://assets/sprites/npcs/npc-remote.png" id="12_wn8bj"]
@@ -16,8 +16,8 @@ frequency = 0.007
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_patrw"]
 width = 1280
 height = 720
-seamless = true
 noise = SubResource("FastNoiseLite_qbaq7")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cywes"]
 shader = ExtResource("8_wkvbo")
@@ -33,8 +33,8 @@ shader_parameter/scroll_scale = 1.0
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2tp0m"]
 width = 1280
 height = 720
-seamless = true
 noise = SubResource("FastNoiseLite_msttb")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3gn51"]
 shader = ExtResource("8_wkvbo")
@@ -51,8 +51,8 @@ frequency = 0.02
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5ow7n"]
 width = 1280
 height = 720
-seamless = true
 noise = SubResource("FastNoiseLite_rjpot")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ni0a8"]
 shader = ExtResource("8_wkvbo")

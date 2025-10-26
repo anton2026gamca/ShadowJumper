@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://dka34qujie42c" path="res://scenes_and_scripts/player/controllers/replay_controller/player_replay_data.gd" id="6_ym7cv"]
 [ext_resource type="Script" uid="uid://bnpceuwymc5n" path="res://scenes_and_scripts/player/states/player_walk.gd" id="7_espgd"]
 [ext_resource type="PackedScene" uid="uid://bbfi7d15xxxan" path="res://scenes_and_scripts/world/parallax_fog.tscn" id="7_mv4qm"]
-[ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://scenes_and_scripts/fog.gdshader" id="8_62hx8"]
+[ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://shaders/fog.gdshader" id="8_62hx8"]
 [ext_resource type="Texture2D" uid="uid://dfehsgpqmial3" path="res://assets/sprites/player/player.png" id="8_hcr5e"]
 [ext_resource type="Script" uid="uid://bbbqnku506paa" path="res://scenes_and_scripts/components/health_component.gd" id="8_qw1ig"]
 [ext_resource type="Script" uid="uid://bfhjgtumgpcpm" path="res://scenes_and_scripts/player/states/player_fall.gd" id="8_ym7cv"]
@@ -22,7 +22,7 @@
 [ext_resource type="TileSet" uid="uid://8h4fm7v55cnx" path="res://assets/tileset.tres" id="14_it5vw"]
 [ext_resource type="AudioStream" uid="uid://dkcguk8m56rgx" path="res://assets/SFX/folder/fall.wav" id="15_6jgkc"]
 [ext_resource type="Script" uid="uid://cw5xylamhg1ob" path="res://scenes_and_scripts/player/states/player_ladder_climb.gd" id="15_e2q0a"]
-[ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="15_jj62b"]
+[ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://shaders/world.gdshader" id="15_jj62b"]
 [ext_resource type="Script" uid="uid://dhd8v7a51hwsm" path="res://scenes_and_scripts/camera_plus.gd" id="15_vnfxq"]
 [ext_resource type="PackedScene" uid="uid://d1knch75lpy1t" path="res://scenes_and_scripts/world/levels/level_1.tscn" id="16_it5vw"]
 [ext_resource type="Texture2D" uid="uid://bmsgodease4bp" path="res://assets/sprites/player/player_particle.png" id="17_854ia"]
@@ -66,8 +66,8 @@ frequency = 0.007
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_patrw"]
 width = 1280
 height = 720
-seamless = true
 noise = SubResource("FastNoiseLite_qbaq7")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_62hx8"]
 shader = ExtResource("8_62hx8")
@@ -83,8 +83,8 @@ shader_parameter/scroll_scale = 1.0
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2tp0m"]
 width = 1280
 height = 720
-seamless = true
 noise = SubResource("FastNoiseLite_msttb")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rt6pt"]
 shader = ExtResource("8_62hx8")
@@ -101,8 +101,8 @@ frequency = 0.02
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5ow7n"]
 width = 1280
 height = 720
-seamless = true
 noise = SubResource("FastNoiseLite_rjpot")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bcbph"]
 shader = ExtResource("8_62hx8")
@@ -1857,7 +1857,6 @@ data = Dictionary[String, Variant]({
 script = ExtResource("6_ym7cv")
 start_pos = Vector2(184, 23.9253)
 adjust_x_position_on_end = true
-target_x_position_on_end = 0.0
 data = Array[ExtResource("6_8gh2l")]([SubResource("Resource_5feg2"), SubResource("Resource_72nk8"), SubResource("Resource_jfw3i"), SubResource("Resource_53uy3"), SubResource("Resource_r4jj3"), SubResource("Resource_ses4l"), SubResource("Resource_m4hsd"), SubResource("Resource_x77eb"), SubResource("Resource_nhi7f"), SubResource("Resource_kc6db"), SubResource("Resource_cpu7p"), SubResource("Resource_aa4mn"), SubResource("Resource_vncsr"), SubResource("Resource_kr6ob"), SubResource("Resource_myleo"), SubResource("Resource_nctdv"), SubResource("Resource_5eumj")])
 
 [sub_resource type="Resource" id="Resource_j5kpb"]

@@ -1,11 +1,9 @@
-[gd_scene load_steps=19 format=4 uid="uid://d2xrdtdvsbfjo"]
+[gd_scene load_steps=16 format=4 uid="uid://d2xrdtdvsbfjo"]
 
 [ext_resource type="PackedScene" uid="uid://dpy2qsq5apfgn" path="res://scenes_and_scripts/world/levels/level_template.tscn" id="1_ous7s"]
-[ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="2_wypki"]
+[ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://shaders/world.gdshader" id="2_wypki"]
 [ext_resource type="TileSet" uid="uid://8h4fm7v55cnx" path="res://assets/tileset.tres" id="3_curd2"]
-[ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://scenes_and_scripts/fog.gdshader" id="3_l8c2h"]
-[ext_resource type="Shader" uid="uid://ctfae6s02fymc" path="res://scenes_and_scripts/water.gdshader" id="5_spee7"]
-[ext_resource type="Texture2D" uid="uid://bgcwysb0776i2" path="res://icon.svg" id="6_s4xkq"]
+[ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://shaders/fog.gdshader" id="3_l8c2h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_curd2"]
 shader = ExtResource("2_wypki")
@@ -74,9 +72,6 @@ shader_parameter/scroll_scale = 1.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_curd2"]
 normal = Vector2(1, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5u1kd"]
-shader = ExtResource("5_spee7")
-
 [node name="World" instance=ExtResource("1_ous7s")]
 material = SubResource("ShaderMaterial_curd2")
 
@@ -128,12 +123,5 @@ shape = SubResource("WorldBoundaryShape2D_curd2")
 
 [node name="Finish" parent="Level" index="3"]
 position = Vector2(1408, 0)
-
-[node name="Icon" type="Sprite2D" parent="." index="7"]
-z_index = -10
-material = SubResource("ShaderMaterial_5u1kd")
-position = Vector2(1887.0001, 633)
-scale = Vector2(6.8125, 1)
-texture = ExtResource("6_s4xkq")
 
 [editable path="ParallaxFog"]

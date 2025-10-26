@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=4 uid="uid://dwfwwkf3bx52r"]
 
 [ext_resource type="PackedScene" uid="uid://dpy2qsq5apfgn" path="res://scenes_and_scripts/world/levels/level_template.tscn" id="1_u4hdh"]
-[ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="2_wwy4t"]
+[ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://shaders/world.gdshader" id="2_wwy4t"]
 [ext_resource type="PackedScene" uid="uid://b7yk06l614q6o" path="res://scenes_and_scripts/world/npcs/npc.tscn" id="7_mrsys"]
 [ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/ground_animals/fox.tscn" id="7_nd6b2"]
 [ext_resource type="Texture2D" uid="uid://c4r35j5un4gc6" path="res://assets/sprites/arrow.png" id="8_3ulkj"]

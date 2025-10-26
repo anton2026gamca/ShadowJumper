@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://bbfi7d15xxxan"]
 
-[ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://scenes_and_scripts/fog.gdshader" id="1_mxcuo"]
+[ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://shaders/fog.gdshader" id="1_mxcuo"]
 [ext_resource type="Script" uid="uid://d0aeb4gxv1wvt" path="res://scenes_and_scripts/world/parallax_fogs_manager.gd" id="1_npcnq"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qbaq7"]
@@ -9,8 +9,8 @@ frequency = 0.007
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_patrw"]
 width = 1280
 height = 720
-seamless = true
 noise = SubResource("FastNoiseLite_qbaq7")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ch1p"]
 shader = ExtResource("1_mxcuo")
@@ -26,8 +26,8 @@ shader_parameter/scroll_scale = 1.0
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2tp0m"]
 width = 1280
 height = 720
-seamless = true
 noise = SubResource("FastNoiseLite_msttb")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_motvu"]
 shader = ExtResource("1_mxcuo")
@@ -44,8 +44,8 @@ frequency = 0.02
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5ow7n"]
 width = 1280
 height = 720
-seamless = true
 noise = SubResource("FastNoiseLite_rjpot")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xugxg"]
 shader = ExtResource("1_mxcuo")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=4 uid="uid://cdort0sw0grtb"]
 
 [ext_resource type="PackedScene" uid="uid://dpy2qsq5apfgn" path="res://scenes_and_scripts/world/levels/level_template.tscn" id="1_viase"]
-[ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="2_blv3s"]
+[ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://shaders/world.gdshader" id="2_blv3s"]
 [ext_resource type="Texture2D" uid="uid://dylddsv1gbd7s" path="res://assets/sprites/leave.png" id="2_nfe74"]
 [ext_resource type="Texture2D" uid="uid://b4eqv5jakr7va" path="res://assets/sprites/leave-parallax.png" id="3_vucsu"]
 [ext_resource type="PackedScene" uid="uid://b7yk06l614q6o" path="res://scenes_and_scripts/world/npcs/npc.tscn" id="7_blv3s"]

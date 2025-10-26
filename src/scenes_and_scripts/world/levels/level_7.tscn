@@ -1,8 +1,8 @@
 [gd_scene load_steps=27 format=4 uid="uid://cvpj82spjy3wa"]
 
 [ext_resource type="PackedScene" uid="uid://dpy2qsq5apfgn" path="res://scenes_and_scripts/world/levels/level_template.tscn" id="1_xsf6m"]
-[ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="2_3kued"]
-[ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://scenes_and_scripts/fog.gdshader" id="2_7hj13"]
+[ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://shaders/world.gdshader" id="2_3kued"]
+[ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://shaders/fog.gdshader" id="2_7hj13"]
 [ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock/pickupable_rock.tscn" id="4_378yb"]
 [ext_resource type="Texture2D" uid="uid://b4eqv5jakr7va" path="res://assets/sprites/leave-parallax.png" id="5_0kubr"]
 [ext_resource type="Texture2D" uid="uid://dylddsv1gbd7s" path="res://assets/sprites/leave.png" id="5_5os5s"]
@@ -26,8 +26,8 @@ frequency = 0.007
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_patrw"]
 width = 1280
 height = 720
-seamless = true
 noise = SubResource("FastNoiseLite_qbaq7")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3kued"]
 shader = ExtResource("2_7hj13")
@@ -43,8 +43,8 @@ shader_parameter/scroll_scale = 1.0
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2tp0m"]
 width = 1280
 height = 720
-seamless = true
 noise = SubResource("FastNoiseLite_msttb")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_378yb"]
 shader = ExtResource("2_7hj13")
@@ -61,8 +61,8 @@ frequency = 0.02
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5ow7n"]
 width = 1280
 height = 720
-seamless = true
 noise = SubResource("FastNoiseLite_rjpot")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5os5s"]
 shader = ExtResource("2_7hj13")

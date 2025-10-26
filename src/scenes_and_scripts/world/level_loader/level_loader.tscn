@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cjkiwfp4mi1bl" path="res://scenes_and_scripts/world/level_loader/level_loader.gd" id="1_dnh7v"]
 [ext_resource type="PackedScene" uid="uid://xyllxx8sqe4m" path="res://scenes_and_scripts/ui/levels_ui/levels_ui.tscn" id="2_0aejv"]
-[ext_resource type="Shader" uid="uid://dopio8f6jxl6x" path="res://scenes_and_scripts/world_post_processing.gdshader" id="2_didmr"]
+[ext_resource type="Shader" uid="uid://dopio8f6jxl6x" path="res://shaders/world_post_processing.gdshader" id="2_didmr"]
 [ext_resource type="AudioStream" uid="uid://b3gjh1iw38xoe" path="res://assets/SFX/folder/powerup_3.wav" id="3_mb2jk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1upr6"]

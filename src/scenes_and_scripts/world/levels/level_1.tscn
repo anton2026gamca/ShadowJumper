@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dpy2qsq5apfgn" path="res://scenes_and_scripts/world/levels/level_template.tscn" id="1_q3776"]
 [ext_resource type="Script" uid="uid://dg34qvfexojx3" path="res://scenes_and_scripts/world/levels/level_1.gd" id="2_ytwps"]
-[ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://scenes_and_scripts/fog.gdshader" id="8_gyv5q"]
+[ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://shaders/fog.gdshader" id="8_gyv5q"]
 [ext_resource type="Script" uid="uid://bqnpp22rxc1kg" path="res://scenes_and_scripts/world/npcs/rock_npc.gd" id="9_57h2w"]
 [ext_resource type="Script" uid="uid://dfa7rp0fl76u0" path="res://scenes_and_scripts/world/npcs/npc_dialog_message.gd" id="9_lbqyf"]
 [ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="9_sqshv"]
@@ -21,8 +21,8 @@ frequency = 0.007
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_patrw"]
 width = 1280
 height = 720
-seamless = true
 noise = SubResource("FastNoiseLite_qbaq7")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s2pt5"]
 shader = ExtResource("8_gyv5q")
@@ -38,8 +38,8 @@ shader_parameter/scroll_scale = 1.0
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2tp0m"]
 width = 1280
 height = 720
-seamless = true
 noise = SubResource("FastNoiseLite_msttb")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ytwps"]
 shader = ExtResource("8_gyv5q")
@@ -56,8 +56,8 @@ frequency = 0.02
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5ow7n"]
 width = 1280
 height = 720
-seamless = true
 noise = SubResource("FastNoiseLite_rjpot")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xjpx7"]
 shader = ExtResource("8_gyv5q")
