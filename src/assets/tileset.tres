@@ -1,14 +1,16 @@
-[gd_resource type="TileSet" load_steps=27 format=3 uid="uid://8h4fm7v55cnx"]
+[gd_resource type="TileSet" load_steps=29 format=3 uid="uid://8h4fm7v55cnx"]
 
 [ext_resource type="Texture2D" uid="uid://bv83repei4m1" path="res://assets/sprites/tileset.png" id="1_fcvr3"]
 [ext_resource type="PackedScene" uid="uid://dv4h5nvuumsjq" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom_2.tscn" id="2_7lii3"]
 [ext_resource type="PackedScene" uid="uid://cbh2h5bldnuj1" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom_0.tscn" id="2_fcvr3"]
 [ext_resource type="PackedScene" uid="uid://r3q7wdh33v34" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom_1.tscn" id="3_7lii3"]
+[ext_resource type="PackedScene" uid="uid://dnttp56oelip" path="res://scenes_and_scripts/world/objects/water/water-top.tscn" id="3_qscaq"]
 [ext_resource type="PackedScene" uid="uid://dqdt5a5wq4x4t" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom_3.tscn" id="3_uyjym"]
 [ext_resource type="PackedScene" uid="uid://dkkxade50jygv" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/shop/shop.tscn" id="6_80oah"]
 [ext_resource type="PackedScene" uid="uid://bwfbsq0x8ygmr" path="res://scenes_and_scripts/world/objects/spikes/mountain_spikes.tscn" id="6_155r3"]
 [ext_resource type="PackedScene" uid="uid://dcian8wjpncct" path="res://scenes_and_scripts/world/objects/spikes/tree_spikes.tscn" id="7_fk0lh"]
 [ext_resource type="PackedScene" uid="uid://bwkfut2sgxlh7" path="res://scenes_and_scripts/world/objects/grass_tile/grass_tile.tscn" id="8_155r3"]
+[ext_resource type="PackedScene" uid="uid://c2eort0nmjduo" path="res://scenes_and_scripts/world/objects/water/water.tscn" id="10_ls0l7"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_uyjym"]
 tile_data = PackedInt32Array(0, 327680, 92, 1, 458752, 92)
@@ -1203,6 +1205,8 @@ scenes/5/scene = ExtResource("6_155r3")
 scenes/6/scene = ExtResource("6_80oah")
 scenes/7/scene = ExtResource("7_fk0lh")
 scenes/8/scene = ExtResource("8_155r3")
+scenes/9/scene = ExtResource("10_ls0l7")
+scenes/10/scene = ExtResource("3_qscaq")
 
 [resource]
 physics_layer_0/collision_layer = 1
