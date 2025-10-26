@@ -1,5 +1,5 @@
 extends AnimatedSprite2D
-class_name TreeSpikes
+class_name Spikes
 
 
 @export var die_reason: String = "You stepped on really sharp spikes!"

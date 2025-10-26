@@ -18,7 +18,6 @@ class_name GroundAnimal
 @export_group("Behaviour/Death")
 @export var spawn_powerup_on_death: PackedScene
 
-const POWERUP_OBJECT: PackedScene = preload("res://scenes_and_scripts/world/objects/powerup_object.tscn")
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var energy_collector_component: EnergyCollectorComponent = $EnergyCollectorComponent
 @onready var death_component: DeathComponent = $DeathComponent

@@ -125,6 +125,10 @@ chance_to_give_up = 0.0
 attack_hitstop = 0.3
 spawn_powerup_on_death = ExtResource("2_5vmc2")
 
+[node name="CollisionShape2D" parent="." index="0"]
+z_index = 0
+z_as_relative = true
+
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_xw531")
 frame = 1
@@ -134,14 +138,17 @@ energy_value_on_dodge = 50
 
 [node name="CollisionShape2D" parent="Physics/EnemyArea" index="0"]
 shape = SubResource("RectangleShape2D_vp7k5")
+debug_color = Color(0.7, 0.7, 0, 0.419608)
 
 [node name="CollisionShape2D" parent="Physics/HitStartArea" index="0"]
 position = Vector2(6, -8)
 shape = SubResource("RectangleShape2D_5878v")
+debug_color = Color(0.7, 0, 0, 0.419608)
 
 [node name="CollisionShape2D" parent="Physics/HitRangeArea" index="0"]
 position = Vector2(7, -9)
 shape = SubResource("RectangleShape2D_5vmc2")
+debug_color = Color(0.7, 0, 0, 0.419608)
 
 [node name="EnergyCollectorComponent" parent="." index="6"]
 energy_amount_for_action = Dictionary[String, ExtResource("4_vp7k5")]({

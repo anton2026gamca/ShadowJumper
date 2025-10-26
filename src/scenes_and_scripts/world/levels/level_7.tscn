@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dpy2qsq5apfgn" path="res://scenes_and_scripts/world/levels/level_template.tscn" id="1_xsf6m"]
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://scenes_and_scripts/world.gdshader" id="2_3kued"]
 [ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://scenes_and_scripts/fog.gdshader" id="2_7hj13"]
-[ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock.tscn" id="4_378yb"]
+[ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock/pickupable_rock.tscn" id="4_378yb"]
 [ext_resource type="Texture2D" uid="uid://b4eqv5jakr7va" path="res://assets/sprites/leave-parallax.png" id="5_0kubr"]
 [ext_resource type="Texture2D" uid="uid://dylddsv1gbd7s" path="res://assets/sprites/leave.png" id="5_5os5s"]
 [ext_resource type="Script" uid="uid://ctd2vydvf54ij" path="res://scenes_and_scripts/helpers/animation_trigger.gd" id="7_70aeg"]
@@ -349,8 +349,11 @@ libraries = {
 }
 
 [node name="Animation1" type="CollisionShape2D" parent="Level/AnimationTrigger" index="1"]
+z_index = 100
+z_as_relative = false
 position = Vector2(1663, 0)
 shape = SubResource("RectangleShape2D_jeej0")
+debug_color = Color(0.701961, 0.701961, 0, 0.419608)
 script = ExtResource("9_8bowb")
 animation = &"transition_1"
 metadata/_custom_type_script = "uid://b6xr8kf0xn6jm"

@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwfbsq0x8ygmr"]
+
+[ext_resource type="PackedScene" uid="uid://biyni2x40xhof" path="res://scenes_and_scripts/world/objects/spikes/spikes.tscn" id="1_ixac2"]
+[ext_resource type="Texture2D" uid="uid://bsqty6shauyt0" path="res://assets/sprites/objects-tileset.png" id="2_yevl1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yevl1"]
+atlas = ExtResource("2_yevl1")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v7j62"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yevl1")
+}],
+"loop": true,
+"name": &"hide-show",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uc6bu"]
+size = Vector2(13, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yevl1"]
+size = Vector2(11, 13)
+
+[node name="Spikes" instance=ExtResource("1_ixac2")]
+sprite_frames = SubResource("SpriteFrames_v7j62")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_uc6bu")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+visible = false
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_yevl1")

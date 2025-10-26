@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bwkfut2sgxlh7"]
 
-[ext_resource type="PackedScene" uid="uid://bgf5b0504t1c6" path="res://scenes_and_scripts/world/objects/grass_blade.tscn" id="1_v62n5"]
+[ext_resource type="PackedScene" uid="uid://bgf5b0504t1c6" path="res://scenes_and_scripts/world/objects/grass_tile/grass_blade.tscn" id="1_v62n5"]
 [ext_resource type="Texture2D" uid="uid://n5cgkfo83fbs" path="res://assets/sprites/grass.png" id="2_m3c4n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eobw2"]

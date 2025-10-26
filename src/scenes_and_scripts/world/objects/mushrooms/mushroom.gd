@@ -37,6 +37,7 @@ var is_on: bool = true
 func _ready() -> void:
 	boom_sprite.animation = "boom"
 	boom_sprite.frame = 0
+	$Area2D/CollisionShape2D.visible = true
 
 func _physics_process(delta: float) -> void:
 	if not LevelLoader.is_in_level:
@@ -68,11 +69,13 @@ func turn_off() -> void:
 	light_animation_player.play("on-off")
 	is_on = false
 	await light_animation_player.animation_finished
+	$Area2D/CollisionShape2D.visible = false
 
 func turn_on() -> void:
 	light_animation_player.play_backwards("on-off")
 	await light_animation_player.animation_finished
 	is_on = true
+	$Area2D/CollisionShape2D.visible = true
 
 
 func hit(down_time_override: float = -1, collect_energy: bool = true) -> void:

@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="9_su0ne"]
 [ext_resource type="Script" uid="uid://ctd2vydvf54ij" path="res://scenes_and_scripts/helpers/animation_trigger.gd" id="13_mrsys"]
 [ext_resource type="Script" uid="uid://b6xr8kf0xn6jm" path="res://scenes_and_scripts/helpers/animation_trigger_area.gd" id="15_mrsys"]
-[ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock.tscn" id="17_su0ne"]
+[ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock/pickupable_rock.tscn" id="17_su0ne"]
 [ext_resource type="Texture2D" uid="uid://dylddsv1gbd7s" path="res://assets/sprites/leave.png" id="18_k0kab"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wwy4t"]
@@ -108,7 +108,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qcv8i"]
-size = Vector2(454, 976)
+size = Vector2(454, 1476)
 
 [node name="World" instance=ExtResource("1_u4hdh")]
 material = SubResource("ShaderMaterial_wwy4t")
@@ -323,8 +323,11 @@ libraries = {
 }
 
 [node name="Animation1" type="CollisionShape2D" parent="Level/AnimationTrigger" index="1"]
-position = Vector2(757, 0)
+z_index = 100
+z_as_relative = false
+position = Vector2(757, -250)
 shape = SubResource("RectangleShape2D_qcv8i")
+debug_color = Color(0.701961, 0.701961, 0, 0.419608)
 script = ExtResource("15_mrsys")
 animation = &"transition_1"
 metadata/_custom_type_script = "uid://b6xr8kf0xn6jm"

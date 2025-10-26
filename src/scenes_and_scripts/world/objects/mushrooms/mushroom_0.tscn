@@ -129,7 +129,10 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 visible = false
+z_index = 100
+z_as_relative = false
 shape = SubResource("CircleShape2D_2hos7")
+debug_color = Color(0.7, 0, 0, 0.419608)
 
 [node name="Boom" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7hvpb")

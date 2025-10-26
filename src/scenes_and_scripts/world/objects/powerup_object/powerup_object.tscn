@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://fwiar5566lc7"]
 
 [ext_resource type="Texture2D" uid="uid://bcavn8smqfc2i" path="res://assets/sprites/powerup.png" id="1_j67nn"]
-[ext_resource type="Script" uid="uid://btldh7c6poxop" path="res://scenes_and_scripts/world/objects/powerup_object.gd" id="1_lontc"]
+[ext_resource type="Script" uid="uid://btldh7c6poxop" path="res://scenes_and_scripts/world/objects/powerup_object/powerup_object.gd" id="1_lontc"]
 [ext_resource type="AudioStream" uid="uid://vovpqtcvayx4" path="res://assets/SFX/folder/powerup_2.wav" id="3_m5cml"]
 [ext_resource type="Texture2D" uid="uid://bvtumb361loil" path="res://assets/sprites/light_textures/64x64/64x64 textures (5).png" id="4_m5cml"]
 
@@ -151,8 +151,8 @@ animations = [{
 "speed": 30.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vlnrh"]
-radius = 8.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5g40y"]
+size = Vector2(12, 12)
 
 [node name="PowerupObject" type="AnimatedSprite2D"]
 use_parent_material = true
@@ -167,7 +167,10 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_vlnrh")
+z_index = 100
+z_as_relative = false
+shape = SubResource("RectangleShape2D_5g40y")
+debug_color = Color(0, 0.7, 0, 0.419608)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_m5cml")

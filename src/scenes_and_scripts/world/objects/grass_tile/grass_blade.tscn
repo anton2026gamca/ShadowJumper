@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bgf5b0504t1c6"]
 
 [ext_resource type="Texture2D" uid="uid://n5cgkfo83fbs" path="res://assets/sprites/grass.png" id="1_wd4kx"]
-[ext_resource type="Script" uid="uid://bx5hwqeaxy7ia" path="res://scenes_and_scripts/world/objects/grass_blade.gd" id="2_mshbo"]
+[ext_resource type="Script" uid="uid://bx5hwqeaxy7ia" path="res://scenes_and_scripts/world/objects/grass_tile/grass_blade.gd" id="2_mshbo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t2q3"]
 atlas = ExtResource("1_wd4kx")

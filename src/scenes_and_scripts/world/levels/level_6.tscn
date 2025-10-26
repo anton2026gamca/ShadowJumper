@@ -15,7 +15,7 @@
 [ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="11_0ki8w"]
 [ext_resource type="PackedScene" uid="uid://2e00skn1yx48" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/powerup_npc/powerup_npc.tscn" id="11_v8mns"]
 [ext_resource type="PackedScene" uid="uid://chjn3iar4wktf" path="res://scenes_and_scripts/components/powerups/health_powerup.tscn" id="12_huy6g"]
-[ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock.tscn" id="20_3ha4w"]
+[ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock/pickupable_rock.tscn" id="20_3ha4w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8s50a"]
 shader = ExtResource("2_blv3s")
@@ -165,6 +165,8 @@ powerup = ExtResource("12_huy6g")
 powerup_price = 100
 
 [node name="CollisionShape2D" parent="Level/PowerupNPC/Area2D" index="0"]
+z_index = 0
+z_as_relative = true
 position = Vector2(-84, 15.5)
 shape = SubResource("RectangleShape2D_vucsu")
 

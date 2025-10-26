@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://biyni2x40xhof"]
+
+[ext_resource type="Script" uid="uid://ddwpil5sfb638" path="res://scenes_and_scripts/world/objects/spikes/spikes.gd" id="2_q4xpc"]
+[ext_resource type="Texture2D" uid="uid://drrrpb7kuabw7" path="res://assets/sprites/spikes-light.png" id="3_2wpwa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vqsfb"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"hide-show",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbog1"]
+size = Vector2(12, 11)
+
+[node name="Spikes" type="AnimatedSprite2D"]
+use_parent_material = true
+sprite_frames = SubResource("SpriteFrames_vqsfb")
+animation = &"hide-show"
+script = ExtResource("2_q4xpc")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+z_index = 100
+z_as_relative = false
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_jbog1")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 2)
+texture = ExtResource("3_2wpwa")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

@@ -118,6 +118,10 @@ chance_to_give_up = 0.0
 attack_hitstop = 0.3
 spawn_powerup_on_death = ExtResource("2_i6ybc")
 
+[node name="CollisionShape2D" parent="." index="0"]
+z_index = 0
+z_as_relative = true
+
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_rasjo")
 frame = 2

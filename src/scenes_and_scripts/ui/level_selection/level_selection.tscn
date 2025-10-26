@@ -7437,15 +7437,21 @@ libraries = {
 }
 
 [node name="Animation1" type="CollisionShape2D" parent="Level/AnimationTrigger"]
+z_index = 100
+z_as_relative = false
 position = Vector2(1663, -256)
 shape = SubResource("RectangleShape2D_iww10")
+debug_color = Color(0.7, 0.7, 0, 0.419608)
 script = ExtResource("44_mdgjv")
 animation = &"transition_1"
 metadata/_custom_type_script = "uid://b6xr8kf0xn6jm"
 
 [node name="Animation2" type="CollisionShape2D" parent="Level/AnimationTrigger"]
+z_index = 100
+z_as_relative = false
 position = Vector2(2281, -256)
 shape = SubResource("RectangleShape2D_mdgjv")
+debug_color = Color(0.7, 0.7, 0, 0.419608)
 script = ExtResource("44_mdgjv")
 animation = &"transition_2"
 metadata/_custom_type_script = "uid://b6xr8kf0xn6jm"

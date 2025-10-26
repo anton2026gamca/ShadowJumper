@@ -7,7 +7,8 @@ var camera: CameraPlus
 var player: Player
 
 const FLOATING_TEXT_SCENE: PackedScene = preload("res://scenes_and_scripts/ui/floating_text.tscn")
-const POWERUP_OBJECT: PackedScene = preload("res://scenes_and_scripts/world/objects/powerup_object.tscn")
+const POWERUP_OBJECT: PackedScene = preload("res://scenes_and_scripts/world/objects/powerup_object/powerup_object.tscn")
+
 
 func find_child_by_type(parent: Node, type: Variant) -> Node:
 	if not parent:

@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://dcian8wjpncct"]
+
+[ext_resource type="PackedScene" uid="uid://biyni2x40xhof" path="res://scenes_and_scripts/world/objects/spikes/spikes.tscn" id="1_jbog1"]
+[ext_resource type="Texture2D" uid="uid://bsqty6shauyt0" path="res://assets/sprites/objects-tileset.png" id="2_aior6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmsc2"]
+atlas = ExtResource("2_aior6")
+region = Rect2(80, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0iy7"]
+atlas = ExtResource("2_aior6")
+region = Rect2(64, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv0v1"]
+atlas = ExtResource("2_aior6")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtn1w"]
+atlas = ExtResource("2_aior6")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_turnv"]
+atlas = ExtResource("2_aior6")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14aij"]
+atlas = ExtResource("2_aior6")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d2dwt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmsc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0iy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv0v1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtn1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_turnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14aij")
+}],
+"loop": false,
+"name": &"hide-show",
+"speed": 10.0
+}]
+
+[node name="Spikes" instance=ExtResource("1_jbog1")]
+sprite_frames = SubResource("SpriteFrames_d2dwt")
+offset = Vector2(0, 2)

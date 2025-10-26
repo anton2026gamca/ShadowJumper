@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://4jda6yqfscpt"]
 
-[ext_resource type="PackedScene" uid="uid://dvn77t44gdpwa" path="res://scenes_and_scripts/world/objects/bullet.tscn" id="1_cfe37"]
+[ext_resource type="PackedScene" uid="uid://dvn77t44gdpwa" path="res://scenes_and_scripts/world/objects/bullet/bullet.tscn" id="1_cfe37"]
 [ext_resource type="Script" uid="uid://dsy0xy0dbqsqi" path="res://scenes_and_scripts/world/animals/bee/bee_ultimate_attack_bullet.gd" id="2_cfe37"]
 [ext_resource type="Texture2D" uid="uid://cweisxm4vrdqa" path="res://assets/sprites/bee.png" id="3_03lh6"]
 

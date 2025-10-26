@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dvn77t44gdpwa"]
 
-[ext_resource type="Script" uid="uid://bjtn1ugquy0yt" path="res://scenes_and_scripts/world/objects/bullet.gd" id="1_8q5e6"]
+[ext_resource type="Script" uid="uid://bjtn1ugquy0yt" path="res://scenes_and_scripts/world/objects/bullet/bullet.gd" id="1_8q5e6"]
 
 [node name="Bullet" type="CharacterBody2D"]
 use_parent_material = true
@@ -10,12 +10,18 @@ script = ExtResource("1_8q5e6")
 metadata/_custom_type_script = "uid://bjtn1ugquy0yt"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+z_index = 100
+z_as_relative = false
 
 [node name="KillArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 36
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillArea"]
+z_index = 100
+z_as_relative = false
+debug_color = Color(0.7, 0, 0, 0.419608)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 rect = Rect2(-3, -3, 6, 6)
