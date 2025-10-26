@@ -26,10 +26,14 @@ size = Vector2(11, 13)
 
 [node name="Spikes" instance=ExtResource("1_ixac2")]
 sprite_frames = SubResource("SpriteFrames_v7j62")
+offset = Vector2(0, 2)
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_uc6bu")
+
+[node name="PointLight2D" parent="." index="1"]
+position = Vector2(0, 1)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="2"]
 

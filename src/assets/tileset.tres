@@ -1155,6 +1155,8 @@ texture = ExtResource("1_fcvr3")
 45:85/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 47:85/0 = 0
 47:85/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+37:89/0 = 0
+43:89/0 = 0
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_fcvr3"]
 scenes/1/scene = ExtResource("2_7lii3")
