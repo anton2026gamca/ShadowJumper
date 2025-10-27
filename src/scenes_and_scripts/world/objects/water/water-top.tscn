@@ -1,7 +1,85 @@
-[gd_scene load_steps=14 format=3 uid="uid://dnttp56oelip"]
+[gd_scene load_steps=25 format=3 uid="uid://dnttp56oelip"]
 
 [ext_resource type="PackedScene" uid="uid://c2eort0nmjduo" path="res://scenes_and_scripts/world/objects/water/water.tscn" id="1_b14pf"]
 [ext_resource type="Texture2D" uid="uid://ds847f81mkkvm" path="res://assets/sprites/water.png" id="2_0cltg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lw6w"]
+atlas = ExtResource("2_0cltg")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3sew"]
+atlas = ExtResource("2_0cltg")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3x2r6"]
+atlas = ExtResource("2_0cltg")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcd7l"]
+atlas = ExtResource("2_0cltg")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuqum"]
+atlas = ExtResource("2_0cltg")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tuly"]
+atlas = ExtResource("2_0cltg")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aestp"]
+atlas = ExtResource("2_0cltg")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mwng"]
+atlas = ExtResource("2_0cltg")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw2qq"]
+atlas = ExtResource("2_0cltg")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqjd6"]
+atlas = ExtResource("2_0cltg")
+region = Rect2(144, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fx85n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lw6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3sew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3x2r6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcd7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuqum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tuly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aestp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mwng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bw2qq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqjd6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0cltg"]
 atlas = ExtResource("2_0cltg")
@@ -84,11 +162,16 @@ animations = [{
 [node name="Water" instance=ExtResource("1_b14pf")]
 
 [node name="Sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_fx85n")
+frame_progress = 0.1716309
+
+[node name="TopLine" type="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_0cltg")
-frame_progress = 0.94933426
+autoplay = "default"
+frame_progress = 0.003154922
 
-[node name="LightningSprite" parent="." index="1"]
-speed_scale = 1.6374923
+[node name="LightningSprite" parent="." index="2"]
+speed_scale = 1.8415298
 
-[node name="LightningSoundEffect" parent="." index="2"]
+[node name="LightningSoundEffect" parent="." index="3"]
 pitch_scale = 0.9418738

@@ -1,13 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://c2eort0nmjduo"]
+[gd_scene load_steps=19 format=3 uid="uid://c2eort0nmjduo"]
 
 [ext_resource type="Script" uid="uid://5w7kggqkvcan" path="res://scenes_and_scripts/world/objects/water/water.gd" id="1_umqo4"]
 [ext_resource type="Texture2D" uid="uid://bf612dhc55wnc" path="res://assets/sprites/electrified_water.png" id="2_5ywre"]
 [ext_resource type="Texture2D" uid="uid://ds847f81mkkvm" path="res://assets/sprites/water.png" id="2_l7kpi"]
 [ext_resource type="AudioStream" uid="uid://b5ji1viwl0uxl" path="res://assets/SFX/folder/explosion_4.wav" id="4_l7kpi"]
+[ext_resource type="Texture2D" uid="uid://cs7m4lcwk2qb6" path="res://assets/sprites/light_textures/64x64/64x64 textures (2).png" id="5_036xq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v5163"]
 atlas = ExtResource("2_l7kpi")
-region = Rect2(0, 16, 16, 16)
+region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o40q6"]
 animations = [{
@@ -106,13 +107,15 @@ lightning_interval = 50.0
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_o40q6")
-frame_progress = 0.07434291
+autoplay = "default"
+frame_progress = 0.2810408
 
 [node name="LightningSprite" type="AnimatedSprite2D" parent="."]
+light_mask = 0
 sprite_frames = SubResource("SpriteFrames_v5163")
 frame = 9
 frame_progress = 1.0
-speed_scale = 1.5019556
+speed_scale = 1.7196532
 
 [node name="LightningSoundEffect" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_l7kpi")
@@ -120,3 +123,8 @@ volume_db = -20.0
 pitch_scale = 0.82774
 max_distance = 300.0
 bus = &"SFX"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+energy = 0.7
+texture = ExtResource("5_036xq")
