@@ -39,6 +39,7 @@ var disable_climb: bool = false
 @export var jump_audio: AudioStreamPlayer2D
 @export var dash_audio: AudioStreamPlayer2D
 @export var fall_audio: AudioStreamPlayer2D
+@export var in_water_audio: AudioStreamPlayer2D
 
 @export_group("Effects")
 @export var jump_particles: CPUParticles2D

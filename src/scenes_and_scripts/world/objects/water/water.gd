@@ -11,6 +11,7 @@ class_name Water
 @onready var point_light: PointLight2D = $PointLight2D
 @onready var kill_area: Area2D = $PointLight2D/KillArea
 @onready var splash_particles: CPUParticles2D = $SplashParticles
+@onready var splash_sound_effect: AudioStreamPlayer2D = $SplashSoundEffect
 
 static var bodies_in_water_data: Dictionary[Water, Array] = {}
 
@@ -30,6 +31,7 @@ func _emit_lightning() -> void:
 	point_light.visible = true
 	lightning_sound_effect.pitch_scale = randf_range(0.75, 1.25)
 	lightning_sound_effect.play()
+	await get_tree().create_timer(0.2).timeout
 	var bodies_in_water: Array[Node2D] = get_bodies_in_water()
 	for body: Node2D in kill_area.get_overlapping_bodies():
 		if not body in bodies_in_water:
@@ -52,6 +54,8 @@ func _on_in_water_area_body_entered(body: Node2D) -> void:
 	if not body in get_bodies_in_water():
 		splash_particles.global_position.x = body.global_position.x
 		splash_particles.restart()
+		splash_sound_effect.pitch_scale = randf_range(1.8, 2.2)
+		splash_sound_effect.play()
 	if not self in bodies_in_water_data:
 		bodies_in_water_data[self] = []
 	bodies_in_water_data[self].append(body)

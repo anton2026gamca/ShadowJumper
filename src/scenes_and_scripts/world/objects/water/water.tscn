@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://c2eort0nmjduo"]
+[gd_scene load_steps=22 format=3 uid="uid://c2eort0nmjduo"]
 
 [ext_resource type="Script" uid="uid://5w7kggqkvcan" path="res://scenes_and_scripts/world/objects/water/water.gd" id="1_umqo4"]
 [ext_resource type="Texture2D" uid="uid://bf612dhc55wnc" path="res://assets/sprites/electrified_water.png" id="2_5ywre"]
 [ext_resource type="Texture2D" uid="uid://ds847f81mkkvm" path="res://assets/sprites/water.png" id="2_l7kpi"]
 [ext_resource type="AudioStream" uid="uid://b5ji1viwl0uxl" path="res://assets/SFX/folder/explosion_4.wav" id="4_l7kpi"]
 [ext_resource type="Texture2D" uid="uid://cs7m4lcwk2qb6" path="res://assets/sprites/light_textures/64x64/64x64 textures (2).png" id="5_036xq"]
+[ext_resource type="AudioStream" uid="uid://4eusa58kldwr" path="res://assets/SFX/folder/jump_1.wav" id="6_5f3xv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v5163"]
 atlas = ExtResource("2_l7kpi")
@@ -145,7 +146,7 @@ shape = SubResource("CircleShape2D_036xq")
 debug_color = Color(0.7, 0, 0, 0.41960785)
 
 [node name="InWaterArea" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 64
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InWaterArea"]
@@ -176,6 +177,11 @@ radial_accel_max = -40.0
 scale_amount_min = 2.0
 scale_amount_max = 2.0
 color = Color(0.4117647, 0.61960787, 0.9882353, 1)
+
+[node name="SplashSoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_5f3xv")
+pitch_scale = 2.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="InWaterArea" to="." method="_on_in_water_area_body_entered"]
 [connection signal="body_exited" from="InWaterArea" to="." method="_on_in_water_area_body_exited"]

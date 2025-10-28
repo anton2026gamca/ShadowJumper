@@ -129,6 +129,7 @@ debug_toggle_levels={
 2d_physics/layer_4="Ladders"
 2d_physics/layer_5="Bullets"
 2d_physics/layer_6="Entities-NoPlayerCollision"
+2d_physics/layer_7="Water"
 
 [rendering]
 

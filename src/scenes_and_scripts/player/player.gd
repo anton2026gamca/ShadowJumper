@@ -15,6 +15,7 @@ signal took_damage(reason: String)
 @onready var death_particles: CPUParticles2D = $Particles/DeathParticles
 @onready var death_audio: AudioStreamPlayer2D = $DeathAudio
 @onready var climb_ladder_area: Area2D = $ClimbLadderArea
+@onready var in_water_area: Area2D = $InWaterArea
 
 var has_immunity: bool = false
 
@@ -83,3 +84,16 @@ func emit_death_particles() -> void:
 	death_particles.initial_velocity_min = initial_velocity
 	death_particles.initial_velocity_max = initial_velocity
 	death_particles.emitting = true
+
+
+func _on_in_water_area_area_entered(area: Area2D) -> void:
+	if not controller.in_water_audio:
+		return
+	controller.in_water_audio.play(0.5)
+
+func _on_in_water_area_area_exited(area: Area2D) -> void:
+	if not controller.in_water_audio:
+		return
+	if not in_water_area.get_overlapping_areas().is_empty():
+		return
+	controller.in_water_audio.stop()

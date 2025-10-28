@@ -1,4 +1,4 @@
-[gd_scene load_steps=492 format=4 uid="uid://clkhpeqrfyoax"]
+[gd_scene load_steps=494 format=4 uid="uid://clkhpeqrfyoax"]
 
 [ext_resource type="Script" uid="uid://dd3otqv1n5e7k" path="res://scenes_and_scripts/ui/level_selection/level_selection.gd" id="1_7qmai"]
 [ext_resource type="PackedScene" uid="uid://by7kis83n7kvx" path="res://scenes_and_scripts/ui/level_selection/level_selection_level.tscn" id="2_5iw0q"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://dst17rdwer7by" path="res://assets/sprites/animals/MiniWolf.png" id="21_5icjk"]
 [ext_resource type="PackedScene" uid="uid://dr1afg0p05s8p" path="res://scenes_and_scripts/world/levels/level_2.tscn" id="22_854ia"]
 [ext_resource type="PackedScene" uid="uid://f8cwujw0lgie" path="res://scenes_and_scripts/world/levels/level_3.tscn" id="24_i1iog"]
+[ext_resource type="AudioStream" uid="uid://bypv40l21qkvo" path="res://assets/SFX/waterfall.mp3" id="26_mdgjv"]
 [ext_resource type="PackedScene" uid="uid://dwfwwkf3bx52r" path="res://scenes_and_scripts/world/levels/level_5.tscn" id="27_8mm01"]
 [ext_resource type="Texture2D" uid="uid://cweisxm4vrdqa" path="res://assets/sprites/bee.png" id="28_rt6pt"]
 [ext_resource type="PackedScene" uid="uid://cdort0sw0grtb" path="res://scenes_and_scripts/world/levels/level_6.tscn" id="34_62hx8"]
@@ -967,6 +968,9 @@ shader_parameter/tint_shift = 1.0
 shader_parameter/ambient_light_color = Color(0.2, 0.3, 0.8, 1)
 shader_parameter/ambient_light_value = 0.4
 shader_parameter/luminance_weights = Color(0.299, 0.587, 0.114, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ypebg"]
+size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rasjo"]
 atlas = ExtResource("18_j5kpb")
@@ -7051,6 +7055,21 @@ texture = ExtResource("8_hcr5e")
 one_shot = true
 spread = 0.0
 
+[node name="InWaterArea" type="Area2D" parent="Level/Player"]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Player/InWaterArea"]
+visible = false
+shape = SubResource("RectangleShape2D_ypebg")
+debug_color = Color(0.7, 0.7, 0, 0.41960785)
+
+[node name="InWaterAudio" type="AudioStreamPlayer2D" parent="Level/Player"]
+stream = ExtResource("26_mdgjv")
+volume_db = -20.0
+pitch_scale = 0.1
+bus = &"SFX"
+
 [node name="Fox" type="AnimatedSprite2D" parent="Level"]
 use_parent_material = true
 position = Vector2(197, 25)
@@ -7459,5 +7478,8 @@ metadata/_custom_type_script = "uid://b6xr8kf0xn6jm"
 use_parent_material = true
 tile_map_data = PackedByteArray("AACfAO3/AgAAAAAABACeAO3/AgAAAAAACAA=")
 tile_set = ExtResource("14_it5vw")
+
+[connection signal="area_entered" from="Level/Player/InWaterArea" to="Level/Player" method="_on_in_water_area_area_entered"]
+[connection signal="area_exited" from="Level/Player/InWaterArea" to="Level/Player" method="_on_in_water_area_area_exited"]
 
 [editable path="ParallaxFog"]

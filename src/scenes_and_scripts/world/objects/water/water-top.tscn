@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dnttp56oelip"]
+[gd_scene load_steps=26 format=3 uid="uid://dnttp56oelip"]
 
 [ext_resource type="PackedScene" uid="uid://c2eort0nmjduo" path="res://scenes_and_scripts/world/objects/water/water.tscn" id="1_b14pf"]
 [ext_resource type="Texture2D" uid="uid://ds847f81mkkvm" path="res://assets/sprites/water.png" id="2_0cltg"]
@@ -159,6 +159,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0cltg"]
+size = Vector2(16, 13)
+
 [node name="Water" instance=ExtResource("1_b14pf")]
 
 [node name="Sprite" parent="." index="0"]
@@ -175,3 +178,7 @@ speed_scale = 1.8415298
 
 [node name="LightningSoundEffect" parent="." index="3"]
 pitch_scale = 0.9418738
+
+[node name="CollisionShape2D" parent="InWaterArea" index="0"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_0cltg")
