@@ -1,13 +1,13 @@
 [gd_scene load_steps=24 format=4 uid="uid://dr1afg0p05s8p"]
 
 [ext_resource type="PackedScene" uid="uid://dpy2qsq5apfgn" path="res://scenes_and_scripts/world/levels/level_template.tscn" id="1_0husi"]
-[ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/ground_animals/fox.tscn" id="7_rjdnc"]
-[ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/ground_animals/boar.tscn" id="8_egdi8"]
+[ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/ground_animals/instances/fox.tscn" id="7_rjdnc"]
+[ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/ground_animals/instances/boar.tscn" id="8_egdi8"]
 [ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://shaders/fog.gdshader" id="8_wkvbo"]
-[ext_resource type="Script" uid="uid://dfa7rp0fl76u0" path="res://scenes_and_scripts/world/npcs/npc_dialog_message.gd" id="8_wn8bj"]
+[ext_resource type="Script" uid="uid://dfa7rp0fl76u0" path="res://scenes_and_scripts/world/npcs/npc_dialog/npc_dialog_message.gd" id="8_wn8bj"]
 [ext_resource type="PackedScene" uid="uid://b7yk06l614q6o" path="res://scenes_and_scripts/world/npcs/npc.tscn" id="11_mo2i4"]
 [ext_resource type="Texture2D" uid="uid://c8de18v2jb1yl" path="res://assets/sprites/npcs/npc-remote.png" id="12_wn8bj"]
-[ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog.gd" id="13_b24ec"]
+[ext_resource type="Script" uid="uid://bi3gy0kfnyuym" path="res://scenes_and_scripts/world/npcs/npc_dialog/npc_dialog.gd" id="13_b24ec"]
 [ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock/pickupable_rock.tscn" id="15_b24ec"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qbaq7"]

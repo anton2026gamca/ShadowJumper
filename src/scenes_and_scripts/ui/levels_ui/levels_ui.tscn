@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://xyllxx8sqe4m"]
 
 [ext_resource type="Script" uid="uid://fqtggun3y2qm" path="res://scenes_and_scripts/ui/levels_ui/levels_ui.gd" id="1_ullwu"]
-[ext_resource type="PackedScene" uid="uid://cn3b3uia58ox2" path="res://scenes_and_scripts/ui/levels_ui/node_indicator.tscn" id="2_1q5nf"]
+[ext_resource type="PackedScene" uid="uid://cn3b3uia58ox2" path="res://scenes_and_scripts/ui/node_indicator/node_indicator.tscn" id="2_1q5nf"]
 [ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="2_nhhd0"]
-[ext_resource type="PackedScene" uid="uid://wndhe0pcd3eh" path="res://scenes_and_scripts/ui/levels_ui/pause_menu.tscn" id="3_mgqop"]
+[ext_resource type="PackedScene" uid="uid://wndhe0pcd3eh" path="res://scenes_and_scripts/ui/menus/pause_menu/pause_menu.tscn" id="3_mgqop"]
 [ext_resource type="PackedScene" uid="uid://cccamfqr4lmoy" path="res://scenes_and_scripts/ui/menus/settings_menu/settings_menu.tscn" id="4_mey4e"]
-[ext_resource type="PackedScene" uid="uid://briwtstky6flh" path="res://scenes_and_scripts/ui/levels_ui/respawn_menu.tscn" id="5_43g4b"]
+[ext_resource type="PackedScene" uid="uid://briwtstky6flh" path="res://scenes_and_scripts/ui/menus/respawn_menu/respawn_menu.tscn" id="5_43g4b"]
 [ext_resource type="PackedScene" uid="uid://8cac1aghe7ym" path="res://scenes_and_scripts/ui/menus/settings_menu/controls_menu.tscn" id="6_pwopw"]
-[ext_resource type="PackedScene" uid="uid://7rlrkqwexgku" path="res://scenes_and_scripts/ui/levels_ui/dialog_ui/dialog_ui.tscn" id="7_nrncv"]
+[ext_resource type="PackedScene" uid="uid://7rlrkqwexgku" path="res://scenes_and_scripts/ui/menus/dialog_ui/dialog_ui.tscn" id="7_nrncv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrncv"]
 bg_color = Color(0, 0, 0, 0.686275)
@@ -84,11 +84,11 @@ offset_bottom = 415.0
 grow_horizontal = 2
 mouse_filter = 2
 theme = ExtResource("2_nhhd0")
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_font_size = 36
 theme_override_font_sizes/bold_italics_font_size = 36
 theme_override_font_sizes/italics_font_size = 36
 theme_override_font_sizes/mono_font_size = 18
-theme_override_font_sizes/normal_font_size = 36
-theme_override_font_sizes/bold_font_size = 36
 bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1

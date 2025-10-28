@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=3 uid="uid://bbfi7d15xxxan"]
+
+[ext_resource type="Script" uid="uid://d0aeb4gxv1wvt" path="res://scenes_and_scripts/world/player/controllers/random_controller/parallax_fog.gd" id="1_7oo1o"]
+[ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://shaders/fog.gdshader" id="2_6wly2"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qbaq7"]
+frequency = 0.007
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_patrw"]
+width = 1280
+height = 720
+noise = SubResource("FastNoiseLite_qbaq7")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ch1p"]
+shader = ExtResource("2_6wly2")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_patrw")
+shader_parameter/min_fog_value = 0.0
+shader_parameter/max_fog_value = 0.07
+shader_parameter/fog_intensity = 1.0
+shader_parameter/scroll_speed = Vector2(-0.007, 0.003)
+shader_parameter/scroll_scale = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_msttb"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2tp0m"]
+width = 1280
+height = 720
+noise = SubResource("FastNoiseLite_msttb")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_motvu"]
+shader = ExtResource("2_6wly2")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_2tp0m")
+shader_parameter/min_fog_value = 0.0
+shader_parameter/max_fog_value = 0.04
+shader_parameter/fog_intensity = 1.0
+shader_parameter/scroll_speed = Vector2(0.01, -0.017)
+shader_parameter/scroll_scale = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rjpot"]
+frequency = 0.02
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5ow7n"]
+width = 1280
+height = 720
+noise = SubResource("FastNoiseLite_rjpot")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xugxg"]
+shader = ExtResource("2_6wly2")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_5ow7n")
+shader_parameter/min_fog_value = 0.0
+shader_parameter/max_fog_value = 0.02
+shader_parameter/fog_intensity = 1.0
+shader_parameter/scroll_speed = Vector2(0.01, 0.01)
+shader_parameter/scroll_scale = 1.0
+
+[node name="ParallaxFog" type="Node" node_paths=PackedStringArray("fog_layers")]
+script = ExtResource("1_7oo1o")
+fog_layers = [NodePath("FogBack/Fog"), NodePath("FogMiddle/Fog"), NodePath("FogFront/Fog")]
+metadata/_custom_type_script = "uid://d0aeb4gxv1wvt"
+
+[node name="FogBack" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.5, 0.5)
+repeat_size = Vector2(1280, 720)
+
+[node name="Fog" type="ColorRect" parent="FogBack"]
+z_index = -10
+material = SubResource("ShaderMaterial_8ch1p")
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(1, 1, 1, 0)
+
+[node name="FogMiddle" type="Parallax2D" parent="."]
+scroll_scale = Vector2(1.1, 1.1)
+repeat_size = Vector2(1280, 720)
+
+[node name="Fog" type="ColorRect" parent="FogMiddle"]
+z_index = 9
+material = SubResource("ShaderMaterial_motvu")
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(1, 1, 1, 0)
+
+[node name="FogFront" type="Parallax2D" parent="."]
+scroll_scale = Vector2(1.5, 1.5)
+repeat_size = Vector2(1280, 720)
+
+[node name="Fog" type="ColorRect" parent="FogFront"]
+z_index = 10
+material = SubResource("ShaderMaterial_xugxg")
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(1, 1, 1, 0)

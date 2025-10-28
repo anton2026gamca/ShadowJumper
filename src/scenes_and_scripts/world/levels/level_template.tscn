@@ -2,15 +2,15 @@
 
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://shaders/world.gdshader" id="1_xobde"]
 [ext_resource type="Script" uid="uid://c4fquxdxhixbr" path="res://scenes_and_scripts/world/levels/level.gd" id="2_qn6tr"]
-[ext_resource type="Script" uid="uid://dhd8v7a51hwsm" path="res://scenes_and_scripts/camera_plus.gd" id="3_ciwo4"]
+[ext_resource type="Script" uid="uid://dhd8v7a51hwsm" path="res://scenes_and_scripts/others/camera_plus.gd" id="3_ciwo4"]
 [ext_resource type="TileSet" uid="uid://8h4fm7v55cnx" path="res://assets/tileset.tres" id="4_vb1h2"]
 [ext_resource type="Texture2D" uid="uid://cyg6ig5l1nget" path="res://assets/sprites/background.png" id="5_nn5pw"]
-[ext_resource type="Script" uid="uid://cukaycaqn33ua" path="res://scenes_and_scripts/world/world_parallax_2d.gd" id="5_qfgm2"]
+[ext_resource type="Script" uid="uid://cukaycaqn33ua" path="res://scenes_and_scripts/others/world_parallax_2d.gd" id="5_qfgm2"]
 [ext_resource type="Texture2D" uid="uid://c5fbm5se52uf2" path="res://assets/sprites/light_textures/64x64/64x64 textures (99).png" id="6_v3d0k"]
-[ext_resource type="PackedScene" uid="uid://bbfi7d15xxxan" path="res://scenes_and_scripts/world/parallax_fog.tscn" id="7_8tbc5"]
+[ext_resource type="PackedScene" uid="uid://bbfi7d15xxxan" path="res://scenes_and_scripts/others/parallax_fog.tscn" id="7_8tbc5"]
 [ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://shaders/fog.gdshader" id="8_2artr"]
-[ext_resource type="PackedScene" uid="uid://f5m7vw1vj4fd" path="res://scenes_and_scripts/player/player.tscn" id="15_g2sbh"]
-[ext_resource type="PackedScene" uid="uid://6twg4nqjueyw" path="res://scenes_and_scripts/world/levels/finish.tscn" id="16_2bwmf"]
+[ext_resource type="PackedScene" uid="uid://f5m7vw1vj4fd" path="res://scenes_and_scripts/world/player/player.tscn" id="15_g2sbh"]
+[ext_resource type="PackedScene" uid="uid://6twg4nqjueyw" path="res://scenes_and_scripts/world/objects/finish/finish.tscn" id="16_2bwmf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gp364"]
 shader = ExtResource("1_xobde")

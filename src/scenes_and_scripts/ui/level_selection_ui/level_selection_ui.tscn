@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://sedvuk2vb5qi"]
+
+[ext_resource type="Script" uid="uid://cnyx3mwu8vseo" path="res://scenes_and_scripts/ui/level_selection_ui/level_selection_ui.gd" id="1_6yg27"]
+[ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="2_dsqpm"]
+[ext_resource type="AudioStream" uid="uid://bhoqyb4ikyv51" path="res://assets/SFX/typing_sound-[AudioTrimmer.com].wav" id="3_xvu0o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsqpm"]
+bg_color = Color(0, 0, 0, 0.686275)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 8.0
+expand_margin_right = 7.0
+
+[node name="LevelSelectionUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6yg27")
+
+[node name="EnegryTextSpawner" type="Node2D" parent="."]
+position = Vector2(640, 108)
+
+[node name="TotalEnergyDisplay" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.5
+offset_right = 21.5
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dsqpm")
+
+[node name="AddAudio" type="AudioStreamPlayer" parent="TotalEnergyDisplay"]
+stream = ExtResource("3_xvu0o")
+volume_db = -20.0
+bus = &"SFX"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TotalEnergyDisplay"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TotalEnergyDisplay/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_dsqpm")
+text = "Total Energy: "
+
+[node name="EnergyText" type="Label" parent="TotalEnergyDisplay/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_dsqpm")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "0 E"
+
+[node name="DebugText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_dsqpm")
+bbcode_enabled = true
+text = "[ [color=gold]v1.7[/color] ]  [ [color=green]DEBUG BUILD[/color] ]
+Press [color=lightblue]L[/color] to unlock all levels"
+horizontal_alignment = 2
+vertical_alignment = 2

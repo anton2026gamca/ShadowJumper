@@ -1,0 +1,150 @@
+[gd_scene load_steps=19 format=3 uid="uid://dufpmtr0u2cjm"]
+
+[ext_resource type="PackedScene" uid="uid://blqn31o20wf5k" path="res://scenes_and_scripts/world/animals/ground_animals/ground_animal.tscn" id="1_iec15"]
+[ext_resource type="PackedScene" uid="uid://chjn3iar4wktf" path="res://scenes_and_scripts/components/powerups/health_powerup/health_powerup.tscn" id="2_tktkm"]
+[ext_resource type="Texture2D" uid="uid://cmnrdlbkrcgec" path="res://assets/sprites/animals/MiniBoar.png" id="3_5b0tx"]
+[ext_resource type="Script" uid="uid://cp60xqistx0h6" path="res://scenes_and_scripts/components/energy_collector_component/energy_collector_amount.gd" id="5_xluxm"]
+[ext_resource type="AudioStream" uid="uid://bcidwrcvmuq3a" path="res://assets/SFX/explosion.wav" id="6_vx1e8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfsft"]
+atlas = ExtResource("3_5b0tx")
+region = Rect2(32, 112, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_348gh"]
+atlas = ExtResource("3_5b0tx")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yuts"]
+atlas = ExtResource("3_5b0tx")
+region = Rect2(96, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6n4j"]
+atlas = ExtResource("3_5b0tx")
+region = Rect2(0, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37w0v"]
+atlas = ExtResource("3_5b0tx")
+region = Rect2(32, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnot5"]
+atlas = ExtResource("3_5b0tx")
+region = Rect2(64, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5rl7"]
+atlas = ExtResource("3_5b0tx")
+region = Rect2(96, 48, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dlm6i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfsft")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_348gh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yuts")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6n4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37w0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnot5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5rl7")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxfw8"]
+size = Vector2(327, 78.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlr3l"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5g0xv"]
+size = Vector2(30, 30)
+
+[sub_resource type="Resource" id="Resource_3v4hb"]
+script = ExtResource("5_xluxm")
+energy_value_on_collect = 35
+max_collects = 1
+metadata/_custom_type_script = "uid://cp60xqistx0h6"
+
+[sub_resource type="Resource" id="Resource_rxfw8"]
+script = ExtResource("5_xluxm")
+energy_value_on_collect = 60
+max_collects = -1
+metadata/_custom_type_script = "uid://cp60xqistx0h6"
+
+[node name="Boar" instance=ExtResource("1_iec15")]
+player_die_reason = "A boar killed you!"
+walk_speed = 870.0
+run_speed = 3000.0
+chance_to_rotate = 0.0
+attack_screen_shake_value = 9.0
+chance_to_give_up = 0.0
+attack_hitstop = 0.3
+spawn_powerup_on_death = ExtResource("2_tktkm")
+
+[node name="CollisionShape2D" parent="." index="0"]
+z_index = 0
+z_as_relative = true
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_dlm6i")
+
+[node name="GroundAnimalAttacking" parent="StateMachine" index="1"]
+energy_value_on_dodge = 35
+
+[node name="CollisionShape2D" parent="Physics/EnemyArea" index="0"]
+position = Vector2(48.5, 0)
+shape = SubResource("RectangleShape2D_rxfw8")
+
+[node name="CollisionShape2D" parent="Physics/HitStartArea" index="0"]
+position = Vector2(8, -8)
+shape = SubResource("RectangleShape2D_mlr3l")
+
+[node name="CollisionShape2D" parent="Physics/HitRangeArea" index="0"]
+position = Vector2(9, -10)
+shape = SubResource("RectangleShape2D_5g0xv")
+
+[node name="EnergyCollectorComponent" parent="." index="6"]
+energy_amount_for_action = Dictionary[String, ExtResource("5_xluxm")]({
+"attack_dodge": SubResource("Resource_3v4hb"),
+"kill": SubResource("Resource_rxfw8")
+})
+
+[node name="AttackingAudio" parent="." index="7"]
+volume_db = -23.151
+
+[node name="AttackAudio" parent="." index="8"]
+stream = ExtResource("6_vx1e8")
+
+[node name="VisibleOnScreenEnabler2D" parent="." index="9"]
+position = Vector2(51, -2)
+scale = Vector2(29.7, 4.1)
+
+[node name="AttackParticles" parent="." index="10"]
+position = Vector2(10, -11)
+emission_shape = 3
+emission_rect_extents = Vector2(3, 0)
+direction = Vector2(0.2, -1)
+spread = 25.0

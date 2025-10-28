@@ -1,0 +1,160 @@
+[gd_scene load_steps=21 format=3 uid="uid://bon1r10wk031e"]
+
+[ext_resource type="PackedScene" uid="uid://blqn31o20wf5k" path="res://scenes_and_scripts/world/animals/ground_animals/ground_animal.tscn" id="1_hdi8u"]
+[ext_resource type="PackedScene" uid="uid://chjn3iar4wktf" path="res://scenes_and_scripts/components/powerups/health_powerup/health_powerup.tscn" id="2_106e5"]
+[ext_resource type="Texture2D" uid="uid://crpsdrftqxy8" path="res://assets/sprites/animals/MiniFox.png" id="3_qxqkc"]
+[ext_resource type="Script" uid="uid://cp60xqistx0h6" path="res://scenes_and_scripts/components/energy_collector_component/energy_collector_amount.gd" id="5_2s0st"]
+[ext_resource type="AudioStream" uid="uid://ns2s4d0pe8ve" path="res://assets/SFX/folder/fire_1.wav" id="6_kb31b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rasjo"]
+atlas = ExtResource("3_qxqkc")
+region = Rect2(32, 112, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrxyp"]
+atlas = ExtResource("3_qxqkc")
+region = Rect2(64, 112, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r65xi"]
+atlas = ExtResource("3_qxqkc")
+region = Rect2(96, 112, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt85k"]
+atlas = ExtResource("3_qxqkc")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4i7n"]
+atlas = ExtResource("3_qxqkc")
+region = Rect2(96, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcbxv"]
+atlas = ExtResource("3_qxqkc")
+region = Rect2(0, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj3or"]
+atlas = ExtResource("3_qxqkc")
+region = Rect2(32, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfcov"]
+atlas = ExtResource("3_qxqkc")
+region = Rect2(64, 48, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6w31"]
+atlas = ExtResource("3_qxqkc")
+region = Rect2(96, 48, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rasjo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rasjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrxyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r65xi")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xt85k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4i7n")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcbxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj3or")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfcov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6w31")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8t4eu"]
+size = Vector2(312, 78.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhof2"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6ybc"]
+size = Vector2(28, 28)
+
+[sub_resource type="Resource" id="Resource_kltce"]
+script = ExtResource("5_2s0st")
+energy_value_on_collect = 25
+max_collects = 1
+metadata/_custom_type_script = "uid://cp60xqistx0h6"
+
+[sub_resource type="Resource" id="Resource_8t4eu"]
+script = ExtResource("5_2s0st")
+energy_value_on_collect = 50
+max_collects = -1
+metadata/_custom_type_script = "uid://cp60xqistx0h6"
+
+[node name="Fox" instance=ExtResource("1_hdi8u")]
+player_die_reason = "A fox bit you!"
+walk_speed = 600.0
+run_speed = 3000.0
+chance_to_rotate = 0.0
+attack_screen_shake_value = 7.0
+chance_to_give_up = 0.0
+attack_hitstop = 0.3
+spawn_powerup_on_death = ExtResource("2_106e5")
+
+[node name="CollisionShape2D" parent="." index="0"]
+z_index = 0
+z_as_relative = true
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_rasjo")
+frame = 2
+frame_progress = 1.0
+
+[node name="GroundAnimalAttacking" parent="StateMachine" index="1"]
+energy_value_on_dodge = 25
+
+[node name="CollisionShape2D" parent="Physics/EnemyArea" index="0"]
+position = Vector2(41, 0)
+shape = SubResource("RectangleShape2D_8t4eu")
+
+[node name="CollisionShape2D" parent="Physics/HitStartArea" index="0"]
+position = Vector2(8, -8)
+shape = SubResource("RectangleShape2D_bhof2")
+
+[node name="CollisionShape2D" parent="Physics/HitRangeArea" index="0"]
+position = Vector2(11, -11)
+shape = SubResource("RectangleShape2D_i6ybc")
+
+[node name="EnergyCollectorComponent" parent="." index="6"]
+energy_amount_for_action = Dictionary[String, ExtResource("5_2s0st")]({
+"attack_dodge": SubResource("Resource_kltce"),
+"kill": SubResource("Resource_8t4eu")
+})
+
+[node name="AttackAudio" parent="." index="8"]
+stream = ExtResource("6_kb31b")
+
+[node name="VisibleOnScreenEnabler2D" parent="." index="9"]
+position = Vector2(54.5, -0.500001)
+scale = Vector2(24.95, 4.25)
+
+[node name="AttackParticles" parent="." index="10"]
+position = Vector2(11, -7)
+lifetime = 0.2

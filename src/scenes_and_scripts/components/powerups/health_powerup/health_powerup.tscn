@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://chjn3iar4wktf"]
+
+[ext_resource type="Script" uid="uid://bhylpiupafe6t" path="res://scenes_and_scripts/components/powerups/health_powerup/health_powerup.gd" id="1_vcl5r"]
+
+[node name="HealthPowerup" type="Node"]
+script = ExtResource("1_vcl5r")
+pickup_message = "+1 HP"
+metadata/_custom_type_script = "uid://bhylpiupafe6t"

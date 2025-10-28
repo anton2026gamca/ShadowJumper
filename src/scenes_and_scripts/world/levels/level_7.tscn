@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock/pickupable_rock.tscn" id="4_378yb"]
 [ext_resource type="Texture2D" uid="uid://b4eqv5jakr7va" path="res://assets/sprites/leave-parallax.png" id="5_0kubr"]
 [ext_resource type="Texture2D" uid="uid://dylddsv1gbd7s" path="res://assets/sprites/leave.png" id="5_5os5s"]
-[ext_resource type="Script" uid="uid://ctd2vydvf54ij" path="res://scenes_and_scripts/helpers/animation_trigger.gd" id="7_70aeg"]
-[ext_resource type="Script" uid="uid://b6xr8kf0xn6jm" path="res://scenes_and_scripts/helpers/animation_trigger_area.gd" id="9_8bowb"]
+[ext_resource type="Script" uid="uid://ctd2vydvf54ij" path="res://scenes_and_scripts/others/animation_trigger/animation_trigger.gd" id="7_70aeg"]
+[ext_resource type="Script" uid="uid://b6xr8kf0xn6jm" path="res://scenes_and_scripts/others/animation_trigger/animation_trigger_area.gd" id="9_8bowb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0kubr"]
 shader = ExtResource("2_3kued")

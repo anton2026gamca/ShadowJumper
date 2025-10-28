@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dafgdevd61aj7"]
+
+[ext_resource type="Script" uid="uid://c1vlxdllcc361" path="res://scenes_and_scripts/components/hit_component/hit_component.gd" id="1_3l3ui"]
+[ext_resource type="Material" uid="uid://dk3nkt0plc4oq" path="res://scenes_and_scripts/components/hit_component/hit.material" id="2_b8vxj"]
+
+[node name="HitComponent" type="Node"]
+script = ExtResource("1_3l3ui")
+hit_material = ExtResource("2_b8vxj")
+metadata/_custom_type_script = "uid://c1vlxdllcc361"

@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dnttp56oelip" path="res://scenes_and_scripts/world/objects/water/water-top.tscn" id="3_qscaq"]
 [ext_resource type="PackedScene" uid="uid://dqdt5a5wq4x4t" path="res://scenes_and_scripts/world/objects/mushrooms/mushroom_3.tscn" id="3_uyjym"]
 [ext_resource type="PackedScene" uid="uid://dkkxade50jygv" path="res://scenes_and_scripts/world/npcs/the_actual_npcs/shop/shop.tscn" id="6_80oah"]
-[ext_resource type="PackedScene" uid="uid://bwfbsq0x8ygmr" path="res://scenes_and_scripts/world/objects/spikes/mountain_spikes.tscn" id="6_155r3"]
-[ext_resource type="PackedScene" uid="uid://dcian8wjpncct" path="res://scenes_and_scripts/world/objects/spikes/tree_spikes.tscn" id="7_fk0lh"]
+[ext_resource type="PackedScene" uid="uid://bwfbsq0x8ygmr" path="res://scenes_and_scripts/world/objects/spikes/instances/mountain_spikes.tscn" id="6_155r3"]
+[ext_resource type="PackedScene" uid="uid://dcian8wjpncct" path="res://scenes_and_scripts/world/objects/spikes/instances/tree_spikes.tscn" id="7_fk0lh"]
 [ext_resource type="PackedScene" uid="uid://bwkfut2sgxlh7" path="res://scenes_and_scripts/world/objects/grass_tile/grass_tile.tscn" id="8_155r3"]
 [ext_resource type="PackedScene" uid="uid://c2eort0nmjduo" path="res://scenes_and_scripts/world/objects/water/water.tscn" id="10_ls0l7"]
 

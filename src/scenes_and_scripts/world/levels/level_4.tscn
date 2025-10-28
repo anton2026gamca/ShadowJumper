@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=4 uid="uid://cr6bahr2qcew0"]
 
 [ext_resource type="PackedScene" uid="uid://dpy2qsq5apfgn" path="res://scenes_and_scripts/world/levels/level_template.tscn" id="1_jcdvo"]
-[ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/ground_animals/fox.tscn" id="8_0gkre"]
-[ext_resource type="PackedScene" uid="uid://c2xrsqj6px78r" path="res://scenes_and_scripts/world/animals/ground_animals/wolf.tscn" id="8_xd2tb"]
+[ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/ground_animals/instances/fox.tscn" id="8_0gkre"]
+[ext_resource type="PackedScene" uid="uid://c2xrsqj6px78r" path="res://scenes_and_scripts/world/animals/ground_animals/instances/wolf.tscn" id="8_xd2tb"]
 [ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock/pickupable_rock.tscn" id="11_vy1ok"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mi4in"]

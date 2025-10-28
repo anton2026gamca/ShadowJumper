@@ -1,0 +1,154 @@
+[gd_scene load_steps=9 format=3 uid="uid://7rlrkqwexgku"]
+
+[ext_resource type="Script" uid="uid://cof7uusrj7u7m" path="res://scenes_and_scripts/ui/menus/dialog_ui/dialog_ui.gd" id="1_8gwlk"]
+[ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://shaders/world.gdshader" id="2_ae537"]
+[ext_resource type="Texture2D" uid="uid://b0sacsmluvo1l" path="res://assets/sprites/npcs/npc.png" id="3_ywsfv"]
+[ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="4_t18u5"]
+[ext_resource type="PackedScene" uid="uid://bcrs007fckaoc" path="res://scenes_and_scripts/ui/menus/dialog_ui/answer_option.tscn" id="5_8gwlk"]
+[ext_resource type="AudioStream" uid="uid://bhoqyb4ikyv51" path="res://assets/SFX/typing_sound-[AudioTrimmer.com].wav" id="5_gf26f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwopw"]
+bg_color = Color(0, 0, 0, 0.666667)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eav7e"]
+shader = ExtResource("2_ae537")
+shader_parameter/night_intensity = 0.0
+shader_parameter/night_darkness = 1.0
+shader_parameter/night_contrast = 2.0
+shader_parameter/night_tint = Color(0.2, 0.3, 0.8, 1)
+shader_parameter/tint_shift = 1.0
+shader_parameter/ambient_light_color = Color(0.2, 0.3, 0.8, 1)
+shader_parameter/ambient_light_value = 0.4
+shader_parameter/luminance_weights = Color(0.299, 0.587, 0.114, 1)
+
+[node name="DialogUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_8gwlk")
+answer_scene = ExtResource("5_8gwlk")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -407.0
+offset_top = -213.0
+offset_right = 407.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pwopw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Panel"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NPCSprite" type="TextureRect" parent="UI/Panel/HBoxContainer"]
+material = SubResource("ShaderMaterial_eav7e")
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("3_ywsfv")
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="CharacterName" type="Label" parent="UI/Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_t18u5")
+text = "NO NAME"
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="MessageText" type="RichTextLabel" parent="UI/Panel/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme = ExtResource("4_t18u5")
+bbcode_enabled = true
+text = "No message!"
+fit_content = true
+visible_characters_behavior = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Panel/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 5
+
+[node name="Answers" type="VBoxContainer" parent="UI/Panel/HBoxContainer/VBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="ExitButton" type="Button" parent="UI/Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("4_t18u5")
+theme_override_font_sizes/font_size = 12
+text = "EXIT"
+
+[node name="NextMsgButton" type="Button" parent="UI/Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_t18u5")
+theme_override_font_sizes/font_size = 12
+text = "NEXT"
+
+[node name="SkipButton" type="Button" parent="UI/Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("4_t18u5")
+theme_override_font_sizes/font_size = 12
+text = "SKIP"
+
+[node name="TypingSound" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource("5_gf26f")
+volume_db = -20.0
+bus = &"SFX"
+
+[connection signal="pressed" from="UI/Panel/HBoxContainer/VBoxContainer/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="UI/Panel/HBoxContainer/VBoxContainer/HBoxContainer/NextMsgButton" to="." method="_on_next_msg_button_pressed"]
+[connection signal="pressed" from="UI/Panel/HBoxContainer/VBoxContainer/HBoxContainer/SkipButton" to="." method="_on_skip_button_pressed"]

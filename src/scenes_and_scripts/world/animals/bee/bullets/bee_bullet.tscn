@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://r80goc7odoja"]
+
+[ext_resource type="PackedScene" uid="uid://dvn77t44gdpwa" path="res://scenes_and_scripts/world/objects/bullet/bullet.tscn" id="1_jgsbl"]
+[ext_resource type="Script" uid="uid://dgebrhx6bfngf" path="res://scenes_and_scripts/world/animals/bee/bullets/bee_bullet.gd" id="2_k3haf"]
+[ext_resource type="Texture2D" uid="uid://cweisxm4vrdqa" path="res://assets/sprites/bee.png" id="2_kv5lg"]
+[ext_resource type="PackedScene" uid="uid://dafgdevd61aj7" path="res://scenes_and_scripts/components/hit_component/hit_component.tscn" id="4_c3wln"]
+
+[sub_resource type="Curve" id="Curve_k3haf"]
+_limits = [0.0, 1000.0, 0.0, 500.0]
+_data = [Vector2(0, 1000), 0.0, 0.0, 0, 0, Vector2(246.173, 519.704), -4.91154, -4.91154, 0, 0, Vector2(500, 100), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k3haf"]
+radius = 3.0
+height = 10.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3haf"]
+atlas = ExtResource("2_kv5lg")
+region = Rect2(118, 14, 8, 5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qqcfx"]
+radius = 3.0
+height = 10.0
+
+[node name="BeeBullet" instance=ExtResource("1_jgsbl")]
+script = ExtResource("2_k3haf")
+turn_back_rate = SubResource("Curve_k3haf")
+homing_rate_min = 90.0
+homing_rate_max = 110.0
+die_reason = "A bee shot you!"
+initial_speed_min = 350.0
+initial_speed_max = 450.0
+lifetime = 4.0
+on_hit_screen_shake_value = 10.0
+on_hit_hitstop_time = 0.2
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_k3haf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+use_parent_material = true
+rotation = 1.5708
+texture = SubResource("AtlasTexture_k3haf")
+
+[node name="CollisionShape2D" parent="KillArea" index="0"]
+shape = SubResource("CapsuleShape2D_qqcfx")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="3"]
+scale = Vector2(1, 1.33333)
+
+[node name="DeathComponent" parent="." index="4" instance=ExtResource("4_c3wln")]
+
+[connection signal="die_signal" from="DeathComponent" to="." method="_on_death_component_die"]

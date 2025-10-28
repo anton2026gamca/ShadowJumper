@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://dpy2qsq5apfgn" path="res://scenes_and_scripts/world/levels/level_template.tscn" id="1_g5d4h"]
 [ext_resource type="TileSet" uid="uid://8h4fm7v55cnx" path="res://assets/tileset.tres" id="3_g5d4h"]
-[ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/ground_animals/fox.tscn" id="6_4x3kg"]
-[ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/ground_animals/boar.tscn" id="7_443ir"]
-[ext_resource type="PackedScene" uid="uid://c2xrsqj6px78r" path="res://scenes_and_scripts/world/animals/ground_animals/wolf.tscn" id="8_xd2tb"]
+[ext_resource type="PackedScene" uid="uid://bon1r10wk031e" path="res://scenes_and_scripts/world/animals/ground_animals/instances/fox.tscn" id="6_4x3kg"]
+[ext_resource type="PackedScene" uid="uid://dufpmtr0u2cjm" path="res://scenes_and_scripts/world/animals/ground_animals/instances/boar.tscn" id="7_443ir"]
+[ext_resource type="PackedScene" uid="uid://c2xrsqj6px78r" path="res://scenes_and_scripts/world/animals/ground_animals/instances/wolf.tscn" id="8_xd2tb"]
 [ext_resource type="Texture2D" uid="uid://c4r35j5un4gc6" path="res://assets/sprites/arrow.png" id="9_443ir"]
 [ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock/pickupable_rock.tscn" id="13_i1spp"]
 

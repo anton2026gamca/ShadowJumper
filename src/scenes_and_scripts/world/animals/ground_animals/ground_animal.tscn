@@ -5,10 +5,10 @@
 [ext_resource type="Script" uid="uid://dly1y5lca6fuj" path="res://scenes_and_scripts/world/animals/ground_animals/states/ground_animal_searching.gd" id="3_vjuit"]
 [ext_resource type="Script" uid="uid://rat5qcmwg87d" path="res://scenes_and_scripts/world/animals/ground_animals/states/ground_animal_attacking.gd" id="4_kja6p"]
 [ext_resource type="AudioStream" uid="uid://ipx0cloc2jbb" path="res://assets/SFX/folder/tidal_wave.wav" id="5_etv1c"]
-[ext_resource type="Script" uid="uid://bbbqnku506paa" path="res://scenes_and_scripts/components/health_component.gd" id="5_vjuit"]
+[ext_resource type="Script" uid="uid://bbbqnku506paa" path="res://scenes_and_scripts/components/health_component/health_component.gd" id="5_vjuit"]
 [ext_resource type="Texture2D" uid="uid://d1j5i0g1gv3ek" path="res://assets/sprites/heart.png" id="6_kja6p"]
-[ext_resource type="Script" uid="uid://cp60xqistx0h6" path="res://scenes_and_scripts/components/energy_collector_amount.gd" id="8_etv1c"]
-[ext_resource type="Script" uid="uid://ckiexqolsrmtp" path="res://scenes_and_scripts/components/energy_collector_component.gd" id="8_kja6p"]
+[ext_resource type="Script" uid="uid://cp60xqistx0h6" path="res://scenes_and_scripts/components/energy_collector_component/energy_collector_amount.gd" id="8_etv1c"]
+[ext_resource type="Script" uid="uid://ckiexqolsrmtp" path="res://scenes_and_scripts/components/energy_collector_component/energy_collector_component.gd" id="8_kja6p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4aqc"]
 radius = 5.0

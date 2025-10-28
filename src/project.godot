@@ -21,11 +21,11 @@ config/icon="uid://d3tvi8n1gvnj"
 
 [autoload]
 
-Progress="*res://scenes_and_scripts/progress.gd"
+Progress="*res://scenes_and_scripts/others/save_system/progress.gd"
 LevelLoader="*res://scenes_and_scripts/world/level_loader/level_loader.tscn"
-Music="*res://scenes_and_scripts/music.tscn"
-Helpers="*res://scenes_and_scripts/helpers/helpers.gd"
-Settings="*res://scenes_and_scripts/settings.gd"
+Music="*res://scenes_and_scripts/others/music.tscn"
+Helpers="*res://scenes_and_scripts/others/helpers.gd"
+Settings="*res://scenes_and_scripts/others/save_system/settings.gd"
 
 [display]
 
