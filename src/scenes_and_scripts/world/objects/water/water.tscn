@@ -108,7 +108,6 @@ size = Vector2(16, 16)
 [node name="Water" type="Node2D"]
 use_parent_material = true
 script = ExtResource("1_umqo4")
-lightning_interval = 50.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
@@ -155,6 +154,28 @@ z_index = 100
 z_as_relative = false
 shape = SubResource("RectangleShape2D_036xq")
 debug_color = Color(0.7, 0.7, 0, 0.41960785)
+
+[node name="SplashParticles" type="CPUParticles2D" parent="."]
+light_mask = 0
+position = Vector2(0, -8)
+emitting = false
+amount = 16
+lifetime = 1.2
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+lifetime_randomness = 0.7
+emission_shape = 3
+emission_rect_extents = Vector2(4, 0)
+direction = Vector2(0, -1)
+gravity = Vector2(0, 40)
+initial_velocity_min = 45.0
+initial_velocity_max = 55.0
+radial_accel_min = -40.0
+radial_accel_max = -40.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color = Color(0.4117647, 0.61960787, 0.9882353, 1)
 
 [connection signal="body_entered" from="InWaterArea" to="." method="_on_in_water_area_body_entered"]
 [connection signal="body_exited" from="InWaterArea" to="." method="_on_in_water_area_body_exited"]
