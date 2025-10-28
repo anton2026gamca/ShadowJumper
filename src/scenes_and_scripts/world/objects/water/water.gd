@@ -2,11 +2,16 @@ extends Node2D
 class_name Water
 
 
+@export var die_reason: String = "You were electrified by water :o"
+
 @export var lightning_interval: float = 2
 
 @onready var lightning_sprite: AnimatedSprite2D = $LightningSprite
 @onready var lightning_sound_effect: AudioStreamPlayer2D = $LightningSoundEffect
 @onready var point_light: PointLight2D = $PointLight2D
+@onready var kill_area: Area2D = $PointLight2D/KillArea
+
+static var bodies_in_water_data: Dictionary[Water, Array] = {}
 
 
 
@@ -22,7 +27,33 @@ func _emit_lightning() -> void:
 	lightning_sprite.speed_scale = randf_range(1.0, 2.0)
 	lightning_sprite.play("default")
 	point_light.visible = true
-	if not Engine.is_editor_hint():
-		lightning_sound_effect.pitch_scale = randf_range(0.75, 1.25)
-		lightning_sound_effect.play()
+	lightning_sound_effect.pitch_scale = randf_range(0.75, 1.25)
+	lightning_sound_effect.play()
+	var bodies_in_water: Array[Node2D] = get_bodies_in_water()
+	print(bodies_in_water)
+	for body: Node2D in kill_area.get_overlapping_bodies():
+		if not body in bodies_in_water:
+			continue
+		var death_component: DeathComponent = Helpers.find_child_by_type(body, DeathComponent)
+		if death_component:
+			death_component.die(die_reason, true)
 	get_tree().create_timer(lightning_interval, false).timeout.connect(_emit_lightning)
+
+func get_bodies_in_water() -> Array[Node2D]:
+	var bodies: Array[Node2D] = []
+	for arr: Array in bodies_in_water_data.values():
+		for body: Variant in arr:
+			if not body is Node2D or body in bodies:
+				continue
+			bodies.append(body)
+	return bodies
+
+func _on_in_water_area_body_entered(body: Node2D) -> void:
+	if not self in bodies_in_water_data:
+		bodies_in_water_data[self] = []
+	bodies_in_water_data[self].append(body)
+
+func _on_in_water_area_body_exited(body: Node2D) -> void:
+	if not self in bodies_in_water_data:
+		return
+	bodies_in_water_data[self].erase(body)

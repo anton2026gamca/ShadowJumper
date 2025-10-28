@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c2eort0nmjduo"]
+[gd_scene load_steps=21 format=3 uid="uid://c2eort0nmjduo"]
 
 [ext_resource type="Script" uid="uid://5w7kggqkvcan" path="res://scenes_and_scripts/world/objects/water/water.gd" id="1_umqo4"]
 [ext_resource type="Texture2D" uid="uid://bf612dhc55wnc" path="res://assets/sprites/electrified_water.png" id="2_5ywre"]
@@ -99,6 +99,12 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_036xq"]
+radius = 64.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_036xq"]
+size = Vector2(16, 16)
+
 [node name="Water" type="Node2D"]
 use_parent_material = true
 script = ExtResource("1_umqo4")
@@ -128,3 +134,27 @@ bus = &"SFX"
 visible = false
 energy = 0.7
 texture = ExtResource("5_036xq")
+
+[node name="KillArea" type="Area2D" parent="PointLight2D"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PointLight2D/KillArea"]
+z_index = 100
+z_as_relative = false
+shape = SubResource("CircleShape2D_036xq")
+debug_color = Color(0.7, 0, 0, 0.41960785)
+
+[node name="InWaterArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InWaterArea"]
+visible = false
+z_index = 100
+z_as_relative = false
+shape = SubResource("RectangleShape2D_036xq")
+debug_color = Color(0.7, 0.7, 0, 0.41960785)
+
+[connection signal="body_entered" from="InWaterArea" to="." method="_on_in_water_area_body_entered"]
+[connection signal="body_exited" from="InWaterArea" to="." method="_on_in_water_area_body_exited"]
