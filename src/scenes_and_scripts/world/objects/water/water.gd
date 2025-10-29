@@ -31,6 +31,8 @@ func _emit_lightning() -> void:
 	point_light.visible = true
 	lightning_sound_effect.pitch_scale = randf_range(0.75, 1.25)
 	lightning_sound_effect.play()
+	if not get_parent():
+		return
 	await get_tree().create_timer(0.2).timeout
 	var bodies_in_water: Array[Node2D] = get_bodies_in_water()
 	for body: Node2D in kill_area.get_overlapping_bodies():
