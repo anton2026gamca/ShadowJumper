@@ -307,6 +307,7 @@ scale_amount_max = 3.0
 
 [node name="DeathParticles" type="CPUParticles2D" parent="Particles"]
 process_mode = 3
+z_index = 10
 use_parent_material = true
 emitting = false
 amount = 1

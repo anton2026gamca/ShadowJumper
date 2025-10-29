@@ -13,7 +13,7 @@ var hit_val: int = 0
 
 @export_group("Boom")
 @onready var boom_sprite: AnimatedSprite2D = $Boom
-@onready var boom_area: Area2D = $Area2D
+@onready var boom_area: Area2D = $BoomArea
 @export var boom_tolerance_time: float = 0.1
 @export var boom_start_screen_shake_value: float = 2
 @export var boom_screen_shake_value: float = 10
@@ -26,10 +26,11 @@ var boom_angry_value: float = 0.0
 @onready var boom_start_audio: AudioStreamPlayer2D = $BoomStartAudio
 @onready var boom_audio: AudioStreamPlayer2D = $BoomAudio
 @onready var hit_audio: AudioStreamPlayer2D = $HitAudio
-@onready var respawn_audio: AudioStreamPlayer2D = $RespawnAudio
+@onready var relight_audio: AudioStreamPlayer2D = $RelightAudio
 @onready var hit_particles: CPUParticles2D = $HitParticles
 @onready var relight_particles: CPUParticles2D = $RelightParticles
 @onready var energy_collector_component: EnergyCollectorComponent = $EnergyCollectorComponent
+@onready var collision_shape: CollisionShape2D = $BoomArea/CollisionShape2D
 
 var is_on: bool = true
 
@@ -37,7 +38,7 @@ var is_on: bool = true
 func _ready() -> void:
 	boom_sprite.animation = "boom"
 	boom_sprite.frame = 0
-	$Area2D/CollisionShape2D.visible = true
+	collision_shape.visible = true
 
 func _physics_process(delta: float) -> void:
 	if not LevelLoader.is_in_level:
@@ -69,13 +70,13 @@ func turn_off() -> void:
 	light_animation_player.play("on-off")
 	is_on = false
 	await light_animation_player.animation_finished
-	$Area2D/CollisionShape2D.visible = false
+	collision_shape.visible = false
 
 func turn_on() -> void:
 	light_animation_player.play_backwards("on-off")
 	await light_animation_player.animation_finished
 	is_on = true
-	$Area2D/CollisionShape2D.visible = true
+	collision_shape.visible = true
 
 
 func hit(down_time_override: float = -1, collect_energy: bool = true) -> void:
@@ -99,8 +100,8 @@ func hit(down_time_override: float = -1, collect_energy: bool = true) -> void:
 		hit_val = 0
 		await create_tween().tween_property(relight_particles, "initial_velocity_min", 25, 2).finished
 		relight_particles.emitting = false
-		respawn_audio.pitch_scale = hit_audio.pitch_scale
-		respawn_audio.play()
+		relight_audio.pitch_scale = hit_audio.pitch_scale
+		relight_audio.play()
 		Helpers.camera.shake(revive_screen_shake_value, global_position)
 		await turn_on()
 
