@@ -37,9 +37,9 @@ func _process(_delta: float) -> void:
 	if OS.is_debug_build() and Input.is_action_just_pressed("debug_toggle_levels"):
 		_debug_toggle_all_levels_on()
 	
-	if (Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ladder_climb_up")) and current_level:
+	if (Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("climb_or_swim_up")) and current_level:
 		move_to_level(Vector2i.UP)
-	if (Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ladder_climb_down")) and current_level:
+	if (Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("climb_or_swim_down")) and current_level:
 		move_to_level(Vector2i.DOWN)
 	if (Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("move_left")) and current_level:
 		move_to_level(Vector2i.LEFT)

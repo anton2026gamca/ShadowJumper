@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://f5m7vw1vj4fd"]
+[gd_scene load_steps=40 format=3 uid="uid://f5m7vw1vj4fd"]
 
 [ext_resource type="Script" uid="uid://hrc23450dtph" path="res://scenes_and_scripts/world/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bnpceuwymc5n" path="res://scenes_and_scripts/world/player/states/player_walk.gd" id="2_dovo2"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dfehsgpqmial3" path="res://assets/sprites/player/player.png" id="10_of6dy"]
 [ext_resource type="Script" uid="uid://cw5xylamhg1ob" path="res://scenes_and_scripts/world/player/states/player_ladder_climb.gd" id="12_co2wg"]
 [ext_resource type="AudioStream" uid="uid://rvdsv75uvl1g" path="res://assets/SFX/folder/lose_1.wav" id="12_ob7be"]
+[ext_resource type="Script" uid="uid://b5ux0m2ono6pc" path="res://scenes_and_scripts/world/player/states/player_in_water.gd" id="13_e5cb0"]
 [ext_resource type="AudioStream" uid="uid://dkcguk8m56rgx" path="res://assets/SFX/folder/fall.wav" id="13_m74vl"]
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://shaders/world.gdshader" id="16_mwrsu"]
 [ext_resource type="Texture2D" uid="uid://bmsgodease4bp" path="res://assets/sprites/player/player_particle.png" id="17_ygw5f"]
@@ -192,13 +193,14 @@ shape = SubResource("RectangleShape2D_f60y1")
 
 [node name="DeathComponent" parent="." instance=ExtResource("4_1dqni")]
 
-[node name="UserPlayerController" type="Node" parent="." node_paths=PackedStringArray("target", "climb_left_raycast", "climb_right_raycast", "climb_ladder_area", "jump_audio", "fall_audio", "in_water_audio", "jump_particles", "land_particles", "climb_particles")]
+[node name="UserPlayerController" type="Node" parent="." node_paths=PackedStringArray("target", "climb_left_raycast", "climb_right_raycast", "climb_ladder_area", "in_water_area", "jump_audio", "fall_audio", "in_water_audio", "jump_particles", "land_particles", "climb_particles")]
 script = ExtResource("6_je7p5")
 target = NodePath("..")
 rock_scene = ExtResource("4_hpak0")
 climb_left_raycast = NodePath("../ClimbLeftRayCast")
 climb_right_raycast = NodePath("../RayCastRight")
 climb_ladder_area = NodePath("../ClimbLadderArea")
+in_water_area = NodePath("../InWaterArea")
 jump_audio = NodePath("../JumpAudio")
 fall_audio = NodePath("../FallAudio")
 in_water_audio = NodePath("../InWaterAudio")
@@ -236,6 +238,11 @@ metadata/_custom_type_script = "uid://duwb6lw8qv8qa"
 script = ExtResource("12_co2wg")
 controller = NodePath("../../UserPlayerController")
 metadata/_custom_type_script = "uid://cw5xylamhg1ob"
+
+[node name="PlayerInWater" type="Node" parent="StateMachine" node_paths=PackedStringArray("controller")]
+script = ExtResource("13_e5cb0")
+controller = NodePath("../../UserPlayerController")
+metadata/_custom_type_script = "uid://b5ux0m2ono6pc"
 
 [node name="ClimbLeftRayCast" type="RayCast2D" parent="."]
 target_position = Vector2(-9, 0)

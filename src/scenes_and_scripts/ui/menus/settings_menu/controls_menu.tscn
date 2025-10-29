@@ -168,9 +168,9 @@ anchor_left = 0.5
 anchor_top = 0.25
 anchor_right = 0.5
 anchor_bottom = 0.25
-offset_left = -219.0
+offset_left = -1440.0
 offset_top = -96.0
-offset_right = 219.0
+offset_right = -1002.0
 offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -273,11 +273,11 @@ action = &"throw_a_rock"
 
 [node name="LadderUp" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
 layout_mode = 2
-action = &"ladder_climb_up"
+action = &"climb_or_swim_up"
 
 [node name="LadderDown" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
 layout_mode = 2
-action = &"ladder_climb_down"
+action = &"climb_or_swim_down"
 
 [node name="ControlReset" type="Control" parent="."]
 layout_mode = 1

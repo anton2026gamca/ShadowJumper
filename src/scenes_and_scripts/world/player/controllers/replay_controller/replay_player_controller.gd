@@ -186,22 +186,22 @@ func is_on_floor_buffered() -> bool:
 
 func get_climb_ladder_up() -> bool:
 	if is_recording:
-		return Input.is_action_pressed("ladder_climb_up")
+		return Input.is_action_pressed("climb_or_swim_up")
 	if is_replaying:
-		return dictionary_get_path(current_frame_data.data, ["ladder_climb_up"], false)
+		return dictionary_get_path(current_frame_data.data, ["climb_or_swim_up"], false)
 	return false
 
 func get_climb_ladder_down() -> bool:
 	if is_recording:
-		return Input.is_action_pressed("ladder_climb_down")
+		return Input.is_action_pressed("climb_or_swim_down")
 	if is_replaying:
-		return dictionary_get_path(current_frame_data.data, ["ladder_climb_down"], false)
+		return dictionary_get_path(current_frame_data.data, ["climb_or_swim_down"], false)
 	return false
 
 @warning_ignore("narrowing_conversion")
 func get_climb_ladder_dir() -> int:
 	if is_recording:
-		return Input.get_axis("ladder_climb_up", "ladder_climb_down")
+		return Input.get_axis("climb_or_swim_up", "climb_or_swim_down")
 	if is_replaying:
 		return dictionary_get_path(current_frame_data.data, ["ladder_climb_dir"], 0)
 	return false

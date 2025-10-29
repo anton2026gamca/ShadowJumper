@@ -11,6 +11,8 @@ func process(_delta: float) -> Variant:
 		controller.throw_a_rock()
 	if controller.is_on_floor():
 		return PlayerWalk
+	if controller.is_in_water():
+		return PlayerInWater
 	var left: bool = controller.climb_left_raycast.get_collider() is TileMapLayer
 	var right: bool = controller.climb_right_raycast.get_collider() is TileMapLayer
 	if not left and not right:

@@ -15,6 +15,8 @@ class_name PlayerController
 ## In milliseconds
 @export var coyote_time: float = 100.0
 @export var ladder_climb_speed: float = 100.0
+@export var water_max_speed: float = 100.0
+@export var water_acceleration: float = 100.0
 
 var last_on_floor_time: float = -1000
 var last_jump_time: float = -1000
@@ -34,6 +36,7 @@ var disable_climb: bool = false
 @export var climb_left_raycast: RayCast2D
 @export var climb_right_raycast: RayCast2D
 @export var climb_ladder_area: Area2D
+@export var in_water_area: Area2D
 
 @export_group("SFX")
 @export var jump_audio: AudioStreamPlayer2D
@@ -98,6 +101,9 @@ func get_climb_ladder_down() -> bool:
 
 func get_climb_ladder_dir() -> int:
 	return 0
+
+func is_in_water() -> bool:
+	return not in_water_area.get_overlapping_areas().is_empty()
 
 
 func get_nearest_mushroom() -> Mushroom:

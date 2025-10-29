@@ -1,4 +1,4 @@
-[gd_scene load_steps=494 format=4 uid="uid://clkhpeqrfyoax"]
+[gd_scene load_steps=495 format=4 uid="uid://clkhpeqrfyoax"]
 
 [ext_resource type="Script" uid="uid://dd3otqv1n5e7k" path="res://scenes_and_scripts/world/level_selection/level_selection.gd" id="1_7qmai"]
 [ext_resource type="PackedScene" uid="uid://by7kis83n7kvx" path="res://scenes_and_scripts/world/level_selection/level_selection_level.tscn" id="2_5iw0q"]
@@ -32,6 +32,7 @@
 [ext_resource type="AudioStream" uid="uid://rvdsv75uvl1g" path="res://assets/SFX/folder/lose_1.wav" id="20_jkp5q"]
 [ext_resource type="Texture2D" uid="uid://dst17rdwer7by" path="res://assets/sprites/animals/MiniWolf.png" id="21_5icjk"]
 [ext_resource type="PackedScene" uid="uid://dr1afg0p05s8p" path="res://scenes_and_scripts/world/levels/level_2.tscn" id="22_854ia"]
+[ext_resource type="Script" uid="uid://b5ux0m2ono6pc" path="res://scenes_and_scripts/world/player/states/player_in_water.gd" id="22_w5r8a"]
 [ext_resource type="PackedScene" uid="uid://f8cwujw0lgie" path="res://scenes_and_scripts/world/levels/level_3.tscn" id="24_i1iog"]
 [ext_resource type="AudioStream" uid="uid://bypv40l21qkvo" path="res://assets/SFX/waterfall.mp3" id="26_mdgjv"]
 [ext_resource type="PackedScene" uid="uid://dwfwwkf3bx52r" path="res://scenes_and_scripts/world/levels/level_5.tscn" id="27_8mm01"]
@@ -6916,7 +6917,7 @@ animation = &"left"
 frame = 2
 frame_progress = 1.0
 
-[node name="ReplayPlayerController" type="Node" parent="Level/Player" node_paths=PackedStringArray("state_machine", "target", "climb_left_raycast", "climb_right_raycast", "climb_ladder_area", "jump_audio", "fall_audio", "jump_particles", "land_particles", "climb_particles")]
+[node name="ReplayPlayerController" type="Node" parent="Level/Player" node_paths=PackedStringArray("state_machine", "target", "climb_left_raycast", "climb_right_raycast", "climb_ladder_area", "in_water_area", "jump_audio", "fall_audio", "in_water_audio", "jump_particles", "land_particles", "climb_particles")]
 script = ExtResource("5_qgt8i")
 state_machine = NodePath("../StateMachine")
 adjust_x_position_on_end = true
@@ -6927,8 +6928,10 @@ coyote_time = 150.0
 climb_left_raycast = NodePath("../RayCastLeft")
 climb_right_raycast = NodePath("../RayCastRight")
 climb_ladder_area = NodePath("../ClimbLadderArea")
+in_water_area = NodePath("../InWaterArea")
 jump_audio = NodePath("../JumpAudio")
 fall_audio = NodePath("../FallAudio")
+in_water_audio = NodePath("../InWaterAudio")
 jump_particles = NodePath("../Particles/JumpParticles")
 land_particles = NodePath("../Particles/LandParticles")
 climb_particles = NodePath("../Particles/ClimbParticles")
@@ -6963,6 +6966,11 @@ metadata/_custom_type_script = "uid://duwb6lw8qv8qa"
 script = ExtResource("15_e2q0a")
 controller = NodePath("../../ReplayPlayerController")
 metadata/_custom_type_script = "uid://cw5xylamhg1ob"
+
+[node name="PlayerInWater" type="Node" parent="Level/Player/StateMachine" node_paths=PackedStringArray("controller")]
+script = ExtResource("22_w5r8a")
+controller = NodePath("../../ReplayPlayerController")
+metadata/_custom_type_script = "uid://b5ux0m2ono6pc"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Player"]
 visible = false

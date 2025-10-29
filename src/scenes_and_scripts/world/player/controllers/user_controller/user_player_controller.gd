@@ -25,10 +25,10 @@ func get_throw_a_rock() -> bool:
 	return Input.is_action_just_pressed("throw_a_rock")
 
 func get_climb_ladder_up() -> bool:
-	return Input.is_action_pressed("ladder_climb_up")
+	return Input.is_action_pressed("climb_or_swim_up")
 
 func get_climb_ladder_down() -> bool:
-	return Input.is_action_pressed("ladder_climb_down")
+	return Input.is_action_pressed("climb_or_swim_down")
 
 func get_climb_ladder_dir() -> int:
-	return Input.get_axis("ladder_climb_up", "ladder_climb_down")
+	return Input.get_axis("climb_or_swim_up", "climb_or_swim_down")

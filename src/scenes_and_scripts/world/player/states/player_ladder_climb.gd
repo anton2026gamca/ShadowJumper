@@ -15,6 +15,8 @@ func process(_delta: float) -> Variant:
 	else: controller.target.velocity.x = 0
 	if y_dir: controller.target.velocity.y = controller.ladder_climb_speed * y_dir
 	else: controller.target.velocity.y = 0
+	if controller.is_in_water():
+		return PlayerInWater
 	if len(controller.climb_ladder_area.get_overlapping_bodies()) == 0:
 		return PlayerFall
 	return null

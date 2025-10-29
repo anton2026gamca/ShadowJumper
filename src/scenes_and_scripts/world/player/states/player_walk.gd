@@ -18,6 +18,8 @@ func process(_delta: float) -> Variant:
 	else:
 		controller.target.velocity.x = move_toward(controller.target.velocity.x, 0, 100)
 	
+	if controller.is_in_water():
+		return PlayerInWater
 	if controller.is_on_floor_buffered() and controller.get_dash() and direction:
 		controller.target.velocity = Vector2(direction * controller.dash_velocity, 0)
 		controller.dash_audio.play()
