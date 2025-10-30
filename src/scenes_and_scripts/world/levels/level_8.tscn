@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=4 uid="uid://d2xrdtdvsbfjo"]
+[gd_scene load_steps=24 format=4 uid="uid://d2xrdtdvsbfjo"]
 
 [ext_resource type="PackedScene" uid="uid://dpy2qsq5apfgn" path="res://scenes_and_scripts/world/levels/level_template.tscn" id="1_ous7s"]
 [ext_resource type="Shader" uid="uid://dt0e8b4xwkx82" path="res://shaders/world.gdshader" id="2_wypki"]
 [ext_resource type="TileSet" uid="uid://8h4fm7v55cnx" path="res://assets/tileset.tres" id="3_curd2"]
 [ext_resource type="Shader" uid="uid://d67737lu1slc" path="res://shaders/fog.gdshader" id="3_l8c2h"]
 [ext_resource type="Shader" uid="uid://dq43apwmmfdoj" path="res://shaders/water.gdshader" id="5_l8c2h"]
+[ext_resource type="PackedScene" uid="uid://ctsgnxa0h53q6" path="res://scenes_and_scripts/world/objects/pickupable_rock/pickupable_rock.tscn" id="5_spee7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_curd2"]
 shader = ExtResource("2_wypki")
@@ -165,6 +166,44 @@ shape = SubResource("WorldBoundaryShape2D_l8c2h")
 
 [node name="Finish" parent="Level" index="4"]
 position = Vector2(2641, 288)
+
+[node name="PickupableRocks" type="Node2D" parent="Level" index="5"]
+
+[node name="PickupableRock" parent="Level/PickupableRocks" index="0" instance=ExtResource("5_spee7")]
+position = Vector2(224, 17)
+
+[node name="PickupableRock2" parent="Level/PickupableRocks" index="1" instance=ExtResource("5_spee7")]
+position = Vector2(501, 215)
+
+[node name="PickupableRock3" parent="Level/PickupableRocks" index="2" instance=ExtResource("5_spee7")]
+position = Vector2(822, 355)
+
+[node name="PickupableRock4" parent="Level/PickupableRocks" index="3" instance=ExtResource("5_spee7")]
+position = Vector2(1003, 397)
+
+[node name="PickupableRock5" parent="Level/PickupableRocks" index="4" instance=ExtResource("5_spee7")]
+position = Vector2(1316, 495)
+
+[node name="PickupableRock6" parent="Level/PickupableRocks" index="5" instance=ExtResource("5_spee7")]
+position = Vector2(1483, 530)
+
+[node name="PickupableRock7" parent="Level/PickupableRocks" index="6" instance=ExtResource("5_spee7")]
+position = Vector2(1745, 519)
+
+[node name="PickupableRock8" parent="Level/PickupableRocks" index="7" instance=ExtResource("5_spee7")]
+position = Vector2(2276, 449)
+
+[node name="PickupableRock9" parent="Level/PickupableRocks" index="8" instance=ExtResource("5_spee7")]
+position = Vector2(1481, 198)
+
+[node name="PickupableRock10" parent="Level/PickupableRocks" index="9" instance=ExtResource("5_spee7")]
+position = Vector2(1872, 235)
+
+[node name="PickupableRock11" parent="Level/PickupableRocks" index="10" instance=ExtResource("5_spee7")]
+position = Vector2(1090, 212)
+
+[node name="PickupableRock12" parent="Level/PickupableRocks" index="11" instance=ExtResource("5_spee7")]
+position = Vector2(-38, -11)
 
 [node name="Water" type="TileMapLayer" parent="." index="7"]
 material = SubResource("ShaderMaterial_uwl5t")
