@@ -12,6 +12,7 @@ func process(delta: float) -> Variant:
 	if controller.get_throw_a_rock():
 		controller.throw_a_rock()
 	if controller.is_in_water():
+		controller.disable_jump = false
 		return PlayerInWater
 	if controller.is_on_floor():
 		#Helpers.camera.shake(last_velocity.y / 1000.0, controller.target.global_position)

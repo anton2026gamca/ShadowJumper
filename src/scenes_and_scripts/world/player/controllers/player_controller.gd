@@ -79,7 +79,7 @@ func get_jump_released() -> bool:
 	return false
 
 func get_jump_buffered() -> bool:
-	return last_jump_time > -jump_buffer_time and not disable_jump
+	return last_jump_time > -jump_buffer_time and not disable_jump or get_jump()
 
 func get_dash() -> bool:
 	return false
