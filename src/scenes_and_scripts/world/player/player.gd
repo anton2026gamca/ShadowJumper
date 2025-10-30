@@ -34,12 +34,12 @@ func _physics_process(_delta: float) -> void:
 		#elif velocity.y > 0:
 			#anim = "down"
 	#else:
-	if velocity.x < 0:
+	if velocity.x < -20:
 		anim = "left"
-	elif velocity.x > 0:
+	elif velocity.x > 20:
 		anim = "right"
 	
-	if anim != "" and sprite.frame == 0:
+	if anim != "" and (sprite.frame == 0 or anim != sprite.animation):
 		sprite.play(anim)
 	elif anim == "" and sprite.frame != 0:
 		sprite.play_backwards(sprite.animation)
