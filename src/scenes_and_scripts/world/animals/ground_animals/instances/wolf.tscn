@@ -116,7 +116,7 @@ max_collects = -1
 metadata/_custom_type_script = "uid://cp60xqistx0h6"
 
 [node name="Wolf" instance=ExtResource("1_rjy74")]
-player_die_reason = "A wolf knocked you to the ground really hard!"
+player_die_reason = "DEATH_WOLF"
 walk_speed = 1200.0
 run_speed = 6300.0
 chance_to_rotate = 0.0

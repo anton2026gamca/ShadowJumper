@@ -55,27 +55,27 @@ metadata/_custom_type_script = "uid://t7tacfv5lkiv"
 
 [sub_resource type="Resource" id="Resource_xsj7n"]
 script = ExtResource("4_vxyb2")
-message = "Great! You just bought [color={item_name_color}]{item_name}[/color] for [color={price_color}]{item_price} E[/color]!"
+message = "SHOP_BOUGHT_ITEM"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_1l807"]
 script = ExtResource("4_vxyb2")
-message = "Hmmm. Looks like [color={item_name_color}]{item_name}[/color] is [color=red]out of stock[/color]!"
+message = "SHOP_OUT_OF_STOCK"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_bs1v0"]
 script = ExtResource("4_vxyb2")
-message = "Oh, [color={price_color}]{player_energy} E[/color] is [color=red]not enough[/color] for [color={item_name_color}]{item_name}[/color]. It costs [color={price_color}]{item_price}[/color]!"
+message = "SHOP_NOT_ENOUGH_ENERGY"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_k2jvw"]
 script = ExtResource("6_143t1")
-message = "Hi, what do you want to buy?"
+message = "SHOP_GREETING"
 metadata/_custom_type_script = "uid://d4mqy1pvl1f2t"
 
 [sub_resource type="Resource" id="Resource_g0kg5"]
 script = ExtResource("5_f3rgw")
-character_name = "Shop"
+character_name = "NPC_SHOP"
 character_name_color = Color(0.505882, 0.729412, 0.156863, 1)
 messages = Array[ExtResource("4_vxyb2")]([SubResource("Resource_k2jvw")])
 metadata/_custom_type_script = "uid://bi3gy0kfnyuym"

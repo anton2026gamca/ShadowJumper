@@ -6,7 +6,7 @@ class_name VolumeSlider
 @export var audio_bus: StringName
 @export var label: String:
 	set(value):
-		if label_node: label_node.text = value
+		if label_node: label_node.text = tr(value)
 		label = value
 	get: return label
 
@@ -22,7 +22,7 @@ var value: float:
 
 
 func _ready() -> void:
-	label_node.text = label
+	label_node.text = tr(label)
 
 
 @warning_ignore("shadowed_variable")

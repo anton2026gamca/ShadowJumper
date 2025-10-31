@@ -65,17 +65,17 @@ shader_parameter/scroll_scale = 1.0
 
 [sub_resource type="Resource" id="Resource_v1ndp"]
 script = ExtResource("8_wn8bj")
-message = "The animals of the forest are not normal anymore. Foxes, wolves, and boars attack everything they see."
+message = "LEVEL2_MSG1"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_r33o3"]
 script = ExtResource("8_wn8bj")
-message = "It’s like they want to erase the spark inside you. You don’t understand them, but you have to survive."
+message = "LEVEL2_MSG2"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_mo2i4"]
 script = ExtResource("13_b24ec")
-character_name = "The Nearly Hopeless Guy (remote)"
+character_name = "NPC_NEARLY_HOPELESS_GUY_REMOTE"
 character_name_color = Color(0.678431, 0.360784, 0.901961, 1)
 character_default_sprite = ExtResource("12_wn8bj")
 messages = Array[ExtResource("8_wn8bj")]([SubResource("Resource_v1ndp"), SubResource("Resource_r33o3")])

@@ -16,7 +16,8 @@ func _ready() -> void:
 		Settings.loaded.connect(update_from_settings)
 
 func open(instant: bool = false) -> void:
-	update_from_settings()
+	if not Engine.is_editor_hint():
+		update_from_settings()
 	super.open(instant)
 
 func close(internal: bool = false) -> void:

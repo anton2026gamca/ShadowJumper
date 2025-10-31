@@ -2,7 +2,7 @@ extends Sprite2D
 class_name Mushroom
 
 
-@export var die_reason: String = "You were electrified by a mushroom :o"
+@export var die_reason: String = "DEATH_MUSHROOM"
 
 @export_group("Hit")
 @export var down_time: float = 7.5

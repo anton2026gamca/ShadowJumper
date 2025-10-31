@@ -2,7 +2,7 @@ extends Node2D
 class_name Water
 
 
-@export var die_reason: String = "You were electrified by water :o"
+@export var die_reason: String = "DEATH_ELECTRIFIED_WATER"
 
 @export var lightning_interval: float = 50
 

@@ -185,6 +185,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nk6nd")
 
 [node name="Header" type="RichTextLabel" parent="."]
+auto_translate_mode = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -215,6 +216,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Exit" type="Button" parent="ControlExit"]
+auto_translate_mode = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -228,7 +230,7 @@ offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_7v0ur")
-text = " ← EXIT"
+text = "EXIT"
 
 [node name="ControlSound" type="Control" parent="."]
 layout_mode = 1
@@ -260,24 +262,25 @@ theme = ExtResource("2_7v0ur")
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ControlSound/Sound/VBoxContainer"]
+auto_translate_mode = 1
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-text = "Sound:"
+text = "SOUND"
 
 [node name="Master" parent="ControlSound/Sound/VBoxContainer" instance=ExtResource("3_pnaky")]
 layout_mode = 2
 audio_bus = &"Master"
-label = "   Master:"
+label = "MASTER_VOLUME"
 
 [node name="SFX" parent="ControlSound/Sound/VBoxContainer" instance=ExtResource("3_pnaky")]
 layout_mode = 2
 audio_bus = &"SFX"
-label = "   SFX:"
+label = "SFX_VOLUME"
 
 [node name="Music" parent="ControlSound/Sound/VBoxContainer" instance=ExtResource("3_pnaky")]
 layout_mode = 2
 audio_bus = &"Music"
-label = "   Music:"
+label = "MUSIC_VOLUME"
 
 [node name="ControlControlsMenu" type="Control" parent="."]
 layout_mode = 1
@@ -291,6 +294,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ControlsMenu" type="Button" parent="ControlControlsMenu"]
+auto_translate_mode = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -304,9 +308,10 @@ offset_bottom = 131.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_7v0ur")
-text = "REBIND CONTROLS"
+text = "REBIND_CONTROLS"
 
 [node name="ResetSave" type="Button" parent="ControlControlsMenu"]
+auto_translate_mode = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -322,7 +327,7 @@ grow_vertical = 2
 theme = ExtResource("2_7v0ur")
 theme_override_styles/focus = SubResource("StyleBoxFlat_xuelm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_b21ql")
-text = "RESET PROGRESS"
+text = "RESET_PROGRESS"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

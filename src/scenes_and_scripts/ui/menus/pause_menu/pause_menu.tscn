@@ -163,6 +163,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nk6nd")
 
 [node name="Header" type="RichTextLabel" parent="."]
+auto_translate_mode = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -194,6 +195,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Resume" type="Button" parent="ControlResume"]
+auto_translate_mode = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -222,6 +224,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="ExitLevel" type="Button" parent="ControlExitLevel"]
+auto_translate_mode = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -235,7 +238,7 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_5mw0v")
-text = "← EXIT LEVEL"
+text = "EXIT_LEVEL"
 
 [node name="ControlSettings" type="Control" parent="."]
 layout_mode = 1
@@ -250,6 +253,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Settings" type="Button" parent="ControlSettings"]
+auto_translate_mode = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

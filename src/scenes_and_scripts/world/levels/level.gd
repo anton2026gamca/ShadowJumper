@@ -2,7 +2,7 @@ extends Node2D
 class_name Level
 
 
-@export var world_bottom_die_reason: String = "You fell out of the world!"
+@export var world_bottom_die_reason: String = "DEATH_FELL_OUT_OF_WORLD"
 @export var camera: Camera2D
 
 var number: int

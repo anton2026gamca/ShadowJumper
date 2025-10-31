@@ -4,6 +4,7 @@ class_name ActionRebindMenu
 
 
 @export var action: StringName
+@export var display: String = ""
 
 @export_tool_button("Update") var update_btn: Callable = update
 
@@ -24,16 +25,16 @@ func _input(event: InputEvent) -> void:
 
 func event_to_str(ev: InputEvent) -> String:
 	if not ev:
-		return "(Not Bound)"
+		return tr("NOT_BOUND")
 	if ev is InputEventKey:
 		return OS.get_keycode_string(ev.physical_keycode)
 	elif ev is InputEventMouseButton:
 		match ev.button_index:
-			MOUSE_BUTTON_LEFT: return "Mouse Left"
-			MOUSE_BUTTON_RIGHT: return "Mouse Right"
-			MOUSE_BUTTON_MIDDLE: return "Mouse Middle"
-			MOUSE_BUTTON_WHEEL_UP: return "Mouse Wheel Up"
-			MOUSE_BUTTON_WHEEL_DOWN: return "Mouse Wheel Down"
+			MOUSE_BUTTON_LEFT: return tr("MOUSE_LEFT")
+			MOUSE_BUTTON_RIGHT: return tr("MOUSE_RIGHT")
+			MOUSE_BUTTON_MIDDLE: return tr("MOUSE_MIDDLE")
+			MOUSE_BUTTON_WHEEL_UP: return tr("MOUSE_WHEEL_UP")
+			MOUSE_BUTTON_WHEEL_DOWN: return tr("MOUSE_WHEEL_DOWN")
 			_: return "Mouse Button " + str(ev.button_index)
 	else:
 		return ev.as_text().substr(0, ev.as_text().find(" ("))
@@ -56,7 +57,7 @@ func get_action_event(action: String, event_index: int) -> InputEvent:
 	return null
 
 func update():
-	label.text = action.capitalize() + ":"
+	label.text = display
 	var events: Array[InputEvent] = InputMap.action_get_events(action)
 	for i: int in len(rebind_buttons):
 		var binding: String = ""
@@ -66,7 +67,7 @@ func update():
 
 func rebind_action(index: int):
 	if not InputMap.has_action(action): return
-	rebind_buttons[index].text = "<Waiting...>"
+	rebind_buttons[index].text = tr("WAITING")
 	rebind_buttons[index].disabled = true
 	is_rebinding = true
 	var event = await on_event

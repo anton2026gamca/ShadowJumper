@@ -49,9 +49,10 @@ theme_override_constants/separation = 0
 layout_mode = 2
 
 [node name="Label" type="Label" parent="TopBar/HBoxContainer/EnergyDisplay"]
+auto_translate_mode = 1
 layout_mode = 2
 theme = ExtResource("2_nhhd0")
-text = "Total Energy: "
+text = "TOTAL_ENERGY"
 
 [node name="EnergyText" type="Label" parent="TopBar/HBoxContainer/EnergyDisplay"]
 layout_mode = 2
@@ -64,9 +65,10 @@ text = "0 E"
 layout_mode = 2
 
 [node name="Label" type="Label" parent="TopBar/HBoxContainer/RocksDisplay"]
+auto_translate_mode = 1
 layout_mode = 2
 theme = ExtResource("2_nhhd0")
-text = "Magical Rocks: "
+text = "MAGICAL_ROCKS"
 
 [node name="RocksText" type="Label" parent="TopBar/HBoxContainer/RocksDisplay"]
 layout_mode = 2

@@ -2,7 +2,7 @@ extends AnimatedSprite2D
 class_name Spikes
 
 
-@export var die_reason: String = "You stepped on really sharp spikes!"
+@export var die_reason: String = "DEATH_SPIKES"
 @export var cooldown: float = 2.0
 @export var hitstop_time: float = 0.2
 

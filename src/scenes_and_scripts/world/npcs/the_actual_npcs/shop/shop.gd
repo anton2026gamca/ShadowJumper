@@ -28,7 +28,7 @@ const TOKEN: Dictionary[String, String] = {
 	PLAYER_ENERGY = "{player_energy}",
 }
 var TOKEN_TO_VALUE: Dictionary[String, Callable] = {
-	TOKEN.ITEM_NAME: func(item: ShopItem) -> String: return item.name,
+	TOKEN.ITEM_NAME: func(item: ShopItem) -> String: return tr("SHOP_ITEM_" + item.name.to_upper().replace(" ", "_")),
 	TOKEN.ITEM_PRICE: func(item: ShopItem) -> String: return str(item.price),
 	TOKEN.ITEM_STOCK: func(item: ShopItem) -> String: return str(int(Helpers.dictionary_get_path(Progress.global_data, ["shop", item.name, "stock"], item.stock))) if item.stock >= 0 else "INF",
 	TOKEN.ITEM_NAME_COLOR: func(item: ShopItem) -> String: return "#" + item.color.to_html(false),
@@ -48,7 +48,7 @@ func parse_items() -> void:
 		message += "[color=" + TOKEN.PRICE_COLOR + "]"
 		for i: int in range(4 - len(parse_message(TOKEN.ITEM_PRICE, item))):
 			message += " "
-		message += TOKEN.ITEM_PRICE + " E[/color]"
+		message += TOKEN.ITEM_PRICE + tr("ENERGY_SUFFIX") + "[/color]"
 		message += "[color=" + TOKEN.DELIMITER_COLOR + "] | [/color]"
 		message += "[color=" + TOKEN.ITEM_STOCK_COLOR + "]"
 		for i: int in range(3 - len(parse_message(TOKEN.ITEM_STOCK, item))):
@@ -61,7 +61,7 @@ func parse_items() -> void:
 		answer.npc_sprite_override = item.sprite
 		pick_item_message.answers.append(answer)
 	var nothing_answer: NPCDialogAnswer = NPCDialogAnswer.new()
-	nothing_answer.text = "[color=gray]Nothing, thanks![/color]"
+	nothing_answer.text = "[color=gray]" + tr("SHOP_NOTHING_THANKS") + "[/color]"
 	nothing_answer.npc_sprite_override = buy_nothing_sprite
 	pick_item_message.answers.append(nothing_answer)
 
@@ -82,7 +82,7 @@ func buy_item(answer: NPCDialogAnswer) -> void:
 			Helpers.spawn_powerup(self, item.powerup, Vector2.ZERO)
 		elif item is ShopRocksItem:
 			# It has to be $Area2D instead of self because of some weird thing with TileMapLayer
-			var text: FloatingText = Helpers.create_floating_text($Area2D, ("+" if item.rocks_amount >= 0 else "") + str(int(item.rocks_amount)) + " R", Vector2(0, -32), item.color, -10)
+			var text: FloatingText = Helpers.create_floating_text($Area2D, ("+" if item.rocks_amount >= 0 else "") + str(int(item.rocks_amount)) + tr("ROCKS_SUFFIX"), Vector2(0, -32), item.color, -10)
 			text.process_mode = Node.PROCESS_MODE_ALWAYS
 			Progress.collect_rocks(item.rocks_amount)
 	

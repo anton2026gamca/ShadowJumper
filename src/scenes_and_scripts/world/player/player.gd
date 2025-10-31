@@ -56,7 +56,7 @@ func _on_death_component_die(reason: String, instant_kill: bool = false) -> void
 	death_audio.pitch_scale = randf() * 0.2 + 0.9
 	death_audio.play()
 	if health_component.lives == 0:
-		died.emit(reason)
+		died.emit(tr(reason))
 		sprite.visible = false
 		Helpers.camera.enter_death_mode(velocity.x)
 		emit_death_particles()

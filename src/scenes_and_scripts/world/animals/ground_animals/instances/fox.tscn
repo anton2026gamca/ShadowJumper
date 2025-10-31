@@ -109,7 +109,7 @@ max_collects = -1
 metadata/_custom_type_script = "uid://cp60xqistx0h6"
 
 [node name="Fox" instance=ExtResource("1_hdi8u")]
-player_die_reason = "A fox bit you!"
+player_die_reason = "DEATH_FOX"
 walk_speed = 600.0
 run_speed = 3000.0
 chance_to_rotate = 0.0

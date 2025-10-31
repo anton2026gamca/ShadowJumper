@@ -86,7 +86,7 @@ shader_parameter/scroll_scale = 1.0
 [node name="World" type="Node2D" node_paths=PackedStringArray("camera")]
 material = SubResource("ShaderMaterial_gp364")
 script = ExtResource("2_qn6tr")
-world_bottom_die_reason = "You fell from too high!"
+world_bottom_die_reason = "DEATH_FELL_TOO_HIGH"
 camera = NodePath("Camera2D")
 metadata/_custom_type_script = "uid://c4fquxdxhixbr"
 

@@ -162,6 +162,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nk6nd")
 
 [node name="Header" type="RichTextLabel" parent="."]
+auto_translate_mode = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -193,7 +194,7 @@ grow_vertical = 2
 
 [node name="Exit" type="Button" parent="ControlExit"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -205,7 +206,7 @@ offset_bottom = -57.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_5sum1")
-text = " ← EXIT"
+text = "EXIT"
 
 [node name="ControlActions" type="Control" parent="."]
 layout_mode = 1
@@ -247,9 +248,10 @@ grow_vertical = 2
 [node name="Pause" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
 layout_mode = 2
 action = &"pause"
+display = "PAUSE_ACTION"
 
 [node name="Label" parent="ControlActions/Actions/VBoxContainer/Pause" index="0"]
-text = "Pause:"
+text = "PAUSE_ACTION"
 
 [node name="PrimaryRebindButton" parent="ControlActions/Actions/VBoxContainer/Pause" index="1"]
 disabled = true
@@ -258,26 +260,32 @@ text = "Escape"
 [node name="MoveLeft" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
 layout_mode = 2
 action = &"move_left"
+display = "MOVE_LEFT"
 
 [node name="MoveRight" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
 layout_mode = 2
 action = &"move_right"
+display = "MOVE_RIGHT"
 
 [node name="Jump" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
 layout_mode = 2
 action = &"jump"
+display = "JUMP"
 
 [node name="ThrowARock" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
 layout_mode = 2
 action = &"throw_a_rock"
+display = "THROW_A_ROCK"
 
-[node name="LadderUp" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
+[node name="ClimbUp" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
 layout_mode = 2
 action = &"climb_or_swim_up"
+display = "CLIMB_UP"
 
-[node name="LadderDown" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
+[node name="ClimbDown" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
 layout_mode = 2
 action = &"climb_or_swim_down"
+display = "CLIMB_DOWN"
 
 [node name="ControlReset" type="Control" parent="."]
 layout_mode = 1
@@ -297,14 +305,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -290.0
+offset_left = -289.0
 offset_top = 210.0
-offset_right = 290.0
-offset_bottom = 241.0
+offset_right = 291.0
+offset_bottom = 242.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_5sum1")
-text = "RESET ALL"
+text = "RESET_ALL"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

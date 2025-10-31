@@ -21,7 +21,8 @@ func _ready() -> void:
 				continue
 			msg.answer_picked.connect(_on_msg_answer_picked.bind(msg))
 			break
-	ask_message.message = ask_message.message.replace("{powerup_price}", str(powerup_price))
+	# Replace the token in the translated message
+	ask_message.message = tr(ask_message.message).replace("{powerup_price}", str(powerup_price))
 
 
 func _on_msg_answer_picked(answer: NPCDialogAnswer, msg: NPCDialogAnswerMessage) -> void:

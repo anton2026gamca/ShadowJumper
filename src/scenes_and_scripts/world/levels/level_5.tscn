@@ -28,17 +28,17 @@ shader_parameter/luminance_weights = Color(0.299, 0.587, 0.114, 1)
 
 [sub_resource type="Resource" id="Resource_su0ne"]
 script = ExtResource("9_k0kab")
-message = "The deeper you go, the stranger the night feels. The mushrooms are everywhere, [color=yellow]glowing[/color] stronger."
+message = "LEVEL5_MSG1"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_shpph"]
 script = ExtResource("9_k0kab")
-message = "You can feel the energy inside them, it's the same as the energy inside you. Maybe that is why they hurt you."
+message = "LEVEL5_MSG2"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_wwy4t"]
 script = ExtResource("9_su0ne")
-character_name = "The Nearly Hopeless Guy (remote)"
+character_name = "NPC_NEARLY_HOPELESS_GUY_REMOTE"
 character_name_color = Color(0.678431, 0.360784, 0.901961, 1)
 character_default_sprite = ExtResource("8_lusup")
 messages = Array[ExtResource("9_k0kab")]([SubResource("Resource_su0ne"), SubResource("Resource_shpph")])

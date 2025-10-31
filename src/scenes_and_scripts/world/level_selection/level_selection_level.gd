@@ -16,7 +16,12 @@ class_name LevelSelectionLevel
 	get: return label_text
 func update_label():
 	if not label: return
-	label.text = label_text.replace("${number}", str(number))
+	label.text = tr("LEVEL_PREFIX") + str(number)
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_TRANSLATION_CHANGED:
+		update_label()
 
 @export var scene: PackedScene
 

@@ -83,10 +83,11 @@ size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="CharacterName" type="Label" parent="UI/Panel/HBoxContainer/VBoxContainer"]
+auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("4_t18u5")
-text = "NO NAME"
+text = "NO_NAME"
 vertical_alignment = 1
 visible_characters_behavior = 1
 
@@ -98,13 +99,14 @@ theme_override_constants/separation = 1
 alignment = 1
 
 [node name="MessageText" type="RichTextLabel" parent="UI/Panel/HBoxContainer/VBoxContainer/VBoxContainer"]
+auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 theme = ExtResource("4_t18u5")
 bbcode_enabled = true
-text = "No message!"
+text = "NO_MESSAGE"
 fit_content = true
 visible_characters_behavior = 1
 
@@ -125,19 +127,21 @@ mouse_filter = 2
 alignment = 2
 
 [node name="ExitButton" type="Button" parent="UI/Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
-visible = false
+auto_translate_mode = 1
 layout_mode = 2
 theme = ExtResource("4_t18u5")
 theme_override_font_sizes/font_size = 12
-text = "EXIT"
+text = "EXIT_DIALOG"
 
 [node name="NextMsgButton" type="Button" parent="UI/Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+auto_translate_mode = 1
 layout_mode = 2
 theme = ExtResource("4_t18u5")
 theme_override_font_sizes/font_size = 12
 text = "NEXT"
 
 [node name="SkipButton" type="Button" parent="UI/Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+auto_translate_mode = 1
 visible = false
 layout_mode = 2
 theme = ExtResource("4_t18u5")
