@@ -119,4 +119,4 @@ func _debug_toggle_all_levels_on() -> void:
 	for lvl: LevelSelectionLevel in all:
 		lvl.visible = true
 	if ui:
-		ui.debug_text.text = ui.debug_text.text.replace(tr("UNLOCK_ALL_LEVELS_HINT"), tr("ALL_LEVELS_UNLOCKED"))
+		ui.debug_text.text = ui.debug_text.text.replace(tr("DEBUG_UNLOCK_ALL_LEVELS_HINT"), tr("DEBUG_ALL_LEVELS_UNLOCKED"))

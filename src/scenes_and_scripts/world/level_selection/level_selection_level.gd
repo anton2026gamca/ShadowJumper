@@ -16,7 +16,7 @@ class_name LevelSelectionLevel
 	get: return label_text
 func update_label():
 	if not label: return
-	label.text = tr("LEVEL_PREFIX") + str(number)
+	label.text = tr("UI_LEVEL_PREFIX") + str(number)
 
 
 func _notification(what: int) -> void:

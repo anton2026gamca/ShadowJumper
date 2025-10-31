@@ -200,7 +200,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_7v0ur")
 theme_override_font_sizes/normal_font_size = 36
-text = "SETTINGS"
+text = "MENU_SETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -230,7 +230,7 @@ offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_7v0ur")
-text = "EXIT"
+text = "MENU_EXIT"
 
 [node name="ControlSound" type="Control" parent="."]
 layout_mode = 1
@@ -265,22 +265,22 @@ layout_mode = 2
 auto_translate_mode = 1
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-text = "SOUND"
+text = "MENU_SOUND"
 
 [node name="Master" parent="ControlSound/Sound/VBoxContainer" instance=ExtResource("3_pnaky")]
 layout_mode = 2
 audio_bus = &"Master"
-label = "MASTER_VOLUME"
+label = "SETTINGS_MASTER_VOLUME"
 
 [node name="SFX" parent="ControlSound/Sound/VBoxContainer" instance=ExtResource("3_pnaky")]
 layout_mode = 2
 audio_bus = &"SFX"
-label = "SFX_VOLUME"
+label = "SETTINGS_SFX_VOLUME"
 
 [node name="Music" parent="ControlSound/Sound/VBoxContainer" instance=ExtResource("3_pnaky")]
 layout_mode = 2
 audio_bus = &"Music"
-label = "MUSIC_VOLUME"
+label = "SETTINGS_MUSIC_VOLUME"
 
 [node name="ControlControlsMenu" type="Control" parent="."]
 layout_mode = 1
@@ -308,7 +308,7 @@ offset_bottom = 131.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_7v0ur")
-text = "REBIND_CONTROLS"
+text = "MENU_REBIND_CONTROLS"
 
 [node name="ResetSave" type="Button" parent="ControlControlsMenu"]
 auto_translate_mode = 1
@@ -327,7 +327,7 @@ grow_vertical = 2
 theme = ExtResource("2_7v0ur")
 theme_override_styles/focus = SubResource("StyleBoxFlat_xuelm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_b21ql")
-text = "RESET_PROGRESS"
+text = "MENU_RESET_PROGRESS"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

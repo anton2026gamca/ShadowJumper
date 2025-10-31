@@ -176,7 +176,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_hwiwd")
 theme_override_font_sizes/normal_font_size = 36
-text = "YOU_DIED"
+text = "MENU_YOU_DIED"
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Header"]
@@ -235,7 +235,7 @@ offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_hwiwd")
-text = "RESPAWN"
+text = "MENU_RESPAWN"
 
 [node name="ControlExitLevel" type="Control" parent="."]
 layout_mode = 1
@@ -263,7 +263,7 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_hwiwd")
-text = "EXIT_LEVEL"
+text = "MENU_EXIT_LEVEL"
 
 [node name="ControlSettings" type="Control" parent="."]
 layout_mode = 1
@@ -291,7 +291,7 @@ offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_hwiwd")
-text = "SETTINGS"
+text = "MENU_SETTINGS"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

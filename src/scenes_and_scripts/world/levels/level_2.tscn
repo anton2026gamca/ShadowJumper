@@ -65,12 +65,12 @@ shader_parameter/scroll_scale = 1.0
 
 [sub_resource type="Resource" id="Resource_v1ndp"]
 script = ExtResource("8_wn8bj")
-message = "LEVEL2_MSG1"
+message = "STORY_LEVEL2_MSG1"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_r33o3"]
 script = ExtResource("8_wn8bj")
-message = "LEVEL2_MSG2"
+message = "STORY_LEVEL2_MSG2"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_mo2i4"]

@@ -48,7 +48,7 @@ func parse_items() -> void:
 		message += "[color=" + TOKEN.PRICE_COLOR + "]"
 		for i: int in range(4 - len(parse_message(TOKEN.ITEM_PRICE, item))):
 			message += " "
-		message += TOKEN.ITEM_PRICE + tr("ENERGY_SUFFIX") + "[/color]"
+		message += TOKEN.ITEM_PRICE + tr("STATS_ENERGY_SUFFIX") + "[/color]"
 		message += "[color=" + TOKEN.DELIMITER_COLOR + "] | [/color]"
 		message += "[color=" + TOKEN.ITEM_STOCK_COLOR + "]"
 		for i: int in range(3 - len(parse_message(TOKEN.ITEM_STOCK, item))):
@@ -82,7 +82,7 @@ func buy_item(answer: NPCDialogAnswer) -> void:
 			Helpers.spawn_powerup(self, item.powerup, Vector2.ZERO)
 		elif item is ShopRocksItem:
 			# It has to be $Area2D instead of self because of some weird thing with TileMapLayer
-			var text: FloatingText = Helpers.create_floating_text($Area2D, ("+" if item.rocks_amount >= 0 else "") + str(int(item.rocks_amount)) + tr("ROCKS_SUFFIX"), Vector2(0, -32), item.color, -10)
+			var text: FloatingText = Helpers.create_floating_text($Area2D, ("+" if item.rocks_amount >= 0 else "") + str(int(item.rocks_amount)) + tr("STATS_ROCKS_SUFFIX"), Vector2(0, -32), item.color, -10)
 			text.process_mode = Node.PROCESS_MODE_ALWAYS
 			Progress.collect_rocks(item.rocks_amount)
 	

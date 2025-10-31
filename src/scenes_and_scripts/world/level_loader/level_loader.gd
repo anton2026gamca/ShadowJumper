@@ -73,12 +73,12 @@ func level_defeated() -> void:
 	var player_lives: int = Helpers.player.health_component.lives
 	is_in_level = false
 	ui.full_screen_text.visible = true
-	ui.full_screen_text.text = tr("LEVEL_DEFEATED") + "\n"
+	ui.full_screen_text.text = tr("UI_LEVEL_DEFEATED") + "\n"
 	ui.full_screen_text.text += "[code]\n"
 	var energy_color: String = Helpers.get_energy_level_color(Progress.level_collected_energy).to_html(false)
-	ui.full_screen_text.text += tr("COLLECTED_ENERGY_THIS_RUN") + "[color=#" + energy_color + "]" + ("+" if Progress.level_collected_energy > 0 else "") + str(int(Progress.level_collected_energy)) + tr("ENERGY_SUFFIX") + "[/color]\n"
+	ui.full_screen_text.text += tr("STATS_COLLECTED_ENERGY_THIS_RUN") + "[color=#" + energy_color + "]" + ("+" if Progress.level_collected_energy > 0 else "") + str(int(Progress.level_collected_energy)) + tr("STATS_ENERGY_SUFFIX") + "[/color]\n"
 	var rocks_color: String = "lime" if Progress.level_rocks > 0 else "yellow"
-	ui.full_screen_text.text += tr("ROCKS_THIS_RUN") + "[color=" + rocks_color + "]" + ("+" if Progress.level_rocks > 0 else "") + str(int(Progress.level_rocks)) + tr("ROCKS_SUFFIX") + "[/color]\n"
+	ui.full_screen_text.text += tr("STATS_ROCKS_THIS_RUN") + "[color=" + rocks_color + "]" + ("+" if Progress.level_rocks > 0 else "") + str(int(Progress.level_rocks)) + tr("STATS_ROCKS_SUFFIX") + "[/color]\n"
 	ui.full_screen_text.text += "[/code]"
 	ui.full_screen_text.visible_characters = 0
 	ui.full_screen_text.process_mode = Node.PROCESS_MODE_ALWAYS

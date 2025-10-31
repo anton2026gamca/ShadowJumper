@@ -52,7 +52,7 @@ layout_mode = 2
 auto_translate_mode = 1
 layout_mode = 2
 theme = ExtResource("2_nhhd0")
-text = "TOTAL_ENERGY"
+text = "STATS_TOTAL_ENERGY"
 
 [node name="EnergyText" type="Label" parent="TopBar/HBoxContainer/EnergyDisplay"]
 layout_mode = 2
@@ -68,7 +68,7 @@ layout_mode = 2
 auto_translate_mode = 1
 layout_mode = 2
 theme = ExtResource("2_nhhd0")
-text = "MAGICAL_ROCKS"
+text = "STATS_MAGICAL_ROCKS"
 
 [node name="RocksText" type="Label" parent="TopBar/HBoxContainer/RocksDisplay"]
 layout_mode = 2

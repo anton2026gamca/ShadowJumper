@@ -87,7 +87,7 @@ auto_translate_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("4_t18u5")
-text = "NO_NAME"
+text = "DIALOG_NO_NAME"
 vertical_alignment = 1
 visible_characters_behavior = 1
 
@@ -106,7 +106,7 @@ size_flags_vertical = 3
 mouse_filter = 2
 theme = ExtResource("4_t18u5")
 bbcode_enabled = true
-text = "NO_MESSAGE"
+text = "DIALOG_NO_MESSAGE"
 fit_content = true
 visible_characters_behavior = 1
 
@@ -131,14 +131,14 @@ auto_translate_mode = 1
 layout_mode = 2
 theme = ExtResource("4_t18u5")
 theme_override_font_sizes/font_size = 12
-text = "EXIT_DIALOG"
+text = "DIALOG_EXIT"
 
 [node name="NextMsgButton" type="Button" parent="UI/Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
 auto_translate_mode = 1
 layout_mode = 2
 theme = ExtResource("4_t18u5")
 theme_override_font_sizes/font_size = 12
-text = "NEXT"
+text = "DIALOG_NEXT"
 
 [node name="SkipButton" type="Button" parent="UI/Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
 auto_translate_mode = 1
@@ -146,7 +146,7 @@ visible = false
 layout_mode = 2
 theme = ExtResource("4_t18u5")
 theme_override_font_sizes/font_size = 12
-text = "SKIP"
+text = "DIALOG_SKIP"
 
 [node name="TypingSound" type="AudioStreamPlayer" parent="UI"]
 stream = ExtResource("5_gf26f")

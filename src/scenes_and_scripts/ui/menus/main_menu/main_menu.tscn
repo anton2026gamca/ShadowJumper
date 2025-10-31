@@ -189,7 +189,7 @@ offset_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_4n5uu")
-text = "PLAY"
+text = "MENU_PLAY"
 
 [node name="ControlSettings" type="Control" parent="."]
 layout_mode = 1
@@ -218,7 +218,7 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_4n5uu")
-text = "SETTINGS"
+text = "MENU_SETTINGS"
 
 [node name="ControlToggleLanguage" type="Control" parent="."]
 layout_mode = 1
@@ -247,7 +247,7 @@ offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_4n5uu")
-text = "TOGGLE_LANGUAGE"
+text = "MENU_TOGGLE_LANGUAGE"
 
 [node name="Logo" type="TextureRect" parent="."]
 layout_mode = 1

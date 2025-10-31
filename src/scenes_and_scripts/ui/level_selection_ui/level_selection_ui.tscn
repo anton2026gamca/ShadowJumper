@@ -50,7 +50,7 @@ layout_mode = 2
 auto_translate_mode = 1
 layout_mode = 2
 theme = ExtResource("2_dsqpm")
-text = "TOTAL_ENERGY"
+text = "STATS_TOTAL_ENERGY"
 
 [node name="EnergyText" type="Label" parent="TotalEnergyDisplay/HBoxContainer"]
 layout_mode = 2

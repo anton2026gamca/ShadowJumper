@@ -1,80 +1,77 @@
 keys;en;ja
-PLAY;PLAY;プレイ
-SETTINGS;SETTINGS;設定
-TOGGLE_LANGUAGE;TOGGLE LANGUAGE;言語切替
-PAUSED;PAUSED;一時停止
-RESUME;RESUME;再開
-EXIT_LEVEL;← EXIT LEVEL;← レベル退出
-YOU_DIED;YOU DIED!;死亡！
-RESPAWN;RESPAWN;リスポーン
-CONTROLS;CONTROLS;操作
-EXIT;← EXIT;← 戻る
-RESET_PROGRESS;RESET PROGRESS;進行状況リセット
-REBIND_CONTROLS;REBIND CONTROLS;キー再設定
-SOUND;Sound:;サウンド：
-MASTER_VOLUME;Master:;マスター：
-SFX_VOLUME;SFX:;効果音：
-MUSIC_VOLUME;Music:;音楽：
-RESET_ALL;RESET ALL;全てリセット
-NO_NAME;NO NAME;名無し
-NO_MESSAGE;No message!;メッセージなし！
-NEXT;NEXT;次へ
-SKIP;SKIP;スキップ
-EXIT_DIALOG;EXIT;終了
-PAUSE_ACTION;Pause:;一時停止：
-MOVE_LEFT;Move Left:;左移動：
-MOVE_RIGHT;Move Right:;右移動：
-JUMP;Jump:;ジャンプ：
-THROW_A_ROCK;Throw A Rock:;石を投げる：
-CLIMB_UP;Climb Or Swim Up:;登る・泳ぐ（上）：
-CLIMB_DOWN;Climb Or Swim Down:;登る・泳ぐ（下）：
-WAITING;<Waiting...>;<入力待ち...>
-NOT_BOUND;(Not Bound);(未設定)
-MOUSE_LEFT;Mouse Left;マウス左
-MOUSE_RIGHT;Mouse Right;マウス右
-MOUSE_MIDDLE;Mouse Middle;マウス中
-MOUSE_WHEEL_UP;Mouse Wheel Up;マウスホイール上
-MOUSE_WHEEL_DOWN;Mouse Wheel Down;マウスホイール下
-NO_NAME;NO NAME;名前なし
-NO_MESSAGE;No message!;メッセージなし！
-NEXT;NEXT;次へ
-SKIP;SKIP;スキップ
-EXIT_DIALOG;EXIT;終了
-TOTAL_ENERGY;Total Energy: ;総エネルギー：
-ENERGY_SUFFIX; E; E
-ROCKS_SUFFIX; R; R
-COLLECTED_ENERGY_THIS_RUN;Collected energy this run: ;今回収集したエネルギー：
-ROCKS_THIS_RUN;Rocks this run: ;今回の石：
-LEVEL_PREFIX;Level ;レベル
+MENU_PLAY;PLAY;プレイ
+MENU_SETTINGS;SETTINGS;設定
+MENU_TOGGLE_LANGUAGE;TOGGLE LANGUAGE;言語切替
+MENU_PAUSED;PAUSED;一時停止
+MENU_RESUME;RESUME;再開
+MENU_EXIT_LEVEL;← EXIT LEVEL;← レベル退出
+MENU_YOU_DIED;YOU DIED!;死亡！
+MENU_RESPAWN;RESPAWN;リスポーン
+MENU_CONTROLS;CONTROLS;操作
+MENU_EXIT;← EXIT;← 戻る
+MENU_RESET_PROGRESS;RESET PROGRESS;進行状況リセット
+MENU_REBIND_CONTROLS;REBIND CONTROLS;キー再設定
+MENU_SOUND;Sound:;サウンド：
+MENU_RESET_ALL;RESET ALL;全てリセット
+SETTINGS_MASTER_VOLUME;Master:;マスター：
+SETTINGS_SFX_VOLUME;SFX:;効果音：
+SETTINGS_MUSIC_VOLUME;Music:;音楽：
+DIALOG_NO_NAME;NO NAME;名無し
+DIALOG_NO_MESSAGE;No message!;メッセージなし！
+DIALOG_NEXT;NEXT;次へ
+DIALOG_SKIP;SKIP;スキップ
+DIALOG_EXIT;EXIT;終了
+CONTROLS_PAUSE_ACTION;Pause:;一時停止：
+CONTROLS_MOVE_LEFT;Move Left:;左移動：
+CONTROLS_MOVE_RIGHT;Move Right:;右移動：
+CONTROLS_JUMP;Jump:;ジャンプ：
+CONTROLS_THROW_A_ROCK;Throw A Rock:;石を投げる：
+CONTROLS_CLIMB_UP;Climb Or Swim Up:;登る・泳ぐ（上）：
+CONTROLS_CLIMB_DOWN;Climb Or Swim Down:;登る・泳ぐ（下）：
+CONTROLS_WAITING;<Waiting...>;<入力待ち...>
+CONTROLS_NOT_BOUND;(Not Bound);(未設定)
+CONTROLS_MOUSE_LEFT;Mouse Left;マウス左
+CONTROLS_MOUSE_RIGHT;Mouse Right;マウス右
+CONTROLS_MOUSE_MIDDLE;Mouse Middle;マウス中
+CONTROLS_MOUSE_WHEEL_UP;Mouse Wheel Up;マウスホイール上
+CONTROLS_MOUSE_WHEEL_DOWN;Mouse Wheel Down;マウスホイール下
+STATS_TOTAL_ENERGY;Total Energy: ;総エネルギー：
+STATS_ENERGY_SUFFIX; E; E
+STATS_ROCKS_SUFFIX; R; R
+STATS_COLLECTED_ENERGY_THIS_RUN;Collected energy this run: ;今回収集したエネルギー：
+STATS_ROCKS_THIS_RUN;Rocks this run: ;今回集めた岩：
+STATS_MAGICAL_ROCKS;Magical Rocks: ;魔法の石：
+UI_LEVEL_PREFIX;Level ;レベル
+UI_LEVEL_DEFEATED;LEVEL\nDEFEATED !!!;レベル\n撃破 !!!
 DEBUG_BUILD;DEBUG BUILD;デバッグビルド
-VERSION_TAG;v2.0;v2.0
-UNLOCK_ALL_LEVELS_HINT;Press [color=lightblue]L[/color] to unlock all levels;[color=lightblue]L[/color]を押すと全レベル解除
-ALL_LEVELS_UNLOCKED;All levels ulocked!;全レベル解除完了！
-ESC_MAIN_MENU;[color=lightblue][Esc][/color] - Main Menu;[color=lightblue][Esc][/color] - メインメニュー
+DEBUG_VERSION_TAG;v2.0;v2.0
+DEBUG_UNLOCK_ALL_LEVELS_HINT;Press [color=lightblue]L[/color] to unlock all levels;[color=lightblue]L[/color]を押すと全レベル解除
+DEBUG_ALL_LEVELS_UNLOCKED;All levels ulocked!;全レベル解除完了！
+DEBUG_ESC_MAIN_MENU;[color=lightblue][Esc][/color] - Main Menu;[color=lightblue][Esc][/color] - メインメニュー
 DEBUG_TEXT;[ [color=gold]v2.0[/color] ]  [ [color=green]DEBUG BUILD[/color] ]\nPress [color=lightblue]L[/color] to unlock all levels;[ [color=gold]v2.0[/color] ]  [ [color=green]デバッグビルド[/color] ]\n[color=lightblue]L[/color]を押すと全レベル解除
 NPC_NEARLY_HOPELESS_GUY;The Nearly Hopeless Guy;ほぼ絶望的な男
 NPC_NEARLY_HOPELESS_GUY_REMOTE;The Nearly Hopeless Guy (remote);ほぼ絶望的な男（遠隔）
 NPC_SHOP;Shop;ショップ
-LEVEL1_MSG1;Hi, I finally found you! We need your help! Let me tell you what happened [color=green]deep in the forest[/color].;こんにちは、やっと見つけた！助けが必要だ！[color=green]森の奥深く[/color]で何が起こったか教えよう。
-LEVEL1_MSG2;A long time ago, people wanted power from deep inside the earth. They dug too far, and they broke [color=purple]something very old[/color].;昔々、人々は地球の奥深くから力を求めた。掘りすぎて、[color=purple]とても古いもの[/color]を壊してしまった。
-LEVEL1_MSG3;[color=yellow]Strange energy[/color] came out and changed the world forever. Now the night is not safe anymore.;[color=yellow]奇妙なエネルギー[/color]が出てきて、世界を永遠に変えてしまった。今や夜は安全ではない。
-LEVEL1_MSG4;Mushrooms got gigantic and glow with that energy, but their light is not good.;キノコは巨大になり、そのエネルギーで光るが、その光は良くない。
-LEVEL1_MSG5;From that broken energy you were born, a [color=orange]small orange guy[/color].;その壊れたエネルギーから君は生まれた、[color=orange]小さなオレンジの存在[/color]だ。
-LEVEL1_MSG6;For some reason, the energy can't control you, unlike us. That's why we need you! Please save the world and stop whatever is there!;なぜか、エネルギーは私たちと違って君を制御できない。だから君が必要なんだ！世界を救って、そこにあるものを止めてくれ！
-LEVEL1_MSG7;Here, take this! This way, I can help you from a safe distance.;さあ、これを受け取ってくれ！これで安全な距離から君を助けることができる。
-LEVEL2_MSG1;The animals of the forest are not normal anymore. Foxes, wolves, and boars attack everything they see.;森の動物たちはもう普通ではない。キツネ、オオカミ、イノシシは見るものすべてを攻撃する。
-LEVEL2_MSG2;It's like they want to erase the spark inside you. You don't understand them, but you have to survive.;彼らは君の中の火花を消したいようだ。理解できないが、生き延びなければならない。
-LEVEL5_MSG1;The deeper you go, the stranger the night feels. The mushrooms are everywhere, [color=yellow]glowing[/color] stronger.;深く進むほど、夜は奇妙に感じる。キノコはどこにでもあり、より強く[color=yellow]光っている[/color]。
-LEVEL5_MSG2;You can feel the energy inside them, it's the same as the energy inside you. Maybe that is why they hurt you.;その中にエネルギーを感じる、それは君の中のエネルギーと同じだ。だから君を傷つけるのかもしれない。
-LEVEL6_MSG1;Something even [color=red]worse[/color] is waiting. You hear a [color=red]terrible[/color] buzzing in the forest.;さらに[color=red]悪いもの[/color]が待っている。森で[color=red]恐ろしい[/color]羽音が聞こえる。
-LEVEL6_MSG2;It's a [color=yellow]bee[/color], not a normal bee. It is huge, twisted by the broken energy. It shoots its stingers like arrows.;それは[color=yellow]蜂[/color]だが、普通の蜂ではない。巨大で、壊れたエネルギーによってねじれている。針を矢のように撃つ。
-LEVEL6_MSG3;It guards something, maybe the truth. To keep going, you must defeat it!;何かを守っている、おそらく真実を。進むためには、それを倒さなければならない！
-POWERUP_NPC_ASK;If you have [color=yellow]{powerup_price} E[/color], I can send you a powerup, do you want to?;[color=yellow]{powerup_price} E[/color]持っていれば、パワーアップを送ることができます。欲しいですか？
+STORY_LEVEL1_MSG1;Hi, I finally found you! We need your help! Let me tell you what happened [color=green]deep in the forest[/color].;こんにちは、やっと見つけた！助けが必要だ！[color=green]森の奥深く[/color]で何が起こったか教えよう。
+STORY_LEVEL1_MSG2;A long time ago, people wanted power from deep inside the earth. They dug too far, and they broke [color=purple]something very old[/color].;昔々、人々は地球の奥深くから力を求めた。掘りすぎて、[color=purple]とても古いもの[/color]を壊してしまった。
+STORY_LEVEL1_MSG3;[color=yellow]Strange energy[/color] came out and changed the world forever. Now the night is not safe anymore.;[color=yellow]奇妙なエネルギー[/color]が出てきて、世界を永遠に変えてしまった。今や夜は安全ではない。
+STORY_LEVEL1_MSG4;Mushrooms got gigantic and glow with that energy, but their light is not good.;キノコは巨大になり、そのエネルギーで光るが、その光は良くない。
+STORY_LEVEL1_MSG5;From that broken energy you were born, a [color=orange]small orange guy[/color].;その壊れたエネルギーから君は生まれた、[color=orange]小さなオレンジの存在[/color]だ。
+STORY_LEVEL1_MSG6;For some reason, the energy can't control you, unlike us. That's why we need you! Please save the world and stop whatever is there!;なぜか、エネルギーは私たちと違って君を制御できない。だから君が必要なんだ！世界を救って、そこにあるものを止めてくれ！
+STORY_LEVEL1_MSG7;Here, take this! This way, I can help you from a safe distance.;さあ、これを受け取ってくれ！これで安全な距離から君を助けることができる。
+STORY_LEVEL2_MSG1;The animals of the forest are not normal anymore. Foxes, wolves, and boars attack everything they see.;森の動物たちはもう普通ではない。キツネ、オオカミ、イノシシは見るものすべてを攻撃する。
+STORY_LEVEL2_MSG2;It's like they want to erase the spark inside you. You don't understand them, but you have to survive.;彼らは君の中の火花を消したいようだ。理解できないが、生き延びなければならない。
+STORY_LEVEL5_MSG1;The deeper you go, the stranger the night feels. The mushrooms are everywhere, [color=yellow]glowing[/color] stronger.;深く進むほど、夜は奇妙に感じる。キノコはどこにでもあり、より強く[color=yellow]光っている[/color]。
+STORY_LEVEL5_MSG2;You can feel the energy inside them, it's the same as the energy inside you. Maybe that is why they hurt you.;その中にエネルギーを感じる、それは君の中のエネルギーと同じだ。だから君を傷つけるのかもしれない。
+STORY_LEVEL6_MSG1;Something even [color=red]worse[/color] is waiting. You hear a [color=red]terrible[/color] buzzing in the forest.;さらに[color=red]悪いもの[/color]が待っている。森で[color=red]恐ろしい[/color]羽音が聞こえる。
+STORY_LEVEL6_MSG2;It's a [color=yellow]bee[/color], not a normal bee. It is huge, twisted by the broken energy. It shoots its stingers like arrows.;それは[color=yellow]蜂[/color]だが、普通の蜂ではない。巨大で、壊れたエネルギーによってねじれている。針を矢のように撃つ。
+STORY_LEVEL6_MSG3;It guards something, maybe the truth. To keep going, you must defeat it!;何かを守っている、おそらく真実を。進むためには、それを倒さなければならない！
+POWERUP_NPC_ASK;If you have [color=yellow]{powerup_price} E[/color], I can send you a powerup, do you want to?;[color=yellow]{powerup_price} E[/color]があれば、パワーアップを送れるけど、欲しい？
 POWERUP_NPC_YES;Yes!;はい！
 POWERUP_NPC_NO;No;いいえ
 POWERUP_NPC_NO_MSG;Ok!;わかりました！
-POWERUP_NPC_ISSUED;Great! You should've received it!;素晴らしい！受け取ったはずです！
-POWERUP_NPC_NOT_ISSUED;Hmmm, something went wrong. Maybe you don't have enough energy.;うーん、何か問題がありました。エネルギーが足りないのかもしれません。
+POWERUP_NPC_ISSUED;Great! You should've received it!;素晴らしい！受け取ったはずだ！
+POWERUP_NPC_NOT_ISSUED;Hmmm, something went wrong. Maybe you don't have enough energy.;うーん、何かがおかしい。エネルギーが足りないかもしれない。
 SHOP_GREETING;Welcome to my shop! What would you like to buy?;私のお店へようこそ！何を買いますか？
 SHOP_BOUGHT_ITEM;Great! You just bought [color={item_name_color}]{item_name}[/color] for [color={price_color}]{item_price} E[/color]!;素晴らしい！[color={item_name_color}]{item_name}[/color]を[color={price_color}]{item_price} E[/color]で購入しました！
 SHOP_OUT_OF_STOCK;Hmmm. Looks like [color={item_name_color}]{item_name}[/color] is [color=red]out of stock[/color]!;うーん。[color={item_name_color}]{item_name}[/color]は[color=red]在庫切れ[/color]のようだ！
@@ -82,14 +79,7 @@ SHOP_NOT_ENOUGH_ENERGY;Oh, [color={price_color}]{player_energy} E[/color] is [co
 SHOP_ITEM_HEALTH_POWERUP;Health Powerup;体力パワーアップ
 SHOP_ITEM_15_MAGICAL_ROCKS;15 Magical Rocks;魔法の石15個
 SHOP_ITEM_MYSTERY_ITEM;Mystery Item;謎のアイテム
-POWERUP_NPC_ASK;If you have [color=yellow]{powerup_price} E[/color], I can send you a powerup, do you want to?;[color=yellow]{powerup_price} E[/color]があれば、パワーアップを送れるけど、欲しい？
-POWERUP_NPC_YES;Yes!;はい！
-POWERUP_NPC_NO;Ok!;いいえ！
-POWERUP_NPC_ISSUED;Great! You should've received it!;素晴らしい！受け取ったはずだ！
-POWERUP_NPC_NOT_ISSUED;Hmmm, something went wrong. Maybe you don't have enough energy.;うーん、何かがおかしい。エネルギーが足りないかもしれない。
 SHOP_NOTHING_THANKS;Nothing, thanks!;何もいりません、ありがとう！
-MAGICAL_ROCKS;Magical Rocks: ;魔法の石：
-LEVEL_DEFEATED;LEVEL\nDEFEATED !!!;レベル\n撃破 !!!
 TIP_POWERUP;This is a [color=lightblue]powerup[/color]!\n↓;これは[color=lightblue]パワーアップ[/color]だ！\n↓
 TIP_REBIND_CONTROLS;You can rebind your controls!\nPress [color=lightblue][Esc][/color]  [color=gray]->[/color]  Settings  [color=gray]->[/color]  Rebind Controls;コントロールを再設定できます！\n[color=lightblue][Esc][/color]を押す  [color=gray]->[/color]  設定  [color=gray]->[/color]  キー再設定
 TIP_HOLD_JUMP;Hold [color=lightblue]jump[/color] to jump higher!;[color=lightblue]ジャンプ[/color]を長押しで高く跳べる！
@@ -105,4 +95,3 @@ DEATH_BEE_BULLET;A bee shot you!;蜂に撃たれた！
 DEATH_ELECTRIFIED_WATER;You were electrified by water :o;水に感電した :o
 DEATH_SPIKES;You stepped on really sharp spikes!;本当に鋭い棘を踏んだ！
 DEATH_MUSHROOM;You were electrified by a mushroom :o;キノコに感電した :o
-

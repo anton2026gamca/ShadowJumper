@@ -25,16 +25,16 @@ func _input(event: InputEvent) -> void:
 
 func event_to_str(ev: InputEvent) -> String:
 	if not ev:
-		return tr("NOT_BOUND")
+		return tr("CONTROLS_NOT_BOUND")
 	if ev is InputEventKey:
 		return OS.get_keycode_string(ev.physical_keycode)
 	elif ev is InputEventMouseButton:
 		match ev.button_index:
-			MOUSE_BUTTON_LEFT: return tr("MOUSE_LEFT")
-			MOUSE_BUTTON_RIGHT: return tr("MOUSE_RIGHT")
-			MOUSE_BUTTON_MIDDLE: return tr("MOUSE_MIDDLE")
-			MOUSE_BUTTON_WHEEL_UP: return tr("MOUSE_WHEEL_UP")
-			MOUSE_BUTTON_WHEEL_DOWN: return tr("MOUSE_WHEEL_DOWN")
+			MOUSE_BUTTON_LEFT: return tr("CONTROLS_MOUSE_LEFT")
+			MOUSE_BUTTON_RIGHT: return tr("CONTROLS_MOUSE_RIGHT")
+			MOUSE_BUTTON_MIDDLE: return tr("CONTROLS_MOUSE_MIDDLE")
+			MOUSE_BUTTON_WHEEL_UP: return tr("CONTROLS_MOUSE_WHEEL_UP")
+			MOUSE_BUTTON_WHEEL_DOWN: return tr("CONTROLS_MOUSE_WHEEL_DOWN")
 			_: return "Mouse Button " + str(ev.button_index)
 	else:
 		return ev.as_text().substr(0, ev.as_text().find(" ("))
@@ -67,7 +67,7 @@ func update():
 
 func rebind_action(index: int):
 	if not InputMap.has_action(action): return
-	rebind_buttons[index].text = tr("WAITING")
+	rebind_buttons[index].text = tr("CONTROLS_WAITING")
 	rebind_buttons[index].disabled = true
 	is_rebinding = true
 	var event = await on_event

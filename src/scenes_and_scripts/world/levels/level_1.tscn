@@ -71,37 +71,37 @@ shader_parameter/scroll_scale = 1.0
 [sub_resource type="Resource" id="Resource_mwxj1"]
 script = ExtResource("9_lbqyf")
 character_sprite_override = ExtResource("10_fcg3k")
-message = "LEVEL1_MSG7"
+message = "STORY_LEVEL1_MSG7"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_lbqyf"]
 script = ExtResource("9_lbqyf")
-message = "LEVEL1_MSG1"
+message = "STORY_LEVEL1_MSG1"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_sxcxt"]
 script = ExtResource("9_lbqyf")
-message = "LEVEL1_MSG2"
+message = "STORY_LEVEL1_MSG2"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_15ffy"]
 script = ExtResource("9_lbqyf")
-message = "LEVEL1_MSG3"
+message = "STORY_LEVEL1_MSG3"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_css43"]
 script = ExtResource("9_lbqyf")
-message = "LEVEL1_MSG4"
+message = "STORY_LEVEL1_MSG4"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_gyv5q"]
 script = ExtResource("9_lbqyf")
-message = "LEVEL1_MSG5"
+message = "STORY_LEVEL1_MSG5"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_x3vl5"]
 script = ExtResource("9_lbqyf")
-message = "LEVEL1_MSG6"
+message = "STORY_LEVEL1_MSG6"
 metadata/_custom_type_script = "uid://dfa7rp0fl76u0"
 
 [sub_resource type="Resource" id="Resource_ytwps"]

@@ -7509,7 +7509,7 @@ grow_vertical = 2
 theme = ExtResource("19_noog6")
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
-text = "ESC_MAIN_MENU"
+text = "DEBUG_ESC_MAIN_MENU"
 horizontal_alignment = 1
 vertical_alignment = 1
 
