@@ -3,7 +3,7 @@ class_name FpsText
 
 
 func _ready() -> void:
-	if OS.has_feature("template"):
+	if not OS.is_debug_build():
 		await get_tree().process_frame
 		get_parent().remove_child(self)
 		queue_free()

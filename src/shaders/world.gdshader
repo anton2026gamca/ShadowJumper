@@ -28,7 +28,7 @@ void fragment() {
 	
 	vec3 final_color = mix(COLOR.rgb, night_color, night_intensity);
 	
-	if (COLOR.a == 0.4980392157) {
+	if (COLOR.a >= 0.48 && COLOR.a <= 0.5) {
 		COLOR.a = 1.0; // Don't apply shader for pixels with a = 127/255
 	} else {
 		COLOR.rgb = final_color;
