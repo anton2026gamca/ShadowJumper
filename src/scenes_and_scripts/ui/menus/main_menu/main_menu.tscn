@@ -176,6 +176,7 @@ mouse_filter = 2
 
 [node name="Play" type="Button" parent="ControlPlay"]
 auto_translate_mode = 1
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -205,6 +206,7 @@ mouse_filter = 2
 
 [node name="Settings" type="Button" parent="ControlSettings"]
 auto_translate_mode = 1
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -234,6 +236,7 @@ mouse_filter = 2
 
 [node name="ToggleLanguage" type="Button" parent="ControlToggleLanguage"]
 auto_translate_mode = 1
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5

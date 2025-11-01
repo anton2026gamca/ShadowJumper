@@ -1,13 +1,14 @@
 extends Node2D
 
 
-@export var level_parent: Node
+@export var level_parent: Node2D
 var current_level_number: int
 var current_level_data: Dictionary
 var current_level_scene: PackedScene
 var current_level_node: Level
 var is_in_level: bool = false
 @onready var ui: LevelsUI = $UICanvasLayer/UI
+@onready var level_ui_nodes: Node2D = $WorldCanvasLayer/LevelUINodes
 
 @export var energy_on_player_death: float = -100
 
@@ -18,9 +19,15 @@ func _ready() -> void:
 	ui.visible = false
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pause") and is_in_level:
-		if get_tree().paused and ui.pause_menu.is_open: ui.resume()
-		elif not get_tree().paused: ui.pause()
+	if is_in_level:
+		if Input.is_action_just_pressed("pause"):
+			if get_tree().paused and ui.pause_menu.is_open: ui.resume()
+			elif not get_tree().paused: ui.pause()
+		_update_level_ui_nodes_postition.call_deferred()
+
+func _update_level_ui_nodes_postition() -> void:
+	if not current_level_node or not current_level_node.camera or not level_ui_nodes: return
+	level_ui_nodes.position = (get_viewport_rect().size * 0.5) - (current_level_node.camera.get_screen_center_position() * 3)
 
 
 func load_level(level: PackedScene, level_number: int, player_lives_override: int = 1) -> void:
@@ -47,6 +54,12 @@ func load_level(level: PackedScene, level_number: int, player_lives_override: in
 	ui.visible = true
 	level_parent.add_child.call_deferred(node)
 	await get_tree().process_frame
+	level_ui_nodes.scale = Vector2(1, 1)
+	for ui_node: Control in node.ui_nodes:
+		if not ui_node: continue
+		ui_node.reparent(level_ui_nodes)
+	level_ui_nodes.scale = Vector2(3, 3)
+	_update_level_ui_nodes_postition()
 	if player_lives_override > 0:
 		Helpers.player.health_component.lives = player_lives_override
 
@@ -59,6 +72,9 @@ func exit_level(args: Array) -> void:
 	current_level_node = null
 	exit_level_signal.emit(args)
 	ui.visible = false
+	for child: Node in level_ui_nodes.get_children():
+		level_ui_nodes.remove_child(child)
+		child.queue_free()
 
 func player_died(reason: String) -> void:
 	if not is_in_level:

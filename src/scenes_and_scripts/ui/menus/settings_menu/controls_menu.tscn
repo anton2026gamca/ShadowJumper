@@ -246,6 +246,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Pause" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 action = &"pause"
 display = "CONTROLS_PAUSE_ACTION"
@@ -258,31 +259,37 @@ disabled = true
 text = "Escape"
 
 [node name="MoveLeft" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 action = &"move_left"
 display = "CONTROLS_MOVE_LEFT"
 
 [node name="MoveRight" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 action = &"move_right"
 display = "CONTROLS_MOVE_RIGHT"
 
 [node name="Jump" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 action = &"jump"
 display = "CONTROLS_JUMP"
 
 [node name="ThrowARock" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 action = &"throw_a_rock"
 display = "CONTROLS_THROW_A_ROCK"
 
 [node name="ClimbUp" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 action = &"climb_or_swim_up"
 display = "CONTROLS_CLIMB_UP"
 
 [node name="ClimbDown" parent="ControlActions/Actions/VBoxContainer" instance=ExtResource("3_cfuax")]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 action = &"climb_or_swim_down"
 display = "CONTROLS_CLIMB_DOWN"

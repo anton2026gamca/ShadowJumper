@@ -1,4 +1,5 @@
 extends Node2D
+class_name LevelSelection
 
 
 @export var ui: LevelSelectionUi
@@ -10,10 +11,19 @@ var current_level: LevelSelectionLevel
 @export var camera: CameraPlus
 @export var player: Player
 
+@export var ui_nodes: Array[Control] = []
+var levels: Array[LevelSelectionLevel] = []
+
+signal entered_level
+signal exited_level
+
 
 func _ready() -> void:
+	for node: Node in find_children("", "LevelSelectionLevel"):
+		if node is LevelSelectionLevel:
+			levels.append(node)
 	current_level = start_level
-	for level: LevelSelectionLevel in find_children("", "LevelSelectionLevel"):
+	for level: LevelSelectionLevel in levels:
 		if level != start_level:
 			level.visible = false
 	for key: int in Progress.levels_data.keys():
@@ -54,13 +64,13 @@ func _process(_delta: float) -> void:
 
 
 func find_level_by_number(num: int) -> LevelSelectionLevel:
-	var levels: Array[Node] = find_children("", "LevelSelectionLevel")
 	var index: int = levels.find_custom(func(level: LevelSelectionLevel) -> bool: return level.number == num)
 	if index < 0:
 		return null
 	return levels[index]
 
 func enter_level() -> void:
+	entered_level.emit()
 	Progress.player_lives = player.health_component.lives
 	var player_lives_before: int = player.health_component.lives
 	var parent: Node = get_parent()
@@ -97,6 +107,7 @@ func enter_level() -> void:
 	Progress.player_lives = player.health_component.lives
 	ui.collected_energy_animation()
 	Progress._save()
+	exited_level.emit()
 
 func move_to_level(dir: Vector2i) -> void:
 	var new_level: LevelSelectionLevel = current_level.relationships[dir] if dir in current_level.relationships else null

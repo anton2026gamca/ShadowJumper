@@ -16,7 +16,9 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 expand_margin_left = 8.0
+expand_margin_top = 5.0
 expand_margin_right = 7.0
+expand_margin_bottom = 5.0
 
 [node name="LevelsUI" type="Control"]
 process_mode = 3
@@ -32,12 +34,13 @@ node_indicator_scene = ExtResource("2_1q5nf")
 
 [node name="TopBar" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -117.0
+offset_top = 7.0
 offset_right = 117.0
-offset_bottom = 72.0
+offset_bottom = 50.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nrncv")
 
@@ -46,6 +49,7 @@ layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="EnergyDisplay" type="HBoxContainer" parent="TopBar/HBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="TopBar/HBoxContainer/EnergyDisplay"]
@@ -62,6 +66,7 @@ theme_override_font_sizes/font_size = 18
 text = "0 E"
 
 [node name="RocksDisplay" type="HBoxContainer" parent="TopBar/HBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="TopBar/HBoxContainer/RocksDisplay"]
@@ -107,6 +112,7 @@ layout_mode = 1
 settings_menu = NodePath("../SettingsMenu")
 
 [node name="SettingsMenu" parent="." node_paths=PackedStringArray("controls_menu") instance=ExtResource("4_mey4e")]
+visible = false
 layout_mode = 1
 controls_menu = NodePath("../ControlsMenu")
 

@@ -48,7 +48,7 @@ DEBUG_VERSION_TAG;v2.0;v2.0
 DEBUG_UNLOCK_ALL_LEVELS_HINT;Press [color=lightblue]L[/color] to unlock all levels;[color=lightblue]L[/color]を押すと全レベル解除
 DEBUG_ALL_LEVELS_UNLOCKED;All levels ulocked!;全レベル解除完了！
 DEBUG_ESC_MAIN_MENU;[color=lightblue][Esc][/color] - Main Menu;[color=lightblue][Esc][/color] - メインメニュー
-DEBUG_TEXT;[ [color=gold]v2.0[/color] ]  [ [color=green]DEBUG BUILD[/color] ]\nPress [color=lightblue]L[/color] to unlock all levels;[ [color=gold]v2.0[/color] ]  [ [color=green]デバッグビルド[/color] ]\n[color=lightblue]L[/color]を押すと全レベル解除
+DEBUG_TEXT;[[color=gold]v2.0[/color]] [[color=green]DEBUG BUILD[/color]]\nPress [color=lightblue]L[/color] to unlock all levels;[[color=gold]v2.0[/color]] [[color=green]デバッグビルド[/color]]\n[color=lightblue]L[/color]を押すと全レベル解除
 NPC_NEARLY_HOPELESS_GUY;The Nearly Hopeless Guy;ほぼ絶望的な男
 NPC_NEARLY_HOPELESS_GUY_REMOTE;The Nearly Hopeless Guy (remote);ほぼ絶望的な男（遠隔）
 NPC_SHOP;Shop;ショップ
@@ -84,7 +84,7 @@ TIP_POWERUP;This is a [color=lightblue]powerup[/color]!\n↓;これは[color=lig
 TIP_REBIND_CONTROLS;You can rebind your controls!\nPress [color=lightblue][Esc][/color]  [color=gray]->[/color]  Settings  [color=gray]->[/color]  Rebind Controls;コントロールを再設定できます！\n[color=lightblue][Esc][/color]を押す  [color=gray]->[/color]  設定  [color=gray]->[/color]  キー再設定
 TIP_HOLD_JUMP;Hold [color=lightblue]jump[/color] to jump higher!;[color=lightblue]ジャンプ[/color]を長押しで高く跳べる！
 TIP_MAGICAL_ROCK;This is a [color=purple]magical rock[/color],\nyou can pick it up!\n↓;これは[color=purple]魔法の石[/color]だ、\n拾うことができる！\n↓
-TIP_KILL_WITH_BEE;You can kill animals\nwith the help of the bee!;蜂の力を借りて動物を倒せる！
+TIP_KILL_WITH_BEE;You can kill animals with the help of the bee!;蜂の力を借りて動物を倒せる！
 DEATH_WOLF;A wolf knocked you to the ground really hard!;オオカミに強く叩きつけられた！
 DEATH_FOX;A fox bit you!;キツネに噛まれた！
 DEATH_BOAR;A boar killed you!;イノシシに殺された！
@@ -92,6 +92,6 @@ DEATH_FELL_TOO_HIGH;You fell from too high!;高すぎる場所から落ちた！
 DEATH_FELL_OUT_OF_WORLD;You fell out of the world!;世界の外に落ちた！
 DEATH_BEE_ULTIMATE;You were hit by an ultimate attack of a bee!\nThat must hurt!;蜂の必殺技に当たった！\n痛かっただろう！
 DEATH_BEE_BULLET;A bee shot you!;蜂に撃たれた！
-DEATH_ELECTRIFIED_WATER;You were electrified by water :o;水に感電した :o
+DEATH_ELECTRIFIED_WATER;You were electrified by water!;水に感電した！
 DEATH_SPIKES;You stepped on really sharp spikes!;本当に鋭い棘を踏んだ！
-DEATH_MUSHROOM;You were electrified by a mushroom :o;キノコに感電した :o
+DEATH_MUSHROOM;You were electrified by a mushroom!;キノコに感電した！

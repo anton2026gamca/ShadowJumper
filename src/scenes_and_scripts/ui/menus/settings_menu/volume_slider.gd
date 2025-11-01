@@ -22,7 +22,7 @@ var value: float:
 
 
 func _ready() -> void:
-	label_node.text = tr(label)
+	label_node.text = label
 
 
 @warning_ignore("shadowed_variable")

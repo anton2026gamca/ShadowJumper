@@ -11,7 +11,9 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 expand_margin_left = 8.0
+expand_margin_top = 5.0
 expand_margin_right = 7.0
+expand_margin_bottom = 5.0
 
 [node name="LevelSelectionUI" type="Control"]
 layout_mode = 3
@@ -29,12 +31,11 @@ position = Vector2(640, 108)
 
 [node name="TotalEnergyDisplay" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -21.5
-offset_right = 21.5
-offset_bottom = 40.0
+offset_top = 7.0
+offset_bottom = 32.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dsqpm")
 
@@ -44,6 +45,7 @@ volume_db = -20.0
 bus = &"SFX"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TotalEnergyDisplay"]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="TotalEnergyDisplay/HBoxContainer"]

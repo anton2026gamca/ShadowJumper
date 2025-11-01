@@ -40,8 +40,10 @@ audio_listener_enable_2d = true
 size = Vector2i(426, 240)
 render_target_update_mode = 4
 
-[node name="Level" type="Node" parent="WorldCanvasLayer/SubViewportContainer/SubViewport"]
+[node name="Level" type="Node2D" parent="WorldCanvasLayer/SubViewportContainer/SubViewport"]
 process_mode = 1
+
+[node name="LevelUINodes" type="Node2D" parent="WorldCanvasLayer"]
 
 [node name="UICanvasLayer" type="CanvasLayer" parent="."]
 layer = 2

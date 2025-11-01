@@ -26,14 +26,14 @@ func _process(delta: float) -> void:
 
 
 func _emit_lightning() -> void:
+	if not is_inside_tree():
+		return
 	lightning_sprite.speed_scale = randf_range(1.0, 2.0)
 	lightning_sprite.play("default")
 	point_light.visible = true
 	lightning_sound_effect.pitch_scale = randf_range(0.75, 1.25)
 	lightning_sound_effect.play()
-	if not get_parent():
-		return
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.2, false).timeout
 	var bodies_in_water: Array[Node2D] = get_bodies_in_water()
 	for body: Node2D in kill_area.get_overlapping_bodies():
 		if not body in bodies_in_water:

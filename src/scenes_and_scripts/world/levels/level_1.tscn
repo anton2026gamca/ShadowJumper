@@ -183,9 +183,10 @@ _data = {
 &"change": SubResource("Animation_qbkjl")
 }
 
-[node name="World" instance=ExtResource("1_q3776")]
+[node name="World" node_paths=PackedStringArray("ui_nodes") instance=ExtResource("1_q3776")]
 script = ExtResource("2_ytwps")
 world_bottom_die_reason = "You fell from too high!"
+ui_nodes = [NodePath("Level/Tutorial/Move"), NodePath("Level/Tutorial/Jump"), NodePath("Level/Tutorial/Space"), NodePath("Level/Tutorial/Esc"), NodePath("Level/Tutorial/Jump2"), NodePath("Level/Tutorial/PickupableRockHint"), NodePath("Level/Tutorial/PowerupHint"), NodePath("Level/Tutorial/RebindControlsHint"), NodePath("Level/Tutorial/HighJumpHint")]
 
 [node name="Camera2D" parent="." index="0"]
 position = Vector2(-269, 0)
@@ -312,7 +313,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("9_sqshv")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "[color=lightblue]A[/color]"
 horizontal_alignment = 1
@@ -337,7 +338,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("9_sqshv")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "[color=lightblue]D[/color]"
 horizontal_alignment = 1
@@ -375,7 +376,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("9_sqshv")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "[color=lightblue]←[/color]"
 horizontal_alignment = 1
@@ -400,7 +401,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("9_sqshv")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "[color=lightblue]→[/color]"
 horizontal_alignment = 1
@@ -443,7 +444,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("9_sqshv")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "[color=lightblue]W[/color]"
 horizontal_alignment = 1
@@ -468,7 +469,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("9_sqshv")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "[color=lightblue]↑[/color]"
 horizontal_alignment = 1
@@ -494,7 +495,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("9_sqshv")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "[color=lightblue][space][/color]"
 fit_content = true
@@ -522,7 +523,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("9_sqshv")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "[color=lightblue][Esc][/color]"
 horizontal_alignment = 1
@@ -584,78 +585,79 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("9_sqshv")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "[color=lightblue]↑[/color]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Arrow" type="Sprite2D" parent="Level/Tutorial" index="5"]
-use_parent_material = true
-position = Vector2(1142, -19)
-texture = ExtResource("10_sqshv")
+[node name="PickupableRockHint" type="RichTextLabel" parent="Level/Tutorial" index="5"]
+auto_translate_mode = 1
+offset_left = -247.0
+offset_top = -73.0
+offset_right = 497.0
+offset_bottom = 119.0
+scale = Vector2(0.333, 0.333)
+theme = ExtResource("9_sqshv")
+theme_override_font_sizes/normal_font_size = 27
+bbcode_enabled = true
+text = "TIP_MAGICAL_ROCK"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Arrow2" type="Sprite2D" parent="Level/Tutorial" index="6"]
-use_parent_material = true
-position = Vector2(1142, -64)
-rotation = -1.5708
-texture = ExtResource("10_sqshv")
-
-[node name="PowerupHint" type="RichTextLabel" parent="Level/Tutorial" index="7"]
+[node name="PowerupHint" type="RichTextLabel" parent="Level/Tutorial" index="6"]
 auto_translate_mode = 1
 offset_left = 252.0
 offset_top = -46.0
-offset_right = 500.0
-offset_bottom = 18.0
+offset_right = 748.0
+offset_bottom = 82.0
+scale = Vector2(0.5, 0.5)
 theme = ExtResource("9_sqshv")
-theme_override_font_sizes/normal_font_size = 6
 bbcode_enabled = true
 text = "TIP_POWERUP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PowerupObject" parent="Level/Tutorial" index="8" instance=ExtResource("9_ty57j")]
+[node name="PowerupObject" parent="Level/Tutorial" index="7" instance=ExtResource("9_ty57j")]
 position = Vector2(376, 39)
 powerup = ExtResource("11_ty57j")
 
-[node name="RebindControlsHint" type="RichTextLabel" parent="Level/Tutorial" index="9"]
+[node name="RebindControlsHint" type="RichTextLabel" parent="Level/Tutorial" index="8"]
 auto_translate_mode = 1
 offset_left = 678.0
 offset_top = -103.0
-offset_right = 926.0
-offset_bottom = -39.0
+offset_right = 1174.0
+offset_bottom = 25.0
+scale = Vector2(0.5, 0.5)
 theme = ExtResource("9_sqshv")
-theme_override_font_sizes/normal_font_size = 6
 bbcode_enabled = true
 text = "TIP_REBIND_CONTROLS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HighJumpHint" type="RichTextLabel" parent="Level/Tutorial" index="10"]
+[node name="HighJumpHint" type="RichTextLabel" parent="Level/Tutorial" index="9"]
 auto_translate_mode = 1
 offset_left = 949.0
 offset_top = -72.0
-offset_right = 1197.0
-offset_bottom = -8.0
+offset_right = 1445.0
+offset_bottom = 56.0
+scale = Vector2(0.5, 0.5)
 theme = ExtResource("9_sqshv")
-theme_override_font_sizes/normal_font_size = 6
 bbcode_enabled = true
 text = "TIP_HOLD_JUMP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PickupableRockHint" type="RichTextLabel" parent="Level/Tutorial" index="11"]
-auto_translate_mode = 1
-offset_left = -247.0
-offset_top = -73.0
-offset_right = 1.0
-offset_bottom = -9.0
-theme = ExtResource("9_sqshv")
-theme_override_font_sizes/normal_font_size = 6
-bbcode_enabled = true
-text = "TIP_MAGICAL_ROCK"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Arrow" type="Sprite2D" parent="Level/Tutorial" index="10"]
+use_parent_material = true
+position = Vector2(1142, -19)
+texture = ExtResource("10_sqshv")
+
+[node name="Arrow2" type="Sprite2D" parent="Level/Tutorial" index="11"]
+use_parent_material = true
+position = Vector2(1142, -64)
+rotation = -1.5708
+texture = ExtResource("10_sqshv")
 
 [connection signal="picked_up" from="Level/Tutorial/PowerupObject" to="." method="_on_powerup_object_picked_up"]
 

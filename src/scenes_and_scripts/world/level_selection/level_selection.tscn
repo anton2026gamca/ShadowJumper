@@ -6900,13 +6900,14 @@ shader_parameter/noise2 = SubResource("NoiseTexture2D_5u1kd")
 shader_parameter/scroll2 = Vector2(-0.05, -0.02)
 shader_parameter/weight2 = 0.01
 
-[node name="LevelSelection" type="Node2D" node_paths=PackedStringArray("start_level", "replay_controller", "camera", "player")]
+[node name="LevelSelection" type="Node2D" node_paths=PackedStringArray("start_level", "replay_controller", "camera", "player", "ui_nodes")]
 material = SubResource("ShaderMaterial_0vl0e")
 script = ExtResource("1_7qmai")
 start_level = NodePath("Level/Level1")
 replay_controller = NodePath("Level/Player/ReplayPlayerController")
 camera = NodePath("Camera2D")
 player = NodePath("Level/Player")
+ui_nodes = [NodePath("Level/Move"), NodePath("Level/Space"), NodePath("Level/Esc")]
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("follow")]
 drag_vertical_enabled = true
@@ -7323,7 +7324,7 @@ relationships = {
 Vector2i(-1, 0): NodePath("../Level8")
 }
 
-[node name="Move" type="Panel" parent="Level"]
+[node name="Move" type="PanelContainer" parent="Level"]
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.25
@@ -7336,12 +7337,9 @@ offset_bottom = -24.0
 scale = Vector2(0.333, 0.333)
 
 [node name="WASD" type="Control" parent="Level/Move"]
-layout_mode = 1
-anchors_preset = 0
-offset_right = 97.0
-offset_bottom = 50.0
+layout_mode = 2
 
-[node name="Left" type="Panel" parent="Level/Move/WASD"]
+[node name="Left" type="PanelContainer" parent="Level/Move/WASD"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -7356,17 +7354,17 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Level/Move/WASD/Left"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
 theme = ExtResource("19_noog6")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "[color=lightblue]A[/color]"
+fit_content = true
+autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Right" type="Panel" parent="Level/Move/WASD"]
+[node name="Right" type="PanelContainer" parent="Level/Move/WASD"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -7381,30 +7379,21 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Level/Move/WASD/Right"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
 theme = ExtResource("19_noog6")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "[color=lightblue]D[/color]"
+fit_content = true
+autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Arrows" type="Control" parent="Level/Move"]
 visible = false
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -97.0
-offset_top = -50.0
-grow_horizontal = 0
-grow_vertical = 0
+layout_mode = 2
 
-[node name="Left" type="Panel" parent="Level/Move/Arrows"]
+[node name="Left" type="PanelContainer" parent="Level/Move/Arrows"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -7419,17 +7408,17 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Level/Move/Arrows/Left"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
 theme = ExtResource("19_noog6")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "[color=lightblue]←[/color]"
+fit_content = true
+autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Right" type="Panel" parent="Level/Move/Arrows"]
+[node name="Right" type="PanelContainer" parent="Level/Move/Arrows"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -7444,13 +7433,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Level/Move/Arrows/Right"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
 theme = ExtResource("19_noog6")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "[color=lightblue]→[/color]"
+fit_content = true
+autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -7460,7 +7449,7 @@ libraries = {
 }
 autoplay = "change"
 
-[node name="Space" type="Panel" parent="Level"]
+[node name="Space" type="PanelContainer" parent="Level"]
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.25
@@ -7473,43 +7462,37 @@ offset_bottom = -4.0
 scale = Vector2(0.333, 0.333)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Level/Space"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme = ExtResource("19_noog6")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "[color=lightblue][space][/color]"
+fit_content = true
+autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Esc" type="Panel" parent="Level"]
+[node name="Esc" type="PanelContainer" parent="Level"]
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.25
 anchor_right = 0.5
 anchor_bottom = 0.25
-offset_left = 59.0
+offset_left = 51.0
 offset_top = -83.0
-offset_right = 338.0
+offset_right = 378.04803
 offset_bottom = -29.0
 scale = Vector2(0.333, 0.333)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Level/Esc"]
 auto_translate_mode = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme = ExtResource("19_noog6")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 27
 bbcode_enabled = true
 text = "DEBUG_ESC_MAIN_MENU"
+fit_content = true
+autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
