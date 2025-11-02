@@ -33,6 +33,7 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/initial_position_type=5
 window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
 
 [dotnet]
 
@@ -145,5 +146,16 @@ locale/translations=PackedStringArray("res://translations.en.translation", "res:
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+global_illumination/gi/use_half_resolution=true
 textures/decals/filter=0
 textures/light_projectors/filter=0
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+occlusion_culling/use_occlusion_culling=true
+2d/snap_2d_transforms_to_pixel=true
+2d/snap_2d_vertices_to_pixel=true
+batching/item_buffer_size=16384
+batching/lights_and_shadows_culling=true
+limits/2d/draw_calls_in_frame=8192
+limits/rendering/max_lights_per_object=8
+limits/rendering/max_renderable_lights=128
+2d_shadow_atlas/size=2048

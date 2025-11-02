@@ -54,6 +54,7 @@ func load_level(level: PackedScene, level_number: int, player_lives_override: in
 	ui.visible = true
 	level_parent.add_child.call_deferred(node)
 	await get_tree().process_frame
+	PerformanceOptimizer.apply_all_optimizations(current_level_node)
 	level_ui_nodes.scale = Vector2(1, 1)
 	for ui_node: Control in node.ui_nodes:
 		if not ui_node: continue

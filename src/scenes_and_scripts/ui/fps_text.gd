@@ -9,7 +9,7 @@ func _ready() -> void:
 		queue_free()
 
 func _process(delta: float) -> void:
-	var fps: int = floor(1.0 / delta)
+	var fps: int = floor(Engine.get_frames_per_second())
 	var color: Color = Color.GRAY
 	if fps < 10: color = Color.RED
 	elif fps < 20: color = Color.ORANGE

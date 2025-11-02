@@ -46,7 +46,7 @@ UI_LEVEL_DEFEATED;LEVEL\nDEFEATED !!!;レベル\n撃破 !!!
 DEBUG_BUILD;DEBUG BUILD;デバッグビルド
 DEBUG_VERSION_TAG;v2.0;v2.0
 DEBUG_UNLOCK_ALL_LEVELS_HINT;Press [color=lightblue]L[/color] to unlock all levels;[color=lightblue]L[/color]を押すと全レベル解除
-DEBUG_ALL_LEVELS_UNLOCKED;All levels ulocked!;全レベル解除完了！
+DEBUG_ALL_LEVELS_UNLOCKED;All levels unlocked!;全レベル解除完了！
 DEBUG_ESC_MAIN_MENU;[color=lightblue][Esc][/color] - Main Menu;[color=lightblue][Esc][/color] - メインメニュー
 DEBUG_TEXT;[[color=gold]v2.0[/color]] [[color=green]DEBUG BUILD[/color]]\nPress [color=lightblue]L[/color] to unlock all levels;[[color=gold]v2.0[/color]] [[color=green]デバッグビルド[/color]]\n[color=lightblue]L[/color]を押すと全レベル解除
 NPC_NEARLY_HOPELESS_GUY;The Nearly Hopeless Guy;ほぼ絶望的な男

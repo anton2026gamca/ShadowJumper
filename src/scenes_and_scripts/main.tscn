@@ -40,6 +40,7 @@ stretch_shrink = 3
 transparent_bg = true
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
 canvas_item_default_texture_filter = 0
 audio_listener_enable_2d = true
 size = Vector2i(426, 240)
@@ -68,6 +69,7 @@ controls_menu = NodePath("../ControlsMenu")
 visible = false
 
 [node name="FPS" type="RichTextLabel" parent="UI"]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

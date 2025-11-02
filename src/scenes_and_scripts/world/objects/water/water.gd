@@ -1,7 +1,6 @@
 extends Node2D
 class_name Water
 
-
 @export var die_reason: String = "DEATH_ELECTRIFIED_WATER"
 
 @export var lightning_interval: float = 50
@@ -15,15 +14,9 @@ class_name Water
 
 static var bodies_in_water_data: Dictionary[Water, Array] = {}
 
-
-
 func _ready() -> void:
 	get_tree().create_timer(randf_range(0, lightning_interval), false).timeout.connect(_emit_lightning)
 	lightning_sprite.animation_finished.connect(func() -> void: point_light.visible = false)
-
-func _process(delta: float) -> void:
-	pass
-
 
 func _emit_lightning() -> void:
 	if not is_inside_tree():

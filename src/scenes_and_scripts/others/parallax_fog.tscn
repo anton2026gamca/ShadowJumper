@@ -12,7 +12,7 @@ height = 720
 noise = SubResource("FastNoiseLite_qbaq7")
 seamless = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ch1p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7oo1o"]
 shader = ExtResource("2_6wly2")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_patrw")
 shader_parameter/min_fog_value = 0.0
@@ -29,7 +29,7 @@ height = 720
 noise = SubResource("FastNoiseLite_msttb")
 seamless = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_motvu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6wly2"]
 shader = ExtResource("2_6wly2")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_2tp0m")
 shader_parameter/min_fog_value = 0.0
@@ -47,7 +47,7 @@ height = 720
 noise = SubResource("FastNoiseLite_rjpot")
 seamless = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xugxg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_akv08"]
 shader = ExtResource("2_6wly2")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_5ow7n")
 shader_parameter/min_fog_value = 0.0
@@ -67,7 +67,7 @@ repeat_size = Vector2(1280, 720)
 
 [node name="Fog" type="ColorRect" parent="FogBack"]
 z_index = -10
-material = SubResource("ShaderMaterial_8ch1p")
+material = SubResource("ShaderMaterial_7oo1o")
 offset_left = -640.0
 offset_top = -360.0
 offset_right = 640.0
@@ -80,7 +80,7 @@ repeat_size = Vector2(1280, 720)
 
 [node name="Fog" type="ColorRect" parent="FogMiddle"]
 z_index = 9
-material = SubResource("ShaderMaterial_motvu")
+material = SubResource("ShaderMaterial_6wly2")
 offset_left = -640.0
 offset_top = -360.0
 offset_right = 640.0
@@ -93,7 +93,7 @@ repeat_size = Vector2(1280, 720)
 
 [node name="Fog" type="ColorRect" parent="FogFront"]
 z_index = 10
-material = SubResource("ShaderMaterial_xugxg")
+material = SubResource("ShaderMaterial_akv08")
 offset_left = -640.0
 offset_top = -360.0
 offset_right = 640.0
