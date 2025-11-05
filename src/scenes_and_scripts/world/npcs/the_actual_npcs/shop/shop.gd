@@ -82,7 +82,7 @@ func buy_item(answer: NPCDialogAnswer) -> void:
 			Helpers.spawn_powerup(self, item.powerup, Vector2.ZERO)
 		elif item is ShopRocksItem:
 			# It has to be $Area2D instead of self because of some weird thing with TileMapLayer
-			var text: FloatingText = Helpers.create_floating_text($Area2D, ("+" if item.rocks_amount >= 0 else "") + str(int(item.rocks_amount)) + tr("STATS_ROCKS_SUFFIX"), Vector2(0, -32), item.color, -10)
+			var text: FloatingText = Helpers.create_floating_text(LevelLoader.level_ui_nodes, ("+" if item.rocks_amount >= 0 else "") + str(int(item.rocks_amount)) + tr("STATS_ROCKS_SUFFIX"), $Area2D.global_position + Vector2(0, -32), item.color, -10)
 			text.process_mode = Node.PROCESS_MODE_ALWAYS
 			Progress.collect_rocks(item.rocks_amount)
 	

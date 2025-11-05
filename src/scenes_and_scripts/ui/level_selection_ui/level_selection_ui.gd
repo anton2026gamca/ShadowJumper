@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func collected_energy_animation() -> void:
 	if Progress.level_collected_energy == 0: return
-	var text: FloatingText = Helpers.create_floating_text(enegry_text_spawner, ("+" if Progress.level_collected_energy >= 0 else "") + str(int(Progress.level_collected_energy)), Vector2.ZERO, Helpers.get_energy_level_color(Progress.level_collected_energy), -32)
+	var text: FloatingText = Helpers.create_floating_text(LevelLoader.level_ui_nodes, ("+" if Progress.level_collected_energy >= 0 else "") + str(int(Progress.level_collected_energy)), enegry_text_spawner.global_position, Helpers.get_energy_level_color(Progress.level_collected_energy), -32)
 	text.add_theme_font_size_override("font_size", 18)
 	text.process_mode = Node.PROCESS_MODE_ALWAYS
 	total_energy_add_audio.play()

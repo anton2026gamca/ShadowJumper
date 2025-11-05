@@ -15,7 +15,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player and self_modulate.a > 0:
 		self_modulate.a = 0
 		point_light_2d.visible = false
-		var text: FloatingText = Helpers.create_floating_text(get_parent(), ("+" if amount >= 0 else "") + str(int(amount)) + " R", position + Vector2(0, -24), text_color, -10)
+		var text: FloatingText = Helpers.create_floating_text(LevelLoader.level_ui_nodes, ("+" if amount >= 0 else "") + str(int(amount)) + " R", global_position + Vector2(0, -24), text_color, -10)
 		text.process_mode = Node.PROCESS_MODE_ALWAYS
 		Progress.collect_rocks(amount)
 		pickup_audio.play()
