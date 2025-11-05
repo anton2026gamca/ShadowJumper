@@ -71,11 +71,23 @@ func buy_item(answer: NPCDialogAnswer) -> void:
 	var item: ShopItem = items_on_sale[index]
 	var stock: int = Helpers.dictionary_get_path(Progress.global_data, ["shop", item.name, "stock"], item.stock)
 	if stock == 0:
-		answer.next_messages = out_of_stock_messages.duplicate()
+		var msgs: Array[NPCDialogMessage] = out_of_stock_messages.duplicate()
+		for i: int in len(msgs):
+			msgs[i] = msgs[i].duplicate()
+			msgs[i].message = parse_message(tr(msgs[i].message), item)
+		answer.next_messages = msgs
 	elif Progress.total_collected_energy < item.price:
-		answer.next_messages = not_enough_energy_messages.duplicate()
+		var msgs: Array[NPCDialogMessage] = not_enough_energy_messages.duplicate()
+		for i: int in len(msgs):
+			msgs[i] = msgs[i].duplicate()
+			msgs[i].message = parse_message(tr(msgs[i].message), item)
+		answer.next_messages = msgs
 	else:
-		answer.next_messages = bought_item_messages.duplicate()
+		var msgs: Array[NPCDialogMessage] = bought_item_messages.duplicate()
+		for i: int in len(msgs):
+			msgs[i] = msgs[i].duplicate()
+			msgs[i].message = parse_message(tr(msgs[i].message), item)
+		answer.next_messages = msgs
 		Helpers.dictionary_set_path(Progress.global_data, ["shop", item.name, "stock"], stock - 1 if stock >= 1 else stock)
 		Progress.collect_energy(-item.price)
 		if item is ShopPowerupItem:
