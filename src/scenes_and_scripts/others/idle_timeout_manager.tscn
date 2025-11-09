@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2kgj3x8m4r0h"]
+
+[ext_resource type="Script" uid="uid://b4sd17smvgm2i" path="res://scenes_and_scripts/others/idle_timeout_manager.gd" id="1_idle"]
+
+[node name="IdleTimeoutManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_idle")

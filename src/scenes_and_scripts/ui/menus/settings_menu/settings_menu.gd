@@ -51,6 +51,4 @@ func _on_reset_save_pressed() -> void:
 	if OS.has_feature("web"):
 		JavaScriptBridge.eval("location.reload();")
 	else:
-		var exec_path := OS.get_executable_path()
-		OS.execute(exec_path, [], false)
-		get_tree().quit()
+		get_tree().quit.call_deferred()

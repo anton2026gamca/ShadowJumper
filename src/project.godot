@@ -26,6 +26,7 @@ LevelLoader="*res://scenes_and_scripts/world/level_loader/level_loader.tscn"
 Music="*res://scenes_and_scripts/others/music.tscn"
 Helpers="*res://scenes_and_scripts/others/helpers.gd"
 Settings="*res://scenes_and_scripts/others/save_system/settings.gd"
+IdleTimeout="*res://scenes_and_scripts/others/idle_timeout_manager.tscn"
 
 [display]
 
@@ -33,7 +34,6 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/initial_position_type=5
 window/stretch/mode="canvas_items"
-window/vsync/vsync_mode=0
 
 [dotnet]
 

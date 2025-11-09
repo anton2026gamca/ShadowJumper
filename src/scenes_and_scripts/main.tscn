@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cgnkbfbtrhkl8"]
+[gd_scene load_steps=12 format=3 uid="uid://cgnkbfbtrhkl8"]
 
 [ext_resource type="Script" uid="uid://dqgu60xixvo2u" path="res://scenes_and_scripts/main.gd" id="1_1wink"]
 [ext_resource type="PackedScene" uid="uid://clkhpeqrfyoax" path="res://scenes_and_scripts/world/level_selection/level_selection.tscn" id="2_7efjl"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://sedvuk2vb5qi" path="res://scenes_and_scripts/ui/level_selection_ui/level_selection_ui.tscn" id="6_jj5c1"]
 [ext_resource type="Theme" uid="uid://b85q7fth1jjij" path="res://assets/theme.tres" id="8_4afco"]
 [ext_resource type="Script" uid="uid://sj6w0vop2rxd" path="res://scenes_and_scripts/ui/fps_text.gd" id="9_gkhac"]
+[ext_resource type="PackedScene" uid="uid://dj3p8yam5n1k2" path="res://scenes_and_scripts/ui/idle_timeout_warning/idle_timeout_warning.tscn" id="10_6wi30"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jbjwx"]
 shader = ExtResource("2_xcigm")
@@ -79,6 +80,12 @@ mouse_filter = 2
 theme = ExtResource("8_4afco")
 bbcode_enabled = true
 script = ExtResource("9_gkhac")
+
+[node name="IdleTimeoutWarning" parent="UI" instance=ExtResource("10_6wi30")]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 360.0
+offset_bottom = 48.0
 
 [connection signal="entered_level" from="LevelSelection/LevelSelection/SubViewport/LevelSelection" to="." method="_on_level_selection_entered_level"]
 [connection signal="exited_level" from="LevelSelection/LevelSelection/SubViewport/LevelSelection" to="." method="_on_level_selection_exited_level"]

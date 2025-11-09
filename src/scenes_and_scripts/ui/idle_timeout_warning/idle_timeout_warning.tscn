@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj3p8yam5n1k2"]
+
+[ext_resource type="Texture2D" uid="uid://5xeo6hxiyvnc" path="res://assets/sprites/warning.png" id="1_jwuro"]
+[ext_resource type="Script" uid="uid://dl5o0mig212f3" path="res://scenes_and_scripts/ui/idle_timeout_warning/idle_timeout_warning.gd" id="1_k7s7d"]
+
+[node name="IdleTimeoutWarning" type="PanelContainer"]
+offset_right = 355.0
+offset_bottom = 43.0
+script = ExtResource("1_k7s7d")
+metadata/_custom_type_script = "uid://dl5o0mig212f3"
+
+[node name="VBoxContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_jwuro")
+expand_mode = 2
+
+[node name="WarningLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Idle Warning - Game will reset soon!"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="TimerLabel" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.53, 0.53, 0.53, 1)
+text = "2s"
