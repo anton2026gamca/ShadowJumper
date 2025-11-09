@@ -234,23 +234,32 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ToggleLanguage" type="Button" parent="ControlToggleLanguage"]
-auto_translate_mode = 1
-custom_minimum_size = Vector2(0, 32)
+[node name="HBoxContainer" type="HBoxContainer" parent="ControlToggleLanguage"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -213.0
-offset_top = 29.0
+offset_top = 21.0
 offset_right = 213.0
-offset_bottom = 45.0
+offset_bottom = 55.0
 grow_horizontal = 2
-grow_vertical = 2
+
+[node name="LanguageEnglish" type="Button" parent="ControlToggleLanguage/HBoxContainer"]
+auto_translate_mode = 1
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("2_4n5uu")
-text = "MENU_TOGGLE_LANGUAGE"
+text = "MENU_LANGUAGE_ENGLISH"
+
+[node name="LanguageJapanese" type="Button" parent="ControlToggleLanguage/HBoxContainer"]
+auto_translate_mode = 1
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_4n5uu")
+text = "MENU_LANGUAGE_JAPANESE"
 
 [node name="Logo" type="TextureRect" parent="."]
 layout_mode = 1
@@ -261,7 +270,7 @@ anchor_right = 0.5
 anchor_bottom = 0.25
 offset_left = -1440.0
 offset_top = -96.0
-offset_right = -1001.99963
+offset_right = -1001.99945
 offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -274,4 +283,5 @@ libraries = {
 
 [connection signal="pressed" from="ControlPlay/Play" to="." method="close"]
 [connection signal="pressed" from="ControlSettings/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="ControlToggleLanguage/ToggleLanguage" to="." method="_on_toggle_language_pressed"]
+[connection signal="pressed" from="ControlToggleLanguage/HBoxContainer/LanguageEnglish" to="." method="change_language" binds= ["en"]]
+[connection signal="pressed" from="ControlToggleLanguage/HBoxContainer/LanguageJapanese" to="." method="change_language" binds= ["ja"]]
