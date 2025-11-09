@@ -56,11 +56,11 @@ func load_level(level: PackedScene, level_number: int, player_lives_override: in
 	await get_tree().process_frame
 	PerformanceOptimizer.apply_all_optimizations(current_level_node)
 	level_ui_nodes.scale = Vector2(1, 1)
+	level_ui_nodes.position = Vector2.ZERO
 	for ui_node: Control in node.ui_nodes:
 		if not ui_node: continue
 		ui_node.reparent(level_ui_nodes)
 	level_ui_nodes.scale = Vector2(3, 3)
-	_update_level_ui_nodes_postition()
 	if player_lives_override > 0:
 		Helpers.player.health_component.lives = player_lives_override
 

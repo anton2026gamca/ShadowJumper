@@ -9,6 +9,7 @@ class_name Main
 @onready var level_selection: LevelSelection = $LevelSelection/LevelSelection/SubViewport/LevelSelection
 @onready var level_selection_ui_nodes: Node2D = $LevelSelection/LevelSelectionUINodes
 
+
 func _ready() -> void:
 	Helpers.main_menu = self
 	pause(true)
@@ -19,6 +20,9 @@ func _ready() -> void:
 	for level: LevelSelectionLevel in level_selection.levels:
 		level.label.reparent(level_selection_ui_nodes)
 	level_selection_ui_nodes.scale = Vector2(3, 3)
+	if OS.has_feature("raspberrypi"):
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 
 func _process(delta: float) -> void:
