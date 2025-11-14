@@ -50,6 +50,7 @@ func _on_death_component_die(reason: String, instant_kill: bool = false) -> void
 	if has_immunity and not instant_kill:
 		return
 	health_component.lives -= 1
+	LEDs.trigger_animation("die")
 	if instant_kill:
 		health_component.lives = 0
 	took_damage.emit(reason)

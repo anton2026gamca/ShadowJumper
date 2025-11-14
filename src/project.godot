@@ -27,6 +27,7 @@ Music="*res://scenes_and_scripts/others/music.tscn"
 Helpers="*res://scenes_and_scripts/others/helpers.gd"
 Settings="*res://scenes_and_scripts/others/save_system/settings.gd"
 IdleTimeout="*res://scenes_and_scripts/others/idle_timeout_manager.tscn"
+LEDs="*res://scenes_and_scripts/others/leds.gd"
 
 [display]
 
